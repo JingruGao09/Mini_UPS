@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<form action= "/ups/trackPackage/"  method="get">
+  <p>Please enter tracking number:</p>
+  <td><input type="text" name="TrackingNumber"> </td>
+<br>
+<br>
+<input type="submit" value="Tracking">
+</form>
+{% endblock %}

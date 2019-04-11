@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Delivery Detail</h1>
+
+{% if package_list %}
+<ul>
+
+  {% for package in package_list %}
+  <li>
+    <a href="{{ package.get_absolute_url }}">Owner : {{ ride.owner.user.username }}</a>
+    <br />Vehicle : {{ride.type}}
+    <br />Pick up time : {{ride.pickUpTime}}
+    <br />Is Confirmed : {{ride.isConfirmed}}
+    <br />Is Complete : {{ride.isComplete}}
+    <br />Destination : {{ride.destination}}
+    <br />Total number of passengers : {{ride.total_passenger}}
+    {% if edit %}
+    <br /><a href="{% url 'editRide' ride.pk %}">Edit</a>
+    {% elif confirm %}
+    <br /><a href="{% url 'ConfirmRideView' ride.pk %}">Confirm</a>
+    {% elif join  %}
+    <br /><a href="{% url 'JoinRideView' ride.pk %}">Join</a>
+    {% elif complete  %}
+    <br /><a href="{% url 'CompleteRideView' ride.pk %}">Complete</a>
+    {% endif %}
+  </li>
+  {% endfor %}
+
+</ul>
+{% else %}
+<p>There are no rides in the library.</p>
+{% endif %}
+{% endblock %}
