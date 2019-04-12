@@ -15,5 +15,8 @@
 {% else %}
 <p>Please correct the following errors</p>
 <p>The tracking number you entered is not valid. Please review or contact the sender to verify the number.</p>
+<form action= "/ups/trackPackage/"  method="get">
+  <input type="submit" class="btn btn-outline-info" value="Back To Tracking">
+</form>
 {% endif %}
 {% endblock %}

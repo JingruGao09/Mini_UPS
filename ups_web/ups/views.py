@@ -1,13 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
 from ups.models import Package
 from django.template import loader
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
+from django.contrib.auth import login, authenticate
 def index(request):
     return HttpResponse("Hello, world. You're at the UPS index.")
 
 def home(request):
-    #return render(request, 'home.html')
     return render(request, 'base_generic.html')
 
 def TrackPackageView(request):
@@ -22,8 +24,29 @@ def TrackPackageView(request):
             context = {
                 'package_list' : package_list,
             }
-            #if len(package_list)==0:
-            #return render(request, 'ups/trackPackage.html')
-            #else:
             return HttpResponse(template.render(context, request))
     return render(request, 'ups/trackPackage.html')
+
+def RegisterUserView(request):
+    form = CustomUserCreationForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            '''                                
+            new_username = form.cleaned_data['username'].lower()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            messages.success(request, 'Account created successfully')
+            login(request, user)        
+            '''
+            return render(request, 'base_generic.html')
+    else:
+        form = CustomUserCreationForm()            
+    return render(request, 'ups/registerUser.html', {'form': form})
+    
+

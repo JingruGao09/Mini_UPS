@@ -3,11 +3,12 @@
 {% block content %}
 
    <form action= "/ups/trackPackage/"  method="get">
+     {% csrf_token %}
      <p>Please enter tracking number:</p>
      <td><input type="text" name="TrackingNumber"> </td>
      <br>
      <br>
-     <input type="submit" value="Tracking">
+     <input type="submit" class="btn btn-outline-info" value="Tracking">
    </form>
 
  {% endblock %}
