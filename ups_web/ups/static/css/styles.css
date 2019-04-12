@@ -17,14 +17,14 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 header {
-    color: white;
+    color: black;
     width: 1500px;
     height: 270px;
     text-align: left;
