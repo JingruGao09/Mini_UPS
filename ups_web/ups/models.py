@@ -8,6 +8,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class World(models.Model):
+    world_id = models.AutoField(primary_key=True)
+
+    class Meta:
+        db_table = 'world'
+
+    def __str__(self):
+        return world_id
+
+class UpsProfile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE, unique=True)
+
+    class Meta:
+        db_table = 'ups_profile'
+
+    def __str__(self):
+        return self.user.__str__()
+
 class Truck(models.Model):
     #package = models.ForeignKey(Package, models.DO_NOTHING, primary_key=True)
     world = models.ForeignKey('World', models.DO_NOTHING)
@@ -27,9 +45,7 @@ class Truck(models.Model):
                                     null = True,
                                     help_text='Truck Status')
     class Meta:
-        managed = False
         db_table = 'truck'
-        #unique_together = (('package', 'world'),)
 
     def __str__(self):
         return self.truck_id
@@ -44,7 +60,6 @@ class Package(models.Model):
     y = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'package'
 
     def __str__(self):
@@ -59,29 +74,10 @@ class Shipment(models.Model):
     #status = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
         db_table = 'shipment'
 
     def __str__(self):
         return ship_id
 
-class UpsProfile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE, unique=True)
-
-    class Meta:
-        managed = False
-        db_table = 'ups_profile'
-
-    def __str__(self):
-        return self.user.__str__()
 
 
-class World(models.Model):
-    world_id = models.AutoField(primary_key=True)
-
-    class Meta:
-        managed = False
-        db_table = 'world'
-
-    def __str__(self):
-        return world_id

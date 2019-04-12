@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/styles.css' %}">
   </head>
   <body>
-    
     <nav class="navbar navbar-default">
       <div class="container-fluid">
 	<div class="navbar-header">

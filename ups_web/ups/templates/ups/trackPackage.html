@@ -1,11 +1,14 @@
-{% extends 'base_generic.html' %}
+<!DOCTYPE html>
+ <html lang="en">
 
-{% block content %}
-<form action= "/ups/trackPackage/"  method="get">
-  <p>Please enter tracking number:</p>
-  <td><input type="text" name="TrackingNumber"> </td>
-<br>
-<br>
-<input type="submit" value="Tracking">
-</form>
-{% endblock %}
+
+   <form action= "/ups/trackPackage/"  method="get">
+     <p>Please enter tracking number:</p>
+     <td><input type="text" name="TrackingNumber"> </td>
+     <br>
+     <br>
+     <input type="submit" value="Tracking">
+   </form>
+</html>
+ 
+
