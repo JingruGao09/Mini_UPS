@@ -6,6 +6,7 @@ from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate
+from .models import UpsProfile,Truck,Package,Shipment
 def index(request):
     return HttpResponse("Hello, world. You're at the UPS index.")
 
@@ -37,16 +38,29 @@ def RegisterUserView(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            '''                                
-            new_username = form.cleaned_data['username'].lower()
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            messages.success(request, 'Account created successfully')
-            login(request, user)        
-            '''
             return render(request, 'base_generic.html')
     else:
         form = CustomUserCreationForm()            
     return render(request, 'ups/registerUser.html', {'form': form})
-    
 
+from django.views import generic
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
+
+def MyPackagesView(request):
+    package_list = UpsProfile.objects.filter(pk = request.user.pk).first()
+    #package_list = UpsProfile.objects.filter(pk = request.user.pk).first().package_set.all()
+    #template = loader.get_template('ups/package_list.html')
+    return render(request,'ups/myPackage_list.html',{'package_list':package_list})
+'''
+@method_decorator(login_required, name='dispatch')
+class PackageListView(generic.ListView):
+    model = Package
+    def get_queryset(self):
+        return Package.objects.all()
+    
+@method_decorator(login_required, name='dispatch')
+class PackageDetailView(generic.DetailView):
+    model = Package
+'''

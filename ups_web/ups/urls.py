@@ -7,4 +7,5 @@ urlpatterns = [
     path('registerUser/', views.RegisterUserView, name='RegisterUserView'),
     path('login/',auth_views.LoginView.as_view(template_name='ups/login.html'), name='login'),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
+    path('myPackages/',views.MyPackagesView,name='myPackages'),
 ]

@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Your Package is Here !</h1>
+
+<p><strong>item:</strong> {{ package.id }}</p>
+<p><strong>truck id:</strong> {{ package.truck.truck_id }}</p>
+<p><strong>truck status:</strong> {{ package.truck.truck_status }}</p>
+<p><strong>Destination x:</strong> {{ package.x }}</p>
+<p><strong>Destination y:</strong> {{ package.y }}</p>
+<!--p><strong>isComplete:</strong>{% for isComplete in ride.isComplete.all %}{{ isComplete }}{% if not forloop.last %}, {% endif %}{% endfor %}</p-->
+
+{% endblock %}
+  
