@@ -53,8 +53,8 @@ class Truck(models.Model):
     world = models.ForeignKey('World', models.DO_NOTHING)
     truck_id = models.IntegerField(null = False)
     wh_id = models.IntegerField(null = False)
-    #x = models.IntegerField()
-    #y = models.IntegerField()
+    wh_x = models.IntegerField()
+    wh_y = models.IntegerField()
     
     TRUCK_STATUS_OP = (
         ('1','idle'),
@@ -82,8 +82,8 @@ class Package(models.Model):
     world = models.ForeignKey('World', models.DO_NOTHING)
     seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
-    x = models.IntegerField()
-    y = models.IntegerField()
+    des_x = models.IntegerField()
+    des_y = models.IntegerField()
     item = models.CharField(max_length = 100,
                             default='Purchase from Amazon',
                             null = False,
@@ -122,6 +122,16 @@ class Product(models.Model):
                                    default='AProduct')
     count = models.IntegerField(null=False,default=1)
 
+    class Meta:
+        db_table = 'product'
+
+    def get_absolute_url(self):
+        return reverse('product-detail',args=[str(self.product_id)])
+
+    def __str__(self):
+        return self.description
+
+    
 class Shipment(models.Model):
     ship_id = models.BigIntegerField(primary_key=True)
     package = models.ForeignKey(Package, models.DO_NOTHING)
