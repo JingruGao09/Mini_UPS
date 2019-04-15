@@ -52,9 +52,9 @@ class Truck(models.Model):
     #package = models.ForeignKey(Package, models.DO_NOTHING, primary_key=True)
     world = models.ForeignKey('World', models.DO_NOTHING)
     truck_id = models.IntegerField(null = False)
-
-    x = models.IntegerField()
-    y = models.IntegerField()
+    wh_id = models.IntegerField(null = False)
+    wh_x = models.IntegerField()
+    wh_y = models.IntegerField()
     
     TRUCK_STATUS_OP = (
         ('1','idle'),
@@ -82,12 +82,31 @@ class Package(models.Model):
     world = models.ForeignKey('World', models.DO_NOTHING)
     seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
-    x = models.IntegerField()
-    y = models.IntegerField()
+    des_x = models.IntegerField()
+    des_y = models.IntegerField()
+
+    '''
     item = models.CharField(max_length = 100,
                             default='Purchase from Amazon',
                             null = False,
                             blank=False)
+    '''
+
+    PACKAGE_STATUS_OP = (
+        ('1','created'),
+        ('2','truck en route to warehouse'),
+        ('3','truck waiting for package'),
+        ('4','out for delivery'),
+        #('5','Delivered')
+    )
+    
+    package_status = models.CharField(max_length=1,
+                                    choices = PACKAGE_STATUS_OP,
+                                    blank = False,
+                                    default = '1',
+                                    null = False,
+                                    help_text='Package Status')
+        
     class Meta:
         db_table = 'package'
 
@@ -97,15 +116,34 @@ class Package(models.Model):
     def __str__(self):
         return str(self.package_id)
 
+class Product(models.Model):
+    product_id = models.BigIntegerField(null = False)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE,related_name='package_set')
+    world = models.ForeignKey('World', models.DO_NOTHING)
+    description = models.CharField(max_length=100,
+                                   default='AProduct')
+    count = models.IntegerField(null=False,default=1)
 
+    class Meta:
+        db_table = 'product'
+
+    def get_absolute_url(self):
+        return reverse('product-detail',args=[str(self.product_id)])
+
+    def __str__(self):
+        return self.description
+
+    
 class Shipment(models.Model):
-    ship_id = models.AutoField(primary_key=True)
+    ship_id = models.BigIntegerField(primary_key=True)
     package = models.ForeignKey(Package, models.DO_NOTHING)
     world = models.ForeignKey('World', models.DO_NOTHING)
     #packing, packed, loading, loaded, delivering, delivered
+    '''
     status = models.CharField(max_length=50,
                               default='Created')
-
+    '''
+    
     class Meta:
         db_table = 'shipment'
 
