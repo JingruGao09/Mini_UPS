@@ -8,4 +8,5 @@ urlpatterns = [
     path('login/',auth_views.LoginView.as_view(template_name='ups/login.html'), name='login'),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
     path('myPackages/',views.MyPackagesView,name='myPackages'),
+    path('package/<int:pk>',views.PackageDetailView.as_view(),name='package-detail'),
 ]

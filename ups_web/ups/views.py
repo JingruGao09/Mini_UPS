@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
+from django.conf import settings
 from django.http import HttpResponse
 from django.db.models import Q
 from ups.models import Package
@@ -7,6 +8,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login, authenticate
 from .models import UpsProfile,Truck,Package,Shipment
+
+import pdb
+
 def index(request):
     return HttpResponse("Hello, world. You're at the UPS index.")
 
@@ -49,11 +53,15 @@ from django.utils.decorators import method_decorator
 
 
 def MyPackagesView(request):
-    package_list = UpsProfile.objects.filter(pk = request.user.pk).first()
+    package_list = UpsProfile.objects.filter(user_id = request.user.pk).first().user_set.all()
+    print(request.user.pk)
+    #pdb.set_trace()
+
+    print(package_list)
     #package_list = UpsProfile.objects.filter(pk = request.user.pk).first().package_set.all()
     #template = loader.get_template('ups/package_list.html')
     return render(request,'ups/myPackage_list.html',{'package_list':package_list})
-'''
+
 @method_decorator(login_required, name='dispatch')
 class PackageListView(generic.ListView):
     model = Package
@@ -63,4 +71,4 @@ class PackageListView(generic.ListView):
 @method_decorator(login_required, name='dispatch')
 class PackageDetailView(generic.DetailView):
     model = Package
-'''
+
