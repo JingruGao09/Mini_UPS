@@ -1,0 +1,50 @@
+syntax = "proto2";
+message InitWorld{
+required int64 worldid = 1;
+required int64 seqnum=2;
+}
+message WarehouseInfo{
+required int32 whid = 1;
+required int32 wh_x = 2;
+required int32 wh_y = 3;
+}
+message DetermineWarehouse{
+repeated WarehouseInfo warehouses=1;
+required int64 seqnum = 2;
+}
+message DetermineTruck{
+repeated TruckLocation arrivedtruck = 1;
+required int64 seqnum = 2;
+}
+message TruckLocation{
+required int32 truckid = 1;
+required int32 whid = 2;
+}
+message DetermineDst{
+repeated TruckDst leavingtruck = 1;
+required int64 seqnum = 2;
+}
+message TruckDst{
+required int32 truckid = 1;
+required int32 x = 2;
+required int32 y = 3;
+required int64 shipid = 4;
+}
+message SettleShipment{
+repeated PackageInfo package = 1;
+required int64 seqnum = 2;
+}
+message PackageInfo{
+required int64 packageid = 1;
+required int64 shipid = 2;
+}
+message Commands{
+required InitWorld world = 1;
+repeated DetermineTruck trucks = 2;
+repeated SettleShipment = 3;
+}
+message Response{
+repeated DetermineWarehouse warehouses = 1;
+repeated DetermineDst dest = 2;
+required int64 seqnum = 3;
+}
