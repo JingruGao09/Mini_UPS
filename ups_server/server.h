@@ -29,7 +29,6 @@ public:
   Server(const char *p);
   ~Server();
   int acceptNewConn();
-  std::vector<char> receiveHTTPRequest(int fd);
   std::vector<char> receiveData(int fd);
   void sendData(int fd, const std::vector<char> &msg);
   std::vector<char> basicRecv(int fd);

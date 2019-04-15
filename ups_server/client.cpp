@@ -43,7 +43,7 @@ int Client::sendall(int fd, const char *buf, size_t *len) {
  *
  * Test Status: pass unit test
  */
-void Client::Send(const std::vector<char> &msg) {
+void Client::sendData(const std::vector<char> &msg) {
   size_t sent = 0;
   size_t len = msg.size();
   size_t max = msg.size();
@@ -63,27 +63,36 @@ void Client::Send(const std::vector<char> &msg) {
  * Test Status: pass unit test, timeout=1, might be too long
  */
 std::vector<char> Client::recvall(int fd) {
-  // set recv timeout
-  timeval tv;
-  tv.tv_sec = 1;
-  tv.tv_usec = 0;
-  if (setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof tv))
-    throw std::string("setsockopt");
-
   std::vector<char> msg;
   size_t index = 0;
+  int contentlen = 0;
+  if (msg.size() < index + MAXDATASIZE)
+    msg.resize(index + MAXDATASIZE);
   int nbytes;
-  while (1) {
+  if ((nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0)) <= 0) {
+    return std::vector<char>();
+  } else {
+    index += nbytes;
+  }
+  std::vector<char> pattern{'\n'};
+  auto it = std::search(msg.begin(), msg.end(), pattern.begin(), pattern.end());
+  std::string len_str(msg.begin(), it);
+  contentlen = stoi(len_str);
+  msg.erase(msg.begin(), it + 1);
+  index -= (it + 1 - msg.begin());
+  msg.resize(index);
+  for (it = msg.begin(); it != msg.end(); it++) {
+    contentlen--;
+  }
+  while (contentlen) {
     if (msg.size() < index + MAXDATASIZE)
       msg.resize(index + MAXDATASIZE);
-    nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0);
-    if (nbytes == -1 && msg.empty()) {
+    int nbytes;
+    if ((nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0)) <= 0) {
       break;
-    } else if (nbytes <= 0) {
-      break;
-
     } else {
       index += nbytes;
+      contentlen -= nbytes;
     }
   }
   msg.resize(index);
@@ -99,7 +108,7 @@ std::vector<char> Client::basicRecv() {
   msg.resize(index);
   return msg;
 }
-std::vector<char> Client::recvServeResponse() { return recvall(sockfd); }
+std::vector<char> Client::receiveData() { return recvall(sockfd); }
 
 int Client::getError() { return error; }
 
