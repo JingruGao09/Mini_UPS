@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS=-std=gnu++11 -pedantic -Wall -Werror -ggdb3 -pthread
+CFLAGS=-std=gnu++11 -pedantic -Wall -Werror -ggdb3 -pthread 
 EXTRAFLAGS=-lpqxx -lpq
-SRCS=$(wildcard *.cpp)
+SRCS=$(wildcard *.cpp,*.cc)
 OBJS=$(patsubst %.cpp,%.o,$(SRCS))
 Mini_ups:$(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(EXTRAFLAGS)
@@ -9,4 +9,7 @@ Mini_ups:$(OBJS)
 	$(CC) $(CFLAGS) -c $<
 .PHONY: clean
 clean:
-	rm -f EXCHMatchServer *.o *~ a.out
+	rm -f Mini_ups *.o *~ test
+
+test:
+	g++ -ggdb3 world_ups.pb.cc worldbridge.cpp -o test `pkg-config --cflags --libs protobuf`
