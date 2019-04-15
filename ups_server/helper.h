@@ -1,5 +1,6 @@
 #ifndef __HELPER_H__
 #define __HELPER_H__
+#include "world_ups.pb.h"
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <math.h>
@@ -60,3 +61,24 @@ bool recvMesgFrom(T &message, google::protobuf::io::FileInputStream *in) {
   return true;
 }
 #endif
+
+/*
+ * msgToCharArray
+ *
+ * convert google protocol message to vector char
+ *
+ * if success return 0, else -1
+ * when message is not fully initialized, it fail.
+ */
+template <typename T> int msgToCharArray(T &message, std::vector<char> &buf) {
+  bool isInitialized = message.IsInitialized();
+  if (!isInitialized)
+    return -1;
+  size_t size = message.ByteSize();
+  buf.resize(size);
+  message.SerializeToArray(&buf[0], size);
+  std::string tmp = std::to_string(size);
+  tmp.push_back('\n');
+  buf.insert(buf.begin(), tmp.begin(), tmp.end());
+  return 0;
+}

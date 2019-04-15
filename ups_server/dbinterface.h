@@ -18,12 +18,16 @@ public:
   ~DBInterface();
   int getWorldNum();
   int updateWorldNum(const std::string &WORLD_ID);
-  int getArrivedTruck(const int &WH_x, const int &WH_y);
-  int getIdleTruck(const int &WH_x, const int &WH_y);
-  int getDeliveringTruck(const int &WH_x, const int &WH_y);
+  int getArrivedTruck(const int &WH_x, const int &WH_y,
+                      const std::string &WORLD_id);
+  int getIdleTruck(const int &WH_x, const int &WH_y,
+                   const std::string &WORLD_id);
+  int getDeliveringTruck(const int &WH_x, const int &WH_y,
+                         const std::string &WORLD_id);
   int updateTruckStatus(const std::string &truck_id, const std::string &x,
-                        const std::string &y, std::string &status);
+                        const std::string &y, std::string &status,
+                        const std::string &WORLD_id);
   int createTruck(const std::string &truck_id, const std::string &x,
-                  const std::string &y);
+                  const std::string &y, const std::string &WORLD_id);
 };
 #endif

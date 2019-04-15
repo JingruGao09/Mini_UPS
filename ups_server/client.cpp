@@ -43,16 +43,22 @@ int Client::sendall(int fd, const char *buf, size_t *len) {
  *
  * Test Status: pass unit test
  */
-void Client::sendData(const std::vector<char> &msg) {
-  size_t sent = 0;
-  size_t len = msg.size();
-  size_t max = msg.size();
-  while (sent < len) {
-    sent = len - sent;
-    len = sent;
-    if (sendall(sockfd, &msg.data()[max - len], &sent) == -1) {
-      throw std::string("send failed");
+int Client::sendData(const std::vector<char> &msg) {
+  try {
+    size_t sent = 0;
+    size_t len = msg.size();
+    size_t max = msg.size();
+    while (sent < len) {
+      sent = len - sent;
+      len = sent;
+      if (sendall(sockfd, &msg.data()[max - len], &sent) == -1) {
+        throw std::string("send failed");
+      }
     }
+    return 0;
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
   }
 }
 
@@ -110,8 +116,6 @@ std::vector<char> Client::basicRecv() {
 }
 std::vector<char> Client::receiveData() { return recvall(sockfd); }
 
-int Client::getError() { return error; }
-
 int Client::getFD() { return sockfd; }
 
 /*
@@ -120,9 +124,9 @@ int Client::getFD() { return sockfd; }
  * status: uncomplete, exception
  *
  */
+std::string Client::getError() { return errmsg; }
 Client::Client(const char *h, const char *p) : port(p) {
   hostname = getHost(h);
-  error = 0;
   addrinfo host_info;
   addrinfo *host_info_list;
 
@@ -141,8 +145,8 @@ Client::Client(const char *h, const char *p) : port(p) {
     if ((connect(sockfd, host_info_list->ai_addr,
                  host_info_list->ai_addrlen)) == -1)
       throw std::string("connect");
-  } catch (std::string e) {
-    error = 1;
+  } catch (std::string &e) {
+    errmsg = e;
   }
   freeaddrinfo(host_info_list);
 }
