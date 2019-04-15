@@ -1,0 +1,3 @@
+Use setup.sh to generate .cpp and .h files
+You should put .proto file in "source" directory
+You can get .cpp and .h file in "cpp" directory

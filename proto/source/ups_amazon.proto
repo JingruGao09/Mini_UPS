@@ -1,4 +1,6 @@
 syntax = "proto2";
+
+package UA;
 message InitWorld{
 required int64 worldid = 1;
 required int64 seqnum=2;
