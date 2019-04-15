@@ -18,3 +18,5 @@ quit the postgres
         'python3 manage.py makemigrations'
         'python3 manage.py migrate'
 
+#Protocol Document Link:
+https://docs.google.com/document/d/1dmcaAkaA9GzCz9IDpnhOQhF1PdSEFZW--sjbBUerWDM/edit
