@@ -99,7 +99,7 @@ class Package(models.Model):
 
 
 class Shipment(models.Model):
-    ship_id = models.AutoField(primary_key=True)
+    ship_id = models.BigIntegerField(primary_key=True)
     package = models.ForeignKey(Package, models.DO_NOTHING)
     world = models.ForeignKey('World', models.DO_NOTHING)
     #packing, packed, loading, loaded, delivering, delivered
