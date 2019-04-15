@@ -84,11 +84,13 @@ class Package(models.Model):
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
     des_x = models.IntegerField()
     des_y = models.IntegerField()
+
+    '''
     item = models.CharField(max_length = 100,
                             default='Purchase from Amazon',
                             null = False,
                             blank=False)
-
+    '''
 
     PACKAGE_STATUS_OP = (
         ('1','created'),
@@ -137,9 +139,11 @@ class Shipment(models.Model):
     package = models.ForeignKey(Package, models.DO_NOTHING)
     world = models.ForeignKey('World', models.DO_NOTHING)
     #packing, packed, loading, loaded, delivering, delivered
+    '''
     status = models.CharField(max_length=50,
                               default='Created')
-
+    '''
+    
     class Meta:
         db_table = 'shipment'
 
