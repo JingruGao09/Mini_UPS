@@ -1,5 +1,8 @@
 #include "amazonbridge.h"
 
 AmazonBridge::AmazonBridge(const char *hostname, const char *port)
-    : Hermes(hostname, port) {}
+    : ConAmazonClient(hostname, port) {}
 AmazonBridge::~AmazonBridge() {}
+int AmazonBridge::SendWorldId(const int &world_id){
+  
+}
