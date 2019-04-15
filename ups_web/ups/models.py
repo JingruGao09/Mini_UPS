@@ -80,7 +80,7 @@ class Package(models.Model):
     package_id = models.IntegerField(primary_key=True)
     user = models.ForeignKey('UpsProfile',on_delete=models.CASCADE,related_name="user_set")
     world = models.ForeignKey('World', models.DO_NOTHING)
-    seqnum = models.IntegerField(null = False)
+    #seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
     des_x = models.IntegerField()
     des_y = models.IntegerField()
@@ -97,7 +97,7 @@ class Package(models.Model):
         ('2','truck en route to warehouse'),
         ('3','truck waiting for package'),
         ('4','out for delivery'),
-        #('5','Delivered')
+        ('5','Delivered')
     )
     
     package_status = models.CharField(max_length=1,
