@@ -1,5 +1,5 @@
 #include "server.h"
-using namespace std;
+
 Server::Server(const char *p) : port(p) {
   signal(SIGPIPE, SIG_IGN);
   const char *hostname = NULL;
@@ -42,73 +42,45 @@ int Server::acceptNewConn() {
   }
   return newfd;
 }
+
 std::vector<char> Server::recvall(int fd) {
-  vector<char> msg;
+  std::vector<char> msg;
   size_t index = 0;
   int contentlen = 0;
-  Helper helper;
-  while (!helper.containNewLine(msg)) {
+  if (msg.size() < index + MAXDATASIZE)
+    msg.resize(index + MAXDATASIZE);
+  int nbytes;
+  if ((nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0)) <= 0) {
+    return std::vector<char>();
+  } else {
+    index += nbytes;
+  }
+
+  std::vector<char> pattern{'\n'};
+  auto it = std::search(msg.begin(), msg.end(), pattern.begin(), pattern.end());
+  std::string len_str(msg.begin(), it);
+  contentlen = stoi(len_str);
+  msg.erase(msg.begin(), it + 1);
+  index -= (it + 1 - msg.begin());
+  msg.resize(index);
+  for (it = msg.begin(); it != msg.end(); it++) {
+    contentlen--;
+  }
+  while (contentlen) {
     if (msg.size() < index + MAXDATASIZE)
       msg.resize(index + MAXDATASIZE);
     int nbytes;
     if ((nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0)) <= 0) {
-      return std::vector<char>();
+      break;
     } else {
       index += nbytes;
-    }
-  }
-  msg.resize(index);
-  HTTParser httparser(msg);
-  contentlen = httparser.getContentLen();
-  if (contentlen != 0) {
-    std::vector<char> pattern{'\r', '\n', '\r', '\n'};
-    auto it =
-        std::search(msg.begin(), msg.end(), pattern.begin(), pattern.end()) + 4;
-    while (it != msg.end()) {
-      --contentlen;
-      ++it;
-    }
-    while (contentlen) {
-      if (msg.size() < index + MAXDATASIZE)
-        msg.resize(index + MAXDATASIZE);
-      int nbytes;
-      if ((nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0)) <= 0) {
-        break;
-      } else {
-        index += nbytes;
-        contentlen -= nbytes;
-      }
+      contentlen -= nbytes;
     }
   }
   msg.resize(index);
   return msg;
 }
-std::vector<char> Server::recvall2(int fd) {
-  // set recv timeout
-  timeval tv;
-  tv.tv_sec = 1;
-  tv.tv_usec = 0;
-  if (setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, (const char *)&tv, sizeof tv))
-    throw std::string("setsockopt");
-  std::vector<char> msg;
-  size_t index = 0;
-  int nbytes;
-  while (1) {
-    if (msg.size() < index + MAXDATASIZE)
-      msg.resize(index + MAXDATASIZE);
-    nbytes = recv(fd, &msg.data()[index], MAXDATASIZE - 1, 0);
-    if (nbytes == -1 && msg.empty()) {
-      throw std::string("recv failed");
-      break;
-    } else if (nbytes <= 0) {
-      break;
-    } else {
-      index += nbytes;
-    }
-  }
-  msg.resize(index);
-  return msg;
-}
+
 std::vector<char> Server::basicRecv(int fd) {
   int index = 0;
   std::vector<char> msg;
@@ -119,6 +91,7 @@ std::vector<char> Server::basicRecv(int fd) {
   msg.resize(index);
   return msg;
 }
+
 int Server::sendall(int fd, const char *buf, size_t *len) {
   size_t total = 0;     // how many bytes we've sent
   int bytesleft = *len; // how many we have left to send
@@ -136,8 +109,7 @@ int Server::sendall(int fd, const char *buf, size_t *len) {
 
   return n == -1 ? -1 : 0; // return -1 on failure, 0 on success
 }
-std::vector<char> Server::receiveHTTPRequest(int fd) { return recvall(fd); }
-std::vector<char> Server::receiveData(int fd) { return recvall2(fd); }
+std::vector<char> Server::receiveData(int fd) { return recvall(fd); }
 void Server::sendData(int fd, const std::vector<char> &msg) {
   size_t sent = 0;
   size_t len = msg.size();
