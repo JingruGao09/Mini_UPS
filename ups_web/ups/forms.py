@@ -18,3 +18,5 @@ class CustomUserCreationForm(UserCreationForm):
     )
     return user
     '''
+class PackageMatchForm(forms.Form):
+    package_id = forms.IntegerField(label = 'Your Package ID',required = True)

@@ -78,7 +78,10 @@ class Truck(models.Model):
 
 class Package(models.Model):
     package_id = models.IntegerField(primary_key=True)
-    user = models.ForeignKey('UpsProfile',on_delete=models.CASCADE,related_name="user_set")
+    user = models.ForeignKey('UpsProfile',
+                             on_delete=models.CASCADE,
+                             null = True,blank = True,
+                             related_name="user_set")
     world = models.ForeignKey('World', models.DO_NOTHING)
     #seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
@@ -118,6 +121,7 @@ class Package(models.Model):
 
 class Product(models.Model):
     product_id = models.BigIntegerField(null = False)
+    #package_id = models.IntegerField()
     package = models.ForeignKey(Package, on_delete=models.CASCADE,related_name='package_set')
     world = models.ForeignKey('World', models.DO_NOTHING)
     description = models.CharField(max_length=100,
