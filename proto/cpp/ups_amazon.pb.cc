@@ -356,9 +356,13 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, packageid_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, description_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, count_),
   PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, shipid_),
-  0,
   1,
+  0,
+  3,
+  2,
   PROTOBUF_FIELD_OFFSET(::UA::UCommands, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::UCommands, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -398,10 +402,10 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 47, 54, sizeof(::UA::DetermineDst)},
   { 56, 65, sizeof(::UA::TruckDst)},
   { 69, 76, sizeof(::UA::SettleShipment)},
-  { 78, 85, sizeof(::UA::PackageInfo)},
-  { 87, 95, sizeof(::UA::UCommands)},
-  { 98, 105, sizeof(::UA::ACommands)},
-  { 107, 114, sizeof(::UA::Response)},
+  { 78, 87, sizeof(::UA::PackageInfo)},
+  { 91, 99, sizeof(::UA::UCommands)},
+  { 102, 109, sizeof(::UA::ACommands)},
+  { 111, 118, sizeof(::UA::Response)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -439,19 +443,20 @@ const char descriptor_table_protodef_ups_5famazon_2eproto[] =
   "\010TruckDst\022\017\n\007truckid\030\001 \002(\005\022\t\n\001x\030\002 \002(\005\022\t\n"
   "\001y\030\003 \002(\005\022\016\n\006shipid\030\004 \002(\003\"C\n\016SettleShipme"
   "nt\022!\n\010packages\030\001 \003(\0132\017.UA.PackageInfo\022\016\n"
-  "\006seqnum\030\002 \002(\003\"0\n\013PackageInfo\022\021\n\tpackagei"
-  "d\030\001 \002(\003\022\016\n\006shipid\030\002 \002(\003\"u\n\tUCommands\022\035\n\006"
-  "worlds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks\030\002 "
-  "\003(\0132\022.UA.DetermineTruck\022%\n\tshipments\030\003 \003"
-  "(\0132\022.UA.SettleShipment\"X\n\tACommands\022*\n\nw"
-  "arehouses\030\001 \003(\0132\026.UA.DetermineWarehouse\022"
-  "\037\n\005dests\030\002 \003(\0132\020.UA.DetermineDst\"+\n\010Resp"
-  "onse\022\017\n\007succeed\030\001 \002(\010\022\016\n\006seqnum\030\002 \002(\003"
+  "\006seqnum\030\002 \002(\003\"T\n\013PackageInfo\022\021\n\tpackagei"
+  "d\030\001 \002(\003\022\023\n\013description\030\002 \002(\t\022\r\n\005count\030\003 "
+  "\002(\005\022\016\n\006shipid\030\004 \002(\003\"u\n\tUCommands\022\035\n\006worl"
+  "ds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks\030\002 \003(\0132"
+  "\022.UA.DetermineTruck\022%\n\tshipments\030\003 \003(\0132\022"
+  ".UA.SettleShipment\"X\n\tACommands\022*\n\nwareh"
+  "ouses\030\001 \003(\0132\026.UA.DetermineWarehouse\022\037\n\005d"
+  "ests\030\002 \003(\0132\020.UA.DetermineDst\"+\n\010Response"
+  "\022\017\n\007succeed\030\001 \002(\010\022\016\n\006seqnum\030\002 \002(\003"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_ups_5famazon_2eproto = {
   false, InitDefaults_ups_5famazon_2eproto, 
   descriptor_table_protodef_ups_5famazon_2eproto,
-  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 837,
+  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 873,
 };
 
 void AddDescriptors_ups_5famazon_2eproto() {
@@ -3346,15 +3351,23 @@ void PackageInfo::InitAsDefaultInstance() {
 class PackageInfo::HasBitSetters {
  public:
   static void set_has_packageid(PackageInfo* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
+  static void set_has_description(PackageInfo* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
+  static void set_has_count(PackageInfo* msg) {
+    msg->_has_bits_[0] |= 0x00000008u;
+  }
   static void set_has_shipid(PackageInfo* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
+    msg->_has_bits_[0] |= 0x00000004u;
   }
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PackageInfo::kPackageidFieldNumber;
+const int PackageInfo::kDescriptionFieldNumber;
+const int PackageInfo::kCountFieldNumber;
 const int PackageInfo::kShipidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -3368,16 +3381,23 @@ PackageInfo::PackageInfo(const PackageInfo& from)
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_description()) {
+    description_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.description_);
+  }
   ::memcpy(&packageid_, &from.packageid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&shipid_) -
-    reinterpret_cast<char*>(&packageid_)) + sizeof(shipid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&count_) -
+    reinterpret_cast<char*>(&packageid_)) + sizeof(count_));
   // @@protoc_insertion_point(copy_constructor:UA.PackageInfo)
 }
 
 void PackageInfo::SharedCtor() {
+  ::google::protobuf::internal::InitSCC(
+      &scc_info_PackageInfo_ups_5famazon_2eproto.base);
+  description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&packageid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&shipid_) -
-      reinterpret_cast<char*>(&packageid_)) + sizeof(shipid_));
+      reinterpret_cast<char*>(&count_) -
+      reinterpret_cast<char*>(&packageid_)) + sizeof(count_));
 }
 
 PackageInfo::~PackageInfo() {
@@ -3386,6 +3406,7 @@ PackageInfo::~PackageInfo() {
 }
 
 void PackageInfo::SharedDtor() {
+  description_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void PackageInfo::SetCachedSize(int size) const {
@@ -3404,10 +3425,13 @@ void PackageInfo::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000001u) {
+    description_.ClearNonDefaultToEmptyNoArena();
+  }
+  if (cached_has_bits & 0x0000000eu) {
     ::memset(&packageid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&shipid_) -
-        reinterpret_cast<char*>(&packageid_)) + sizeof(shipid_));
+        reinterpret_cast<char*>(&count_) -
+        reinterpret_cast<char*>(&packageid_)) + sizeof(count_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -3433,9 +3457,32 @@ const char* PackageInfo::_InternalParse(const char* begin, const char* end, void
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int64 shipid = 2;
+      // required string description = 2;
       case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
+        if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
+        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("UA.PackageInfo.description");
+        object = msg->mutable_description();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8Verify;
+          goto string_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8Verify(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
+        ptr += size;
+        break;
+      }
+      // required int32 count = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        msg->set_count(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int64 shipid = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
         msg->set_shipid(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
@@ -3455,6 +3502,13 @@ const char* PackageInfo::_InternalParse(const char* begin, const char* end, void
     }  // switch
   }  // while
   return ptr;
+string_till_end:
+  static_cast<::std::string*>(object)->clear();
+  static_cast<::std::string*>(object)->reserve(size);
+  goto len_delim_till_end;
+len_delim_till_end:
+  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
+                               {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 bool PackageInfo::MergePartialFromCodedStream(
@@ -3480,9 +3534,37 @@ bool PackageInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // required int64 shipid = 2;
+      // required string description = 2;
       case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_description()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->description().data(), static_cast<int>(this->description().length()),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "UA.PackageInfo.description");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 count = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          HasBitSetters::set_has_count(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &count_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int64 shipid = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
           HasBitSetters::set_has_shipid(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -3522,13 +3604,28 @@ void PackageInfo::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // required int64 packageid = 1;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt64(1, this->packageid(), output);
   }
 
-  // required int64 shipid = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->shipid(), output);
+  // required string description = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->description().data(), static_cast<int>(this->description().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "UA.PackageInfo.description");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->description(), output);
+  }
+
+  // required int32 count = 3;
+  if (cached_has_bits & 0x00000008u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->count(), output);
+  }
+
+  // required int64 shipid = 4;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->shipid(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3546,13 +3643,29 @@ void PackageInfo::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // required int64 packageid = 1;
-  if (cached_has_bits & 0x00000001u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(1, this->packageid(), target);
   }
 
-  // required int64 shipid = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->shipid(), target);
+  // required string description = 2;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->description().data(), static_cast<int>(this->description().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "UA.PackageInfo.description");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->description(), target);
+  }
+
+  // required int32 count = 3;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->count(), target);
+  }
+
+  // required int64 shipid = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->shipid(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3567,6 +3680,13 @@ size_t PackageInfo::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.PackageInfo)
   size_t total_size = 0;
 
+  if (has_description()) {
+    // required string description = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->description());
+  }
+
   if (has_packageid()) {
     // required int64 packageid = 1;
     total_size += 1 +
@@ -3575,10 +3695,17 @@ size_t PackageInfo::RequiredFieldsByteSizeFallback() const {
   }
 
   if (has_shipid()) {
-    // required int64 shipid = 2;
+    // required int64 shipid = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->shipid());
+  }
+
+  if (has_count()) {
+    // required int32 count = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->count());
   }
 
   return total_size;
@@ -3592,16 +3719,26 @@ size_t PackageInfo::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required string description = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->description());
+
     // required int64 packageid = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->packageid());
 
-    // required int64 shipid = 2;
+    // required int64 shipid = 4;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->shipid());
+
+    // required int32 count = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->count());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -3638,12 +3775,19 @@ void PackageInfo::MergeFrom(const PackageInfo& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
-      packageid_ = from.packageid_;
+      _has_bits_[0] |= 0x00000001u;
+      description_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.description_);
     }
     if (cached_has_bits & 0x00000002u) {
+      packageid_ = from.packageid_;
+    }
+    if (cached_has_bits & 0x00000004u) {
       shipid_ = from.shipid_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      count_ = from.count_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -3664,7 +3808,7 @@ void PackageInfo::CopyFrom(const PackageInfo& from) {
 }
 
 bool PackageInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
@@ -3676,8 +3820,11 @@ void PackageInfo::InternalSwap(PackageInfo* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
+  description_.Swap(&other->description_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   swap(packageid_, other->packageid_);
   swap(shipid_, other->shipid_);
+  swap(count_, other->count_);
 }
 
 ::google::protobuf::Metadata PackageInfo::GetMetadata() const {

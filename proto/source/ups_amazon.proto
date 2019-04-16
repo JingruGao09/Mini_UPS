@@ -38,7 +38,9 @@ required int64 seqnum = 2;
 }
 message PackageInfo{
 required int64 packageid = 1;
-required int64 shipid = 2;
+required string description = 2;
+required int32 count = 3;
+required int64 shipid = 4;
 }
 message UCommands{
 repeated InitWorld worlds = 1;
