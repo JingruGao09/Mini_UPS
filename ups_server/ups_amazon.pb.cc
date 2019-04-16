@@ -25,7 +25,7 @@ extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::interna
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineTruck_ups_5famazon_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineWarehouse_ups_5famazon_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_SettleShipment_ups_5famazon_2eproto;
-namespace UPS_AMAZON{
+namespace UA {
 class InitWorldDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<InitWorld> _instance;
@@ -74,16 +74,16 @@ class ResponseDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Response> _instance;
 } _Response_default_instance_;
-}  // namespace UPS_AMAZON
+}  // namespace UA
 static void InitDefaultsInitWorld_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_InitWorld_default_instance_;
-    new (ptr) ::InitWorld();
+    void* ptr = &::UA::_InitWorld_default_instance_;
+    new (ptr) ::UA::InitWorld();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::InitWorld::InitAsDefaultInstance();
+  ::UA::InitWorld::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_InitWorld_ups_5famazon_2eproto =
@@ -93,11 +93,11 @@ static void InitDefaultsWarehouseInfo_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_WarehouseInfo_default_instance_;
-    new (ptr) ::WarehouseInfo();
+    void* ptr = &::UA::_WarehouseInfo_default_instance_;
+    new (ptr) ::UA::WarehouseInfo();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::WarehouseInfo::InitAsDefaultInstance();
+  ::UA::WarehouseInfo::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_WarehouseInfo_ups_5famazon_2eproto =
@@ -107,11 +107,11 @@ static void InitDefaultsDetermineWarehouse_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_DetermineWarehouse_default_instance_;
-    new (ptr) ::DetermineWarehouse();
+    void* ptr = &::UA::_DetermineWarehouse_default_instance_;
+    new (ptr) ::UA::DetermineWarehouse();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::DetermineWarehouse::InitAsDefaultInstance();
+  ::UA::DetermineWarehouse::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineWarehouse_ups_5famazon_2eproto =
@@ -122,11 +122,11 @@ static void InitDefaultsDetermineTruck_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_DetermineTruck_default_instance_;
-    new (ptr) ::DetermineTruck();
+    void* ptr = &::UA::_DetermineTruck_default_instance_;
+    new (ptr) ::UA::DetermineTruck();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::DetermineTruck::InitAsDefaultInstance();
+  ::UA::DetermineTruck::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineTruck_ups_5famazon_2eproto =
@@ -137,11 +137,11 @@ static void InitDefaultsTruckLocation_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_TruckLocation_default_instance_;
-    new (ptr) ::TruckLocation();
+    void* ptr = &::UA::_TruckLocation_default_instance_;
+    new (ptr) ::UA::TruckLocation();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::TruckLocation::InitAsDefaultInstance();
+  ::UA::TruckLocation::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_TruckLocation_ups_5famazon_2eproto =
@@ -151,11 +151,11 @@ static void InitDefaultsDetermineDst_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_DetermineDst_default_instance_;
-    new (ptr) ::DetermineDst();
+    void* ptr = &::UA::_DetermineDst_default_instance_;
+    new (ptr) ::UA::DetermineDst();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::DetermineDst::InitAsDefaultInstance();
+  ::UA::DetermineDst::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineDst_ups_5famazon_2eproto =
@@ -166,11 +166,11 @@ static void InitDefaultsTruckDst_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_TruckDst_default_instance_;
-    new (ptr) ::TruckDst();
+    void* ptr = &::UA::_TruckDst_default_instance_;
+    new (ptr) ::UA::TruckDst();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::TruckDst::InitAsDefaultInstance();
+  ::UA::TruckDst::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_TruckDst_ups_5famazon_2eproto =
@@ -180,11 +180,11 @@ static void InitDefaultsSettleShipment_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_SettleShipment_default_instance_;
-    new (ptr) ::SettleShipment();
+    void* ptr = &::UA::_SettleShipment_default_instance_;
+    new (ptr) ::UA::SettleShipment();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::SettleShipment::InitAsDefaultInstance();
+  ::UA::SettleShipment::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_SettleShipment_ups_5famazon_2eproto =
@@ -195,11 +195,11 @@ static void InitDefaultsPackageInfo_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_PackageInfo_default_instance_;
-    new (ptr) ::PackageInfo();
+    void* ptr = &::UA::_PackageInfo_default_instance_;
+    new (ptr) ::UA::PackageInfo();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::PackageInfo::InitAsDefaultInstance();
+  ::UA::PackageInfo::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_PackageInfo_ups_5famazon_2eproto =
@@ -209,11 +209,11 @@ static void InitDefaultsUCommands_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_UCommands_default_instance_;
-    new (ptr) ::UCommands();
+    void* ptr = &::UA::_UCommands_default_instance_;
+    new (ptr) ::UA::UCommands();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::UCommands::InitAsDefaultInstance();
+  ::UA::UCommands::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<3> scc_info_UCommands_ups_5famazon_2eproto =
@@ -226,11 +226,11 @@ static void InitDefaultsACommands_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_ACommands_default_instance_;
-    new (ptr) ::ACommands();
+    void* ptr = &::UA::_ACommands_default_instance_;
+    new (ptr) ::UA::ACommands();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::ACommands::InitAsDefaultInstance();
+  ::UA::ACommands::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<2> scc_info_ACommands_ups_5famazon_2eproto =
@@ -242,11 +242,11 @@ static void InitDefaultsResponse_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_Response_default_instance_;
-    new (ptr) ::Response();
+    void* ptr = &::UA::_Response_default_instance_;
+    new (ptr) ::UA::Response();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Response::InitAsDefaultInstance();
+  ::UA::Response::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Response_ups_5famazon_2eproto =
@@ -272,151 +272,151 @@ constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_ups_5famazon_2eproto = nullptr;
 
 const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::InitWorld, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::InitWorld, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::InitWorld, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::InitWorld, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::InitWorld, worldid_),
-  PROTOBUF_FIELD_OFFSET(::InitWorld, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::InitWorld, worldid_),
+  PROTOBUF_FIELD_OFFSET(::UA::InitWorld, seqnum_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::WarehouseInfo, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::WarehouseInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::WarehouseInfo, whid_),
-  PROTOBUF_FIELD_OFFSET(::WarehouseInfo, wh_x_),
-  PROTOBUF_FIELD_OFFSET(::WarehouseInfo, wh_y_),
+  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, whid_),
+  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, wh_x_),
+  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, wh_y_),
   0,
   1,
   2,
-  PROTOBUF_FIELD_OFFSET(::DetermineWarehouse, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::DetermineWarehouse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::DetermineWarehouse, warehouses_),
-  PROTOBUF_FIELD_OFFSET(::DetermineWarehouse, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, warehouses_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, seqnum_),
   ~0u,
   0,
-  PROTOBUF_FIELD_OFFSET(::DetermineTruck, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::DetermineTruck, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::DetermineTruck, arrivedtrucks_),
-  PROTOBUF_FIELD_OFFSET(::DetermineTruck, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, arrivedtrucks_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, seqnum_),
   ~0u,
   0,
-  PROTOBUF_FIELD_OFFSET(::TruckLocation, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::TruckLocation, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::TruckLocation, truckid_),
-  PROTOBUF_FIELD_OFFSET(::TruckLocation, whid_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, truckid_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, whid_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::DetermineDst, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::DetermineDst, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::DetermineDst, leavingtrucks_),
-  PROTOBUF_FIELD_OFFSET(::DetermineDst, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, leavingtrucks_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, seqnum_),
   ~0u,
   0,
-  PROTOBUF_FIELD_OFFSET(::TruckDst, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::TruckDst, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::TruckDst, truckid_),
-  PROTOBUF_FIELD_OFFSET(::TruckDst, x_),
-  PROTOBUF_FIELD_OFFSET(::TruckDst, y_),
-  PROTOBUF_FIELD_OFFSET(::TruckDst, shipid_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, truckid_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, x_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, y_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckDst, shipid_),
   0,
   1,
   3,
   2,
-  PROTOBUF_FIELD_OFFSET(::SettleShipment, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::SettleShipment, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::SettleShipment, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::SettleShipment, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::SettleShipment, packages_),
-  PROTOBUF_FIELD_OFFSET(::SettleShipment, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::SettleShipment, packages_),
+  PROTOBUF_FIELD_OFFSET(::UA::SettleShipment, seqnum_),
   ~0u,
   0,
-  PROTOBUF_FIELD_OFFSET(::PackageInfo, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::PackageInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::PackageInfo, packageid_),
-  PROTOBUF_FIELD_OFFSET(::PackageInfo, shipid_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, packageid_),
+  PROTOBUF_FIELD_OFFSET(::UA::PackageInfo, shipid_),
   0,
   1,
-  PROTOBUF_FIELD_OFFSET(::UCommands, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::UCommands, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::UCommands, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::UCommands, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::UCommands, worlds_),
-  PROTOBUF_FIELD_OFFSET(::UCommands, trucks_),
-  PROTOBUF_FIELD_OFFSET(::UCommands, shipments_),
+  PROTOBUF_FIELD_OFFSET(::UA::UCommands, worlds_),
+  PROTOBUF_FIELD_OFFSET(::UA::UCommands, trucks_),
+  PROTOBUF_FIELD_OFFSET(::UA::UCommands, shipments_),
   ~0u,
   ~0u,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::ACommands, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::ACommands, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::ACommands, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::ACommands, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::ACommands, warehouses_),
-  PROTOBUF_FIELD_OFFSET(::ACommands, dests_),
+  PROTOBUF_FIELD_OFFSET(::UA::ACommands, warehouses_),
+  PROTOBUF_FIELD_OFFSET(::UA::ACommands, dests_),
   ~0u,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::Response, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::Response, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::UA::Response, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::UA::Response, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Response, succeed_),
-  PROTOBUF_FIELD_OFFSET(::Response, seqnum_),
+  PROTOBUF_FIELD_OFFSET(::UA::Response, succeed_),
+  PROTOBUF_FIELD_OFFSET(::UA::Response, seqnum_),
   1,
   0,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, sizeof(::InitWorld)},
-  { 9, 17, sizeof(::WarehouseInfo)},
-  { 20, 27, sizeof(::DetermineWarehouse)},
-  { 29, 36, sizeof(::DetermineTruck)},
-  { 38, 45, sizeof(::TruckLocation)},
-  { 47, 54, sizeof(::DetermineDst)},
-  { 56, 65, sizeof(::TruckDst)},
-  { 69, 76, sizeof(::SettleShipment)},
-  { 78, 85, sizeof(::PackageInfo)},
-  { 87, 95, sizeof(::UCommands)},
-  { 98, 105, sizeof(::ACommands)},
-  { 107, 114, sizeof(::Response)},
+  { 0, 7, sizeof(::UA::InitWorld)},
+  { 9, 17, sizeof(::UA::WarehouseInfo)},
+  { 20, 27, sizeof(::UA::DetermineWarehouse)},
+  { 29, 36, sizeof(::UA::DetermineTruck)},
+  { 38, 45, sizeof(::UA::TruckLocation)},
+  { 47, 54, sizeof(::UA::DetermineDst)},
+  { 56, 65, sizeof(::UA::TruckDst)},
+  { 69, 76, sizeof(::UA::SettleShipment)},
+  { 78, 85, sizeof(::UA::PackageInfo)},
+  { 87, 95, sizeof(::UA::UCommands)},
+  { 98, 105, sizeof(::UA::ACommands)},
+  { 107, 114, sizeof(::UA::Response)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_InitWorld_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_WarehouseInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_DetermineWarehouse_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_DetermineTruck_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_TruckLocation_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_DetermineDst_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_TruckDst_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_SettleShipment_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_PackageInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_UCommands_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_ACommands_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_Response_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_InitWorld_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_WarehouseInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_DetermineWarehouse_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_DetermineTruck_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_TruckLocation_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_DetermineDst_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_TruckDst_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_SettleShipment_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_PackageInfo_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_UCommands_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_ACommands_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_Response_default_instance_),
 };
 
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_ups_5famazon_2eproto = {
@@ -426,32 +426,32 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_ups_5famazon_2eproto[] =
-  "\n\020ups_amazon.proto\",\n\tInitWorld\022\017\n\007world"
-  "id\030\001 \002(\003\022\016\n\006seqnum\030\002 \002(\003\"9\n\rWarehouseInf"
-  "o\022\014\n\004whid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030\003 "
-  "\002(\005\"H\n\022DetermineWarehouse\022\"\n\nwarehouses\030"
-  "\001 \003(\0132\016.WarehouseInfo\022\016\n\006seqnum\030\002 \002(\003\"G\n"
-  "\016DetermineTruck\022%\n\rarrivedtrucks\030\001 \003(\0132\016"
-  ".TruckLocation\022\016\n\006seqnum\030\002 \002(\003\".\n\rTruckL"
-  "ocation\022\017\n\007truckid\030\001 \002(\005\022\014\n\004whid\030\002 \002(\005\"@"
-  "\n\014DetermineDst\022 \n\rleavingtrucks\030\001 \003(\0132\t."
-  "TruckDst\022\016\n\006seqnum\030\002 \002(\003\"A\n\010TruckDst\022\017\n\007"
-  "truckid\030\001 \002(\005\022\t\n\001x\030\002 \002(\005\022\t\n\001y\030\003 \002(\005\022\016\n\006s"
-  "hipid\030\004 \002(\003\"@\n\016SettleShipment\022\036\n\010package"
-  "s\030\001 \003(\0132\014.PackageInfo\022\016\n\006seqnum\030\002 \002(\003\"0\n"
-  "\013PackageInfo\022\021\n\tpackageid\030\001 \002(\003\022\016\n\006shipi"
-  "d\030\002 \002(\003\"l\n\tUCommands\022\032\n\006worlds\030\001 \003(\0132\n.I"
-  "nitWorld\022\037\n\006trucks\030\002 \003(\0132\017.DetermineTruc"
-  "k\022\"\n\tshipments\030\003 \003(\0132\017.SettleShipment\"R\n"
-  "\tACommands\022\'\n\nwarehouses\030\001 \003(\0132\023.Determi"
-  "neWarehouse\022\034\n\005dests\030\002 \003(\0132\r.DetermineDs"
-  "t\"+\n\010Response\022\017\n\007succeed\030\001 \002(\010\022\016\n\006seqnum"
-  "\030\002 \002(\003"
+  "\n\020ups_amazon.proto\022\002UA\",\n\tInitWorld\022\017\n\007w"
+  "orldid\030\001 \002(\003\022\016\n\006seqnum\030\002 \002(\003\"9\n\rWarehous"
+  "eInfo\022\014\n\004whid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_"
+  "y\030\003 \002(\005\"K\n\022DetermineWarehouse\022%\n\nwarehou"
+  "ses\030\001 \003(\0132\021.UA.WarehouseInfo\022\016\n\006seqnum\030\002"
+  " \002(\003\"J\n\016DetermineTruck\022(\n\rarrivedtrucks\030"
+  "\001 \003(\0132\021.UA.TruckLocation\022\016\n\006seqnum\030\002 \002(\003"
+  "\".\n\rTruckLocation\022\017\n\007truckid\030\001 \002(\005\022\014\n\004wh"
+  "id\030\002 \002(\005\"C\n\014DetermineDst\022#\n\rleavingtruck"
+  "s\030\001 \003(\0132\014.UA.TruckDst\022\016\n\006seqnum\030\002 \002(\003\"A\n"
+  "\010TruckDst\022\017\n\007truckid\030\001 \002(\005\022\t\n\001x\030\002 \002(\005\022\t\n"
+  "\001y\030\003 \002(\005\022\016\n\006shipid\030\004 \002(\003\"C\n\016SettleShipme"
+  "nt\022!\n\010packages\030\001 \003(\0132\017.UA.PackageInfo\022\016\n"
+  "\006seqnum\030\002 \002(\003\"0\n\013PackageInfo\022\021\n\tpackagei"
+  "d\030\001 \002(\003\022\016\n\006shipid\030\002 \002(\003\"u\n\tUCommands\022\035\n\006"
+  "worlds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks\030\002 "
+  "\003(\0132\022.UA.DetermineTruck\022%\n\tshipments\030\003 \003"
+  "(\0132\022.UA.SettleShipment\"X\n\tACommands\022*\n\nw"
+  "arehouses\030\001 \003(\0132\026.UA.DetermineWarehouse\022"
+  "\037\n\005dests\030\002 \003(\0132\020.UA.DetermineDst\"+\n\010Resp"
+  "onse\022\017\n\007succeed\030\001 \002(\010\022\016\n\006seqnum\030\002 \002(\003"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_ups_5famazon_2eproto = {
   false, InitDefaults_ups_5famazon_2eproto, 
   descriptor_table_protodef_ups_5famazon_2eproto,
-  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 806,
+  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 837,
 };
 
 void AddDescriptors_ups_5famazon_2eproto() {
@@ -463,7 +463,7 @@ void AddDescriptors_ups_5famazon_2eproto() {
 
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_ups_5famazon_2eproto = []() { AddDescriptors_ups_5famazon_2eproto(); return true; }();
-namespace UPS_AMAZON{
+namespace UA {
 
 // ===================================================================
 
@@ -487,7 +487,7 @@ const int InitWorld::kSeqnumFieldNumber;
 InitWorld::InitWorld()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:InitWorld)
+  // @@protoc_insertion_point(constructor:UA.InitWorld)
 }
 InitWorld::InitWorld(const InitWorld& from)
   : ::google::protobuf::Message(),
@@ -497,7 +497,7 @@ InitWorld::InitWorld(const InitWorld& from)
   ::memcpy(&worldid_, &from.worldid_,
     static_cast<size_t>(reinterpret_cast<char*>(&seqnum_) -
     reinterpret_cast<char*>(&worldid_)) + sizeof(seqnum_));
-  // @@protoc_insertion_point(copy_constructor:InitWorld)
+  // @@protoc_insertion_point(copy_constructor:UA.InitWorld)
 }
 
 void InitWorld::SharedCtor() {
@@ -507,7 +507,7 @@ void InitWorld::SharedCtor() {
 }
 
 InitWorld::~InitWorld() {
-  // @@protoc_insertion_point(destructor:InitWorld)
+  // @@protoc_insertion_point(destructor:UA.InitWorld)
   SharedDtor();
 }
 
@@ -524,7 +524,7 @@ const InitWorld& InitWorld::default_instance() {
 
 
 void InitWorld::Clear() {
-// @@protoc_insertion_point(message_clear_start:InitWorld)
+// @@protoc_insertion_point(message_clear_start:UA.InitWorld)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -587,7 +587,7 @@ bool InitWorld::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:InitWorld)
+  // @@protoc_insertion_point(parse_start:UA.InitWorld)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -631,10 +631,10 @@ bool InitWorld::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:InitWorld)
+  // @@protoc_insertion_point(parse_success:UA.InitWorld)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:InitWorld)
+  // @@protoc_insertion_point(parse_failure:UA.InitWorld)
   return false;
 #undef DO_
 }
@@ -642,7 +642,7 @@ failure:
 
 void InitWorld::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:InitWorld)
+  // @@protoc_insertion_point(serialize_start:UA.InitWorld)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -661,12 +661,12 @@ void InitWorld::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:InitWorld)
+  // @@protoc_insertion_point(serialize_end:UA.InitWorld)
 }
 
 ::google::protobuf::uint8* InitWorld::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InitWorld)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.InitWorld)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -685,12 +685,12 @@ void InitWorld::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InitWorld)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.InitWorld)
   return target;
 }
 
 size_t InitWorld::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:InitWorld)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.InitWorld)
   size_t total_size = 0;
 
   if (has_worldid()) {
@@ -710,7 +710,7 @@ size_t InitWorld::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t InitWorld::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InitWorld)
+// @@protoc_insertion_point(message_byte_size_start:UA.InitWorld)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -742,22 +742,22 @@ size_t InitWorld::ByteSizeLong() const {
 }
 
 void InitWorld::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:InitWorld)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.InitWorld)
   GOOGLE_DCHECK_NE(&from, this);
   const InitWorld* source =
       ::google::protobuf::DynamicCastToGenerated<InitWorld>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:InitWorld)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.InitWorld)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:InitWorld)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.InitWorld)
     MergeFrom(*source);
   }
 }
 
 void InitWorld::MergeFrom(const InitWorld& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InitWorld)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.InitWorld)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -776,14 +776,14 @@ void InitWorld::MergeFrom(const InitWorld& from) {
 }
 
 void InitWorld::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:InitWorld)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.InitWorld)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void InitWorld::CopyFrom(const InitWorld& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InitWorld)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.InitWorld)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -838,7 +838,7 @@ const int WarehouseInfo::kWhYFieldNumber;
 WarehouseInfo::WarehouseInfo()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:WarehouseInfo)
+  // @@protoc_insertion_point(constructor:UA.WarehouseInfo)
 }
 WarehouseInfo::WarehouseInfo(const WarehouseInfo& from)
   : ::google::protobuf::Message(),
@@ -848,7 +848,7 @@ WarehouseInfo::WarehouseInfo(const WarehouseInfo& from)
   ::memcpy(&whid_, &from.whid_,
     static_cast<size_t>(reinterpret_cast<char*>(&wh_y_) -
     reinterpret_cast<char*>(&whid_)) + sizeof(wh_y_));
-  // @@protoc_insertion_point(copy_constructor:WarehouseInfo)
+  // @@protoc_insertion_point(copy_constructor:UA.WarehouseInfo)
 }
 
 void WarehouseInfo::SharedCtor() {
@@ -858,7 +858,7 @@ void WarehouseInfo::SharedCtor() {
 }
 
 WarehouseInfo::~WarehouseInfo() {
-  // @@protoc_insertion_point(destructor:WarehouseInfo)
+  // @@protoc_insertion_point(destructor:UA.WarehouseInfo)
   SharedDtor();
 }
 
@@ -875,7 +875,7 @@ const WarehouseInfo& WarehouseInfo::default_instance() {
 
 
 void WarehouseInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:WarehouseInfo)
+// @@protoc_insertion_point(message_clear_start:UA.WarehouseInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -945,7 +945,7 @@ bool WarehouseInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:WarehouseInfo)
+  // @@protoc_insertion_point(parse_start:UA.WarehouseInfo)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1002,10 +1002,10 @@ bool WarehouseInfo::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:WarehouseInfo)
+  // @@protoc_insertion_point(parse_success:UA.WarehouseInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:WarehouseInfo)
+  // @@protoc_insertion_point(parse_failure:UA.WarehouseInfo)
   return false;
 #undef DO_
 }
@@ -1013,7 +1013,7 @@ failure:
 
 void WarehouseInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:WarehouseInfo)
+  // @@protoc_insertion_point(serialize_start:UA.WarehouseInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1037,12 +1037,12 @@ void WarehouseInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:WarehouseInfo)
+  // @@protoc_insertion_point(serialize_end:UA.WarehouseInfo)
 }
 
 ::google::protobuf::uint8* WarehouseInfo::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:WarehouseInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.WarehouseInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1066,12 +1066,12 @@ void WarehouseInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:WarehouseInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.WarehouseInfo)
   return target;
 }
 
 size_t WarehouseInfo::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:WarehouseInfo)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.WarehouseInfo)
   size_t total_size = 0;
 
   if (has_whid()) {
@@ -1098,7 +1098,7 @@ size_t WarehouseInfo::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t WarehouseInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:WarehouseInfo)
+// @@protoc_insertion_point(message_byte_size_start:UA.WarehouseInfo)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1135,22 +1135,22 @@ size_t WarehouseInfo::ByteSizeLong() const {
 }
 
 void WarehouseInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:WarehouseInfo)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.WarehouseInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const WarehouseInfo* source =
       ::google::protobuf::DynamicCastToGenerated<WarehouseInfo>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:WarehouseInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.WarehouseInfo)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:WarehouseInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.WarehouseInfo)
     MergeFrom(*source);
   }
 }
 
 void WarehouseInfo::MergeFrom(const WarehouseInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:WarehouseInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.WarehouseInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1172,14 +1172,14 @@ void WarehouseInfo::MergeFrom(const WarehouseInfo& from) {
 }
 
 void WarehouseInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:WarehouseInfo)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.WarehouseInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void WarehouseInfo::CopyFrom(const WarehouseInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:WarehouseInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.WarehouseInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1228,7 +1228,7 @@ const int DetermineWarehouse::kSeqnumFieldNumber;
 DetermineWarehouse::DetermineWarehouse()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:DetermineWarehouse)
+  // @@protoc_insertion_point(constructor:UA.DetermineWarehouse)
 }
 DetermineWarehouse::DetermineWarehouse(const DetermineWarehouse& from)
   : ::google::protobuf::Message(),
@@ -1237,7 +1237,7 @@ DetermineWarehouse::DetermineWarehouse(const DetermineWarehouse& from)
       warehouses_(from.warehouses_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   seqnum_ = from.seqnum_;
-  // @@protoc_insertion_point(copy_constructor:DetermineWarehouse)
+  // @@protoc_insertion_point(copy_constructor:UA.DetermineWarehouse)
 }
 
 void DetermineWarehouse::SharedCtor() {
@@ -1247,7 +1247,7 @@ void DetermineWarehouse::SharedCtor() {
 }
 
 DetermineWarehouse::~DetermineWarehouse() {
-  // @@protoc_insertion_point(destructor:DetermineWarehouse)
+  // @@protoc_insertion_point(destructor:UA.DetermineWarehouse)
   SharedDtor();
 }
 
@@ -1264,7 +1264,7 @@ const DetermineWarehouse& DetermineWarehouse::default_instance() {
 
 
 void DetermineWarehouse::Clear() {
-// @@protoc_insertion_point(message_clear_start:DetermineWarehouse)
+// @@protoc_insertion_point(message_clear_start:UA.DetermineWarehouse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1288,13 +1288,13 @@ const char* DetermineWarehouse::_InternalParse(const char* begin, const char* en
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .WarehouseInfo warehouses = 1;
+      // repeated .UA.WarehouseInfo warehouses = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::WarehouseInfo::_InternalParse;
+          parser_till_end = ::UA::WarehouseInfo::_InternalParse;
           object = msg->add_warehouses();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -1335,13 +1335,13 @@ bool DetermineWarehouse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DetermineWarehouse)
+  // @@protoc_insertion_point(parse_start:UA.DetermineWarehouse)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .WarehouseInfo warehouses = 1;
+      // repeated .UA.WarehouseInfo warehouses = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1377,10 +1377,10 @@ bool DetermineWarehouse::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:DetermineWarehouse)
+  // @@protoc_insertion_point(parse_success:UA.DetermineWarehouse)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:DetermineWarehouse)
+  // @@protoc_insertion_point(parse_failure:UA.DetermineWarehouse)
   return false;
 #undef DO_
 }
@@ -1388,11 +1388,11 @@ failure:
 
 void DetermineWarehouse::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DetermineWarehouse)
+  // @@protoc_insertion_point(serialize_start:UA.DetermineWarehouse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .WarehouseInfo warehouses = 1;
+  // repeated .UA.WarehouseInfo warehouses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1411,16 +1411,16 @@ void DetermineWarehouse::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:DetermineWarehouse)
+  // @@protoc_insertion_point(serialize_end:UA.DetermineWarehouse)
 }
 
 ::google::protobuf::uint8* DetermineWarehouse::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DetermineWarehouse)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.DetermineWarehouse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .WarehouseInfo warehouses = 1;
+  // repeated .UA.WarehouseInfo warehouses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1438,12 +1438,12 @@ void DetermineWarehouse::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DetermineWarehouse)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.DetermineWarehouse)
   return target;
 }
 
 size_t DetermineWarehouse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DetermineWarehouse)
+// @@protoc_insertion_point(message_byte_size_start:UA.DetermineWarehouse)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1461,7 +1461,7 @@ size_t DetermineWarehouse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .WarehouseInfo warehouses = 1;
+  // repeated .UA.WarehouseInfo warehouses = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->warehouses_size());
     total_size += 1UL * count;
@@ -1478,22 +1478,22 @@ size_t DetermineWarehouse::ByteSizeLong() const {
 }
 
 void DetermineWarehouse::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:DetermineWarehouse)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.DetermineWarehouse)
   GOOGLE_DCHECK_NE(&from, this);
   const DetermineWarehouse* source =
       ::google::protobuf::DynamicCastToGenerated<DetermineWarehouse>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:DetermineWarehouse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.DetermineWarehouse)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:DetermineWarehouse)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.DetermineWarehouse)
     MergeFrom(*source);
   }
 }
 
 void DetermineWarehouse::MergeFrom(const DetermineWarehouse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DetermineWarehouse)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.DetermineWarehouse)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1506,14 +1506,14 @@ void DetermineWarehouse::MergeFrom(const DetermineWarehouse& from) {
 }
 
 void DetermineWarehouse::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:DetermineWarehouse)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.DetermineWarehouse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DetermineWarehouse::CopyFrom(const DetermineWarehouse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DetermineWarehouse)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.DetermineWarehouse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1562,7 +1562,7 @@ const int DetermineTruck::kSeqnumFieldNumber;
 DetermineTruck::DetermineTruck()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:DetermineTruck)
+  // @@protoc_insertion_point(constructor:UA.DetermineTruck)
 }
 DetermineTruck::DetermineTruck(const DetermineTruck& from)
   : ::google::protobuf::Message(),
@@ -1571,7 +1571,7 @@ DetermineTruck::DetermineTruck(const DetermineTruck& from)
       arrivedtrucks_(from.arrivedtrucks_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   seqnum_ = from.seqnum_;
-  // @@protoc_insertion_point(copy_constructor:DetermineTruck)
+  // @@protoc_insertion_point(copy_constructor:UA.DetermineTruck)
 }
 
 void DetermineTruck::SharedCtor() {
@@ -1581,7 +1581,7 @@ void DetermineTruck::SharedCtor() {
 }
 
 DetermineTruck::~DetermineTruck() {
-  // @@protoc_insertion_point(destructor:DetermineTruck)
+  // @@protoc_insertion_point(destructor:UA.DetermineTruck)
   SharedDtor();
 }
 
@@ -1598,7 +1598,7 @@ const DetermineTruck& DetermineTruck::default_instance() {
 
 
 void DetermineTruck::Clear() {
-// @@protoc_insertion_point(message_clear_start:DetermineTruck)
+// @@protoc_insertion_point(message_clear_start:UA.DetermineTruck)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1622,13 +1622,13 @@ const char* DetermineTruck::_InternalParse(const char* begin, const char* end, v
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .TruckLocation arrivedtrucks = 1;
+      // repeated .UA.TruckLocation arrivedtrucks = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::TruckLocation::_InternalParse;
+          parser_till_end = ::UA::TruckLocation::_InternalParse;
           object = msg->add_arrivedtrucks();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -1669,13 +1669,13 @@ bool DetermineTruck::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DetermineTruck)
+  // @@protoc_insertion_point(parse_start:UA.DetermineTruck)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .TruckLocation arrivedtrucks = 1;
+      // repeated .UA.TruckLocation arrivedtrucks = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -1711,10 +1711,10 @@ bool DetermineTruck::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:DetermineTruck)
+  // @@protoc_insertion_point(parse_success:UA.DetermineTruck)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:DetermineTruck)
+  // @@protoc_insertion_point(parse_failure:UA.DetermineTruck)
   return false;
 #undef DO_
 }
@@ -1722,11 +1722,11 @@ failure:
 
 void DetermineTruck::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DetermineTruck)
+  // @@protoc_insertion_point(serialize_start:UA.DetermineTruck)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .TruckLocation arrivedtrucks = 1;
+  // repeated .UA.TruckLocation arrivedtrucks = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->arrivedtrucks_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1745,16 +1745,16 @@ void DetermineTruck::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:DetermineTruck)
+  // @@protoc_insertion_point(serialize_end:UA.DetermineTruck)
 }
 
 ::google::protobuf::uint8* DetermineTruck::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DetermineTruck)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.DetermineTruck)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .TruckLocation arrivedtrucks = 1;
+  // repeated .UA.TruckLocation arrivedtrucks = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->arrivedtrucks_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1772,12 +1772,12 @@ void DetermineTruck::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DetermineTruck)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.DetermineTruck)
   return target;
 }
 
 size_t DetermineTruck::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DetermineTruck)
+// @@protoc_insertion_point(message_byte_size_start:UA.DetermineTruck)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1795,7 +1795,7 @@ size_t DetermineTruck::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .TruckLocation arrivedtrucks = 1;
+  // repeated .UA.TruckLocation arrivedtrucks = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->arrivedtrucks_size());
     total_size += 1UL * count;
@@ -1812,22 +1812,22 @@ size_t DetermineTruck::ByteSizeLong() const {
 }
 
 void DetermineTruck::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:DetermineTruck)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.DetermineTruck)
   GOOGLE_DCHECK_NE(&from, this);
   const DetermineTruck* source =
       ::google::protobuf::DynamicCastToGenerated<DetermineTruck>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:DetermineTruck)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.DetermineTruck)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:DetermineTruck)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.DetermineTruck)
     MergeFrom(*source);
   }
 }
 
 void DetermineTruck::MergeFrom(const DetermineTruck& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DetermineTruck)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.DetermineTruck)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -1840,14 +1840,14 @@ void DetermineTruck::MergeFrom(const DetermineTruck& from) {
 }
 
 void DetermineTruck::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:DetermineTruck)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.DetermineTruck)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DetermineTruck::CopyFrom(const DetermineTruck& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DetermineTruck)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.DetermineTruck)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -1899,7 +1899,7 @@ const int TruckLocation::kWhidFieldNumber;
 TruckLocation::TruckLocation()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:TruckLocation)
+  // @@protoc_insertion_point(constructor:UA.TruckLocation)
 }
 TruckLocation::TruckLocation(const TruckLocation& from)
   : ::google::protobuf::Message(),
@@ -1909,7 +1909,7 @@ TruckLocation::TruckLocation(const TruckLocation& from)
   ::memcpy(&truckid_, &from.truckid_,
     static_cast<size_t>(reinterpret_cast<char*>(&whid_) -
     reinterpret_cast<char*>(&truckid_)) + sizeof(whid_));
-  // @@protoc_insertion_point(copy_constructor:TruckLocation)
+  // @@protoc_insertion_point(copy_constructor:UA.TruckLocation)
 }
 
 void TruckLocation::SharedCtor() {
@@ -1919,7 +1919,7 @@ void TruckLocation::SharedCtor() {
 }
 
 TruckLocation::~TruckLocation() {
-  // @@protoc_insertion_point(destructor:TruckLocation)
+  // @@protoc_insertion_point(destructor:UA.TruckLocation)
   SharedDtor();
 }
 
@@ -1936,7 +1936,7 @@ const TruckLocation& TruckLocation::default_instance() {
 
 
 void TruckLocation::Clear() {
-// @@protoc_insertion_point(message_clear_start:TruckLocation)
+// @@protoc_insertion_point(message_clear_start:UA.TruckLocation)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1999,7 +1999,7 @@ bool TruckLocation::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TruckLocation)
+  // @@protoc_insertion_point(parse_start:UA.TruckLocation)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2043,10 +2043,10 @@ bool TruckLocation::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:TruckLocation)
+  // @@protoc_insertion_point(parse_success:UA.TruckLocation)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:TruckLocation)
+  // @@protoc_insertion_point(parse_failure:UA.TruckLocation)
   return false;
 #undef DO_
 }
@@ -2054,7 +2054,7 @@ failure:
 
 void TruckLocation::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TruckLocation)
+  // @@protoc_insertion_point(serialize_start:UA.TruckLocation)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2073,12 +2073,12 @@ void TruckLocation::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:TruckLocation)
+  // @@protoc_insertion_point(serialize_end:UA.TruckLocation)
 }
 
 ::google::protobuf::uint8* TruckLocation::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:TruckLocation)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.TruckLocation)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2097,12 +2097,12 @@ void TruckLocation::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:TruckLocation)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.TruckLocation)
   return target;
 }
 
 size_t TruckLocation::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:TruckLocation)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.TruckLocation)
   size_t total_size = 0;
 
   if (has_truckid()) {
@@ -2122,7 +2122,7 @@ size_t TruckLocation::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t TruckLocation::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:TruckLocation)
+// @@protoc_insertion_point(message_byte_size_start:UA.TruckLocation)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2154,22 +2154,22 @@ size_t TruckLocation::ByteSizeLong() const {
 }
 
 void TruckLocation::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:TruckLocation)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.TruckLocation)
   GOOGLE_DCHECK_NE(&from, this);
   const TruckLocation* source =
       ::google::protobuf::DynamicCastToGenerated<TruckLocation>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:TruckLocation)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.TruckLocation)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:TruckLocation)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.TruckLocation)
     MergeFrom(*source);
   }
 }
 
 void TruckLocation::MergeFrom(const TruckLocation& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:TruckLocation)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.TruckLocation)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2188,14 +2188,14 @@ void TruckLocation::MergeFrom(const TruckLocation& from) {
 }
 
 void TruckLocation::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:TruckLocation)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.TruckLocation)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void TruckLocation::CopyFrom(const TruckLocation& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:TruckLocation)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.TruckLocation)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2243,7 +2243,7 @@ const int DetermineDst::kSeqnumFieldNumber;
 DetermineDst::DetermineDst()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:DetermineDst)
+  // @@protoc_insertion_point(constructor:UA.DetermineDst)
 }
 DetermineDst::DetermineDst(const DetermineDst& from)
   : ::google::protobuf::Message(),
@@ -2252,7 +2252,7 @@ DetermineDst::DetermineDst(const DetermineDst& from)
       leavingtrucks_(from.leavingtrucks_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   seqnum_ = from.seqnum_;
-  // @@protoc_insertion_point(copy_constructor:DetermineDst)
+  // @@protoc_insertion_point(copy_constructor:UA.DetermineDst)
 }
 
 void DetermineDst::SharedCtor() {
@@ -2262,7 +2262,7 @@ void DetermineDst::SharedCtor() {
 }
 
 DetermineDst::~DetermineDst() {
-  // @@protoc_insertion_point(destructor:DetermineDst)
+  // @@protoc_insertion_point(destructor:UA.DetermineDst)
   SharedDtor();
 }
 
@@ -2279,7 +2279,7 @@ const DetermineDst& DetermineDst::default_instance() {
 
 
 void DetermineDst::Clear() {
-// @@protoc_insertion_point(message_clear_start:DetermineDst)
+// @@protoc_insertion_point(message_clear_start:UA.DetermineDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2303,13 +2303,13 @@ const char* DetermineDst::_InternalParse(const char* begin, const char* end, voi
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .TruckDst leavingtrucks = 1;
+      // repeated .UA.TruckDst leavingtrucks = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::TruckDst::_InternalParse;
+          parser_till_end = ::UA::TruckDst::_InternalParse;
           object = msg->add_leavingtrucks();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -2350,13 +2350,13 @@ bool DetermineDst::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:DetermineDst)
+  // @@protoc_insertion_point(parse_start:UA.DetermineDst)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .TruckDst leavingtrucks = 1;
+      // repeated .UA.TruckDst leavingtrucks = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -2392,10 +2392,10 @@ bool DetermineDst::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:DetermineDst)
+  // @@protoc_insertion_point(parse_success:UA.DetermineDst)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:DetermineDst)
+  // @@protoc_insertion_point(parse_failure:UA.DetermineDst)
   return false;
 #undef DO_
 }
@@ -2403,11 +2403,11 @@ failure:
 
 void DetermineDst::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:DetermineDst)
+  // @@protoc_insertion_point(serialize_start:UA.DetermineDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .TruckDst leavingtrucks = 1;
+  // repeated .UA.TruckDst leavingtrucks = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->leavingtrucks_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -2426,16 +2426,16 @@ void DetermineDst::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:DetermineDst)
+  // @@protoc_insertion_point(serialize_end:UA.DetermineDst)
 }
 
 ::google::protobuf::uint8* DetermineDst::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DetermineDst)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.DetermineDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .TruckDst leavingtrucks = 1;
+  // repeated .UA.TruckDst leavingtrucks = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->leavingtrucks_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -2453,12 +2453,12 @@ void DetermineDst::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DetermineDst)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.DetermineDst)
   return target;
 }
 
 size_t DetermineDst::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DetermineDst)
+// @@protoc_insertion_point(message_byte_size_start:UA.DetermineDst)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2476,7 +2476,7 @@ size_t DetermineDst::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .TruckDst leavingtrucks = 1;
+  // repeated .UA.TruckDst leavingtrucks = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->leavingtrucks_size());
     total_size += 1UL * count;
@@ -2493,22 +2493,22 @@ size_t DetermineDst::ByteSizeLong() const {
 }
 
 void DetermineDst::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:DetermineDst)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.DetermineDst)
   GOOGLE_DCHECK_NE(&from, this);
   const DetermineDst* source =
       ::google::protobuf::DynamicCastToGenerated<DetermineDst>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:DetermineDst)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.DetermineDst)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:DetermineDst)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.DetermineDst)
     MergeFrom(*source);
   }
 }
 
 void DetermineDst::MergeFrom(const DetermineDst& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DetermineDst)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.DetermineDst)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2521,14 +2521,14 @@ void DetermineDst::MergeFrom(const DetermineDst& from) {
 }
 
 void DetermineDst::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:DetermineDst)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.DetermineDst)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void DetermineDst::CopyFrom(const DetermineDst& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DetermineDst)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.DetermineDst)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -2588,7 +2588,7 @@ const int TruckDst::kShipidFieldNumber;
 TruckDst::TruckDst()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:TruckDst)
+  // @@protoc_insertion_point(constructor:UA.TruckDst)
 }
 TruckDst::TruckDst(const TruckDst& from)
   : ::google::protobuf::Message(),
@@ -2598,7 +2598,7 @@ TruckDst::TruckDst(const TruckDst& from)
   ::memcpy(&truckid_, &from.truckid_,
     static_cast<size_t>(reinterpret_cast<char*>(&y_) -
     reinterpret_cast<char*>(&truckid_)) + sizeof(y_));
-  // @@protoc_insertion_point(copy_constructor:TruckDst)
+  // @@protoc_insertion_point(copy_constructor:UA.TruckDst)
 }
 
 void TruckDst::SharedCtor() {
@@ -2608,7 +2608,7 @@ void TruckDst::SharedCtor() {
 }
 
 TruckDst::~TruckDst() {
-  // @@protoc_insertion_point(destructor:TruckDst)
+  // @@protoc_insertion_point(destructor:UA.TruckDst)
   SharedDtor();
 }
 
@@ -2625,7 +2625,7 @@ const TruckDst& TruckDst::default_instance() {
 
 
 void TruckDst::Clear() {
-// @@protoc_insertion_point(message_clear_start:TruckDst)
+// @@protoc_insertion_point(message_clear_start:UA.TruckDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2702,7 +2702,7 @@ bool TruckDst::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:TruckDst)
+  // @@protoc_insertion_point(parse_start:UA.TruckDst)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -2772,10 +2772,10 @@ bool TruckDst::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:TruckDst)
+  // @@protoc_insertion_point(parse_success:UA.TruckDst)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:TruckDst)
+  // @@protoc_insertion_point(parse_failure:UA.TruckDst)
   return false;
 #undef DO_
 }
@@ -2783,7 +2783,7 @@ failure:
 
 void TruckDst::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:TruckDst)
+  // @@protoc_insertion_point(serialize_start:UA.TruckDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2812,12 +2812,12 @@ void TruckDst::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:TruckDst)
+  // @@protoc_insertion_point(serialize_end:UA.TruckDst)
 }
 
 ::google::protobuf::uint8* TruckDst::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:TruckDst)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.TruckDst)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2846,12 +2846,12 @@ void TruckDst::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:TruckDst)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.TruckDst)
   return target;
 }
 
 size_t TruckDst::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:TruckDst)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.TruckDst)
   size_t total_size = 0;
 
   if (has_truckid()) {
@@ -2885,7 +2885,7 @@ size_t TruckDst::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t TruckDst::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:TruckDst)
+// @@protoc_insertion_point(message_byte_size_start:UA.TruckDst)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2927,22 +2927,22 @@ size_t TruckDst::ByteSizeLong() const {
 }
 
 void TruckDst::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:TruckDst)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.TruckDst)
   GOOGLE_DCHECK_NE(&from, this);
   const TruckDst* source =
       ::google::protobuf::DynamicCastToGenerated<TruckDst>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:TruckDst)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.TruckDst)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:TruckDst)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.TruckDst)
     MergeFrom(*source);
   }
 }
 
 void TruckDst::MergeFrom(const TruckDst& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:TruckDst)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.TruckDst)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -2967,14 +2967,14 @@ void TruckDst::MergeFrom(const TruckDst& from) {
 }
 
 void TruckDst::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:TruckDst)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.TruckDst)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void TruckDst::CopyFrom(const TruckDst& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:TruckDst)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.TruckDst)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3024,7 +3024,7 @@ const int SettleShipment::kSeqnumFieldNumber;
 SettleShipment::SettleShipment()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:SettleShipment)
+  // @@protoc_insertion_point(constructor:UA.SettleShipment)
 }
 SettleShipment::SettleShipment(const SettleShipment& from)
   : ::google::protobuf::Message(),
@@ -3033,7 +3033,7 @@ SettleShipment::SettleShipment(const SettleShipment& from)
       packages_(from.packages_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   seqnum_ = from.seqnum_;
-  // @@protoc_insertion_point(copy_constructor:SettleShipment)
+  // @@protoc_insertion_point(copy_constructor:UA.SettleShipment)
 }
 
 void SettleShipment::SharedCtor() {
@@ -3043,7 +3043,7 @@ void SettleShipment::SharedCtor() {
 }
 
 SettleShipment::~SettleShipment() {
-  // @@protoc_insertion_point(destructor:SettleShipment)
+  // @@protoc_insertion_point(destructor:UA.SettleShipment)
   SharedDtor();
 }
 
@@ -3060,7 +3060,7 @@ const SettleShipment& SettleShipment::default_instance() {
 
 
 void SettleShipment::Clear() {
-// @@protoc_insertion_point(message_clear_start:SettleShipment)
+// @@protoc_insertion_point(message_clear_start:UA.SettleShipment)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3084,13 +3084,13 @@ const char* SettleShipment::_InternalParse(const char* begin, const char* end, v
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .PackageInfo packages = 1;
+      // repeated .UA.PackageInfo packages = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::PackageInfo::_InternalParse;
+          parser_till_end = ::UA::PackageInfo::_InternalParse;
           object = msg->add_packages();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -3131,13 +3131,13 @@ bool SettleShipment::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:SettleShipment)
+  // @@protoc_insertion_point(parse_start:UA.SettleShipment)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .PackageInfo packages = 1;
+      // repeated .UA.PackageInfo packages = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -3173,10 +3173,10 @@ bool SettleShipment::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:SettleShipment)
+  // @@protoc_insertion_point(parse_success:UA.SettleShipment)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:SettleShipment)
+  // @@protoc_insertion_point(parse_failure:UA.SettleShipment)
   return false;
 #undef DO_
 }
@@ -3184,11 +3184,11 @@ failure:
 
 void SettleShipment::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:SettleShipment)
+  // @@protoc_insertion_point(serialize_start:UA.SettleShipment)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .PackageInfo packages = 1;
+  // repeated .UA.PackageInfo packages = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->packages_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -3207,16 +3207,16 @@ void SettleShipment::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:SettleShipment)
+  // @@protoc_insertion_point(serialize_end:UA.SettleShipment)
 }
 
 ::google::protobuf::uint8* SettleShipment::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SettleShipment)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.SettleShipment)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .PackageInfo packages = 1;
+  // repeated .UA.PackageInfo packages = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->packages_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -3234,12 +3234,12 @@ void SettleShipment::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SettleShipment)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.SettleShipment)
   return target;
 }
 
 size_t SettleShipment::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SettleShipment)
+// @@protoc_insertion_point(message_byte_size_start:UA.SettleShipment)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3257,7 +3257,7 @@ size_t SettleShipment::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .PackageInfo packages = 1;
+  // repeated .UA.PackageInfo packages = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->packages_size());
     total_size += 1UL * count;
@@ -3274,22 +3274,22 @@ size_t SettleShipment::ByteSizeLong() const {
 }
 
 void SettleShipment::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:SettleShipment)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.SettleShipment)
   GOOGLE_DCHECK_NE(&from, this);
   const SettleShipment* source =
       ::google::protobuf::DynamicCastToGenerated<SettleShipment>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:SettleShipment)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.SettleShipment)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:SettleShipment)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.SettleShipment)
     MergeFrom(*source);
   }
 }
 
 void SettleShipment::MergeFrom(const SettleShipment& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SettleShipment)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.SettleShipment)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -3302,14 +3302,14 @@ void SettleShipment::MergeFrom(const SettleShipment& from) {
 }
 
 void SettleShipment::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:SettleShipment)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.SettleShipment)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void SettleShipment::CopyFrom(const SettleShipment& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SettleShipment)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.SettleShipment)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3361,7 +3361,7 @@ const int PackageInfo::kShipidFieldNumber;
 PackageInfo::PackageInfo()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:PackageInfo)
+  // @@protoc_insertion_point(constructor:UA.PackageInfo)
 }
 PackageInfo::PackageInfo(const PackageInfo& from)
   : ::google::protobuf::Message(),
@@ -3371,7 +3371,7 @@ PackageInfo::PackageInfo(const PackageInfo& from)
   ::memcpy(&packageid_, &from.packageid_,
     static_cast<size_t>(reinterpret_cast<char*>(&shipid_) -
     reinterpret_cast<char*>(&packageid_)) + sizeof(shipid_));
-  // @@protoc_insertion_point(copy_constructor:PackageInfo)
+  // @@protoc_insertion_point(copy_constructor:UA.PackageInfo)
 }
 
 void PackageInfo::SharedCtor() {
@@ -3381,7 +3381,7 @@ void PackageInfo::SharedCtor() {
 }
 
 PackageInfo::~PackageInfo() {
-  // @@protoc_insertion_point(destructor:PackageInfo)
+  // @@protoc_insertion_point(destructor:UA.PackageInfo)
   SharedDtor();
 }
 
@@ -3398,7 +3398,7 @@ const PackageInfo& PackageInfo::default_instance() {
 
 
 void PackageInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:PackageInfo)
+// @@protoc_insertion_point(message_clear_start:UA.PackageInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3461,7 +3461,7 @@ bool PackageInfo::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:PackageInfo)
+  // @@protoc_insertion_point(parse_start:UA.PackageInfo)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -3505,10 +3505,10 @@ bool PackageInfo::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:PackageInfo)
+  // @@protoc_insertion_point(parse_success:UA.PackageInfo)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:PackageInfo)
+  // @@protoc_insertion_point(parse_failure:UA.PackageInfo)
   return false;
 #undef DO_
 }
@@ -3516,7 +3516,7 @@ failure:
 
 void PackageInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:PackageInfo)
+  // @@protoc_insertion_point(serialize_start:UA.PackageInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3535,12 +3535,12 @@ void PackageInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:PackageInfo)
+  // @@protoc_insertion_point(serialize_end:UA.PackageInfo)
 }
 
 ::google::protobuf::uint8* PackageInfo::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PackageInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.PackageInfo)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3559,12 +3559,12 @@ void PackageInfo::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PackageInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.PackageInfo)
   return target;
 }
 
 size_t PackageInfo::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:PackageInfo)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.PackageInfo)
   size_t total_size = 0;
 
   if (has_packageid()) {
@@ -3584,7 +3584,7 @@ size_t PackageInfo::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t PackageInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PackageInfo)
+// @@protoc_insertion_point(message_byte_size_start:UA.PackageInfo)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3616,22 +3616,22 @@ size_t PackageInfo::ByteSizeLong() const {
 }
 
 void PackageInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:PackageInfo)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.PackageInfo)
   GOOGLE_DCHECK_NE(&from, this);
   const PackageInfo* source =
       ::google::protobuf::DynamicCastToGenerated<PackageInfo>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:PackageInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.PackageInfo)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:PackageInfo)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.PackageInfo)
     MergeFrom(*source);
   }
 }
 
 void PackageInfo::MergeFrom(const PackageInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PackageInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.PackageInfo)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -3650,14 +3650,14 @@ void PackageInfo::MergeFrom(const PackageInfo& from) {
 }
 
 void PackageInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:PackageInfo)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.PackageInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void PackageInfo::CopyFrom(const PackageInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PackageInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.PackageInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3703,7 +3703,7 @@ const int UCommands::kShipmentsFieldNumber;
 UCommands::UCommands()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:UCommands)
+  // @@protoc_insertion_point(constructor:UA.UCommands)
 }
 UCommands::UCommands(const UCommands& from)
   : ::google::protobuf::Message(),
@@ -3713,7 +3713,7 @@ UCommands::UCommands(const UCommands& from)
       trucks_(from.trucks_),
       shipments_(from.shipments_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:UCommands)
+  // @@protoc_insertion_point(copy_constructor:UA.UCommands)
 }
 
 void UCommands::SharedCtor() {
@@ -3722,7 +3722,7 @@ void UCommands::SharedCtor() {
 }
 
 UCommands::~UCommands() {
-  // @@protoc_insertion_point(destructor:UCommands)
+  // @@protoc_insertion_point(destructor:UA.UCommands)
   SharedDtor();
 }
 
@@ -3739,7 +3739,7 @@ const UCommands& UCommands::default_instance() {
 
 
 void UCommands::Clear() {
-// @@protoc_insertion_point(message_clear_start:UCommands)
+// @@protoc_insertion_point(message_clear_start:UA.UCommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3764,13 +3764,13 @@ const char* UCommands::_InternalParse(const char* begin, const char* end, void* 
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .InitWorld worlds = 1;
+      // repeated .UA.InitWorld worlds = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::InitWorld::_InternalParse;
+          parser_till_end = ::UA::InitWorld::_InternalParse;
           object = msg->add_worlds();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -3780,13 +3780,13 @@ const char* UCommands::_InternalParse(const char* begin, const char* end, void* 
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
         break;
       }
-      // repeated .DetermineTruck trucks = 2;
+      // repeated .UA.DetermineTruck trucks = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::DetermineTruck::_InternalParse;
+          parser_till_end = ::UA::DetermineTruck::_InternalParse;
           object = msg->add_trucks();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -3796,13 +3796,13 @@ const char* UCommands::_InternalParse(const char* begin, const char* end, void* 
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 18 && (ptr += 1));
         break;
       }
-      // repeated .SettleShipment shipments = 3;
+      // repeated .UA.SettleShipment shipments = 3;
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::SettleShipment::_InternalParse;
+          parser_till_end = ::UA::SettleShipment::_InternalParse;
           object = msg->add_shipments();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -3836,13 +3836,13 @@ bool UCommands::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:UCommands)
+  // @@protoc_insertion_point(parse_start:UA.UCommands)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .InitWorld worlds = 1;
+      // repeated .UA.InitWorld worlds = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -3853,7 +3853,7 @@ bool UCommands::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .DetermineTruck trucks = 2;
+      // repeated .UA.DetermineTruck trucks = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -3864,7 +3864,7 @@ bool UCommands::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .SettleShipment shipments = 3;
+      // repeated .UA.SettleShipment shipments = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -3887,10 +3887,10 @@ bool UCommands::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:UCommands)
+  // @@protoc_insertion_point(parse_success:UA.UCommands)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:UCommands)
+  // @@protoc_insertion_point(parse_failure:UA.UCommands)
   return false;
 #undef DO_
 }
@@ -3898,11 +3898,11 @@ failure:
 
 void UCommands::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:UCommands)
+  // @@protoc_insertion_point(serialize_start:UA.UCommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .InitWorld worlds = 1;
+  // repeated .UA.InitWorld worlds = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->worlds_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -3911,7 +3911,7 @@ void UCommands::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .DetermineTruck trucks = 2;
+  // repeated .UA.DetermineTruck trucks = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->trucks_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -3920,7 +3920,7 @@ void UCommands::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .SettleShipment shipments = 3;
+  // repeated .UA.SettleShipment shipments = 3;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->shipments_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -3933,16 +3933,16 @@ void UCommands::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:UCommands)
+  // @@protoc_insertion_point(serialize_end:UA.UCommands)
 }
 
 ::google::protobuf::uint8* UCommands::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UCommands)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.UCommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .InitWorld worlds = 1;
+  // repeated .UA.InitWorld worlds = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->worlds_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -3950,7 +3950,7 @@ void UCommands::SerializeWithCachedSizes(
         1, this->worlds(static_cast<int>(i)), target);
   }
 
-  // repeated .DetermineTruck trucks = 2;
+  // repeated .UA.DetermineTruck trucks = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->trucks_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -3958,7 +3958,7 @@ void UCommands::SerializeWithCachedSizes(
         2, this->trucks(static_cast<int>(i)), target);
   }
 
-  // repeated .SettleShipment shipments = 3;
+  // repeated .UA.SettleShipment shipments = 3;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->shipments_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -3970,12 +3970,12 @@ void UCommands::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UCommands)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.UCommands)
   return target;
 }
 
 size_t UCommands::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UCommands)
+// @@protoc_insertion_point(message_byte_size_start:UA.UCommands)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3987,7 +3987,7 @@ size_t UCommands::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .InitWorld worlds = 1;
+  // repeated .UA.InitWorld worlds = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->worlds_size());
     total_size += 1UL * count;
@@ -3998,7 +3998,7 @@ size_t UCommands::ByteSizeLong() const {
     }
   }
 
-  // repeated .DetermineTruck trucks = 2;
+  // repeated .UA.DetermineTruck trucks = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->trucks_size());
     total_size += 1UL * count;
@@ -4009,7 +4009,7 @@ size_t UCommands::ByteSizeLong() const {
     }
   }
 
-  // repeated .SettleShipment shipments = 3;
+  // repeated .UA.SettleShipment shipments = 3;
   {
     unsigned int count = static_cast<unsigned int>(this->shipments_size());
     total_size += 1UL * count;
@@ -4026,22 +4026,22 @@ size_t UCommands::ByteSizeLong() const {
 }
 
 void UCommands::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:UCommands)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.UCommands)
   GOOGLE_DCHECK_NE(&from, this);
   const UCommands* source =
       ::google::protobuf::DynamicCastToGenerated<UCommands>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UCommands)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.UCommands)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:UCommands)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.UCommands)
     MergeFrom(*source);
   }
 }
 
 void UCommands::MergeFrom(const UCommands& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UCommands)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.UCommands)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -4053,14 +4053,14 @@ void UCommands::MergeFrom(const UCommands& from) {
 }
 
 void UCommands::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:UCommands)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.UCommands)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void UCommands::CopyFrom(const UCommands& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UCommands)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.UCommands)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -4108,7 +4108,7 @@ const int ACommands::kDestsFieldNumber;
 ACommands::ACommands()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:ACommands)
+  // @@protoc_insertion_point(constructor:UA.ACommands)
 }
 ACommands::ACommands(const ACommands& from)
   : ::google::protobuf::Message(),
@@ -4117,7 +4117,7 @@ ACommands::ACommands(const ACommands& from)
       warehouses_(from.warehouses_),
       dests_(from.dests_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:ACommands)
+  // @@protoc_insertion_point(copy_constructor:UA.ACommands)
 }
 
 void ACommands::SharedCtor() {
@@ -4126,7 +4126,7 @@ void ACommands::SharedCtor() {
 }
 
 ACommands::~ACommands() {
-  // @@protoc_insertion_point(destructor:ACommands)
+  // @@protoc_insertion_point(destructor:UA.ACommands)
   SharedDtor();
 }
 
@@ -4143,7 +4143,7 @@ const ACommands& ACommands::default_instance() {
 
 
 void ACommands::Clear() {
-// @@protoc_insertion_point(message_clear_start:ACommands)
+// @@protoc_insertion_point(message_clear_start:UA.ACommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4167,13 +4167,13 @@ const char* ACommands::_InternalParse(const char* begin, const char* end, void* 
     ptr = ::google::protobuf::io::Parse32(ptr, &tag);
     GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
     switch (tag >> 3) {
-      // repeated .DetermineWarehouse warehouses = 1;
+      // repeated .UA.DetermineWarehouse warehouses = 1;
       case 1: {
         if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::DetermineWarehouse::_InternalParse;
+          parser_till_end = ::UA::DetermineWarehouse::_InternalParse;
           object = msg->add_warehouses();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -4183,13 +4183,13 @@ const char* ACommands::_InternalParse(const char* begin, const char* end, void* 
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
         break;
       }
-      // repeated .DetermineDst dests = 2;
+      // repeated .UA.DetermineDst dests = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 18) goto handle_unusual;
         do {
           ptr = ::google::protobuf::io::ReadSize(ptr, &size);
           GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::DetermineDst::_InternalParse;
+          parser_till_end = ::UA::DetermineDst::_InternalParse;
           object = msg->add_dests();
           if (size > end - ptr) goto len_delim_till_end;
           ptr += size;
@@ -4223,13 +4223,13 @@ bool ACommands::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ACommands)
+  // @@protoc_insertion_point(parse_start:UA.ACommands)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .DetermineWarehouse warehouses = 1;
+      // repeated .UA.DetermineWarehouse warehouses = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -4240,7 +4240,7 @@ bool ACommands::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated .DetermineDst dests = 2;
+      // repeated .UA.DetermineDst dests = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (18 & 0xFF)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
@@ -4263,10 +4263,10 @@ bool ACommands::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:ACommands)
+  // @@protoc_insertion_point(parse_success:UA.ACommands)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:ACommands)
+  // @@protoc_insertion_point(parse_failure:UA.ACommands)
   return false;
 #undef DO_
 }
@@ -4274,11 +4274,11 @@ failure:
 
 void ACommands::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ACommands)
+  // @@protoc_insertion_point(serialize_start:UA.ACommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .DetermineWarehouse warehouses = 1;
+  // repeated .UA.DetermineWarehouse warehouses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -4287,7 +4287,7 @@ void ACommands::SerializeWithCachedSizes(
       output);
   }
 
-  // repeated .DetermineDst dests = 2;
+  // repeated .UA.DetermineDst dests = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->dests_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -4300,16 +4300,16 @@ void ACommands::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:ACommands)
+  // @@protoc_insertion_point(serialize_end:UA.ACommands)
 }
 
 ::google::protobuf::uint8* ACommands::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ACommands)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.ACommands)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .DetermineWarehouse warehouses = 1;
+  // repeated .UA.DetermineWarehouse warehouses = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -4317,7 +4317,7 @@ void ACommands::SerializeWithCachedSizes(
         1, this->warehouses(static_cast<int>(i)), target);
   }
 
-  // repeated .DetermineDst dests = 2;
+  // repeated .UA.DetermineDst dests = 2;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->dests_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -4329,12 +4329,12 @@ void ACommands::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ACommands)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.ACommands)
   return target;
 }
 
 size_t ACommands::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ACommands)
+// @@protoc_insertion_point(message_byte_size_start:UA.ACommands)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4346,7 +4346,7 @@ size_t ACommands::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .DetermineWarehouse warehouses = 1;
+  // repeated .UA.DetermineWarehouse warehouses = 1;
   {
     unsigned int count = static_cast<unsigned int>(this->warehouses_size());
     total_size += 1UL * count;
@@ -4357,7 +4357,7 @@ size_t ACommands::ByteSizeLong() const {
     }
   }
 
-  // repeated .DetermineDst dests = 2;
+  // repeated .UA.DetermineDst dests = 2;
   {
     unsigned int count = static_cast<unsigned int>(this->dests_size());
     total_size += 1UL * count;
@@ -4374,22 +4374,22 @@ size_t ACommands::ByteSizeLong() const {
 }
 
 void ACommands::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ACommands)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.ACommands)
   GOOGLE_DCHECK_NE(&from, this);
   const ACommands* source =
       ::google::protobuf::DynamicCastToGenerated<ACommands>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ACommands)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.ACommands)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ACommands)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.ACommands)
     MergeFrom(*source);
   }
 }
 
 void ACommands::MergeFrom(const ACommands& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ACommands)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.ACommands)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -4400,14 +4400,14 @@ void ACommands::MergeFrom(const ACommands& from) {
 }
 
 void ACommands::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ACommands)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.ACommands)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void ACommands::CopyFrom(const ACommands& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ACommands)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.ACommands)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -4459,7 +4459,7 @@ const int Response::kSeqnumFieldNumber;
 Response::Response()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Response)
+  // @@protoc_insertion_point(constructor:UA.Response)
 }
 Response::Response(const Response& from)
   : ::google::protobuf::Message(),
@@ -4469,7 +4469,7 @@ Response::Response(const Response& from)
   ::memcpy(&seqnum_, &from.seqnum_,
     static_cast<size_t>(reinterpret_cast<char*>(&succeed_) -
     reinterpret_cast<char*>(&seqnum_)) + sizeof(succeed_));
-  // @@protoc_insertion_point(copy_constructor:Response)
+  // @@protoc_insertion_point(copy_constructor:UA.Response)
 }
 
 void Response::SharedCtor() {
@@ -4479,7 +4479,7 @@ void Response::SharedCtor() {
 }
 
 Response::~Response() {
-  // @@protoc_insertion_point(destructor:Response)
+  // @@protoc_insertion_point(destructor:UA.Response)
   SharedDtor();
 }
 
@@ -4496,7 +4496,7 @@ const Response& Response::default_instance() {
 
 
 void Response::Clear() {
-// @@protoc_insertion_point(message_clear_start:Response)
+// @@protoc_insertion_point(message_clear_start:UA.Response)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4559,7 +4559,7 @@ bool Response::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Response)
+  // @@protoc_insertion_point(parse_start:UA.Response)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -4603,10 +4603,10 @@ bool Response::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Response)
+  // @@protoc_insertion_point(parse_success:UA.Response)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Response)
+  // @@protoc_insertion_point(parse_failure:UA.Response)
   return false;
 #undef DO_
 }
@@ -4614,7 +4614,7 @@ failure:
 
 void Response::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Response)
+  // @@protoc_insertion_point(serialize_start:UA.Response)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -4633,12 +4633,12 @@ void Response::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Response)
+  // @@protoc_insertion_point(serialize_end:UA.Response)
 }
 
 ::google::protobuf::uint8* Response::InternalSerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Response)
+  // @@protoc_insertion_point(serialize_to_array_start:UA.Response)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -4657,12 +4657,12 @@ void Response::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Response)
+  // @@protoc_insertion_point(serialize_to_array_end:UA.Response)
   return target;
 }
 
 size_t Response::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Response)
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.Response)
   size_t total_size = 0;
 
   if (has_seqnum()) {
@@ -4680,7 +4680,7 @@ size_t Response::RequiredFieldsByteSizeFallback() const {
   return total_size;
 }
 size_t Response::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Response)
+// @@protoc_insertion_point(message_byte_size_start:UA.Response)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4710,22 +4710,22 @@ size_t Response::ByteSizeLong() const {
 }
 
 void Response::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Response)
+// @@protoc_insertion_point(generalized_merge_from_start:UA.Response)
   GOOGLE_DCHECK_NE(&from, this);
   const Response* source =
       ::google::protobuf::DynamicCastToGenerated<Response>(
           &from);
   if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Response)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.Response)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Response)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.Response)
     MergeFrom(*source);
   }
 }
 
 void Response::MergeFrom(const Response& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Response)
+// @@protoc_insertion_point(class_specific_merge_from_start:UA.Response)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -4744,14 +4744,14 @@ void Response::MergeFrom(const Response& from) {
 }
 
 void Response::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Response)
+// @@protoc_insertion_point(generalized_copy_from_start:UA.Response)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Response::CopyFrom(const Response& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Response)
+// @@protoc_insertion_point(class_specific_copy_from_start:UA.Response)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -4781,44 +4781,44 @@ void Response::InternalSwap(Response* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
-}// namespace UPS_AMAZON
+}  // namespace UA
 namespace google {
 namespace protobuf {
-template<> PROTOBUF_NOINLINE ::InitWorld* Arena::CreateMaybeMessage< ::InitWorld >(Arena* arena) {
-  return Arena::CreateInternal< ::InitWorld >(arena);
+template<> PROTOBUF_NOINLINE ::UA::InitWorld* Arena::CreateMaybeMessage< ::UA::InitWorld >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::InitWorld >(arena);
 }
-template<> PROTOBUF_NOINLINE ::WarehouseInfo* Arena::CreateMaybeMessage< ::WarehouseInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::WarehouseInfo >(arena);
+template<> PROTOBUF_NOINLINE ::UA::WarehouseInfo* Arena::CreateMaybeMessage< ::UA::WarehouseInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::WarehouseInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::DetermineWarehouse* Arena::CreateMaybeMessage< ::DetermineWarehouse >(Arena* arena) {
-  return Arena::CreateInternal< ::DetermineWarehouse >(arena);
+template<> PROTOBUF_NOINLINE ::UA::DetermineWarehouse* Arena::CreateMaybeMessage< ::UA::DetermineWarehouse >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::DetermineWarehouse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::DetermineTruck* Arena::CreateMaybeMessage< ::DetermineTruck >(Arena* arena) {
-  return Arena::CreateInternal< ::DetermineTruck >(arena);
+template<> PROTOBUF_NOINLINE ::UA::DetermineTruck* Arena::CreateMaybeMessage< ::UA::DetermineTruck >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::DetermineTruck >(arena);
 }
-template<> PROTOBUF_NOINLINE ::TruckLocation* Arena::CreateMaybeMessage< ::TruckLocation >(Arena* arena) {
-  return Arena::CreateInternal< ::TruckLocation >(arena);
+template<> PROTOBUF_NOINLINE ::UA::TruckLocation* Arena::CreateMaybeMessage< ::UA::TruckLocation >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::TruckLocation >(arena);
 }
-template<> PROTOBUF_NOINLINE ::DetermineDst* Arena::CreateMaybeMessage< ::DetermineDst >(Arena* arena) {
-  return Arena::CreateInternal< ::DetermineDst >(arena);
+template<> PROTOBUF_NOINLINE ::UA::DetermineDst* Arena::CreateMaybeMessage< ::UA::DetermineDst >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::DetermineDst >(arena);
 }
-template<> PROTOBUF_NOINLINE ::TruckDst* Arena::CreateMaybeMessage< ::TruckDst >(Arena* arena) {
-  return Arena::CreateInternal< ::TruckDst >(arena);
+template<> PROTOBUF_NOINLINE ::UA::TruckDst* Arena::CreateMaybeMessage< ::UA::TruckDst >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::TruckDst >(arena);
 }
-template<> PROTOBUF_NOINLINE ::SettleShipment* Arena::CreateMaybeMessage< ::SettleShipment >(Arena* arena) {
-  return Arena::CreateInternal< ::SettleShipment >(arena);
+template<> PROTOBUF_NOINLINE ::UA::SettleShipment* Arena::CreateMaybeMessage< ::UA::SettleShipment >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::SettleShipment >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PackageInfo* Arena::CreateMaybeMessage< ::PackageInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::PackageInfo >(arena);
+template<> PROTOBUF_NOINLINE ::UA::PackageInfo* Arena::CreateMaybeMessage< ::UA::PackageInfo >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::PackageInfo >(arena);
 }
-template<> PROTOBUF_NOINLINE ::UCommands* Arena::CreateMaybeMessage< ::UCommands >(Arena* arena) {
-  return Arena::CreateInternal< ::UCommands >(arena);
+template<> PROTOBUF_NOINLINE ::UA::UCommands* Arena::CreateMaybeMessage< ::UA::UCommands >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::UCommands >(arena);
 }
-template<> PROTOBUF_NOINLINE ::ACommands* Arena::CreateMaybeMessage< ::ACommands >(Arena* arena) {
-  return Arena::CreateInternal< ::ACommands >(arena);
+template<> PROTOBUF_NOINLINE ::UA::ACommands* Arena::CreateMaybeMessage< ::UA::ACommands >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::ACommands >(arena);
 }
-template<> PROTOBUF_NOINLINE ::Response* Arena::CreateMaybeMessage< ::Response >(Arena* arena) {
-  return Arena::CreateInternal< ::Response >(arena);
+template<> PROTOBUF_NOINLINE ::UA::Response* Arena::CreateMaybeMessage< ::UA::Response >(Arena* arena) {
+  return Arena::CreateInternal< ::UA::Response >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

@@ -10,10 +10,10 @@ AmazonBridge::~AmazonBridge() {}
  * If success return 0, else, return -1
  */
 int AmazonBridge::SendWorldId(const int &world_id){
-  UPS_AMAZON::InitWorld msg;
-  msg.set_worldid(5);
+  UA::InitWorld msg;
+  msg.set_worldid(world_id);
   msg.set_seqnum(1);
-  return SendMsg<UPS_AMAZON::InitWorld>(msg);
+  return SendMsg<UA::InitWorld>(msg);
 }
 
 int AmazonBridge::SendTruckId(){

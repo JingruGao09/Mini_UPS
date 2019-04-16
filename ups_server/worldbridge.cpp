@@ -1,5 +1,4 @@
 #include "worldbridge.h"
-
 WorldBridge::WorldBridge(const char *hostname, const char *port)
     : Hermes(hostname, port) {}
 

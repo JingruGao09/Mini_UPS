@@ -48,7 +48,7 @@ struct TableStruct_ups_5famazon_2eproto {
   static const ::google::protobuf::uint32 offsets[];
 };
 void AddDescriptors_ups_5famazon_2eproto();
-namespace UPS_AMAZON{
+namespace UA {
 class ACommands;
 class ACommandsDefaultTypeInternal;
 extern ACommandsDefaultTypeInternal _ACommands_default_instance_;
@@ -85,28 +85,29 @@ extern UCommandsDefaultTypeInternal _UCommands_default_instance_;
 class WarehouseInfo;
 class WarehouseInfoDefaultTypeInternal;
 extern WarehouseInfoDefaultTypeInternal _WarehouseInfo_default_instance_;
-} // namespace UPS_AMAZON
+}  // namespace UA
 namespace google {
 namespace protobuf {
-template<> ::ACommands* Arena::CreateMaybeMessage<::ACommands>(Arena*);
-template<> ::DetermineDst* Arena::CreateMaybeMessage<::DetermineDst>(Arena*);
-template<> ::DetermineTruck* Arena::CreateMaybeMessage<::DetermineTruck>(Arena*);
-template<> ::DetermineWarehouse* Arena::CreateMaybeMessage<::DetermineWarehouse>(Arena*);
-template<> ::InitWorld* Arena::CreateMaybeMessage<::InitWorld>(Arena*);
-template<> ::PackageInfo* Arena::CreateMaybeMessage<::PackageInfo>(Arena*);
-template<> ::Response* Arena::CreateMaybeMessage<::Response>(Arena*);
-template<> ::SettleShipment* Arena::CreateMaybeMessage<::SettleShipment>(Arena*);
-template<> ::TruckDst* Arena::CreateMaybeMessage<::TruckDst>(Arena*);
-template<> ::TruckLocation* Arena::CreateMaybeMessage<::TruckLocation>(Arena*);
-template<> ::UCommands* Arena::CreateMaybeMessage<::UCommands>(Arena*);
-template<> ::WarehouseInfo* Arena::CreateMaybeMessage<::WarehouseInfo>(Arena*);
+template<> ::UA::ACommands* Arena::CreateMaybeMessage<::UA::ACommands>(Arena*);
+template<> ::UA::DetermineDst* Arena::CreateMaybeMessage<::UA::DetermineDst>(Arena*);
+template<> ::UA::DetermineTruck* Arena::CreateMaybeMessage<::UA::DetermineTruck>(Arena*);
+template<> ::UA::DetermineWarehouse* Arena::CreateMaybeMessage<::UA::DetermineWarehouse>(Arena*);
+template<> ::UA::InitWorld* Arena::CreateMaybeMessage<::UA::InitWorld>(Arena*);
+template<> ::UA::PackageInfo* Arena::CreateMaybeMessage<::UA::PackageInfo>(Arena*);
+template<> ::UA::Response* Arena::CreateMaybeMessage<::UA::Response>(Arena*);
+template<> ::UA::SettleShipment* Arena::CreateMaybeMessage<::UA::SettleShipment>(Arena*);
+template<> ::UA::TruckDst* Arena::CreateMaybeMessage<::UA::TruckDst>(Arena*);
+template<> ::UA::TruckLocation* Arena::CreateMaybeMessage<::UA::TruckLocation>(Arena*);
+template<> ::UA::UCommands* Arena::CreateMaybeMessage<::UA::UCommands>(Arena*);
+template<> ::UA::WarehouseInfo* Arena::CreateMaybeMessage<::UA::WarehouseInfo>(Arena*);
 }  // namespace protobuf
 }  // namespace google
-namespace UPS_AMAZON{
+namespace UA {
+
 // ===================================================================
 
 class InitWorld :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:InitWorld) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.InitWorld) */ {
  public:
   InitWorld();
   virtual ~InitWorld();
@@ -221,7 +222,7 @@ class InitWorld :
   ::google::protobuf::int64 seqnum() const;
   void set_seqnum(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:InitWorld)
+  // @@protoc_insertion_point(class_scope:UA.InitWorld)
  private:
   class HasBitSetters;
 
@@ -238,7 +239,7 @@ class InitWorld :
 // -------------------------------------------------------------------
 
 class WarehouseInfo :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:WarehouseInfo) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.WarehouseInfo) */ {
  public:
   WarehouseInfo();
   virtual ~WarehouseInfo();
@@ -360,7 +361,7 @@ class WarehouseInfo :
   ::google::protobuf::int32 wh_y() const;
   void set_wh_y(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:WarehouseInfo)
+  // @@protoc_insertion_point(class_scope:UA.WarehouseInfo)
  private:
   class HasBitSetters;
 
@@ -378,7 +379,7 @@ class WarehouseInfo :
 // -------------------------------------------------------------------
 
 class DetermineWarehouse :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DetermineWarehouse) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.DetermineWarehouse) */ {
  public:
   DetermineWarehouse();
   virtual ~DetermineWarehouse();
@@ -479,16 +480,16 @@ class DetermineWarehouse :
 
   // accessors -------------------------------------------------------
 
-  // repeated .WarehouseInfo warehouses = 1;
+  // repeated .UA.WarehouseInfo warehouses = 1;
   int warehouses_size() const;
   void clear_warehouses();
   static const int kWarehousesFieldNumber = 1;
-  ::WarehouseInfo* mutable_warehouses(int index);
-  ::google::protobuf::RepeatedPtrField< ::WarehouseInfo >*
+  ::UA::WarehouseInfo* mutable_warehouses(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::WarehouseInfo >*
       mutable_warehouses();
-  const ::WarehouseInfo& warehouses(int index) const;
-  ::WarehouseInfo* add_warehouses();
-  const ::google::protobuf::RepeatedPtrField< ::WarehouseInfo >&
+  const ::UA::WarehouseInfo& warehouses(int index) const;
+  ::UA::WarehouseInfo* add_warehouses();
+  const ::google::protobuf::RepeatedPtrField< ::UA::WarehouseInfo >&
       warehouses() const;
 
   // required int64 seqnum = 2;
@@ -498,21 +499,21 @@ class DetermineWarehouse :
   ::google::protobuf::int64 seqnum() const;
   void set_seqnum(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:DetermineWarehouse)
+  // @@protoc_insertion_point(class_scope:UA.DetermineWarehouse)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::WarehouseInfo > warehouses_;
+  ::google::protobuf::RepeatedPtrField< ::UA::WarehouseInfo > warehouses_;
   ::google::protobuf::int64 seqnum_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class DetermineTruck :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DetermineTruck) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.DetermineTruck) */ {
  public:
   DetermineTruck();
   virtual ~DetermineTruck();
@@ -613,16 +614,16 @@ class DetermineTruck :
 
   // accessors -------------------------------------------------------
 
-  // repeated .TruckLocation arrivedtrucks = 1;
+  // repeated .UA.TruckLocation arrivedtrucks = 1;
   int arrivedtrucks_size() const;
   void clear_arrivedtrucks();
   static const int kArrivedtrucksFieldNumber = 1;
-  ::TruckLocation* mutable_arrivedtrucks(int index);
-  ::google::protobuf::RepeatedPtrField< ::TruckLocation >*
+  ::UA::TruckLocation* mutable_arrivedtrucks(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::TruckLocation >*
       mutable_arrivedtrucks();
-  const ::TruckLocation& arrivedtrucks(int index) const;
-  ::TruckLocation* add_arrivedtrucks();
-  const ::google::protobuf::RepeatedPtrField< ::TruckLocation >&
+  const ::UA::TruckLocation& arrivedtrucks(int index) const;
+  ::UA::TruckLocation* add_arrivedtrucks();
+  const ::google::protobuf::RepeatedPtrField< ::UA::TruckLocation >&
       arrivedtrucks() const;
 
   // required int64 seqnum = 2;
@@ -632,21 +633,21 @@ class DetermineTruck :
   ::google::protobuf::int64 seqnum() const;
   void set_seqnum(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:DetermineTruck)
+  // @@protoc_insertion_point(class_scope:UA.DetermineTruck)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::TruckLocation > arrivedtrucks_;
+  ::google::protobuf::RepeatedPtrField< ::UA::TruckLocation > arrivedtrucks_;
   ::google::protobuf::int64 seqnum_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class TruckLocation :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TruckLocation) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.TruckLocation) */ {
  public:
   TruckLocation();
   virtual ~TruckLocation();
@@ -761,7 +762,7 @@ class TruckLocation :
   ::google::protobuf::int32 whid() const;
   void set_whid(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:TruckLocation)
+  // @@protoc_insertion_point(class_scope:UA.TruckLocation)
  private:
   class HasBitSetters;
 
@@ -778,7 +779,7 @@ class TruckLocation :
 // -------------------------------------------------------------------
 
 class DetermineDst :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DetermineDst) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.DetermineDst) */ {
  public:
   DetermineDst();
   virtual ~DetermineDst();
@@ -879,16 +880,16 @@ class DetermineDst :
 
   // accessors -------------------------------------------------------
 
-  // repeated .TruckDst leavingtrucks = 1;
+  // repeated .UA.TruckDst leavingtrucks = 1;
   int leavingtrucks_size() const;
   void clear_leavingtrucks();
   static const int kLeavingtrucksFieldNumber = 1;
-  ::TruckDst* mutable_leavingtrucks(int index);
-  ::google::protobuf::RepeatedPtrField< ::TruckDst >*
+  ::UA::TruckDst* mutable_leavingtrucks(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::TruckDst >*
       mutable_leavingtrucks();
-  const ::TruckDst& leavingtrucks(int index) const;
-  ::TruckDst* add_leavingtrucks();
-  const ::google::protobuf::RepeatedPtrField< ::TruckDst >&
+  const ::UA::TruckDst& leavingtrucks(int index) const;
+  ::UA::TruckDst* add_leavingtrucks();
+  const ::google::protobuf::RepeatedPtrField< ::UA::TruckDst >&
       leavingtrucks() const;
 
   // required int64 seqnum = 2;
@@ -898,21 +899,21 @@ class DetermineDst :
   ::google::protobuf::int64 seqnum() const;
   void set_seqnum(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:DetermineDst)
+  // @@protoc_insertion_point(class_scope:UA.DetermineDst)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::TruckDst > leavingtrucks_;
+  ::google::protobuf::RepeatedPtrField< ::UA::TruckDst > leavingtrucks_;
   ::google::protobuf::int64 seqnum_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class TruckDst :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TruckDst) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.TruckDst) */ {
  public:
   TruckDst();
   virtual ~TruckDst();
@@ -1041,7 +1042,7 @@ class TruckDst :
   ::google::protobuf::int32 y() const;
   void set_y(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:TruckDst)
+  // @@protoc_insertion_point(class_scope:UA.TruckDst)
  private:
   class HasBitSetters;
 
@@ -1060,7 +1061,7 @@ class TruckDst :
 // -------------------------------------------------------------------
 
 class SettleShipment :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:SettleShipment) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.SettleShipment) */ {
  public:
   SettleShipment();
   virtual ~SettleShipment();
@@ -1161,16 +1162,16 @@ class SettleShipment :
 
   // accessors -------------------------------------------------------
 
-  // repeated .PackageInfo packages = 1;
+  // repeated .UA.PackageInfo packages = 1;
   int packages_size() const;
   void clear_packages();
   static const int kPackagesFieldNumber = 1;
-  ::PackageInfo* mutable_packages(int index);
-  ::google::protobuf::RepeatedPtrField< ::PackageInfo >*
+  ::UA::PackageInfo* mutable_packages(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::PackageInfo >*
       mutable_packages();
-  const ::PackageInfo& packages(int index) const;
-  ::PackageInfo* add_packages();
-  const ::google::protobuf::RepeatedPtrField< ::PackageInfo >&
+  const ::UA::PackageInfo& packages(int index) const;
+  ::UA::PackageInfo* add_packages();
+  const ::google::protobuf::RepeatedPtrField< ::UA::PackageInfo >&
       packages() const;
 
   // required int64 seqnum = 2;
@@ -1180,21 +1181,21 @@ class SettleShipment :
   ::google::protobuf::int64 seqnum() const;
   void set_seqnum(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:SettleShipment)
+  // @@protoc_insertion_point(class_scope:UA.SettleShipment)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::PackageInfo > packages_;
+  ::google::protobuf::RepeatedPtrField< ::UA::PackageInfo > packages_;
   ::google::protobuf::int64 seqnum_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class PackageInfo :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:PackageInfo) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.PackageInfo) */ {
  public:
   PackageInfo();
   virtual ~PackageInfo();
@@ -1309,7 +1310,7 @@ class PackageInfo :
   ::google::protobuf::int64 shipid() const;
   void set_shipid(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:PackageInfo)
+  // @@protoc_insertion_point(class_scope:UA.PackageInfo)
  private:
   class HasBitSetters;
 
@@ -1326,7 +1327,7 @@ class PackageInfo :
 // -------------------------------------------------------------------
 
 class UCommands :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UCommands) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.UCommands) */ {
  public:
   UCommands();
   virtual ~UCommands();
@@ -1427,58 +1428,58 @@ class UCommands :
 
   // accessors -------------------------------------------------------
 
-  // repeated .InitWorld worlds = 1;
+  // repeated .UA.InitWorld worlds = 1;
   int worlds_size() const;
   void clear_worlds();
   static const int kWorldsFieldNumber = 1;
-  ::InitWorld* mutable_worlds(int index);
-  ::google::protobuf::RepeatedPtrField< ::InitWorld >*
+  ::UA::InitWorld* mutable_worlds(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::InitWorld >*
       mutable_worlds();
-  const ::InitWorld& worlds(int index) const;
-  ::InitWorld* add_worlds();
-  const ::google::protobuf::RepeatedPtrField< ::InitWorld >&
+  const ::UA::InitWorld& worlds(int index) const;
+  ::UA::InitWorld* add_worlds();
+  const ::google::protobuf::RepeatedPtrField< ::UA::InitWorld >&
       worlds() const;
 
-  // repeated .DetermineTruck trucks = 2;
+  // repeated .UA.DetermineTruck trucks = 2;
   int trucks_size() const;
   void clear_trucks();
   static const int kTrucksFieldNumber = 2;
-  ::DetermineTruck* mutable_trucks(int index);
-  ::google::protobuf::RepeatedPtrField< ::DetermineTruck >*
+  ::UA::DetermineTruck* mutable_trucks(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineTruck >*
       mutable_trucks();
-  const ::DetermineTruck& trucks(int index) const;
-  ::DetermineTruck* add_trucks();
-  const ::google::protobuf::RepeatedPtrField< ::DetermineTruck >&
+  const ::UA::DetermineTruck& trucks(int index) const;
+  ::UA::DetermineTruck* add_trucks();
+  const ::google::protobuf::RepeatedPtrField< ::UA::DetermineTruck >&
       trucks() const;
 
-  // repeated .SettleShipment shipments = 3;
+  // repeated .UA.SettleShipment shipments = 3;
   int shipments_size() const;
   void clear_shipments();
   static const int kShipmentsFieldNumber = 3;
-  ::SettleShipment* mutable_shipments(int index);
-  ::google::protobuf::RepeatedPtrField< ::SettleShipment >*
+  ::UA::SettleShipment* mutable_shipments(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::SettleShipment >*
       mutable_shipments();
-  const ::SettleShipment& shipments(int index) const;
-  ::SettleShipment* add_shipments();
-  const ::google::protobuf::RepeatedPtrField< ::SettleShipment >&
+  const ::UA::SettleShipment& shipments(int index) const;
+  ::UA::SettleShipment* add_shipments();
+  const ::google::protobuf::RepeatedPtrField< ::UA::SettleShipment >&
       shipments() const;
 
-  // @@protoc_insertion_point(class_scope:UCommands)
+  // @@protoc_insertion_point(class_scope:UA.UCommands)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::InitWorld > worlds_;
-  ::google::protobuf::RepeatedPtrField< ::DetermineTruck > trucks_;
-  ::google::protobuf::RepeatedPtrField< ::SettleShipment > shipments_;
+  ::google::protobuf::RepeatedPtrField< ::UA::InitWorld > worlds_;
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineTruck > trucks_;
+  ::google::protobuf::RepeatedPtrField< ::UA::SettleShipment > shipments_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class ACommands :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ACommands) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.ACommands) */ {
  public:
   ACommands();
   virtual ~ACommands();
@@ -1579,45 +1580,45 @@ class ACommands :
 
   // accessors -------------------------------------------------------
 
-  // repeated .DetermineWarehouse warehouses = 1;
+  // repeated .UA.DetermineWarehouse warehouses = 1;
   int warehouses_size() const;
   void clear_warehouses();
   static const int kWarehousesFieldNumber = 1;
-  ::DetermineWarehouse* mutable_warehouses(int index);
-  ::google::protobuf::RepeatedPtrField< ::DetermineWarehouse >*
+  ::UA::DetermineWarehouse* mutable_warehouses(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineWarehouse >*
       mutable_warehouses();
-  const ::DetermineWarehouse& warehouses(int index) const;
-  ::DetermineWarehouse* add_warehouses();
-  const ::google::protobuf::RepeatedPtrField< ::DetermineWarehouse >&
+  const ::UA::DetermineWarehouse& warehouses(int index) const;
+  ::UA::DetermineWarehouse* add_warehouses();
+  const ::google::protobuf::RepeatedPtrField< ::UA::DetermineWarehouse >&
       warehouses() const;
 
-  // repeated .DetermineDst dests = 2;
+  // repeated .UA.DetermineDst dests = 2;
   int dests_size() const;
   void clear_dests();
   static const int kDestsFieldNumber = 2;
-  ::DetermineDst* mutable_dests(int index);
-  ::google::protobuf::RepeatedPtrField< ::DetermineDst >*
+  ::UA::DetermineDst* mutable_dests(int index);
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineDst >*
       mutable_dests();
-  const ::DetermineDst& dests(int index) const;
-  ::DetermineDst* add_dests();
-  const ::google::protobuf::RepeatedPtrField< ::DetermineDst >&
+  const ::UA::DetermineDst& dests(int index) const;
+  ::UA::DetermineDst* add_dests();
+  const ::google::protobuf::RepeatedPtrField< ::UA::DetermineDst >&
       dests() const;
 
-  // @@protoc_insertion_point(class_scope:ACommands)
+  // @@protoc_insertion_point(class_scope:UA.ACommands)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::DetermineWarehouse > warehouses_;
-  ::google::protobuf::RepeatedPtrField< ::DetermineDst > dests_;
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineWarehouse > warehouses_;
+  ::google::protobuf::RepeatedPtrField< ::UA::DetermineDst > dests_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Response :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Response) */ {
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:UA.Response) */ {
  public:
   Response();
   virtual ~Response();
@@ -1732,7 +1733,7 @@ class Response :
   bool succeed() const;
   void set_succeed(bool value);
 
-  // @@protoc_insertion_point(class_scope:Response)
+  // @@protoc_insertion_point(class_scope:UA.Response)
  private:
   class HasBitSetters;
 
@@ -1766,13 +1767,13 @@ inline void InitWorld::clear_worldid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 InitWorld::worldid() const {
-  // @@protoc_insertion_point(field_get:InitWorld.worldid)
+  // @@protoc_insertion_point(field_get:UA.InitWorld.worldid)
   return worldid_;
 }
 inline void InitWorld::set_worldid(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   worldid_ = value;
-  // @@protoc_insertion_point(field_set:InitWorld.worldid)
+  // @@protoc_insertion_point(field_set:UA.InitWorld.worldid)
 }
 
 // required int64 seqnum = 2;
@@ -1784,13 +1785,13 @@ inline void InitWorld::clear_seqnum() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int64 InitWorld::seqnum() const {
-  // @@protoc_insertion_point(field_get:InitWorld.seqnum)
+  // @@protoc_insertion_point(field_get:UA.InitWorld.seqnum)
   return seqnum_;
 }
 inline void InitWorld::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000002u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:InitWorld.seqnum)
+  // @@protoc_insertion_point(field_set:UA.InitWorld.seqnum)
 }
 
 // -------------------------------------------------------------------
@@ -1806,13 +1807,13 @@ inline void WarehouseInfo::clear_whid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int32 WarehouseInfo::whid() const {
-  // @@protoc_insertion_point(field_get:WarehouseInfo.whid)
+  // @@protoc_insertion_point(field_get:UA.WarehouseInfo.whid)
   return whid_;
 }
 inline void WarehouseInfo::set_whid(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000001u;
   whid_ = value;
-  // @@protoc_insertion_point(field_set:WarehouseInfo.whid)
+  // @@protoc_insertion_point(field_set:UA.WarehouseInfo.whid)
 }
 
 // required int32 wh_x = 2;
@@ -1824,13 +1825,13 @@ inline void WarehouseInfo::clear_wh_x() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int32 WarehouseInfo::wh_x() const {
-  // @@protoc_insertion_point(field_get:WarehouseInfo.wh_x)
+  // @@protoc_insertion_point(field_get:UA.WarehouseInfo.wh_x)
   return wh_x_;
 }
 inline void WarehouseInfo::set_wh_x(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
   wh_x_ = value;
-  // @@protoc_insertion_point(field_set:WarehouseInfo.wh_x)
+  // @@protoc_insertion_point(field_set:UA.WarehouseInfo.wh_x)
 }
 
 // required int32 wh_y = 3;
@@ -1842,46 +1843,46 @@ inline void WarehouseInfo::clear_wh_y() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline ::google::protobuf::int32 WarehouseInfo::wh_y() const {
-  // @@protoc_insertion_point(field_get:WarehouseInfo.wh_y)
+  // @@protoc_insertion_point(field_get:UA.WarehouseInfo.wh_y)
   return wh_y_;
 }
 inline void WarehouseInfo::set_wh_y(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000004u;
   wh_y_ = value;
-  // @@protoc_insertion_point(field_set:WarehouseInfo.wh_y)
+  // @@protoc_insertion_point(field_set:UA.WarehouseInfo.wh_y)
 }
 
 // -------------------------------------------------------------------
 
 // DetermineWarehouse
 
-// repeated .WarehouseInfo warehouses = 1;
+// repeated .UA.WarehouseInfo warehouses = 1;
 inline int DetermineWarehouse::warehouses_size() const {
   return warehouses_.size();
 }
 inline void DetermineWarehouse::clear_warehouses() {
   warehouses_.Clear();
 }
-inline ::WarehouseInfo* DetermineWarehouse::mutable_warehouses(int index) {
-  // @@protoc_insertion_point(field_mutable:DetermineWarehouse.warehouses)
+inline ::UA::WarehouseInfo* DetermineWarehouse::mutable_warehouses(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.DetermineWarehouse.warehouses)
   return warehouses_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::WarehouseInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::WarehouseInfo >*
 DetermineWarehouse::mutable_warehouses() {
-  // @@protoc_insertion_point(field_mutable_list:DetermineWarehouse.warehouses)
+  // @@protoc_insertion_point(field_mutable_list:UA.DetermineWarehouse.warehouses)
   return &warehouses_;
 }
-inline const ::WarehouseInfo& DetermineWarehouse::warehouses(int index) const {
-  // @@protoc_insertion_point(field_get:DetermineWarehouse.warehouses)
+inline const ::UA::WarehouseInfo& DetermineWarehouse::warehouses(int index) const {
+  // @@protoc_insertion_point(field_get:UA.DetermineWarehouse.warehouses)
   return warehouses_.Get(index);
 }
-inline ::WarehouseInfo* DetermineWarehouse::add_warehouses() {
-  // @@protoc_insertion_point(field_add:DetermineWarehouse.warehouses)
+inline ::UA::WarehouseInfo* DetermineWarehouse::add_warehouses() {
+  // @@protoc_insertion_point(field_add:UA.DetermineWarehouse.warehouses)
   return warehouses_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::WarehouseInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::WarehouseInfo >&
 DetermineWarehouse::warehouses() const {
-  // @@protoc_insertion_point(field_list:DetermineWarehouse.warehouses)
+  // @@protoc_insertion_point(field_list:UA.DetermineWarehouse.warehouses)
   return warehouses_;
 }
 
@@ -1894,46 +1895,46 @@ inline void DetermineWarehouse::clear_seqnum() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 DetermineWarehouse::seqnum() const {
-  // @@protoc_insertion_point(field_get:DetermineWarehouse.seqnum)
+  // @@protoc_insertion_point(field_get:UA.DetermineWarehouse.seqnum)
   return seqnum_;
 }
 inline void DetermineWarehouse::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:DetermineWarehouse.seqnum)
+  // @@protoc_insertion_point(field_set:UA.DetermineWarehouse.seqnum)
 }
 
 // -------------------------------------------------------------------
 
 // DetermineTruck
 
-// repeated .TruckLocation arrivedtrucks = 1;
+// repeated .UA.TruckLocation arrivedtrucks = 1;
 inline int DetermineTruck::arrivedtrucks_size() const {
   return arrivedtrucks_.size();
 }
 inline void DetermineTruck::clear_arrivedtrucks() {
   arrivedtrucks_.Clear();
 }
-inline ::TruckLocation* DetermineTruck::mutable_arrivedtrucks(int index) {
-  // @@protoc_insertion_point(field_mutable:DetermineTruck.arrivedtrucks)
+inline ::UA::TruckLocation* DetermineTruck::mutable_arrivedtrucks(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.DetermineTruck.arrivedtrucks)
   return arrivedtrucks_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::TruckLocation >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::TruckLocation >*
 DetermineTruck::mutable_arrivedtrucks() {
-  // @@protoc_insertion_point(field_mutable_list:DetermineTruck.arrivedtrucks)
+  // @@protoc_insertion_point(field_mutable_list:UA.DetermineTruck.arrivedtrucks)
   return &arrivedtrucks_;
 }
-inline const ::TruckLocation& DetermineTruck::arrivedtrucks(int index) const {
-  // @@protoc_insertion_point(field_get:DetermineTruck.arrivedtrucks)
+inline const ::UA::TruckLocation& DetermineTruck::arrivedtrucks(int index) const {
+  // @@protoc_insertion_point(field_get:UA.DetermineTruck.arrivedtrucks)
   return arrivedtrucks_.Get(index);
 }
-inline ::TruckLocation* DetermineTruck::add_arrivedtrucks() {
-  // @@protoc_insertion_point(field_add:DetermineTruck.arrivedtrucks)
+inline ::UA::TruckLocation* DetermineTruck::add_arrivedtrucks() {
+  // @@protoc_insertion_point(field_add:UA.DetermineTruck.arrivedtrucks)
   return arrivedtrucks_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::TruckLocation >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::TruckLocation >&
 DetermineTruck::arrivedtrucks() const {
-  // @@protoc_insertion_point(field_list:DetermineTruck.arrivedtrucks)
+  // @@protoc_insertion_point(field_list:UA.DetermineTruck.arrivedtrucks)
   return arrivedtrucks_;
 }
 
@@ -1946,13 +1947,13 @@ inline void DetermineTruck::clear_seqnum() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 DetermineTruck::seqnum() const {
-  // @@protoc_insertion_point(field_get:DetermineTruck.seqnum)
+  // @@protoc_insertion_point(field_get:UA.DetermineTruck.seqnum)
   return seqnum_;
 }
 inline void DetermineTruck::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:DetermineTruck.seqnum)
+  // @@protoc_insertion_point(field_set:UA.DetermineTruck.seqnum)
 }
 
 // -------------------------------------------------------------------
@@ -1968,13 +1969,13 @@ inline void TruckLocation::clear_truckid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int32 TruckLocation::truckid() const {
-  // @@protoc_insertion_point(field_get:TruckLocation.truckid)
+  // @@protoc_insertion_point(field_get:UA.TruckLocation.truckid)
   return truckid_;
 }
 inline void TruckLocation::set_truckid(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000001u;
   truckid_ = value;
-  // @@protoc_insertion_point(field_set:TruckLocation.truckid)
+  // @@protoc_insertion_point(field_set:UA.TruckLocation.truckid)
 }
 
 // required int32 whid = 2;
@@ -1986,46 +1987,46 @@ inline void TruckLocation::clear_whid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int32 TruckLocation::whid() const {
-  // @@protoc_insertion_point(field_get:TruckLocation.whid)
+  // @@protoc_insertion_point(field_get:UA.TruckLocation.whid)
   return whid_;
 }
 inline void TruckLocation::set_whid(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
   whid_ = value;
-  // @@protoc_insertion_point(field_set:TruckLocation.whid)
+  // @@protoc_insertion_point(field_set:UA.TruckLocation.whid)
 }
 
 // -------------------------------------------------------------------
 
 // DetermineDst
 
-// repeated .TruckDst leavingtrucks = 1;
+// repeated .UA.TruckDst leavingtrucks = 1;
 inline int DetermineDst::leavingtrucks_size() const {
   return leavingtrucks_.size();
 }
 inline void DetermineDst::clear_leavingtrucks() {
   leavingtrucks_.Clear();
 }
-inline ::TruckDst* DetermineDst::mutable_leavingtrucks(int index) {
-  // @@protoc_insertion_point(field_mutable:DetermineDst.leavingtrucks)
+inline ::UA::TruckDst* DetermineDst::mutable_leavingtrucks(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.DetermineDst.leavingtrucks)
   return leavingtrucks_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::TruckDst >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::TruckDst >*
 DetermineDst::mutable_leavingtrucks() {
-  // @@protoc_insertion_point(field_mutable_list:DetermineDst.leavingtrucks)
+  // @@protoc_insertion_point(field_mutable_list:UA.DetermineDst.leavingtrucks)
   return &leavingtrucks_;
 }
-inline const ::TruckDst& DetermineDst::leavingtrucks(int index) const {
-  // @@protoc_insertion_point(field_get:DetermineDst.leavingtrucks)
+inline const ::UA::TruckDst& DetermineDst::leavingtrucks(int index) const {
+  // @@protoc_insertion_point(field_get:UA.DetermineDst.leavingtrucks)
   return leavingtrucks_.Get(index);
 }
-inline ::TruckDst* DetermineDst::add_leavingtrucks() {
-  // @@protoc_insertion_point(field_add:DetermineDst.leavingtrucks)
+inline ::UA::TruckDst* DetermineDst::add_leavingtrucks() {
+  // @@protoc_insertion_point(field_add:UA.DetermineDst.leavingtrucks)
   return leavingtrucks_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::TruckDst >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::TruckDst >&
 DetermineDst::leavingtrucks() const {
-  // @@protoc_insertion_point(field_list:DetermineDst.leavingtrucks)
+  // @@protoc_insertion_point(field_list:UA.DetermineDst.leavingtrucks)
   return leavingtrucks_;
 }
 
@@ -2038,13 +2039,13 @@ inline void DetermineDst::clear_seqnum() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 DetermineDst::seqnum() const {
-  // @@protoc_insertion_point(field_get:DetermineDst.seqnum)
+  // @@protoc_insertion_point(field_get:UA.DetermineDst.seqnum)
   return seqnum_;
 }
 inline void DetermineDst::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:DetermineDst.seqnum)
+  // @@protoc_insertion_point(field_set:UA.DetermineDst.seqnum)
 }
 
 // -------------------------------------------------------------------
@@ -2060,13 +2061,13 @@ inline void TruckDst::clear_truckid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int32 TruckDst::truckid() const {
-  // @@protoc_insertion_point(field_get:TruckDst.truckid)
+  // @@protoc_insertion_point(field_get:UA.TruckDst.truckid)
   return truckid_;
 }
 inline void TruckDst::set_truckid(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000001u;
   truckid_ = value;
-  // @@protoc_insertion_point(field_set:TruckDst.truckid)
+  // @@protoc_insertion_point(field_set:UA.TruckDst.truckid)
 }
 
 // required int32 x = 2;
@@ -2078,13 +2079,13 @@ inline void TruckDst::clear_x() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int32 TruckDst::x() const {
-  // @@protoc_insertion_point(field_get:TruckDst.x)
+  // @@protoc_insertion_point(field_get:UA.TruckDst.x)
   return x_;
 }
 inline void TruckDst::set_x(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000002u;
   x_ = value;
-  // @@protoc_insertion_point(field_set:TruckDst.x)
+  // @@protoc_insertion_point(field_set:UA.TruckDst.x)
 }
 
 // required int32 y = 3;
@@ -2096,13 +2097,13 @@ inline void TruckDst::clear_y() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline ::google::protobuf::int32 TruckDst::y() const {
-  // @@protoc_insertion_point(field_get:TruckDst.y)
+  // @@protoc_insertion_point(field_get:UA.TruckDst.y)
   return y_;
 }
 inline void TruckDst::set_y(::google::protobuf::int32 value) {
   _has_bits_[0] |= 0x00000008u;
   y_ = value;
-  // @@protoc_insertion_point(field_set:TruckDst.y)
+  // @@protoc_insertion_point(field_set:UA.TruckDst.y)
 }
 
 // required int64 shipid = 4;
@@ -2114,46 +2115,46 @@ inline void TruckDst::clear_shipid() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline ::google::protobuf::int64 TruckDst::shipid() const {
-  // @@protoc_insertion_point(field_get:TruckDst.shipid)
+  // @@protoc_insertion_point(field_get:UA.TruckDst.shipid)
   return shipid_;
 }
 inline void TruckDst::set_shipid(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000004u;
   shipid_ = value;
-  // @@protoc_insertion_point(field_set:TruckDst.shipid)
+  // @@protoc_insertion_point(field_set:UA.TruckDst.shipid)
 }
 
 // -------------------------------------------------------------------
 
 // SettleShipment
 
-// repeated .PackageInfo packages = 1;
+// repeated .UA.PackageInfo packages = 1;
 inline int SettleShipment::packages_size() const {
   return packages_.size();
 }
 inline void SettleShipment::clear_packages() {
   packages_.Clear();
 }
-inline ::PackageInfo* SettleShipment::mutable_packages(int index) {
-  // @@protoc_insertion_point(field_mutable:SettleShipment.packages)
+inline ::UA::PackageInfo* SettleShipment::mutable_packages(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.SettleShipment.packages)
   return packages_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::PackageInfo >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::PackageInfo >*
 SettleShipment::mutable_packages() {
-  // @@protoc_insertion_point(field_mutable_list:SettleShipment.packages)
+  // @@protoc_insertion_point(field_mutable_list:UA.SettleShipment.packages)
   return &packages_;
 }
-inline const ::PackageInfo& SettleShipment::packages(int index) const {
-  // @@protoc_insertion_point(field_get:SettleShipment.packages)
+inline const ::UA::PackageInfo& SettleShipment::packages(int index) const {
+  // @@protoc_insertion_point(field_get:UA.SettleShipment.packages)
   return packages_.Get(index);
 }
-inline ::PackageInfo* SettleShipment::add_packages() {
-  // @@protoc_insertion_point(field_add:SettleShipment.packages)
+inline ::UA::PackageInfo* SettleShipment::add_packages() {
+  // @@protoc_insertion_point(field_add:UA.SettleShipment.packages)
   return packages_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::PackageInfo >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::PackageInfo >&
 SettleShipment::packages() const {
-  // @@protoc_insertion_point(field_list:SettleShipment.packages)
+  // @@protoc_insertion_point(field_list:UA.SettleShipment.packages)
   return packages_;
 }
 
@@ -2166,13 +2167,13 @@ inline void SettleShipment::clear_seqnum() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 SettleShipment::seqnum() const {
-  // @@protoc_insertion_point(field_get:SettleShipment.seqnum)
+  // @@protoc_insertion_point(field_get:UA.SettleShipment.seqnum)
   return seqnum_;
 }
 inline void SettleShipment::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:SettleShipment.seqnum)
+  // @@protoc_insertion_point(field_set:UA.SettleShipment.seqnum)
 }
 
 // -------------------------------------------------------------------
@@ -2188,13 +2189,13 @@ inline void PackageInfo::clear_packageid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 PackageInfo::packageid() const {
-  // @@protoc_insertion_point(field_get:PackageInfo.packageid)
+  // @@protoc_insertion_point(field_get:UA.PackageInfo.packageid)
   return packageid_;
 }
 inline void PackageInfo::set_packageid(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   packageid_ = value;
-  // @@protoc_insertion_point(field_set:PackageInfo.packageid)
+  // @@protoc_insertion_point(field_set:UA.PackageInfo.packageid)
 }
 
 // required int64 shipid = 2;
@@ -2206,106 +2207,106 @@ inline void PackageInfo::clear_shipid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int64 PackageInfo::shipid() const {
-  // @@protoc_insertion_point(field_get:PackageInfo.shipid)
+  // @@protoc_insertion_point(field_get:UA.PackageInfo.shipid)
   return shipid_;
 }
 inline void PackageInfo::set_shipid(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000002u;
   shipid_ = value;
-  // @@protoc_insertion_point(field_set:PackageInfo.shipid)
+  // @@protoc_insertion_point(field_set:UA.PackageInfo.shipid)
 }
 
 // -------------------------------------------------------------------
 
 // UCommands
 
-// repeated .InitWorld worlds = 1;
+// repeated .UA.InitWorld worlds = 1;
 inline int UCommands::worlds_size() const {
   return worlds_.size();
 }
 inline void UCommands::clear_worlds() {
   worlds_.Clear();
 }
-inline ::InitWorld* UCommands::mutable_worlds(int index) {
-  // @@protoc_insertion_point(field_mutable:UCommands.worlds)
+inline ::UA::InitWorld* UCommands::mutable_worlds(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.UCommands.worlds)
   return worlds_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::InitWorld >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::InitWorld >*
 UCommands::mutable_worlds() {
-  // @@protoc_insertion_point(field_mutable_list:UCommands.worlds)
+  // @@protoc_insertion_point(field_mutable_list:UA.UCommands.worlds)
   return &worlds_;
 }
-inline const ::InitWorld& UCommands::worlds(int index) const {
-  // @@protoc_insertion_point(field_get:UCommands.worlds)
+inline const ::UA::InitWorld& UCommands::worlds(int index) const {
+  // @@protoc_insertion_point(field_get:UA.UCommands.worlds)
   return worlds_.Get(index);
 }
-inline ::InitWorld* UCommands::add_worlds() {
-  // @@protoc_insertion_point(field_add:UCommands.worlds)
+inline ::UA::InitWorld* UCommands::add_worlds() {
+  // @@protoc_insertion_point(field_add:UA.UCommands.worlds)
   return worlds_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::InitWorld >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::InitWorld >&
 UCommands::worlds() const {
-  // @@protoc_insertion_point(field_list:UCommands.worlds)
+  // @@protoc_insertion_point(field_list:UA.UCommands.worlds)
   return worlds_;
 }
 
-// repeated .DetermineTruck trucks = 2;
+// repeated .UA.DetermineTruck trucks = 2;
 inline int UCommands::trucks_size() const {
   return trucks_.size();
 }
 inline void UCommands::clear_trucks() {
   trucks_.Clear();
 }
-inline ::DetermineTruck* UCommands::mutable_trucks(int index) {
-  // @@protoc_insertion_point(field_mutable:UCommands.trucks)
+inline ::UA::DetermineTruck* UCommands::mutable_trucks(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.UCommands.trucks)
   return trucks_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::DetermineTruck >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::DetermineTruck >*
 UCommands::mutable_trucks() {
-  // @@protoc_insertion_point(field_mutable_list:UCommands.trucks)
+  // @@protoc_insertion_point(field_mutable_list:UA.UCommands.trucks)
   return &trucks_;
 }
-inline const ::DetermineTruck& UCommands::trucks(int index) const {
-  // @@protoc_insertion_point(field_get:UCommands.trucks)
+inline const ::UA::DetermineTruck& UCommands::trucks(int index) const {
+  // @@protoc_insertion_point(field_get:UA.UCommands.trucks)
   return trucks_.Get(index);
 }
-inline ::DetermineTruck* UCommands::add_trucks() {
-  // @@protoc_insertion_point(field_add:UCommands.trucks)
+inline ::UA::DetermineTruck* UCommands::add_trucks() {
+  // @@protoc_insertion_point(field_add:UA.UCommands.trucks)
   return trucks_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::DetermineTruck >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::DetermineTruck >&
 UCommands::trucks() const {
-  // @@protoc_insertion_point(field_list:UCommands.trucks)
+  // @@protoc_insertion_point(field_list:UA.UCommands.trucks)
   return trucks_;
 }
 
-// repeated .SettleShipment shipments = 3;
+// repeated .UA.SettleShipment shipments = 3;
 inline int UCommands::shipments_size() const {
   return shipments_.size();
 }
 inline void UCommands::clear_shipments() {
   shipments_.Clear();
 }
-inline ::SettleShipment* UCommands::mutable_shipments(int index) {
-  // @@protoc_insertion_point(field_mutable:UCommands.shipments)
+inline ::UA::SettleShipment* UCommands::mutable_shipments(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.UCommands.shipments)
   return shipments_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::SettleShipment >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::SettleShipment >*
 UCommands::mutable_shipments() {
-  // @@protoc_insertion_point(field_mutable_list:UCommands.shipments)
+  // @@protoc_insertion_point(field_mutable_list:UA.UCommands.shipments)
   return &shipments_;
 }
-inline const ::SettleShipment& UCommands::shipments(int index) const {
-  // @@protoc_insertion_point(field_get:UCommands.shipments)
+inline const ::UA::SettleShipment& UCommands::shipments(int index) const {
+  // @@protoc_insertion_point(field_get:UA.UCommands.shipments)
   return shipments_.Get(index);
 }
-inline ::SettleShipment* UCommands::add_shipments() {
-  // @@protoc_insertion_point(field_add:UCommands.shipments)
+inline ::UA::SettleShipment* UCommands::add_shipments() {
+  // @@protoc_insertion_point(field_add:UA.UCommands.shipments)
   return shipments_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::SettleShipment >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::SettleShipment >&
 UCommands::shipments() const {
-  // @@protoc_insertion_point(field_list:UCommands.shipments)
+  // @@protoc_insertion_point(field_list:UA.UCommands.shipments)
   return shipments_;
 }
 
@@ -2313,63 +2314,63 @@ UCommands::shipments() const {
 
 // ACommands
 
-// repeated .DetermineWarehouse warehouses = 1;
+// repeated .UA.DetermineWarehouse warehouses = 1;
 inline int ACommands::warehouses_size() const {
   return warehouses_.size();
 }
 inline void ACommands::clear_warehouses() {
   warehouses_.Clear();
 }
-inline ::DetermineWarehouse* ACommands::mutable_warehouses(int index) {
-  // @@protoc_insertion_point(field_mutable:ACommands.warehouses)
+inline ::UA::DetermineWarehouse* ACommands::mutable_warehouses(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.ACommands.warehouses)
   return warehouses_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::DetermineWarehouse >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::DetermineWarehouse >*
 ACommands::mutable_warehouses() {
-  // @@protoc_insertion_point(field_mutable_list:ACommands.warehouses)
+  // @@protoc_insertion_point(field_mutable_list:UA.ACommands.warehouses)
   return &warehouses_;
 }
-inline const ::DetermineWarehouse& ACommands::warehouses(int index) const {
-  // @@protoc_insertion_point(field_get:ACommands.warehouses)
+inline const ::UA::DetermineWarehouse& ACommands::warehouses(int index) const {
+  // @@protoc_insertion_point(field_get:UA.ACommands.warehouses)
   return warehouses_.Get(index);
 }
-inline ::DetermineWarehouse* ACommands::add_warehouses() {
-  // @@protoc_insertion_point(field_add:ACommands.warehouses)
+inline ::UA::DetermineWarehouse* ACommands::add_warehouses() {
+  // @@protoc_insertion_point(field_add:UA.ACommands.warehouses)
   return warehouses_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::DetermineWarehouse >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::DetermineWarehouse >&
 ACommands::warehouses() const {
-  // @@protoc_insertion_point(field_list:ACommands.warehouses)
+  // @@protoc_insertion_point(field_list:UA.ACommands.warehouses)
   return warehouses_;
 }
 
-// repeated .DetermineDst dests = 2;
+// repeated .UA.DetermineDst dests = 2;
 inline int ACommands::dests_size() const {
   return dests_.size();
 }
 inline void ACommands::clear_dests() {
   dests_.Clear();
 }
-inline ::DetermineDst* ACommands::mutable_dests(int index) {
-  // @@protoc_insertion_point(field_mutable:ACommands.dests)
+inline ::UA::DetermineDst* ACommands::mutable_dests(int index) {
+  // @@protoc_insertion_point(field_mutable:UA.ACommands.dests)
   return dests_.Mutable(index);
 }
-inline ::google::protobuf::RepeatedPtrField< ::DetermineDst >*
+inline ::google::protobuf::RepeatedPtrField< ::UA::DetermineDst >*
 ACommands::mutable_dests() {
-  // @@protoc_insertion_point(field_mutable_list:ACommands.dests)
+  // @@protoc_insertion_point(field_mutable_list:UA.ACommands.dests)
   return &dests_;
 }
-inline const ::DetermineDst& ACommands::dests(int index) const {
-  // @@protoc_insertion_point(field_get:ACommands.dests)
+inline const ::UA::DetermineDst& ACommands::dests(int index) const {
+  // @@protoc_insertion_point(field_get:UA.ACommands.dests)
   return dests_.Get(index);
 }
-inline ::DetermineDst* ACommands::add_dests() {
-  // @@protoc_insertion_point(field_add:ACommands.dests)
+inline ::UA::DetermineDst* ACommands::add_dests() {
+  // @@protoc_insertion_point(field_add:UA.ACommands.dests)
   return dests_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::DetermineDst >&
+inline const ::google::protobuf::RepeatedPtrField< ::UA::DetermineDst >&
 ACommands::dests() const {
-  // @@protoc_insertion_point(field_list:ACommands.dests)
+  // @@protoc_insertion_point(field_list:UA.ACommands.dests)
   return dests_;
 }
 
@@ -2386,13 +2387,13 @@ inline void Response::clear_succeed() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline bool Response::succeed() const {
-  // @@protoc_insertion_point(field_get:Response.succeed)
+  // @@protoc_insertion_point(field_get:UA.Response.succeed)
   return succeed_;
 }
 inline void Response::set_succeed(bool value) {
   _has_bits_[0] |= 0x00000002u;
   succeed_ = value;
-  // @@protoc_insertion_point(field_set:Response.succeed)
+  // @@protoc_insertion_point(field_set:UA.Response.succeed)
 }
 
 // required int64 seqnum = 2;
@@ -2404,13 +2405,13 @@ inline void Response::clear_seqnum() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 Response::seqnum() const {
-  // @@protoc_insertion_point(field_get:Response.seqnum)
+  // @@protoc_insertion_point(field_get:UA.Response.seqnum)
   return seqnum_;
 }
 inline void Response::set_seqnum(::google::protobuf::int64 value) {
   _has_bits_[0] |= 0x00000001u;
   seqnum_ = value;
-  // @@protoc_insertion_point(field_set:Response.seqnum)
+  // @@protoc_insertion_point(field_set:UA.Response.seqnum)
 }
 
 #ifdef __GNUC__
@@ -2441,7 +2442,7 @@ inline void Response::set_seqnum(::google::protobuf::int64 value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
-} // namespace UPS_AMAZON
+}  // namespace UA
 
 // @@protoc_insertion_point(global_scope)
 

@@ -10,9 +10,14 @@
 // client will do connection and garbage collection
 class AmazonBridge {
 private:
+  std::string errmsg;
   Client ConAmazonClient;
   Server UpsServer;
 
+  /* SendMsg
+   * easy way to send google protocol message, return 0 if success
+   * else return -1, check errmsg to find some idea
+   */
   template <typename T> int SendMsg(T &msg) {
     std::vector<char> buf;
     if (msgToCharArray<T>(msg, buf) == -1)
