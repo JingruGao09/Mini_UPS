@@ -101,12 +101,12 @@ class Package(models.Model):
     )
     
     package_status = models.CharField(max_length=1,
-                                    choices = PACKAGE_STATUS_OP,
-                                    blank = False,
-                                    default = '1',
-                                    null = False,
-                                    help_text='Package Status')
-        
+                                      choices = PACKAGE_STATUS_OP,
+                                      blank = False,
+                                      default = '1',
+                                      null = False,
+                                      help_text='Package Status')
+
     class Meta:
         db_table = 'package'
 
