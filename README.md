@@ -1,6 +1,6 @@
 # Mini_UPS
 
-#DB Setup
+# DB Setup
 
 run command 'psql -U postgres'
 
@@ -10,7 +10,7 @@ In postgres:
 
 quit the postgres
 
-#In Django:
+# In Django:
     go to manage.py directory
 
     run 'find . -path "*/migrations/*.py" -not -name "__init__.py" -delete'
@@ -18,3 +18,5 @@ quit the postgres
         'python3 manage.py makemigrations'
         'python3 manage.py migrate'
 
+# Protocol Document Link:
+https://docs.google.com/document/d/1dmcaAkaA9GzCz9IDpnhOQhF1PdSEFZW--sjbBUerWDM/edit
