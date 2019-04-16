@@ -1,6 +1,6 @@
 
 mkdir cpp
-path=./proto
+path=./source
 files=$(ls $path)
 for filename in $files
 do
