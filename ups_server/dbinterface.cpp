@@ -187,11 +187,56 @@ int DBInterface::getDeliveringTruck(const int &WH_x, const int &WH_y,
  */
 int DBInterface::updateTruckStatus(const std::string &truck_id,
                                    const std::string &x, const std::string &y,
-                                   std::string &status,
+                                   std::string status,
                                    const std::string &WORLD_id) {
   try {
     std::string sql = "UPDATE TRUCK SET X=" + x + " , Y=" + y + " ,STATUS='" +
                       status + "' WHERE TRUCK_ID=" + truck_id +
+                      " AND WORLD_ID=" + WORLD_id + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+
+/*
+ * createPackage
+ *
+ * create a new package
+ *
+ * succeed return 0, else return -1
+ */
+int DBInterface::createPackage(const std::string &package_id,
+                               const std::string &truck_id,
+                               const std::string &x, const std::string &y,
+                               std::string status,
+                               const std::string &WORLD_id) {
+  try {
+    std::string sql = "INSERT INTO PACKAGE(PACKAGE_ID,TRUCK_ID, X, Y, "
+                      "STATUS,WORLD_ID) VALUES(" +
+                      package_id + "," + truck_id + "," + x + "," + y + ", '" +
+                      status + "'," + WORLD_id + ");";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+/*
+ * updatePackageStatus
+ *
+ * update the status and location of package
+ *
+ * return 0 if succeed, else -1
+ */
+int DBInterface::updatePackageStatus(const std::string &package_id,
+                                     const std::string &x, const std::string &y,
+                                     std::string status,
+                                     const std::string &WORLD_id) {
+  try {
+    std::string sql = "UPDATE PACKAGE SET X=" + x + ", Y=" + y + ", STATUS='" +
+                      status + "' WHERE PACKAGE_ID=" + package_id +
                       " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {

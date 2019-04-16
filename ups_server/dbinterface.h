@@ -25,9 +25,15 @@ public:
   int getDeliveringTruck(const int &WH_x, const int &WH_y,
                          const std::string &WORLD_id);
   int updateTruckStatus(const std::string &truck_id, const std::string &x,
-                        const std::string &y, std::string &status,
+                        const std::string &y, std::string status,
                         const std::string &WORLD_id);
   int createTruck(const std::string &truck_id, const std::string &x,
                   const std::string &y, const std::string &WORLD_id);
+  int createPackage(const std::string &package_id, const std::string &truck_id,
+                    const std::string &x, const std::string &y,
+                    std::string status, const std::string &WORLD_id);
+  int updatePackageStatus(const std::string &package_id, const std::string &x,
+                          const std::string &y, std::string status,
+                          const std::string &WORLD_id);
 };
 #endif
