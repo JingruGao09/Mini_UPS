@@ -16,4 +16,10 @@ int AmazonBridge::SendWorldId(const int &world_id){
   return SendMsg<UPS_AMAZON::InitWorld>(msg);
 }
 
+int AmazonBridge::SendTruckId(){
 
+}
+
+int AmazonBridge::SendPackageId(){
+
+}

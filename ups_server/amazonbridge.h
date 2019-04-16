@@ -12,7 +12,19 @@ class AmazonBridge {
 private:
   Client ConAmazonClient;
   Server UpsServer;
-public:
+
+  template <typename T> int SendMsg(T &msg) {
+    std::vector<char> buf;
+    if (msgToCharArray<T>(msg, buf) == -1)
+      return -1;
+    if (ConAmazonClient.sendData(buf) == -1) {
+      errmsg = ConAmazonClient.getError();
+      return -1;
+    }
+    return 0;
+  }
+
+ public:
   AmazonBridge(const char *hostname, const char *port);
   ~AmazonBridge();
   int SendWorldId(const int &world_id);
