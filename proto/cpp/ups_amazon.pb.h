@@ -1296,6 +1296,21 @@ class PackageInfo :
 
   // accessors -------------------------------------------------------
 
+  // required string description = 2;
+  bool has_description() const;
+  void clear_description();
+  static const int kDescriptionFieldNumber = 2;
+  const ::std::string& description() const;
+  void set_description(const ::std::string& value);
+  #if LANG_CXX11
+  void set_description(::std::string&& value);
+  #endif
+  void set_description(const char* value);
+  void set_description(const char* value, size_t size);
+  ::std::string* mutable_description();
+  ::std::string* release_description();
+  void set_allocated_description(::std::string* description);
+
   // required int64 packageid = 1;
   bool has_packageid() const;
   void clear_packageid();
@@ -1303,12 +1318,19 @@ class PackageInfo :
   ::google::protobuf::int64 packageid() const;
   void set_packageid(::google::protobuf::int64 value);
 
-  // required int64 shipid = 2;
+  // required int64 shipid = 4;
   bool has_shipid() const;
   void clear_shipid();
-  static const int kShipidFieldNumber = 2;
+  static const int kShipidFieldNumber = 4;
   ::google::protobuf::int64 shipid() const;
   void set_shipid(::google::protobuf::int64 value);
+
+  // required int32 count = 3;
+  bool has_count() const;
+  void clear_count();
+  static const int kCountFieldNumber = 3;
+  ::google::protobuf::int32 count() const;
+  void set_count(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:UA.PackageInfo)
  private:
@@ -1320,8 +1342,10 @@ class PackageInfo :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr description_;
   ::google::protobuf::int64 packageid_;
   ::google::protobuf::int64 shipid_;
+  ::google::protobuf::int32 count_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2182,36 +2206,114 @@ inline void SettleShipment::set_seqnum(::google::protobuf::int64 value) {
 
 // required int64 packageid = 1;
 inline bool PackageInfo::has_packageid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void PackageInfo::clear_packageid() {
   packageid_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int64 PackageInfo::packageid() const {
   // @@protoc_insertion_point(field_get:UA.PackageInfo.packageid)
   return packageid_;
 }
 inline void PackageInfo::set_packageid(::google::protobuf::int64 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   packageid_ = value;
   // @@protoc_insertion_point(field_set:UA.PackageInfo.packageid)
 }
 
-// required int64 shipid = 2;
+// required string description = 2;
+inline bool PackageInfo::has_description() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PackageInfo::clear_description() {
+  description_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const ::std::string& PackageInfo::description() const {
+  // @@protoc_insertion_point(field_get:UA.PackageInfo.description)
+  return description_.GetNoArena();
+}
+inline void PackageInfo::set_description(const ::std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:UA.PackageInfo.description)
+}
+#if LANG_CXX11
+inline void PackageInfo::set_description(::std::string&& value) {
+  _has_bits_[0] |= 0x00000001u;
+  description_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:UA.PackageInfo.description)
+}
+#endif
+inline void PackageInfo::set_description(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000001u;
+  description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:UA.PackageInfo.description)
+}
+inline void PackageInfo::set_description(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000001u;
+  description_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:UA.PackageInfo.description)
+}
+inline ::std::string* PackageInfo::mutable_description() {
+  _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:UA.PackageInfo.description)
+  return description_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PackageInfo::release_description() {
+  // @@protoc_insertion_point(field_release:UA.PackageInfo.description)
+  if (!has_description()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  return description_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PackageInfo::set_allocated_description(::std::string* description) {
+  if (description != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  description_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), description);
+  // @@protoc_insertion_point(field_set_allocated:UA.PackageInfo.description)
+}
+
+// required int32 count = 3;
+inline bool PackageInfo::has_count() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PackageInfo::clear_count() {
+  count_ = 0;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline ::google::protobuf::int32 PackageInfo::count() const {
+  // @@protoc_insertion_point(field_get:UA.PackageInfo.count)
+  return count_;
+}
+inline void PackageInfo::set_count(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000008u;
+  count_ = value;
+  // @@protoc_insertion_point(field_set:UA.PackageInfo.count)
+}
+
+// required int64 shipid = 4;
 inline bool PackageInfo::has_shipid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void PackageInfo::clear_shipid() {
   shipid_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::google::protobuf::int64 PackageInfo::shipid() const {
   // @@protoc_insertion_point(field_get:UA.PackageInfo.shipid)
   return shipid_;
 }
 inline void PackageInfo::set_shipid(::google::protobuf::int64 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   shipid_ = value;
   // @@protoc_insertion_point(field_set:UA.PackageInfo.shipid)
 }

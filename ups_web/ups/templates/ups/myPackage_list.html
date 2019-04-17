@@ -10,8 +10,13 @@
     <a href="{{ package.get_absolute_url }}">Package: {{package.package_id}} </a>
   </li>
   {% endfor %}
-
 </ul>
+  <p>Did not see your package in the list?</p>
+  <p>Add your package to your account!</p>
+  <form class="form-inline ml-auto">
+    <a href="/ups/matchmypackage/" class="btn btn-outline-secondary">Add Package Record</a>
+  </form>
+
 {% else %}
 <p>Currently,</p>
 <p>There is no package information under your account.</p>

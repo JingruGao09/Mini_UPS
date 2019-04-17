@@ -5,9 +5,9 @@ from django.db.models import Q
 from ups.models import Package
 from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm,PackageMatchForm
 from django.contrib.auth import login, authenticate
-from .models import UpsProfile,Truck,Package,Shipment
+from .models import UpsProfile,Truck,Package,Shipment,Product
 
 import pdb
 
@@ -61,6 +61,20 @@ def MyPackagesView(request):
     #package_list = UpsProfile.objects.filter(pk = request.user.pk).first().package_set.all()
     #template = loader.get_template('ups/package_list.html')
     return render(request,'ups/myPackage_list.html',{'package_list':package_list})
+
+def MatchMyPackageView(request):
+    if request.method=='POST':
+        form = PackageMatchForm(request.POST)
+        if form.is_valid():
+            package_id = form.cleaned_data['package_id']
+            prof = UpsProfile.objects.filter(pk = request.user.pk).first()
+            package = Package.objects.filter(package_id = package_id).first()
+            package.user = prof
+            package.save()
+            return render(request, 'base_generic.html')
+    else:
+        form = PackageMatchForm(request.POST)
+    return render(request,'ups/match_my_package.html',{'form':form})
 
 @method_decorator(login_required, name='dispatch')
 class PackageListView(generic.ListView):
