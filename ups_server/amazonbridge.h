@@ -1,15 +1,16 @@
 #ifndef __AMAZONBRIDGE_H__
 #define __AMAZONBRIDGE_H__
 #include "client.h"
+#include "dbinterface.h"
 #include "server.h"
 #include "ups_amazon.pb.h"
-#include "dbinterface.h"
 #include <iostream>
 #include <string>
 
 // client will do connection and garbage collection
 class AmazonBridge {
 private:
+  int world_id;
   std::string errmsg;
   Client ConAmazonClient;
   Server UpsServer;
@@ -29,11 +30,11 @@ private:
     return 0;
   }
 
- public:
+public:
   AmazonBridge(const char *hostname, const char *port);
   ~AmazonBridge();
-  int SendWorldId(const int &world_id);
-  int SendTruckId();
+  int SendWorldId(const int &world_id, const int64_t &seqnum);
+  int SendTruckId(const int64_t &seqnum);
   int SendPackageId();
 };
 #endif
