@@ -32,8 +32,7 @@ public:
   int createPackage(const std::string &package_id, const std::string &truck_id,
                     const std::string &x, const std::string &y,
                     std::string status, const std::string &WORLD_id);
-  int updatePackageStatus(const std::string &package_id, const std::string &x,
-                          const std::string &y, std::string status,
+  int updatePackageStatus(const std::string &package_id, std::string status,
                           const std::string &WORLD_id);
 };
 #endif

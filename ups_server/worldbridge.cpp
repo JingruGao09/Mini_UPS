@@ -35,7 +35,34 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
   }
   return SendMsg<UPS::UConnect>(msg);
 }
-
+/*
+ * ParseWorldid
+ *
+ * get the world id from the message
+ *
+ * return -1 if fail, else, return worldid
+ */
+int WorldBridge::ParseWorldid(const std::vector<char> &response) {
+  UPS::UConnected msg;
+  if (!msg.ParseFromArray(&response[0], response.size()))
+    return -1;
+  return msg.worldid();
+}
+/*
+ * ParseConnectWorldInfo
+ *
+ * parse the message to check whether succeed to connect world
+ *
+ * return 0 if succeed, return -1 if fail
+ */
+int WorldBridge::ParseConnectWorldInfo(const std::vector<char> &response) {
+  UPS::UConnected msg;
+  if (!msg.ParseFromArray(&response[0], response.size()))
+    return -1;
+  if (msg.result() == "connected!")
+    return 0;
+  return -1;
+}
 /*
  * CreateTrucks
  *
@@ -63,6 +90,7 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect &msg) {
  * GOPickUp
  *
  * Sent message to world let truck to the wharehouse
+ * after use this function, query to get truck info
  * return 0 if succeed, else -1
  *
  */
@@ -75,12 +103,6 @@ int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks,
     pickup->set_whid(wh_id);
     pickup->set_truckid(truck.truck_id);
     pickup->set_seqnum(seqnum);
-    if (Zeus.updateTruckStatus(std::to_string(truck.truck_id),
-                               std::to_string(truck.x), std::to_string(truck.y),
-                               "EN ROUTE TO A WAREHOUSE",
-                               std::to_string(world_id)) == -1) {
-      return -1;
-    }
   }
   return SendMsg<UPS::UCommands>(command);
 }
@@ -114,6 +136,7 @@ int WorldBridge::SetPackageInfo(truck_t &truck,
  * GODeliver
  *
  * Sent message to world let truck to deliver package
+ * after using this function, please query
  * return 0 if succeed, else -1
  *
  */
@@ -126,11 +149,150 @@ int WorldBridge::GoDeliver(truck_t &truck, std::vector<package_t> &packages,
   if (SetPackageInfo(truck, packages, goDeliver) == -1)
     return -1;
   goDeliver->set_seqnum(seqnum);
-  if (Zeus.updateTruckStatus(std::to_string(truck.truck_id),
-                             std::to_string(truck.x), std::to_string(truck.y),
-                             "DELIVERING", std::to_string(world_id)))
-    return -1;
   return SendMsg<UPS::UCommands>(command);
+}
+
+int WorldBridge::Query(const int &truck_id, const int64_t &seqnum) {
+  UPS::UCommands command;
+  UPS::UQuery *query;
+  query = command.add_queries();
+  query->set_truckid(truck_id);
+  query->set_seqnum(seqnum);
+  return SendMsg<UPS::UCommands>(command);
+}
+
+int WorldBridge::ack(const std::vector<int64_t> &seqnums) {
+  UPS::UCommands command;
+  for (unsigned long i = 0; i < seqnums.size(); i++)
+    command.set_acks(i, seqnums[i]);
+  return SendMsg<UPS::UCommands>(command);
+}
+
+/*
+ * ParseResponse
+ *
+ * handle all message from world simulator
+ *
+ * return -1,if fail to pass message or db error
+ * return 1, if world closed successfully
+ * return 2, if exist any error
+ * return 0, if succeed
+ * if truck arrive wh, trucks will be updated.
+ */
+int WorldBridge::ParseResponses(const std::vector<char> &response,
+                                std::vector<truck_t> &trucks) {
+  UPS::UResponses msg;
+  if (!msg.ParseFromArray(&response[0], response.size()))
+    return -1;
+  if (finished_handler(msg, trucks, seqnums) == -1)
+    return -1;
+  if (delivery_handler(msg, seqnums) == -1)
+    return -1;
+  if (msg.has_finished() && msg.finished())
+    return 1;
+  ack_handler(msg);
+  if (truck_handler(msg, seqnums) == -1)
+    return -1;
+  if (err_handler(msg, seqnums) > 0)
+    return 2;
+  return 0;
+}
+/*
+ * finished_handler
+ *
+ * when truck arrive warehouse or complete all delivery,
+ * we will handle Ufinished message
+ *
+ * return 0 if succeed, else -1
+ * if the status is arrive warehouse, trucks will be updated
+ *
+ */
+int WorldBridge::finished_handler(UPS::UResponses &msg,
+                                  std::vector<truck_t> &trucks,
+                                  std::vector<int64_t> &seqnums) {
+  for (int i = 0; i < msg.completions_size(); i++) {
+    UPS::UFinished finished = msg.completions(i);
+    if (Zeus.updateTruckStatus(std::to_string(finished.truckid()),
+                               std::to_string(finished.x()),
+                               std::to_string(finished.y()), finished.status(),
+                               std::to_string(world_id)))
+      return -1;
+    seqnums.push_back(finished.seqnum());
+    if (finished.status() == "arrive warehouse") {
+      trucks.push_back({finished.truckid(), finished.x(), finished.y()});
+    }
+  }
+  return 0;
+}
+/*
+ * delivery_handler
+ *
+ * when truck makes one delivery,
+ * we will handle UDeliveryMade message
+ * update the db
+ *
+ * return 0 if succeed, else -1
+ */
+int WorldBridge::delivery_handler(UPS::UResponses &msg,
+                                  std::vector<int64_t> &seqnums) {
+  for (int i = 0; i < msg.delivered_size(); i++) {
+    UPS::UDeliveryMade delivery = msg.delivered(i);
+    if (Zeus.updatePackageStatus(std::to_string(delivery.packageid()),
+                                 "Delivered", std::to_string(world_id)) == -1)
+      return -1;
+    seqnums.push_back(delivery.seqnum());
+  }
+  return 0;
+}
+
+/*
+ * ack_handler
+ *
+ * update request status in db
+ * always return 0
+ */
+int WorldBridge::ack_handler(UPS::UResponses &msg) {
+  for (int i = 0; i < msg.acks_size(); i++) {
+    // check seq num
+  }
+  return 0;
+}
+
+/*
+ * truck_handler
+ *
+ * update truck info inside db
+ * fail to save info will return -1, succeed return 0
+ */
+int WorldBridge::truck_handler(UPS::UResponses &msg,
+                               std::vector<int64_t> &seqnums) {
+  for (int i = 0; i < msg.truckstatus_size(); i++) {
+    UPS::UTruck truck = msg.truckstatus(i);
+    // check seq num
+    Zeus.updateTruckStatus(std::to_string(truck.truckid()),
+                           std::to_string(truck.x()), std::to_string(truck.y()),
+                           truck.status(), std::to_string(world_id));
+    seqnums.push_back(truck.seqnum());
+  }
+  return 0;
+}
+
+/*
+ * error_handler
+ *
+ * log errmsg
+ * return number of errors
+ */
+int WorldBridge::err_handler(UPS::UResponses &msg,
+                             std::vector<int64_t> &seqnums) {
+  int count = 0;
+  for (int i = 0; i < msg.error_size(); i++) {
+    ++count;
+    UPS::UErr err = msg.error(i);
+    seqnums.push_back(err.seqnum());
+    // log errmsg;
+  }
+  return count;
 }
 int main() {
   WorldBridge wb("localhost", "12345");

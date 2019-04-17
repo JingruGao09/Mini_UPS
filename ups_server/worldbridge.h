@@ -41,16 +41,27 @@ private:
   int CreateTrucks(int truckNum, UPS::UConnect &msg);
   int SetPackageInfo(truck_t &truck, std::vector<package_t> &packages,
                      UPS::UGoDeliver *goDeliver);
+  int finished_handler(UPS::UResponses &msg, std::vector<truck_t> &trucks,
+                       std::vector<int64_t> &seqnums);
+  int delivery_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
+  int ack_handler(UPS::UResponses &msg);
+  int truck_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
+  int err_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
 
 public:
   WorldBridge(const char *hostname, const char *port);
   ~WorldBridge();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
-
+  int ParseWorldid(const std::vector<char> &response);
+  int ParseConnectWorldInfo(const std::vector<char> &response);
   int GoPickUp(const int &wh_id, std::vector<truck_t> &trucks,
                const int64_t &seqnum);
   int GoDeliver(truck_t &truck, std::vector<package_t> &packages,
                 const int64_t &seqnum);
+  int Query(const int &truck_id, const int64_t &seqnum);
+  int ack(const std::vector<int64_t> &seqnums);
+  int ParseResponses(const std::vector<char> &response,
+                     std::vector<truck_t> &trucks);
 };
 #endif

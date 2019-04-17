@@ -231,12 +231,11 @@ int DBInterface::createPackage(const std::string &package_id,
  * return 0 if succeed, else -1
  */
 int DBInterface::updatePackageStatus(const std::string &package_id,
-                                     const std::string &x, const std::string &y,
                                      std::string status,
                                      const std::string &WORLD_id) {
   try {
-    std::string sql = "UPDATE PACKAGE SET X=" + x + ", Y=" + y + ", STATUS='" +
-                      status + "' WHERE PACKAGE_ID=" + package_id +
+    std::string sql = "UPDATE PACKAGE SET STATUS='" + status +
+                      "' WHERE PACKAGE_ID=" + package_id +
                       " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {
