@@ -13,5 +13,7 @@ private:
 
 public:
   UPServer(const char *h, const char *p);
+  int WorldMsgHandler();
+  int test();
 };
 #endif
