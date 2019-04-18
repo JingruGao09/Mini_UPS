@@ -51,10 +51,9 @@ def save_user_profile(sender, instance, **kwargs):
 class Truck(models.Model):
     #package = models.ForeignKey(Package, models.DO_NOTHING, primary_key=True)
     world = models.ForeignKey('World', models.DO_NOTHING)
-    truck_id = models.IntegerField(null = False)
-    wh_id = models.IntegerField(null = False)
-    wh_x = models.IntegerField()
-    wh_y = models.IntegerField()
+    truck_id = models.IntegerField(primary_key=True)
+    x = models.IntegerField()
+    y = models.IntegerField()
     
     TRUCK_STATUS_OP = (
         ('1','idle'),
