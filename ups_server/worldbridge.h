@@ -24,22 +24,6 @@ private:
   std::string errmsg;
   Client Hermes;
   DBInterface Zeus;
-  /* SendMsg
-   * easy way to send google protocol message, return 0 if success
-   * else return -1, check errmsg to find some idea
-   */
-  /*
-  template <typename T> int SendMsg(T &msg) {
-    std::vector<char> buf;
-    if (msgToCharArray<T>(msg, buf) == -1)
-      return -1;
-    if (Hermes.sendData(buf) == -1) {
-      errmsg = Hermes.getError();
-      return -1;
-    }
-    return 0;
-  }*/
-  template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
   int CreateTrucks(int truckNum, UPS::UConnect &msg);
   int SetPackageInfo(truck_t &truck, std::vector<package_t> &packages,
                      UPS::UGoDeliver *goDeliver);
@@ -53,16 +37,16 @@ private:
 public:
   WorldBridge(const char *hostname, const char *port);
   ~WorldBridge();
-  std::vector<char> RecvMsg();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
-  int ParseWorldid(const std::vector<char> &response);
-  int ParseConnectWorldInfo(const std::vector<char> &response);
+  int ParseWorldid(UPS::UConnected &msg);
+  int ParseConnectWorldInfo(UPS::UConnected &msg);
   int GoPickUp(const int &wh_id, std::vector<truck_t> &trucks);
   int GoDeliver(truck_t &truck, std::vector<package_t> &packages);
   int Query(const int &truck_id);
   int ack(const std::vector<int64_t> &seqnums);
   int ParseResponses(const std::vector<char> &response,
                      std::vector<truck_t> &trucks);
+  template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };
 #endif

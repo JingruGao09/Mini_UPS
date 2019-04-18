@@ -43,7 +43,7 @@ public:
 
   template <typename T> int recvMsg(T &msg) {
     google::protobuf::io::FileInputStream in(sockfd);
-    if (!recvMesgFro(msg, &in))
+    if (!recvMesgFrom(msg, &in))
       return -1;
     return 0;
   }
