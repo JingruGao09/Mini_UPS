@@ -52,8 +52,8 @@ class Truck(models.Model):
     #package = models.ForeignKey(Package, models.DO_NOTHING, primary_key=True)
     world = models.ForeignKey('World', models.DO_NOTHING)
     truck_id = models.IntegerField(primary_key=True)
-    x = models.IntegerField()
-    y = models.IntegerField()
+    x = models.IntegerField() #warehouse wh_x
+    y = models.IntegerField() #warehouse wh_y
     
     TRUCK_STATUS_OP = (
         ('1','idle'),

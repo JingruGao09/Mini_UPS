@@ -10,8 +10,9 @@ class UpsProfile(admin.ModelAdmin):
     list_display=('user')
 '''
 class TruckAdmin(admin.ModelAdmin):
-    list_display=('world_id','truck_id','wh_id','wh_x','wh_y','truck_status')
-
+    #list_display=('world_id','truck_id','wh_id','wh_x','wh_y','truck_status')
+    list_display=('world_id','truck_id','x','y','truck_status')
+    
 admin.site.register(Truck,TruckAdmin)
 
 class PackageAdmin(admin.ModelAdmin):

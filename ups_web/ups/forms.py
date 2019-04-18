@@ -20,3 +20,7 @@ class CustomUserCreationForm(UserCreationForm):
     '''
 class PackageMatchForm(forms.Form):
     package_id = forms.IntegerField(label = 'Your Package ID',required = True)
+
+class EditPackageDestForm(forms.Form):
+    des_x = forms.IntegerField(label = 'delivery dest x',required = True)
+    des_y = forms.IntegerField(label = 'delivery dest y',required = True)

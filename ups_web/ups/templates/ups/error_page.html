@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Sorry You cannot change delivery destination of this package!</h1>
+
+<p>Your package has been shipped!</p>
+<p>Please click the button below to check other packages.</p>
+<form class="form-inline ml-auto">
+  <a href="{% url 'myPackages' %}" class="btn btn-outline-secondary">Check My Package List</a>
+</form>
+
+
+{% endblock %}

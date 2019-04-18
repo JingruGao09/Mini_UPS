@@ -1,0 +1,9 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<form action= "/ups/editmypackagedest/{{package_id}}"  method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-outline-secondary" value="Save">
+</form>
+{% endblock %}
