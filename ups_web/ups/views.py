@@ -5,7 +5,7 @@ from django.db.models import Q
 from ups.models import Package
 from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationForm,PackageMatchForm
+from .forms import CustomUserCreationForm,PackageMatchForm, EditPackageDestForm
 from django.contrib.auth import login, authenticate
 from .models import UpsProfile,Truck,Package,Shipment,Product
 
@@ -54,7 +54,7 @@ from django.utils.decorators import method_decorator
 
 def MyPackagesView(request):
     package_list = UpsProfile.objects.filter(user_id = request.user.pk).first().user_set.all()
-    print(request.user.pk)
+    #print(request.user.pk)
     #pdb.set_trace()
 
     print(package_list)
@@ -62,6 +62,31 @@ def MyPackagesView(request):
     #template = loader.get_template('ups/package_list.html')
     return render(request,'ups/myPackage_list.html',{'package_list':package_list})
 
+def EditMyPackageDestView(request,package_id):
+    mypackage = Package.objects.filter(package_id = package_id).filter(Q(package_status = '4')).filter(Q(package_status = '5')).first()
+    #print("mypackage status")
+    #print(mypackage.package_status)
+    if mypackage is not None:
+        if request.method=='POST':
+            form = EditPackageDestForm(request.POST)
+            if form.is_valid():
+                des_x = form.cleaned_data['des_x']
+                des_y = form.cleaned_data['des_y']
+                mypackage.des_x = des_x
+                mypackage.des_y = des_y
+                mypackage.save()
+                #prof = UpsProfile.objects.filter(pk = request.user.pk).first()
+                #package = Package.objects.filter(package_id = package_id).first()
+                #package.user = prof
+                #package.save()
+                return render(request, 'base_generic.html')
+        else:
+            form = EditPackageDestForm()
+    else:
+        return render(request, 'ups/error_page.html')
+    return render(request,'ups/editMyPackageDest.html',{'form':form,'package_id':package_id})
+
+'''
 def MatchMyPackageView(request):
     if request.method=='POST':
         form = PackageMatchForm(request.POST)
@@ -75,6 +100,7 @@ def MatchMyPackageView(request):
     else:
         form = PackageMatchForm(request.POST)
     return render(request,'ups/match_my_package.html',{'form':form})
+'''
 
 @method_decorator(login_required, name='dispatch')
 class PackageListView(generic.ListView):

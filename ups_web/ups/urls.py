@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),
     path('myPackages/',views.MyPackagesView,name='myPackages'),
     path('package/<int:pk>',views.PackageDetailView.as_view(),name='package-detail'),
-    path('matchmypackage/',views.MatchMyPackageView,name = 'MatchMyPackageView')
+    #path('matchmypackage/',views.MatchMyPackageView,name = 'MatchMyPackageView')
+    path('editmypackagedest/<int:package_id>',views.EditMyPackageDestView,name = 'EditMyPackageDestView'),
 ]
