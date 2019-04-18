@@ -41,19 +41,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
   }
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
-/*
- * ParseWorldid
- *
- * get the world id from the message
- *
- * return -1 if fail, else, return worldid
- */
-int WorldBridge::ParseWorldid(const std::vector<char> &response) {
-  UPS::UConnected msg;
-  if (!msg.ParseFromArray(&response[0], response.size()))
-    return -1;
-  return msg.worldid();
-}
+
 /*
  * ParseConnectWorldInfo
  *
@@ -61,10 +49,7 @@ int WorldBridge::ParseWorldid(const std::vector<char> &response) {
  *
  * return 0 if succeed, return -1 if fail
  */
-int WorldBridge::ParseConnectWorldInfo(const std::vector<char> &response) {
-  UPS::UConnected msg;
-  if (!msg.ParseFromArray(&response[0], response.size()))
-    return -1;
+int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
   if (msg.result() == "connected!")
     return 0;
   return -1;
