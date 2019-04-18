@@ -12,6 +12,8 @@ DBInterface::DBInterface() {
   } else {
     throw std::string("Fail to open db");
   }
+  if (initializer() == -1)
+    throw std::string("Fail to initialize db");
 }
 
 DBInterface::~DBInterface() { C->disconnect(); }
@@ -69,7 +71,8 @@ int DBInterface::getWorldNum() {
  */
 int DBInterface::updateWorldNum(const std::string &WORLD_ID) {
   try {
-    std::string sql = "INSERT INTO WORLD(WORLD_ID) VALUES(" + WORLD_ID + ");";
+    std::string sql =
+        "INSERT INTO WORLD(WORLD_ID,STATUS) VALUES(" + WORLD_ID + ", 'OPEN');";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -193,8 +196,8 @@ int DBInterface::createPackage(const std::string &package_id,
                                std::string status,
                                const std::string &WORLD_id) {
   try {
-    std::string sql = "INSERT INTO PACKAGE(PACKAGE_ID,TRUCK_ID, X, Y, "
-                      "STATUS,WORLD_ID) VALUES(" +
+    std::string sql = "INSERT INTO PACKAGE(PACKAGE_ID,TRUCK_ID, DES_X, DES_Y, "
+                      "PACKAGE_STATUS,WORLD_ID) VALUES(" +
                       package_id + "," + truck_id + "," + x + "," + y + ", '" +
                       status + "'," + WORLD_id + ");";
     return execute(sql);
@@ -214,7 +217,7 @@ int DBInterface::updatePackageStatus(const std::string &package_id,
                                      std::string status,
                                      const std::string &WORLD_id) {
   try {
-    std::string sql = "UPDATE PACKAGE SET STATUS='" + status +
+    std::string sql = "UPDATE PACKAGE SET PACKAGE_STATUS='" + status +
                       "' WHERE PACKAGE_ID=" + package_id +
                       " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
@@ -311,4 +314,25 @@ int DBInterface::rmOutSeqNum(const std::string &seqnum) {
     errmsg = e;
     return -1;
   }
+}
+
+int DBInterface::initializer() {
+  pqxx::work W(*C);
+  try {
+    std::string sql =
+        "CREATE TABLE IF NOT EXISTS INSEQNUM(ID BIGINT PRIMARY KEY NOT NULL);";
+    W.exec(sql);
+    sql = "CREATE TABLE IF NOT EXISTS OUTSEQNUM(ID BIGSERIAL PRIMARY KEY NOT "
+          "NULL, MSG "
+          "VARCHAR(65535) NOT NULL);";
+    W.exec(sql);
+    sql = "CREATE TABLE IF NOT EXISTS WORLD(WORLD_ID INT PRIMARY KEY NOT NULL, "
+          "STATUS VARCHAR(10) NOT NULL);";
+    W.exec(sql);
+    W.commit();
+  } catch (const std::exception &e) {
+    W.abort();
+    return -1;
+  }
+  return 0;
 }

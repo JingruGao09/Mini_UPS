@@ -5,6 +5,13 @@ WorldBridge::WorldBridge(const char *hostname, const char *port)
 WorldBridge::~WorldBridge() {}
 
 /*
+ * RecvMsg
+ *
+ * return msg in vector<char>
+ */
+std::vector<char> WorldBridge::RecvMsg() { return Hermes.receiveData(); }
+
+/*
  * RequireANewWorld
  *
  * Send msg to require a new world id
@@ -315,7 +322,9 @@ int WorldBridge::err_handler(UPS::UResponses &msg,
   }
   return count;
 }
+/*
 int main() {
   WorldBridge wb("localhost", "12345");
   wb.ConnectToAWorld(1, true);
 }
+*/

@@ -36,6 +36,7 @@ private:
 public:
   DBInterface();
   ~DBInterface();
+  int initializer();
   int getWorldNum();
   int updateWorldNum(const std::string &WORLD_ID);
   int getArrivedTruck(const int &WH_x, const int &WH_y,

@@ -57,7 +57,7 @@ int Client::sendData(const std::vector<char> &msg) {
     }
     return 0;
   } catch (std::string &e) {
-    errmsg = e;
+    throw std::string("socket failed");
     return -1;
   }
 }

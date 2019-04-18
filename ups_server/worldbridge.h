@@ -51,6 +51,7 @@ private:
 public:
   WorldBridge(const char *hostname, const char *port);
   ~WorldBridge();
+  std::vector<char> RecvMsg();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
   int ParseWorldid(const std::vector<char> &response);
