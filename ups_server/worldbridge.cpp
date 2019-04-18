@@ -9,7 +9,7 @@ WorldBridge::~WorldBridge() {}
  *
  * return msg in vector<char>
  */
-std::vector<char> WorldBridge::RecvMsg() { return Hermes.receiveData(); }
+// std::vector<char> WorldBridge::RecvMsg() { return Hermes.; }
 
 /*
  * RequireANewWorld
@@ -19,9 +19,8 @@ std::vector<char> WorldBridge::RecvMsg() { return Hermes.receiveData(); }
  */
 int WorldBridge::RequireANewWorld() {
   UPS::UConnect msg;
-  msg.set_worldid(5);
   msg.set_isamazon(false);
-  return SendMsg<UPS::UConnect>(msg);
+  return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 /*
  * ConnectToAWorld
@@ -40,7 +39,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
     if (CreateTrucks(TRUCK_NUM, msg) == -1)
       return -1;
   }
-  return SendMsg<UPS::UConnect>(msg);
+  return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 /*
  * ParseWorldid
@@ -113,7 +112,7 @@ int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks) {
       return -1;
     pickup->set_seqnum(seqnum);
   }
-  return SendMsg<UPS::UCommands>(command);
+  return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
 /*
@@ -160,7 +159,7 @@ int WorldBridge::GoDeliver(truck_t &truck, std::vector<package_t> &packages) {
   if ((seqnum = Zeus.fetchSeqNum()) == -1)
     return -1;
   goDeliver->set_seqnum(seqnum);
-  return SendMsg<UPS::UCommands>(command);
+  return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
 int WorldBridge::Query(const int &truck_id) {
@@ -172,14 +171,14 @@ int WorldBridge::Query(const int &truck_id) {
   if ((seqnum = Zeus.fetchSeqNum()) == -1)
     return -1;
   query->set_seqnum(seqnum);
-  return SendMsg<UPS::UCommands>(command);
+  return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
 int WorldBridge::ack(const std::vector<int64_t> &seqnums) {
   UPS::UCommands command;
   for (unsigned long i = 0; i < seqnums.size(); i++)
     command.set_acks(i, seqnums[i]);
-  return SendMsg<UPS::UCommands>(command);
+  return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
 /*

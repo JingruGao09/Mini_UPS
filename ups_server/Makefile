@@ -1,11 +1,15 @@
 CC=g++
 CFLAGS=-std=gnu++11 -pedantic -Wall -Werror -ggdb3 -pthread 
 EXTRAFLAGS=-lpqxx -lpq
-SRCS=$(wildcard *.cpp, *.cc)
+SRCS=$(wildcard *.cpp)
 OBJS=$(patsubst %.cpp, %.o,$(SRCS))
-Mini_ups:$(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(EXTRAFLAGS)
+SRCS2=$(wildcard *.cc)
+OBJS2=$(patsubst %.cc, %.o,$(SRCS2))
+Mini_ups:$(OBJS) $(OBJS2)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(OBJS2) $(EXTRAFLAGS)
 %.o:%.cpp
+	$(CC) $(CFLAGS) -c $<
+%.o:%.cc
 	$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean

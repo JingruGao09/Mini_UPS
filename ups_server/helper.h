@@ -70,7 +70,7 @@ bool recvMesgFrom(T &message, google::protobuf::io::FileInputStream *in) {
  * if success return 0, else -1
  * when message is not fully initialized, it fail.
  */
-template <typename T> int msgToCharArray(T &message, std::vector<char> &buf) {
+/*template <typename T> int msgToCharArray(T &message, std::vector<char> &buf) {
   bool isInitialized = message.IsInitialized();
   if (!isInitialized)
     return -1;
@@ -82,3 +82,4 @@ template <typename T> int msgToCharArray(T &message, std::vector<char> &buf) {
   buf.insert(buf.begin(), tmp.begin(), tmp.end());
   return 0;
 }
+*/

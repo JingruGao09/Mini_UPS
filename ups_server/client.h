@@ -1,8 +1,12 @@
 #ifndef __CLIENT_H__
 #define __CLIENT_H__
+#include "helper.h"
+#include "world_ups.pb.h"
 #include <algorithm>
 #include <arpa/inet.h>
 #include <cstring>
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <netdb.h>
 #include <stdlib.h>
 #include <string>
@@ -30,5 +34,18 @@ public:
   int sendData(const std::vector<char> &msg);
   int getFD();
   std::string getError();
+  template <typename T> int sendMsg(T &msg) {
+    google::protobuf::io::FileOutputStream out(sockfd);
+    if (!sendMesgTo(msg, &out))
+      return -1;
+    return 0;
+  }
+
+  template <typename T> int recvMsg(T &msg) {
+    google::protobuf::io::FileInputStream in(sockfd);
+    if (!recvMesgFro(msg, &in))
+      return -1;
+    return 0;
+  }
 };
 #endif

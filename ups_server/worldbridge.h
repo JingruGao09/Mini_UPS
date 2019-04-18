@@ -28,6 +28,7 @@ private:
    * easy way to send google protocol message, return 0 if success
    * else return -1, check errmsg to find some idea
    */
+  /*
   template <typename T> int SendMsg(T &msg) {
     std::vector<char> buf;
     if (msgToCharArray<T>(msg, buf) == -1)
@@ -37,7 +38,8 @@ private:
       return -1;
     }
     return 0;
-  }
+  }*/
+  template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
   int CreateTrucks(int truckNum, UPS::UConnect &msg);
   int SetPackageInfo(truck_t &truck, std::vector<package_t> &packages,
                      UPS::UGoDeliver *goDeliver);
