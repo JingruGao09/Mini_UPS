@@ -9,7 +9,27 @@ private:
   std::string errmsg;
   std::unique_ptr<pqxx::connection> C;
   int execute(const std::string &sql);
-  int execute_and_return(const std::string &sql);
+  /*
+   * execute and return
+   *
+   * execute sql and return required value in one transaction
+   *
+   *
+   */
+  template <typename T> T execute_and_return(const std::string &sql) {
+    pqxx::work W(*C);
+    try {
+      auto v = W.exec(sql);
+      W.commit();
+      pqxx::result R(v);
+      auto c = R.begin();
+      return c[0].as<T>();
+    } catch (const std::exception &e) {
+      W.abort();
+      throw std::string("Database error");
+      return -1;
+    }
+  }
   pqxx::result lookup(const std::string &sql);
   int lookupTruck(const std::string &sql);
 
@@ -34,5 +54,9 @@ public:
                     std::string status, const std::string &WORLD_id);
   int updatePackageStatus(const std::string &package_id, std::string status,
                           const std::string &WORLD_id);
+  int docInSeqNum(const std::string &seqnum);
+  int docOutMsg(const std::string &seqnum, const std::string &msg);
+  int64_t fetchSeqNum();
+  int rmOutSeqNum(const std::string &seqnum);
 };
 #endif
