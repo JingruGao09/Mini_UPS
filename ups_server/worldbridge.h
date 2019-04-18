@@ -45,8 +45,8 @@ public:
   int GoDeliver(truck_t &truck, std::vector<package_t> &packages);
   int Query(const int &truck_id);
   int ack(const std::vector<int64_t> &seqnums);
-  int ParseResponses(const std::vector<char> &response,
-                     std::vector<truck_t> &trucks);
+  int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks);
+  int SetWorldOptions(int speed);
   template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };
 #endif

@@ -252,9 +252,11 @@ int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
  *
  * return 0 if success, if exist return -1
  */
-int DBInterface::docInSeqNum(const std::string &seqnum) {
+int DBInterface::docInSeqNum(const std::string &seqnum,
+                             const std::string &WORLD_id) {
   try {
-    std::string sql = "INSERT INTO INSEQNUM(ID) VALUES(" + seqnum + ");";
+    std::string sql = "INSERT INTO INSEQNUM(ID,WORLD_ID) VALUES(" + seqnum +
+                      "," + WORLD_id + ");";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -270,10 +272,12 @@ int DBInterface::docInSeqNum(const std::string &seqnum) {
  * if success return 0, else -1
  *
  */
-int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg) {
+int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
+                           const std::string &WORLD_id) {
   try {
-    std::string sql =
-        "UPDATE OUTSEQNUM SET MSG='" + msg + "' WHERE ID=" + seqnum + ";";
+    std::string sql = "UPDATE OUTSEQNUM SET MSG='" + msg +
+                      "' WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id +
+                      ";";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -287,10 +291,10 @@ int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg) {
  *
  * return seqnum if success, else return -1;
  */
-int64_t DBInterface::fetchSeqNum() {
+int64_t DBInterface::fetchSeqNum(const std::string &WORLD_id) {
   try {
-    std::string sql =
-        "INSERT INTO OUTSEQNUM(RESPONSE) VALUES (NULL) RETURNING ID;";
+    std::string sql = "INSERT INTO OUTSEQNUM (WORLD_ID) VALUES (" + WORLD_id +
+                      ") RETURNING ID;";
     return execute_and_return<int64_t>(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -306,9 +310,11 @@ int64_t DBInterface::fetchSeqNum() {
  *
  * return 0 if succeed , else -1
  */
-int DBInterface::rmOutSeqNum(const std::string &seqnum) {
+int DBInterface::rmOutSeqNum(const std::string &seqnum,
+                             const std::string &WORLD_id) {
   try {
-    std::string sql = "DELETE FROM OUTSEQNUM WHERE ID=" + seqnum + ";";
+    std::string sql = "DELETE FROM OUTSEQNUM WHERE ID=" + seqnum +
+                      " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -320,15 +326,19 @@ int DBInterface::initializer() {
   pqxx::work W(*C);
   try {
     std::string sql =
-        "CREATE TABLE IF NOT EXISTS INSEQNUM(ID BIGINT PRIMARY KEY NOT NULL);";
+        "CREATE TABLE IF NOT EXISTS WORLD(WORLD_ID INT PRIMARY KEY NOT NULL, "
+        "STATUS VARCHAR(10) NOT NULL);";
     W.exec(sql);
-    sql = "CREATE TABLE IF NOT EXISTS OUTSEQNUM(ID BIGSERIAL PRIMARY KEY NOT "
+    sql =
+        "CREATE TABLE IF NOT EXISTS INSEQNUM(ID BIGINT NOT NULL, WORLD_ID INT "
+        "NOT NULL REFERENCES WORLD(WORLD_ID),PRIMARY KEY(ID, WORLD_ID));";
+    W.exec(sql);
+    sql = "CREATE TABLE IF NOT EXISTS OUTSEQNUM(ID BIGSERIAL NOT "
           "NULL, MSG "
-          "VARCHAR(65535) NOT NULL);";
+          "VARCHAR(65535),WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID), "
+          "PRIMARY KEY(ID, WORLD_ID));";
     W.exec(sql);
-    sql = "CREATE TABLE IF NOT EXISTS WORLD(WORLD_ID INT PRIMARY KEY NOT NULL, "
-          "STATUS VARCHAR(10) NOT NULL);";
-    W.exec(sql);
+
     sql = "CREATE TABLE IF NOT EXISTS TRUCK(TRUCK_ID INT NOT NULL, X INT NOT "
           "NULL, Y INT NOT NULL, WORLD_ID INT NOT NULL REFERENCES "
           "WORLD(WORLD_ID),TRUCK_STATUS VARCHAR(20) NOT NULL DEFAULT 'IDLE', "

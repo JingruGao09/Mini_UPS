@@ -1,6 +1,9 @@
 #include "upserver.h"
 
-UPServer::UPServer(const char *h, const char *p) : wb(h, p) { ConnectWorld(); }
+UPServer::UPServer(const char *h, const char *p) : wb(h, p) {
+  ConnectWorld();
+  wb.SetWorldOptions(SIMSPEED);
+}
 
 /*
  * ConnectWorld
@@ -31,5 +34,24 @@ void UPServer::ConnectWorld() {
   if (wb.ParseConnectWorldInfo(response) == -1)
     throw std::string("failed to connect world");
 }
-
-int main() { UPServer upserver("localhost", "12345"); }
+int UPServer::test() {
+  wb.Query(1);
+  WorldMsgHandler();
+  WorldMsgHandler();
+  return 0;
+}
+int UPServer::WorldMsgHandler() {
+  UPS::UResponses response;
+  std::vector<truck_t> trucks;
+  wb.RecvMsg<UPS::UResponses>(response);
+  if (wb.ParseResponses(response, trucks) == -1)
+    return -1;
+  if (!trucks.empty()) {
+    // tell amazon truck info
+  }
+  return 0;
+}
+int main() {
+  UPServer upserver("localhost", "12345");
+  upserver.test();
+}
