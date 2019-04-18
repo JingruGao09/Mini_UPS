@@ -55,11 +55,9 @@ public:
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
   int ParseWorldid(const std::vector<char> &response);
   int ParseConnectWorldInfo(const std::vector<char> &response);
-  int GoPickUp(const int &wh_id, std::vector<truck_t> &trucks,
-               const int64_t &seqnum);
-  int GoDeliver(truck_t &truck, std::vector<package_t> &packages,
-                const int64_t &seqnum);
-  int Query(const int &truck_id, const int64_t &seqnum);
+  int GoPickUp(const int &wh_id, std::vector<truck_t> &trucks);
+  int GoDeliver(truck_t &truck, std::vector<package_t> &packages);
+  int Query(const int &truck_id);
   int ack(const std::vector<int64_t> &seqnums);
   int ParseResponses(const std::vector<char> &response,
                      std::vector<truck_t> &trucks);
