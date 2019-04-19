@@ -17,4 +17,4 @@ clean:
 	rm -f Mini_ups *.o *~ test
 
 test:
-	g++ -ggdb3 upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
+	g++ -ggdb3 log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)

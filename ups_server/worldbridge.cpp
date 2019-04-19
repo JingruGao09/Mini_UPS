@@ -20,6 +20,7 @@ WorldBridge::~WorldBridge() {}
 int WorldBridge::RequireANewWorld() {
   UPS::UConnect msg;
   msg.set_isamazon(false);
+  Homer.LogSendMsg("World", "Requesting a new world");
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
@@ -39,6 +40,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
     if (CreateTrucks(TRUCK_NUM, msg) == -1)
       return -1;
   }
+  Homer.LogSendMsg("World", "Connecting to world " + std::to_string(wid));
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
@@ -50,6 +52,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
  * return 0 if succeed, return -1 if fail
  */
 int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
+  Homer.LogRecvMsg("World", msg.result());
   if (msg.result() == "connected!")
     return 0;
   return -1;
@@ -96,6 +99,9 @@ int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks) {
     if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
       return -1;
     pickup->set_seqnum(seqnum);
+    Homer.LogSendMsg("World", "sending truck " +
+                                  std::to_string(truck.truck_id) +
+                                  " to warehouse " + std::to_string(wh_id));
     // save msg to db
   }
   return Hermes.sendMsg<UPS::UCommands>(command);
@@ -104,6 +110,7 @@ int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks) {
 int WorldBridge::SetWorldOptions(int speed) {
   UPS::UCommands command;
   command.set_simspeed(speed);
+  Homer.LogSendMsg("World", "setting world speed to " + std::to_string(speed));
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
@@ -128,6 +135,9 @@ int WorldBridge::SetPackageInfo(truck_t &truck,
             "OUT FOR DELIVERY", std::to_string(world_id)) == -1) {
       return -1;
     }
+    Homer.LogSendMsg("World",
+                     "loading package " + std::to_string(package.package_id) +
+                         " onto truck " + std::to_string(truck.truck_id));
   }
   return 0;
 }
@@ -152,6 +162,8 @@ int WorldBridge::GoDeliver(truck_t &truck, std::vector<package_t> &packages) {
     return -1;
   goDeliver->set_seqnum(seqnum);
   // save msg to db
+  Homer.LogSendMsg("World", "sending truck " + std::to_string(truck.truck_id) +
+                                " to deliver");
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
@@ -165,6 +177,8 @@ int WorldBridge::Query(const int &truck_id) {
     return -1;
   query->set_seqnum(seqnum);
   // save msg to db
+  Homer.LogSendMsg("World",
+                   "querying status of truck " + std::to_string(truck_id));
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 /*
@@ -175,8 +189,10 @@ int WorldBridge::Query(const int &truck_id) {
  */
 int WorldBridge::ack(const std::vector<int64_t> &seqnums) {
   UPS::UCommands command;
-  for (unsigned long i = 0; i < seqnums.size(); i++)
+  for (unsigned long i = 0; i < seqnums.size(); i++) {
     command.add_acks(seqnums[i]);
+    Homer.LogSendMsg("World", "acking " + std::to_string(seqnums[i]));
+  }
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
@@ -235,7 +251,16 @@ int WorldBridge::finished_handler(UPS::UResponses &msg,
       return -1;
 
     if (finished.status() == "arrive warehouse") {
+      Homer.LogRecvMsg("World", "truck " + std::to_string(finished.truckid()) +
+                                    " arrived at warehouse, located at (" +
+                                    std::to_string(finished.x()) + "," +
+                                    std::to_string(finished.y()) + ")");
       trucks.push_back({finished.truckid(), finished.x(), finished.y()});
+    } else {
+      Homer.LogRecvMsg("World", "truck " + std::to_string(finished.truckid()) +
+                                    " delivered all packages, located at (" +
+                                    std::to_string(finished.x()) + "," +
+                                    std::to_string(finished.y()) + ")");
     }
   }
   return 0;
@@ -260,6 +285,9 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
     if (Zeus.updatePackageStatus(std::to_string(delivery.packageid()),
                                  "Delivered", std::to_string(world_id)) == -1)
       return -1;
+    Homer.LogRecvMsg("World", "truck" + std::to_string(delivery.truckid()) +
+                                  " delivered package " +
+                                  std::to_string(delivery.packageid()));
   }
   return 0;
 }
@@ -272,10 +300,10 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
  */
 int WorldBridge::ack_handler(UPS::UResponses &msg) {
   for (int i = 0; i < msg.acks_size(); i++) {
-    // check seq num
     if (Zeus.rmOutSeqNum(std::to_string(msg.acks(i)),
                          std::to_string(world_id)) == -1)
       return -1;
+    Homer.LogRecvMsg("World", "acking" + std::to_string(msg.acks(i)));
   }
   return 0;
 }
@@ -300,6 +328,10 @@ int WorldBridge::truck_handler(UPS::UResponses &msg,
                                std::to_string(truck.y()), truck.status(),
                                std::to_string(world_id)) == -1)
       return -1;
+    Homer.LogRecvMsg("World", "truck " + std::to_string(truck.truckid()) +
+                                  " is " + truck.status() + " ,located at(" +
+                                  std::to_string(truck.x()) + "," +
+                                  std::to_string(truck.y()) + ")");
   }
   return 0;
 }
@@ -320,7 +352,7 @@ int WorldBridge::err_handler(UPS::UResponses &msg,
     if (Zeus.docInSeqNum(std::to_string(err.seqnum()),
                          std::to_string(world_id)) == -1)
       continue;
-    // log errmsg;
+    Homer.LogRecvMsg("World", "error, " + err.err());
   }
   return count;
 }

@@ -2,6 +2,7 @@
 #define __WORLDBRIDGE_H__
 #include "client.h"
 #include "dbinterface.h"
+#include "log.h"
 #include "world_ups.pb.h"
 #include <iostream>
 #include <string>
@@ -24,6 +25,7 @@ private:
   std::string errmsg;
   Client Hermes;
   DBInterface Zeus;
+  Log Homer;
   int CreateTrucks(int truckNum, UPS::UConnect &msg);
   int SetPackageInfo(truck_t &truck, std::vector<package_t> &packages,
                      UPS::UGoDeliver *goDeliver);
@@ -39,7 +41,6 @@ public:
   ~WorldBridge();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
-  int ParseWorldid(UPS::UConnected &msg);
   int ParseConnectWorldInfo(UPS::UConnected &msg);
   int GoPickUp(const int &wh_id, std::vector<truck_t> &trucks);
   int GoDeliver(truck_t &truck, std::vector<package_t> &packages);
