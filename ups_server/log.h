@@ -9,8 +9,6 @@ private:
   void save(const std::string &msg);
 
 public:
-  Log();
-  ~Log();
   void LogRecvMsg(std::string who, const std::string &what);
   void LogSendMsg(std::string who, const std::string &wha);
 };

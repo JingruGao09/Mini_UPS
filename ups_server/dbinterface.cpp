@@ -238,7 +238,8 @@ int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
                              const std::string &WORLD_id) {
   try {
     std::string sql = "INSERT INTO TRUCK(TRUCK_ID, X, Y, WORLD_ID) VALUES(" +
-                      truck_id + "," + x + "," + y + "," + WORLD_id + ");";
+                      truck_id + "," + x + "," + y + "," + WORLD_id +
+                      ") ON CONFLICT DO NOTHING;";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;

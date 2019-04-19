@@ -1,5 +1,4 @@
 #include "upserver.h"
-
 UPServer::UPServer(const char *h, const char *p) : wb(h, p) {
   ConnectWorld();
   wb.SetWorldOptions(SIMSPEED);
@@ -12,6 +11,7 @@ UPServer::UPServer(const char *h, const char *p) : wb(h, p) {
  * if there is no world, then it will ask for one, and init trucks inside
  * anything fail, it will throw exception
  *
+ * pass test, it will not fail
  */
 void UPServer::ConnectWorld() {
   bool initTruck = false;
@@ -35,9 +35,11 @@ void UPServer::ConnectWorld() {
     throw std::string("failed to connect world");
 }
 int UPServer::test() {
-  wb.Query(1);
-  WorldMsgHandler();
-  WorldMsgHandler();
+  for (int i = 0; i < 200; i++) {
+    wb.Query(i);
+    WorldMsgHandler();
+  }
+
   return 0;
 }
 int UPServer::WorldMsgHandler() {
@@ -51,7 +53,12 @@ int UPServer::WorldMsgHandler() {
   }
   return 0;
 }
+void listen_func(UPServer &upserver) {
+  while (1) {
+  }
+}
 int main() {
   UPServer upserver("localhost", "12345");
+  std::thread t(listen_func, std::ref(upserver));
   upserver.test();
 }

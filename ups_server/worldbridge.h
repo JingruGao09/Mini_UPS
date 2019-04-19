@@ -26,7 +26,7 @@ private:
   Client Hermes;
   DBInterface Zeus;
   Log Homer;
-  int CreateTrucks(int truckNum, UPS::UConnect &msg);
+  int CreateTrucks(int truckNum, UPS::UConnect *msg);
   int SetPackageInfo(truck_t &truck, std::vector<package_t> &packages,
                      UPS::UGoDeliver *goDeliver);
   int finished_handler(UPS::UResponses &msg, std::vector<truck_t> &trucks,

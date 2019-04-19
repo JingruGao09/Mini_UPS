@@ -1,5 +1,5 @@
 #include "worldbridge.h"
-WorldBridge::WorldBridge(const char *hostname, const char *port)
+WorldBridge ::WorldBridge(const char *hostname, const char *port)
     : world_id(-1), Hermes(hostname, port) {}
 
 WorldBridge::~WorldBridge() {}
@@ -16,6 +16,7 @@ WorldBridge::~WorldBridge() {}
  *
  * Send msg to require a new world id
  * if success return 0, else, return -1
+ * pass test
  */
 int WorldBridge::RequireANewWorld() {
   UPS::UConnect msg;
@@ -29,7 +30,7 @@ int WorldBridge::RequireANewWorld() {
  * Connect to a simulate world.
  * if it is a new world, set initruck as true
  * send success return 0, else return -1
- *
+ * pass test
  */
 int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
   world_id = wid;
@@ -37,7 +38,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
   msg.set_worldid(world_id);
   msg.set_isamazon(false);
   if (initTruck) {
-    if (CreateTrucks(TRUCK_NUM, msg) == -1)
+    if (CreateTrucks(TRUCK_NUM, &msg) == -1)
       return -1;
   }
   Homer.LogSendMsg("World", "Connecting to world " + std::to_string(wid));
@@ -50,6 +51,7 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
  * parse the message to check whether succeed to connect world
  *
  * return 0 if succeed, return -1 if fail
+ * pass test
  */
 int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
   Homer.LogRecvMsg("World", msg.result());
@@ -62,12 +64,13 @@ int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
  *
  * send message to world let it randomly create trucks, save into db
  * if failed to save, return -1, succeed,return 0
+ * pass test
  */
-int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect &msg) {
+int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
   UPS::UInitTruck *truck;
 
   for (int i = 0; i < truckNum; i++) {
-    truck = msg.add_trucks();
+    truck = msg->add_trucks();
     truck->set_id(i);
     int x = rand() % 100 - 50;
     int y = rand() % 100 - 50;
@@ -303,7 +306,7 @@ int WorldBridge::ack_handler(UPS::UResponses &msg) {
     if (Zeus.rmOutSeqNum(std::to_string(msg.acks(i)),
                          std::to_string(world_id)) == -1)
       return -1;
-    Homer.LogRecvMsg("World", "acking" + std::to_string(msg.acks(i)));
+    Homer.LogRecvMsg("World", "acking " + std::to_string(msg.acks(i)));
   }
   return 0;
 }

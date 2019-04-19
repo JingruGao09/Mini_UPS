@@ -1,0 +1,2 @@
+1. when we write to protobuf, if we write the message in another function, we should pass the protobuf using pointer,
+or it will fail, I dont know why.
