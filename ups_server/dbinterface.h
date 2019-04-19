@@ -2,8 +2,10 @@
 #define __DBINTERFACE_H__
 #include "helper.h"
 #include <limits>
+#include <mutex>
 #include <pqxx/pqxx>
 #include <string>
+
 class DBInterface {
 private:
   std::string errmsg;

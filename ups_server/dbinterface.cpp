@@ -23,17 +23,19 @@ DBInterface::~DBInterface() { C->disconnect(); }
  *
  * return 0 if success, else -1
  */
+std::mutex mtx;
 int DBInterface::execute(const std::string &sql) {
   pqxx::work W(*C);
   try {
+    std::lock_guard<std::mutex> lck(mtx);
     W.exec(sql);
     W.commit();
+    return 0;
   } catch (const std::exception &e) {
     W.abort();
     throw std::string("Database error");
     return -1;
   }
-  return 0;
 }
 
 /*

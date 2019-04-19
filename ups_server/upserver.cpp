@@ -37,7 +37,6 @@ void UPServer::ConnectWorld() {
 int UPServer::test() {
   for (int i = 0; i < 200; i++) {
     wb.Query(i);
-    WorldMsgHandler();
   }
 
   return 0;
@@ -55,10 +54,11 @@ int UPServer::WorldMsgHandler() {
 }
 void listen_func(UPServer &upserver) {
   while (1) {
+    upserver.WorldMsgHandler();
   }
 }
 int main() {
   UPServer upserver("localhost", "12345");
   std::thread t(listen_func, std::ref(upserver));
-  upserver.test();
+  // upserver.test();
 }
