@@ -332,7 +332,47 @@ int DBInterface::rmOutSeqNum(const std::string &seqnum,
     return -1;
   }
 }
+int64_t DBInterface::AfetchOutSeqNum() {
+  try {
+    std::string sql =
+        "INSERT INTO AOUTSEQNUM (MSG) VALUES (NULL) RETURNING ID;";
+    return execute_and_return<int64_t>(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 
+int DBInterface::ArmOutSeqNum(const std::string &seqnum) {
+  try {
+    std::string sql = "DELETE FROM AOUTSEQNUM WHERE ID=" + seqnum + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+
+int DBInterface::AdocOutMsg(const std::string &seqnum, const std::string &msg) {
+  try {
+    std::string sql =
+        "UPDATE AOUTSEQNUM SET MSG='" + msg + "' WHERE ID=" + seqnum + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+
+int DBInterface::AdocInSeqNum(const std::string &seqnum) {
+  try {
+    std::string sql = "INSERT INTO AINSEQNUM(ID) VALUES(" + seqnum + ");";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 /*
  * initializer
  *
@@ -357,6 +397,13 @@ int DBInterface::initializer() {
           "PRIMARY KEY(ID, WORLD_ID));";
     W.exec(sql);
 
+    sql =
+        "CREATE TABLE IF NOT EXISTS AINSEQNUM(ID BIGINT PRIMARY KEY NOT NULL);";
+    W.exec(sql);
+    sql = "CREATE TABLE IF NOT EXISTS AOUTSEQNUM(ID BIGSERIAL NOT "
+          "NULL PRIMARY KEY, MSG "
+          "VARCHAR(65535));";
+    W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS TRUCK(TRUCK_ID INT NOT NULL, X INT NOT "
           "NULL, Y INT NOT NULL, WORLD_ID INT NOT NULL REFERENCES "
           "WORLD(WORLD_ID),TRUCK_STATUS VARCHAR(20) NOT NULL DEFAULT 'IDLE', "
@@ -374,4 +421,10 @@ int DBInterface::initializer() {
     return -1;
   }
   return 0;
+}
+
+int main() {
+  DBInterface db;
+  std::cout << db.ArmOutSeqNum("1");
+  std::cout << db.AdocInSeqNum("1");
 }
