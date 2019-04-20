@@ -26,7 +26,9 @@ void UPServer::ConnectWorld() {
   }
 
   // connect to world
-  if (wb.ConnectToAWorld(wid, false) == -1)
+  if (wb.ConnectToAWorld(wid, true) == -1)
+    throw std::string("failed to send msg");
+  if (wb.ConnectToAWorld(wid, initTruck) == -1)
     throw std::string("failed to send msg");
   UPS::UConnected response;
   wb.RecvMsg<UPS::UConnected>(response);
