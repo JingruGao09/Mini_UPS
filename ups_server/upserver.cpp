@@ -26,7 +26,7 @@ void UPServer::ConnectWorld() {
   }
 
   // connect to world
-  if (wb.ConnectToAWorld(wid, initTruck) == -1)
+  if (wb.ConnectToAWorld(wid, false) == -1)
     throw std::string("failed to send msg");
   UPS::UConnected response;
   wb.RecvMsg<UPS::UConnected>(response);
@@ -53,7 +53,8 @@ int UPServer::WorldMsgHandler() {
   wb.RecvMsg<UPS::UResponses>(response);
   std::thread t = std::thread(MsgHandler_thread, std::ref(wb), response);
   t.detach();
-  // MsgHandler_thread(wb, response);
+  // std::vector<truck_t> trucks;
+  // wb.ParseResponses(response, trucks);
   return 0;
 }
 void listen_thread(UPServer &upserver) {
@@ -67,6 +68,7 @@ void listen_thread(UPServer &upserver) {
 }
 int main() {
   UPServer upserver("localhost", "12345");
+  std::cout << "finish initialization\n";
   std::thread t = std::thread(listen_thread, std::ref(upserver));
   t.detach();
   upserver.test();

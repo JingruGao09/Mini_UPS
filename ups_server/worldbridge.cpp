@@ -1,4 +1,5 @@
 #include "worldbridge.h"
+#include <iostream>
 WorldBridge ::WorldBridge(const char *hostname, const char *port)
     : world_id(-1), Hermes(hostname, port) {}
 WorldBridge::~WorldBridge() {}
@@ -330,7 +331,7 @@ int WorldBridge::truck_handler(UPS::UResponses &msg,
                                std::vector<int64_t> &seqnums) {
   for (int i = 0; i < msg.truckstatus_size(); i++) {
     UPS::UTruck truck = msg.truckstatus(i);
-    // check seq num
+    std::cout << truck.truckid() << std::endl;
     seqnums.push_back(truck.seqnum());
     if (Zeus.docInSeqNum(std::to_string(truck.seqnum()),
                          std::to_string(world_id)) == -1)
@@ -366,7 +367,10 @@ int WorldBridge::err_handler(UPS::UResponses &msg,
     if (Zeus.docInSeqNum(std::to_string(err.seqnum()),
                          std::to_string(world_id)) == -1)
       continue;
-    Homer.LogRecvMsg("World", err.err(), std::to_string(err.seqnum()));
+    Homer.LogRecvMsg("World",
+                     "responding original seqnum " +
+                         std::to_string(err.originseqnum()) + " " + err.err(),
+                     std::to_string(err.seqnum()));
   }
   return count;
 }
