@@ -111,6 +111,12 @@ int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks) {
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
+/*
+ * SetWorldOptions
+ *
+ * set the speed of world
+ * pass test
+ */
 int WorldBridge::SetWorldOptions(int speed) {
   UPS::UCommands command;
   command.set_simspeed(speed);
@@ -310,6 +316,7 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
  *
  * update request status in db
  * always return 0
+ * pass test
  */
 int WorldBridge::ack_handler(UPS::UResponses &msg) {
   for (int i = 0; i < msg.acks_size(); i++) {
@@ -326,6 +333,7 @@ int WorldBridge::ack_handler(UPS::UResponses &msg) {
  *
  * update truck info inside db
  * fail to save info will return -1, succeed return 0
+ * pass test
  */
 int WorldBridge::truck_handler(UPS::UResponses &msg,
                                std::vector<int64_t> &seqnums) {
