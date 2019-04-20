@@ -26,7 +26,7 @@ private:
 
 public:
   Client(const char *h, const char *p);
-  explicit Client(const int &fd);
+
   ~Client();
   std::vector<char> receiveData();
   std::vector<char> basicRecv();

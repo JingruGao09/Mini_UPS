@@ -4,10 +4,6 @@ UPServer::UPServer(const char *h, const char *p) : wb(h, p) {
   ConnectWorld();
   wb.SetWorldOptions(SIMSPEED);
 }
-UPServer::UPServer(const int64_t &world_id, const int &sockfd)
-    : wb(world_id, sockfd) {}
-int64_t UPServer::getWid() { return wid; }
-int UPServer::getfd() { return wb.getfd(); }
 /* ConnectWorld
  * This function will automatically connect to a world,
  * if we already have a world, then connect to it.
@@ -38,9 +34,9 @@ void UPServer::ConnectWorld() {
     throw std::string("failed to connect world");
 }
 int UPServer::test() {
-  for (int i = 0; i < 200; i++) {
-    wb.Query(i);
-  }
+  // for (int i = 0; i < 200; i++) {
+  wb.Query(1);
+  // }
 
   return 0;
 }

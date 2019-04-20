@@ -151,5 +151,5 @@ Client::Client(const char *h, const char *p) {
   }
   freeaddrinfo(host_info_list);
 }
-Client::Client(const int &fd) : sockfd(fd) {}
+
 Client::~Client() { close(sockfd); }

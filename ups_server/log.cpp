@@ -21,15 +21,22 @@ std::string now() {
   char *time = std::ctime(&now_time);
   return std::string(time);
 }
-void Log::LogRecvMsg(std::string who, const std::string &what) {
+void Log::LogRecvMsg(std::string who, const std::string &what,
+                     const std::string &seqnum) {
 
-  std::string msg = "[" + currentDateTime() + "] " + "Received message from  " +
-                    who + " about " + what + "\n";
+  std::string msg =
+      "[" + currentDateTime() + "] " + "Received message from " + who;
+  if (!seqnum.empty())
+    msg += " seqnum is " + seqnum;
+  msg += ", about " + what + "\n";
   save(msg);
 }
 
-void Log::LogSendMsg(std::string who, const std::string &what) {
-  std::string msg = "[" + currentDateTime() + "] " + "Sent message to " + who +
-                    " about " + what + "\n";
+void Log::LogSendMsg(std::string who, const std::string &what,
+                     const std::string &seqnum) {
+  std::string msg = "[" + currentDateTime() + "] " + "Sent message to " + who;
+  if (!seqnum.empty())
+    msg += " seqnum is " + seqnum;
+  msg += ", about " + what + "\n";
   save(msg);
 }

@@ -9,7 +9,9 @@ private:
   void save(const std::string &msg);
 
 public:
-  void LogRecvMsg(std::string who, const std::string &what);
-  void LogSendMsg(std::string who, const std::string &wha);
+  void LogRecvMsg(std::string who, const std::string &what,
+                  const std::string &seqnum = "");
+  void LogSendMsg(std::string who, const std::string &wha,
+                  const std::string &seqnum = "");
 };
 #endif
