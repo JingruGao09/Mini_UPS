@@ -62,5 +62,9 @@ public:
                 const std::string &WORLD_id);
   int64_t fetchSeqNum(const std::string &WORLD_id);
   int rmOutSeqNum(const std::string &seqnum, const std::string &WORLD_id);
+  int64_t AfetchOutSeqNum();
+  int ArmOutSeqNum(const std::string &seqnum);
+  int AdocOutMsg(const std::string &seqnum, const std::string &msg);
+  int AdocInSeqNum(const std::string &seqnum);
 };
 #endif
