@@ -66,6 +66,7 @@ void listen_thread(UPServer &upserver) {
     return;
   }
 }
+/*
 int main() {
   UPServer upserver("localhost", "12345");
   std::cout << "finish initialization\n";
@@ -75,3 +76,4 @@ int main() {
   while (1)
     ;
 }
+*/

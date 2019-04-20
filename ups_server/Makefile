@@ -18,3 +18,6 @@ clean:
 
 test:
 	g++ -ggdb3 log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
+
+testab:
+	g++ -ggdb3 log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp ups_amazon.pb.cc amazonbridge.cpp -o testab `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
