@@ -1,0 +1,58 @@
+version: '2'
+
+services:
+  db:
+      image: postgres
+      environment:
+            POSTGRES_DB: "UPS"
+	    POSTGRES_USER: postgres
+	    POSTGRES_PASSWORD: passw0rd
+      ports:
+        - "5432:5432"
+      expose:
+        - "5432"
+      volumes:
+        - data-volume:/var/lib/postgresql/data
+  web-init:
+      build: ./ups_web
+      command: /code/initserver.sh
+      volumes:
+        - ./ups_web:/code
+      depends_on:
+        - db
+  web:
+      build: ./ups_web
+      user: nobody
+      command: /code/runserver.sh
+      volumes:
+        - ./ups_server:/code
+      ports:
+        - "8000:8000"
+      expose:
+        - "8000"
+      depends_on:
+        - web-init
+  nginx:
+     image: nginx:latest
+     ports:
+       - "8000:8000"
+     volumes:
+       - ./nginx/config:/etc/nginx/conf.d
+     depends_on:
+       - web
+  ups_server:
+      build: ./ups_server
+      user: nobody
+      command: bash -c "./ups_server 12345"
+      volumes:
+        - "./ups_server:/code"
+      ports:
+        - "12345:12345"
+
+      tty: true
+
+      depends_on:
+        - db
+
+volumes:
+   data-volume: 
