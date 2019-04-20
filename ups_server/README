@@ -1,1 +1,17 @@
 1. Change the Makefile::test, then Use make test to generate test case you want.
+
+
+
+Note that you could check the database of world Simulator follow these instructions:
+
+1. sudo docker container ls  #to show all containers that is currently running
+
+2. sudo docker exec -it CONTAINER_ID /bin/bash   #CONTAINER_ID can be obtained from last command
+
+3. change user into postgres
+
+4. psql
+
+5. \c worldSim
+
+6. \d  #list all tables under worldSim

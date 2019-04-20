@@ -1,5 +1,5 @@
 #include "dbinterface.h"
-
+#include <iostream>
 DBInterface::DBInterface() {
   // Allocate & initialize a Postgres connection object
 
@@ -55,6 +55,7 @@ pqxx::result DBInterface::lookup(const std::string &sql) {
  *
  * get a usable world number from db
  * succeed return world id, else -1
+ * pass test
  */
 int DBInterface::getWorldNum() {
   std::string sql =
@@ -70,6 +71,7 @@ int DBInterface::getWorldNum() {
  *
  * store newly feteched world number into db
  * succeed return 0, else -1
+ * pass test
  */
 int DBInterface::updateWorldNum(const std::string &WORLD_ID) {
   try {
@@ -87,11 +89,11 @@ int DBInterface::updateWorldNum(const std::string &WORLD_ID) {
  * assign a truck which status is arrive warehouse
  * to the warehouse
  * succeed return truck_id, else return -1
- *
+ * pass test
  */
 int DBInterface::getArrivedTruck(const int &WH_x, const int &WH_y,
                                  const std::string &WORLD_id) {
-  std::string sql = "SELECT TRUCK_ID FROM TRUCK WHERE STATUS='ARRIVE "
+  std::string sql = "SELECT TRUCK_ID FROM TRUCK WHERE TRUCK_STATUS='ARRIVE "
                     "WAREHOUSE' AND WORLD_ID=" +
                     WORLD_id + " AND X=" + std::to_string(WH_x) +
                     " AND Y=" + std::to_string(WH_y) + " LIMIT 1;";
@@ -107,6 +109,7 @@ int DBInterface::getArrivedTruck(const int &WH_x, const int &WH_y,
  *
  * find the truck having smallest l2 distance to warehouse
  * succeed return truck_id, else return -1
+ * pass test
  */
 int findNearestTruck(pqxx::result R, const int &WH_x, const int &WH_y) {
   float min_dist = MAXFLOAT;
@@ -129,13 +132,13 @@ int findNearestTruck(pqxx::result R, const int &WH_x, const int &WH_y) {
  * assign a truck which status is Idle
  * to the warehouse
  * succeed return truck_id, else return -1
- *
+ * pass test
  */
 int DBInterface::getIdleTruck(const int &WH_x, const int &WH_y,
                               const std::string &WORLD_id) {
-  std::string sql =
-      "SELECT TRUCK_ID, X, Y FROM TRUCK WHERE STATUS='IDLE' AND WORLD_ID=" +
-      WORLD_id + ";";
+  std::string sql = "SELECT TRUCK_ID, X, Y FROM TRUCK WHERE "
+                    "TRUCK_STATUS='IDLE' AND WORLD_ID=" +
+                    WORLD_id + ";";
   pqxx::result R = lookup(sql);
   if (R.empty()) {
     return -1;
@@ -148,12 +151,12 @@ int DBInterface::getIdleTruck(const int &WH_x, const int &WH_y,
  * assign a truck which status is delivering
  * to the warehouse
  * succeed return truck_id, else return -1
- *
+ * pass test
  */
 int DBInterface::getDeliveringTruck(const int &WH_x, const int &WH_y,
                                     const std::string &WORLD_id) {
   std::string sql = "SELECT TRUCK_ID, X, Y FROM TRUCK WHERE "
-                    "STATUS='DELIVERING' AND WORLD_ID=" +
+                    "TRUCK_STATUS='DELIVERING' AND WORLD_ID=" +
                     WORLD_id + ";";
   pqxx::result R = lookup(sql);
   if (R.empty()) {
@@ -191,6 +194,7 @@ int DBInterface::updateTruckStatus(const std::string &truck_id,
  * create a new package
  *
  * succeed return 0, else return -1
+ * pass test
  */
 int DBInterface::createPackage(const std::string &package_id,
                                const std::string &truck_id,
@@ -214,6 +218,7 @@ int DBInterface::createPackage(const std::string &package_id,
  * update the status and location of package
  *
  * return 0 if succeed, else -1
+ * pass test
  */
 int DBInterface::updatePackageStatus(const std::string &package_id,
                                      std::string status,
