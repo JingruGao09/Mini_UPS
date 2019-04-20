@@ -5,10 +5,16 @@ message InitWorld{
 required int64 worldid = 1;
 required int64 seqnum=2;
 }
+message APackageInfo{
+required string description = 1;
+required int32 count = 2;
+required int64 packageid = 3;
+}
 message WarehouseInfo{
 required int32 whid = 1;
 required int32 wh_x = 2;
 required int32 wh_y = 3;
+repeated APackageInfo packageinfos = 4;
 }
 message DetermineWarehouse{
 repeated WarehouseInfo warehouses=1;
@@ -30,28 +36,25 @@ message TruckDst{
 required int32 truckid = 1;
 required int32 x = 2;
 required int32 y = 3;
-required int64 shipid = 4;
+required int64 packageid = 4;
 }
 message SettleShipment{
-repeated PackageInfo packages = 1;
+repeated int64 packageid = 1;
 required int64 seqnum = 2;
 }
-message PackageInfo{
-required int64 packageid = 1;
-required string description = 2;
-required int32 count = 3;
-required int64 shipid = 4;
+message FinishShipment {
+repeated int64 packageid = 1;
+required int64 seqnum = 2; 
 }
-message UCommands{
+message UACommands{
 repeated InitWorld worlds = 1;
 repeated DetermineTruck trucks = 2;
-repeated SettleShipment shipments = 3;
+repeated SettleShipment settled= 3;
+repeated FinishShipment finished=4;
+repeated int64 ack=5;
 }
-message ACommands{
+message AUCommands{
 repeated DetermineWarehouse warehouses = 1;
 repeated DetermineDst dests = 2;
-}
-message Response{
-required bool succeed = 1;
-required int64 seqnum = 2;
+repeated int64 ack=4;
 }
