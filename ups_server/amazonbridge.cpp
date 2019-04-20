@@ -83,7 +83,27 @@ int AmazonBridge::SendPackageId(std::vector<package_info> &packages) {
   }
   return ConAmazonClient.sendMsg<UA::UCommands>(command);
 }
+
+/*
+ *Recving and parsing the mesg
+ *
+ *
+ */
+int AmazonBridge::warehouse_handler(UA::ACommands &msg,
+                                    std::vector<int64_t> &seqnums) {
+  for (int i = 0; i < msg.warehouses_size(); i++) {
+    UA::DetermineWarehouse warehouse = msg.warehouses(i);
+    seqnums.push_back(warehouse.seqnum());
+    if (Zeus.docInSeqNum(std::to_string(warehouse.seqnum()),
+                         std::to_string(world_id)) == -1)
+      continue;
+    if ()
+  }
+  return 0;
+}
+
+/*
 int main() {
   AmazonBridge ab("vcm-7989.vm.duke.edu", "12345");
   ab.SendWorldId();
-}
+  }*/
