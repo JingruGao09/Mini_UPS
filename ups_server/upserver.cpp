@@ -57,6 +57,7 @@ int UPServer::WorldMsgHandler() {
   wb.RecvMsg<UPS::UResponses>(response);
   std::thread t = std::thread(MsgHandler_thread, std::ref(wb), response);
   t.detach();
+  // MsgHandler_thread(wb, response);
   return 0;
 }
 void listen_thread(UPServer &upserver) {

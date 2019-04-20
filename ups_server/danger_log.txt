@@ -1,2 +1,4 @@
 1. when we write to protobuf, if we write the message in another function, we should pass the protobuf using pointer,
 or it will fail, I dont know why.
+2. database conflict, currently do not know how to handle with it.   what():  Started transaction<READ COMMITTED> while transaction<READ COMMITTED> still active
+
