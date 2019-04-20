@@ -14,6 +14,9 @@ private:
 
 public:
   UPServer(const char *h, const char *p);
+  UPServer(const int64_t &world_id, const int &sockfd);
+  int64_t getWid();
+  int getfd();
   int WorldMsgHandler();
   int test();
 };

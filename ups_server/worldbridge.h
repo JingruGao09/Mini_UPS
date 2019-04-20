@@ -38,6 +38,7 @@ private:
 
 public:
   WorldBridge(const char *hostname, const char *port);
+  WorldBridge(const int &w, const int &fd);
   ~WorldBridge();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
@@ -48,6 +49,7 @@ public:
   int ack(const std::vector<int64_t> &seqnums);
   int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks);
   int SetWorldOptions(int speed);
+  int getfd();
   template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };
 #endif

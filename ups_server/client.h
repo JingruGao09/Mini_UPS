@@ -18,8 +18,6 @@ typedef struct addrinfo addrinfo;
 typedef struct timeval timeval;
 class Client {
 private:
-  const char *hostname;
-  const char *port;
   std::string errmsg;
   int sockfd;
   const char *getHost(const char *hostname);
@@ -28,6 +26,7 @@ private:
 
 public:
   Client(const char *h, const char *p);
+  explicit Client(const int &fd);
   ~Client();
   std::vector<char> receiveData();
   std::vector<char> basicRecv();

@@ -125,8 +125,9 @@ int Client::getFD() { return sockfd; }
  *
  */
 std::string Client::getError() { return errmsg; }
-Client::Client(const char *h, const char *p) : port(p) {
-  hostname = getHost(h);
+Client::Client(const char *h, const char *p) {
+  const char *port = p;
+  const char *hostname = getHost(h);
   addrinfo host_info;
   addrinfo *host_info_list;
 
@@ -150,24 +151,5 @@ Client::Client(const char *h, const char *p) : port(p) {
   }
   freeaddrinfo(host_info_list);
 }
+Client::Client(const int &fd) : sockfd(fd) {}
 Client::~Client() { close(sockfd); }
-// initializer test
-/*int main() { Client client("localhost", "8080"); }*/
-// sendData test
-// valgrind clean
-/*int main() {
-  Client client("rabihyounes.com", "80");
-  client.sendData("GET /awesome.txt
-HTTP/1.1\r\nHost:rabihyounes.com\r\n\r\n"); std::cout << client.receiveHTTP();
-}
-*/
-// recv data test
-/*
-int main() {
-  Client client("www.google.com", "443");
-  std::vector<char> msg = {'t', 'e', 's', 't'};
-  client.Send(msg);
-  std::vector<char> test = client.recvServeResponse();
-  std::cout << test.data() << std::endl;
-}
-*/

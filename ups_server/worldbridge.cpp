@@ -1,7 +1,8 @@
 #include "worldbridge.h"
 WorldBridge ::WorldBridge(const char *hostname, const char *port)
     : world_id(-1), Hermes(hostname, port) {}
-
+WorldBridge::WorldBridge(const int &w, const int &fd)
+    : world_id(w), Hermes(fd) {}
 WorldBridge::~WorldBridge() {}
 
 /*
@@ -359,6 +360,8 @@ int WorldBridge::err_handler(UPS::UResponses &msg,
   }
   return count;
 }
+
+int WorldBridge::getfd() { return Hermes.getFD(); }
 /*
 int main() {
   WorldBridge wb("localhost", "12345");
