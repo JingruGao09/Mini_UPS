@@ -287,6 +287,7 @@ int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
     std::string sql = "UPDATE OUTSEQNUM SET MSG='" + msg +
                       "' WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id +
                       ";";
+    std::cout << sql;
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -303,7 +304,8 @@ int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
  */
 int64_t DBInterface::fetchSeqNum(const std::string &WORLD_id) {
   try {
-    std::string sql = "INSERT INTO OUTSEQNUM (WORLD_ID) VALUES (" + WORLD_id +
+    std::string sql = "INSERT INTO OUTSEQNUM (WORLD_ID,time) VALUES (" +
+                      WORLD_id + "," + std::to_string(unix_timestamp()) +
                       ") RETURNING ID;";
     return execute_and_return<int64_t>(sql);
   } catch (std::string &e) {
@@ -334,8 +336,8 @@ int DBInterface::rmOutSeqNum(const std::string &seqnum,
 }
 int64_t DBInterface::AfetchOutSeqNum() {
   try {
-    std::string sql =
-        "INSERT INTO AOUTSEQNUM (MSG) VALUES (NULL) RETURNING ID;";
+    std::string sql = "INSERT INTO AOUTSEQNUM (MSG,TIME) VALUES (NULL," +
+                      std::to_string(unix_timestamp()) + ") RETURNING ID;";
     return execute_and_return<int64_t>(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -393,7 +395,8 @@ int DBInterface::initializer() {
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS OUTSEQNUM(ID BIGSERIAL NOT "
           "NULL, MSG "
-          "VARCHAR(65535),WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID), "
+          "VARCHAR(65535),WORLD_ID INT NOT NULL REFERENCES "
+          "WORLD(WORLD_ID),TIME INT NOT NULL, "
           "PRIMARY KEY(ID, WORLD_ID));";
     W.exec(sql);
 
@@ -402,7 +405,7 @@ int DBInterface::initializer() {
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS AOUTSEQNUM(ID BIGSERIAL NOT "
           "NULL PRIMARY KEY, MSG "
-          "VARCHAR(65535));";
+          "VARCHAR(65535),TIME INT NOT NULL);";
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS TRUCK(TRUCK_ID INT NOT NULL, X INT NOT "
           "NULL, Y INT NOT NULL, WORLD_ID INT NOT NULL REFERENCES "
@@ -421,10 +424,4 @@ int DBInterface::initializer() {
     return -1;
   }
   return 0;
-}
-
-int main() {
-  DBInterface db;
-  std::cout << db.ArmOutSeqNum("1");
-  std::cout << db.AdocInSeqNum("1");
 }
