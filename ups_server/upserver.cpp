@@ -26,8 +26,6 @@ void UPServer::ConnectWorld() {
   }
 
   // connect to world
-  if (wb.ConnectToAWorld(wid, true) == -1)
-    throw std::string("failed to send msg");
   if (wb.ConnectToAWorld(wid, initTruck) == -1)
     throw std::string("failed to send msg");
   UPS::UConnected response;
@@ -68,7 +66,7 @@ void listen_thread(UPServer &upserver) {
     return;
   }
 }
-/*
+
 int main() {
   UPServer upserver("localhost", "12345");
   std::cout << "finish initialization\n";
@@ -78,4 +76,3 @@ int main() {
   while (1)
     ;
 }
-*/
