@@ -2,12 +2,11 @@
 #define __AMAZONBRIDGE_H__
 #include "client.h"
 #include "dbinterface.h"
+#include "log.h"
 #include "server.h"
 #include "ups_amazon.pb.h"
 #include <iostream>
 #include <string>
-//#define MAX_CHARACTER 1024
-// client will do connection and garbage collection
 
 struct _truck_location {
   int truck_id;
@@ -17,19 +16,46 @@ struct _package_info {
   int package_id;
   std::string description;
   int count;
-  int ship_id;
 };
-
+struct _warehouse_info {
+  int wh_id;
+  int wh_x;
+  int wh_y;
+};
+struct _truck_dest {
+  int truck_id;
+  int x;
+  int y;
+  int package_id;
+};
 typedef struct _truck_location truck_location;
 typedef struct _package_info package_info;
+typedef struct _warehouse_info warehouse_info;
+typedef struct _truck_dest truck_dest;
 
 class AmazonBridge {
 private:
   int world_id;
-  // std::string errmsg;
+  std::string errmsg;
   Client ConAmazonClient;
   // Server UpsServer;
   DBInterface Zeus;
+  Log Homer;
+
+  int apackageinfo_handler(UA::WarehouseInfo &warehouseinfo,
+                           std::vector<package_info> &package_infos);
+  int warehouseinfo_handler(UA::DetermineWarehouse &deterwarehouse,
+                            std::vector<warehouse_info> &warehouse_infos,
+                            std::vector<package_info> &package_infos);
+  int determinewarehouse_handler(UA::AUCommands &msg,
+                                 std::vector<int64_t> &seqnums,
+                                 std::vector<warehouse_info> &warehouse_infos,
+                                 std::vector<package_info> &package_infos);
+  int truckdst_handler(UA::DetermineDst &msg,
+                       std::vector<truck_dest> &truck_dsts);
+  int determinedst_handler(UA::AUCommands &msg, std::vector<int64_t> &seqnums,
+                           std::vector<truck_dest> &truck_dsts);
+  int AmazonBridge::ack_handler(UA::AUCommands &msg);
   /*
   int CreateTruckLocation(const int &truck_id, const int &wh_id,
                           UA::DetermineTruck &msg);
@@ -44,6 +70,17 @@ public:
   ~AmazonBridge();
   int SendWorldId();
   int SendTruckId(std::vector<truck_location> &trucks);
-  int SendPackageId(std::vector<package_info> &packages);
-};
+  int SendPackageId(std::vector<int64_t> &package_ids);
+  int FinishShipment(std::vector<int64_t> &package_ids);
+  int ack(const std::vector<int64_t> &seqnum);
+  int ParseResponses(UA::AUCommands &msg,
+                     std::vector<package_info> &package_infos,
+                     std::vector<warehouse_info> &warehouse_infos,
+                     std::vector<truck_dest> &truck_dsts){
+
+      template <typename T>
+      int RecvMsg(T & msg){return ConAmazonClient.recvMsg<T>(msg);
+}
+}
+;
 #endif
