@@ -12,7 +12,7 @@ AmazonBridge::~AmazonBridge() {}
 int AmazonBridge::SendWorldId() {
   UA::UCommands command;
   UA::InitWorld *msg;
-  int64_t &seqnum;
+  int64_t seqnum;
   msg->set_worldid(world_id);
   if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
     return -1;
@@ -35,21 +35,21 @@ UA::TruckLocation AmazonBridge::CreateTruckLocation(const int &truck_id,
 }
 */
 int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
-  UA::Commands command;
+  UA::UCommands command;
   UA::DetermineTruck *detertrucks;
-  int64_t &seqnum;
+  int64_t seqnum;
   detertrucks = command.add_trucks();
   if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
     return -1;
   detertrucks->set_seqnum(seqnum);
   UA::TruckLocation *trucklocation;
   for (auto truck : trucks) {
-    trucklocation = detertrucks->add_addrivedtrucks();
+    trucklocation = detertrucks->add_arrivedtrucks();
     trucklocation->set_truckid(truck.truck_id);
-    trucklocation->set_wh_id(truck.wh_id);
+    trucklocation->set_whid(truck.wh_id);
   }
 
-  return ConAmazonClient.sendMsg<UA::Commands>(command)
+  return ConAmazonClient.sendMsg<UA::UCommands>(command);
 }
 /*
 UA::PackageInfo AmazonBridge::CreatePackageInfo(const int64_t &package_id,
@@ -68,7 +68,7 @@ UA::PackageInfo AmazonBridge::CreatePackageInfo(const int64_t &package_id,
 int AmazonBridge::SendPackageId(std::vector<package_info> &packages) {
   UA::UCommands command;
   UA::SettleShipment *shipments;
-  int64_t &seqnum;
+  int64_t seqnum;
   shipments = command.add_shipments();
   if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
     return -1;
@@ -79,7 +79,11 @@ int AmazonBridge::SendPackageId(std::vector<package_info> &packages) {
     packageinfo->set_packageid(package.package_id);
     packageinfo->set_description(package.description);
     packageinfo->set_count(package.count);
-    packageinfo->set_shipid(package.shipid);
+    packageinfo->set_shipid(package.ship_id);
   }
   return ConAmazonClient.sendMsg<UA::UCommands>(command);
+}
+int main() {
+  AmazonBridge ab("vcm-7989.vm.duke.edu", "12345");
+  ab.SendWorldId();
 }

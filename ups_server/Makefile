@@ -14,7 +14,10 @@ Mini_ups:$(OBJS) $(OBJS2)
 
 .PHONY: clean
 clean:
-	rm -f Mini_ups *.o *~ test UPS.log
+	rm -f Mini_ups *.o *~ test testab UPS.log
 
 test:
 	g++ -ggdb3 log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
+
+testab:
+	g++ -ggdb3 log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp ups_amazon.pb.cc amazonbridge.cpp -o testab `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
