@@ -9,20 +9,21 @@ AmazonBridge::~AmazonBridge() {}
  * Send msg to inform Amazon world to connect
  * If success return 0, else, return -1
  */
-int AmazonBridge::SendWorldId(const int &world_id, const int64_t &seqnum) {
-  UA::InitWorld msg;
-  msg.set_worldid(world_id);
-  msg.set_seqnum(seqnum);
-  return SendMsg<UA::InitWorld>(msg);
+int AmazonBridge::SendWorldId() {
+  UA::UCommands command;
+  UA::InitWorld *msg;
+  int64_t &seqnum;
+  msg->set_worldid(world_id);
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+    return -1;
+  msg->set_seqnum(seqnum);
+  return ConAmazonClient.sendMsg<UA::UCommands>(command);
 }
+
 /*
-void init_truck_location(){
-
-}
-*/
-
-int AmazonBridge::CreateTruckLocation(const int &truck_id, const int &wh_id,
-                                      UA::DetermineTruck &msg) {
+UA::TruckLocation AmazonBridge::CreateTruckLocation(const int &truck_id,
+                                                    const int &wh_id,
+                                                    UA::DetermineTruck &msg) {
   UA::TruckLocation *arrivedtrucks;
   arrivedtrucks = msg.add_arrivedtrucks();
   arrivedtrucks->set_truckid(truck_id);
@@ -30,33 +31,55 @@ int AmazonBridge::CreateTruckLocation(const int &truck_id, const int &wh_id,
   // I should update this in database 'table truck'(only truck_id & wh_id are
   // required in this stage) maybe we can add world_id as well, and set the
   // truck status to '2' if success, return 0 if fail, return -1
-  return 0;
+  return arrivedtrucks;
 }
+*/
+int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
+  UA::Commands command;
+  UA::DetermineTruck *detertrucks;
+  int64_t &seqnum;
+  detertrucks = command.add_trucks();
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+    return -1;
+  detertrucks->set_seqnum(seqnum);
+  UA::TruckLocation *trucklocation;
+  for (auto truck : trucks) {
+    trucklocation = detertrucks->add_addrivedtrucks();
+    trucklocation->set_truckid(truck.truck_id);
+    trucklocation->set_wh_id(truck.wh_id);
+  }
 
-int AmazonBridge::SendTruckId(const int64_t &seqnum) {
-  UA::DetermineTruck msg;
-  UA::TruckLocation *arrivedtruck;
-  arrivedtruck = msg.add_arrivedtrucks();
-  msg.set_seqnum(seqnum);
-  return SendMsg<UA::DetermineTruck>(msg)
+  return ConAmazonClient.sendMsg<UA::Commands>(command)
 }
-
+/*
 UA::PackageInfo AmazonBridge::CreatePackageInfo(const int64_t &package_id,
                                                 const string &description,
                                                 const int &count,
                                                 const int64_t &ship_id) {
-  UA::PackageInfo msg;
+  UA::PackageInfo package;
   msg.set_packageid(package_id);
   msg.set_description(description);
   msg.set_count(count);
   msg.set_shipid(ship_id);
-  return msg;
+  return package;
 }
+*/
 
-int AmazonBridge::SendPackageId(const int64_t &seqnum) {
-  UA::SettleShipment msg;
-  UA::PackageInfo *package;
-  package = msg.add_packages();
-  msg.set_seqnum(seqnum);
-  return SendMsg<UA::SettleShipment>(msg);
+int AmazonBridge::SendPackageId(std::vector<package_info> &packages) {
+  UA::UCommands command;
+  UA::SettleShipment *shipments;
+  int64_t &seqnum;
+  shipments = command.add_shipments();
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+    return -1;
+  shipments->set_seqnum(seqnum);
+  UA::PackageInfo *packageinfo;
+  for (auto package : packages) {
+    packageinfo = shipments->add_packages();
+    packageinfo->set_packageid(package.package_id);
+    packageinfo->set_description(package.description);
+    packageinfo->set_count(package.count);
+    packageinfo->set_shipid(package.shipid);
+  }
+  return ConAmazonClient.sendMsg<UA::UCommands>(command);
 }

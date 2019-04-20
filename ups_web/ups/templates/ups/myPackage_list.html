@@ -7,15 +7,15 @@
 <ul>
   {% for package in package_list %}
   <li>
-    <a href="{{ package.get_absolute_url }}">Package: {{package.package_id}} </a>
+   <a href="{{ package.get_absolute_url }}">Package: {{package.package_id}} </a>
   </li>
   {% endfor %}
 </ul>
-  <p>Did not see your package in the list?</p>
+  <!--p>Did not see your package in the list?</p>
   <p>Add your package to your account!</p>
   <form class="form-inline ml-auto">
     <a href="/ups/matchmypackage/" class="btn btn-outline-secondary">Add Package Record</a>
-  </form>
+  </form-->
 
 {% else %}
 <p>Currently,</p>
