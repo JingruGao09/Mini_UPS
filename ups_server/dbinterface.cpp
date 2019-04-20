@@ -168,16 +168,16 @@ int DBInterface::getDeliveringTruck(const int &WH_x, const int &WH_y,
  *
  * update truck status and location,
  * succeed return 0, else -1
- *
+ * pass test
  */
 int DBInterface::updateTruckStatus(const std::string &truck_id,
                                    const std::string &x, const std::string &y,
                                    std::string status,
                                    const std::string &WORLD_id) {
   try {
-    std::string sql = "UPDATE TRUCK SET X=" + x + " , Y=" + y + " ,STATUS='" +
-                      status + "' WHERE TRUCK_ID=" + truck_id +
-                      " AND WORLD_ID=" + WORLD_id + ";";
+    std::string sql =
+        "UPDATE TRUCK SET X=" + x + " , Y=" + y + " ,TRUCK_STATUS='" + status +
+        "' WHERE TRUCK_ID=" + truck_id + " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -233,7 +233,7 @@ int DBInterface::updatePackageStatus(const std::string &package_id,
  *
  * save given truck data into db,
  * succeed return 0, else -1
- *
+ * pass test
  */
 int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
                              const std::string &y,
@@ -254,6 +254,7 @@ int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
  * add the seqnum into database
  *
  * return 0 if success, if exist return -1
+ * pass test
  */
 int DBInterface::docInSeqNum(const std::string &seqnum,
                              const std::string &WORLD_id) {
@@ -273,7 +274,7 @@ int DBInterface::docInSeqNum(const std::string &seqnum,
  * add the outgoing msg into database to enable resend it
  *
  * if success return 0, else -1
- *
+ * pass test
  */
 int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
                            const std::string &WORLD_id) {
@@ -293,6 +294,7 @@ int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
  * generate a new seqnum
  *
  * return seqnum if success, else return -1;
+ * pass test
  */
 int64_t DBInterface::fetchSeqNum(const std::string &WORLD_id) {
   try {
@@ -312,6 +314,7 @@ int64_t DBInterface::fetchSeqNum(const std::string &WORLD_id) {
  * rm the given seqnum in OUTSEQNUM to indicate it is finished
  *
  * return 0 if succeed , else -1
+ * pass test
  */
 int DBInterface::rmOutSeqNum(const std::string &seqnum,
                              const std::string &WORLD_id) {
@@ -325,6 +328,13 @@ int DBInterface::rmOutSeqNum(const std::string &seqnum,
   }
 }
 
+/*
+ * initializer
+ *
+ * initalize the db to create require tables
+ *
+ * pass test
+ */
 int DBInterface::initializer() {
   pqxx::work W(*C);
   try {
