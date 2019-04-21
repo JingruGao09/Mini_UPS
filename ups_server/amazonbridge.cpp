@@ -10,19 +10,29 @@ AmazonBridge::~AmazonBridge() {}
  * If success return 0, else, return -1
  */
 int AmazonBridge::SendWorldId() {
-  UA::UCommands command;
+  UA::UACommands command;
   UA::InitWorld *msg;
   int64_t seqnum;
+  msg = command.add_worlds();
   msg->set_worldid(world_id);
   if ((seqnum = Zeus.AfetchOutSeqNum()) == -1)
     return -1;
   msg->set_seqnum(seqnum);
-  Homer.LogSendMsg("Amazon", "InitWorld " + std::to_string(seqnum));
-  return ConAmazonClient.sendMsg<UA::UCommands>(command);
+  Homer.LogSendMsg("Amazon",
+                   "please connecting to world " + std::to_string(world_id),
+                   std::to_string(seqnum));
+  return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
 
+/*
+ * sendTruckid
+ *
+ * tell amazon, which truck is coming
+ *
+ * if success return 0, else, return -1
+ */
 int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
-  UA::UCommands command;
+  UA::UACommands command;
   UA::DetermineTruck *detertrucks;
   int64_t seqnum;
   detertrucks = command.add_trucks();
@@ -35,14 +45,21 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
     trucklocation->set_truckid(truck.truck_id);
     trucklocation->set_whid(truck.wh_id);
     Homer.LogSendMsg("Amazon",
-                     "sending truck id " + std::to_string(truck.truck_id) +
+                     "sending truck " + std::to_string(truck.truck_id) +
                          " to warehouse " + std::to_string(truck.wh_id));
   }
-  return ConAmazonClient.sendMsg<UA::UCommands>(command);
+  return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
 
+/*
+ * SendPackageId
+ *
+ * tell amazon, the package is out for delivery
+ *
+ * return -1 if fail, else 0
+ */
 int AmazonBridge::SendPackageId(std::vector<int64_t> &package_ids) {
-  UA::UCommands command;
+  UA::UACommands command;
   UA::SettleShipment *shipments;
   int64_t seqnum;
   shipments = command.add_settled();
@@ -50,16 +67,24 @@ int AmazonBridge::SendPackageId(std::vector<int64_t> &package_ids) {
     return -1;
   shipments->set_seqnum(seqnum);
   for (auto package_id : package_ids) {
-    shipments->set_packageid(package_id);
-    Homer.LogSendMsg("Amazon", "sending settleshipment, package_id is " +
-                                   std::to_string(package_id) + "seqnum is " +
-                                   std::to_string(seqnum));
+    shipments->add_packageid(package_id);
+    Homer.LogSendMsg("Amazon",
+                     "package " + std::to_string(package_id) +
+                         " is out for delivery",
+                     std::to_string(seqnum));
   }
-  return ConAmazonClient.sendMsg<UA::UCommands>(command);
+  return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
 
+/*
+ * FinishShipment
+ *
+ * Tell Amazon, package is delivered
+ *
+ * return -1 if fail, else 0
+ */
 int AmazonBridge::FinishShipment(std::vector<int64_t> &package_ids) {
-  UA::UCommands command;
+  UA::UACommands command;
   UA::FinishShipment *finished;
   int64_t seqnum;
   finished = command.add_finished();
@@ -67,12 +92,12 @@ int AmazonBridge::FinishShipment(std::vector<int64_t> &package_ids) {
     return -1;
   finished->set_seqnum(seqnum);
   for (auto package_id : package_ids) {
-    finished->set_packageid(package_id);
-    Homer.LogSendMsg("Amazon", "sending finishshipment, package_id is " +
-                                   std::to_string(package_id) + "seqnum is " +
-                                   std::to_string(seqnum));
+    finished->add_packageid(package_id);
+    Homer.LogSendMsg("Amazon",
+                     "package " + std::to_string(package_id) + " is delivered",
+                     std::to_string(seqnum));
   }
-  return ConAmazonClient.sendMsg<UA::UCommands>(command);
+  return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
 
 /*
@@ -82,98 +107,141 @@ int AmazonBridge::FinishShipment(std::vector<int64_t> &package_ids) {
  * return 0 if succeed, else -1
  */
 int AmazonBridge::ack(const std::vector<int64_t> &seqnum) {
-  UA::UCommands command;
-  for (unsigned long i = 0; i < seqnums.size(); i++) {
-    command.add_acks(seqnum[i]);
+  UA::UACommands command;
+  for (unsigned long i = 0; i < seqnum.size(); i++) {
+    command.add_ack(seqnum[i]);
     Homer.LogSendMsg("Amazon", "acking " + std::to_string(seqnum[i]));
   }
-  return ConAmazonClient.sendMsg<UA::UCommands>(command);
+  return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
-
-int AmazonBridege::ParseResponses(UA::AUCommands &msg,
-                                  std::vector<package_info> &package_infos,
-                                  std::vector<warehouse_info> &warehouse_infos,
-                                  std::vector<truck_dest> &truck_dsts) {
+/*
+ * ParseResponses
+ *
+ * handle all messages from amazon
+ *
+ * error return -1, else 0
+ */
+int AmazonBridge::ParseResponses(UA::AUCommands &msg,
+                                 std::vector<warehouse_info> &warehouse_infos,
+                                 std::vector<truck_dest> &truck_dsts) {
   std::vector<int64_t> seqnums;
-  if (determinewarehouse_handler(msg, seqnums, warehouse_infos,
-                                 package_infos) == -1)
+  if (determinewarehouse_handler(msg, seqnums, warehouse_infos) == -1)
     return -1;
 
   if (determinedst_handler(msg, seqnums, truck_dsts) == -1)
     return -1;
-
+  ack_handler(msg);
   if (ack(seqnums) == -1)
     return -1;
   return 0;
 }
-int AmazonBridge::apackageinfo_handler(
-    UA::WarehouseInfo &warehouseinfo,
-    std::vector<package_info> &package_infos) {
-  for (int i = 0; i < msg.packageinfos_size(); i++) {
-    UA::APackageInfo apackageinfo = msg.packageinfos(i);
-    package_infos.push_back({apackageinfo.packageid(),
-                             apackageinfo.description(), apackageinfo.count()});
-    Homer.LogRecvMsg("Amazon", "package detail " +
-                                   std::to_string(apackageinfo.packageid()) +
-                                   " " + apackageinfo.description() + " " +
-                                   std::to_string(apackageinfo.count()));
-  }
-  return 0;
-  // May need to create package here ???
-}
-int AmazonBridge::warehouseinfo_handler(
-    UA::DetermineWarehouse &deterwarehouse,
-    std::vector<warehouse_info> &warehouse_infos,
-    std::vector<package_info> &package_infos) {
-  for (int i = 0; i < msg.warehouses_size(); i++) {
-    UA::WarehouseInfo warehouseinfo = msg.warehouses(i);
-    warehouse_infos.push_back(
-        {warehouseinfo.whid(), warehouseinfo.wh_x(), warehouseinfo.wh_y()});
-    Homer.LogRecvMsg(
-        "Amazon", "warehouse detail " + std::to_string(warehouseinfo.whid()) +
-                      " location " + std::to_string(warehouseinfo.wh_x()) +
-                      " " + std::to_string(warehouseinfo.wh_y()));
-    if (apackageinfo_handler(warehouseinfo, package_infos) != 0)
-      return -1;
-  }
-  return 0;
-  // may need to update warehouse info in TABLE truck here???
-}
+/*
+ * determinewarehouse_handler
+ *
+ * parse warehouse destination
+ *
+ * if error, return -1, else 0
+ */
 int AmazonBridge::determinewarehouse_handler(
     UA::AUCommands &msg, std::vector<int64_t> &seqnums,
-    std::vector<warehouse_info> &warehouse_infos,
-    std::vector<package_info> &package_infos) {
+    std::vector<warehouse_info> &warehouse_infos) {
   for (int i = 0; i < msg.warehouses_size(); i++) {
     UA::DetermineWarehouse deterwarehouse = msg.warehouses(i);
     seqnums.push_back(deterwarehouse.seqnum());
     if (Zeus.AdocInSeqNum(std::to_string(deterwarehouse.seqnum())) == -1)
       continue;
-    Homer.LogRecvMsg("Amazon", "determine warehouse with seqnum " +
-                                   std::to_string(deterwarehouse.seqnum()));
-    if (warehouseinfo_handler(deterwarehouse, warehouse_infos, package_infos) !=
-        0)
+    Homer.LogRecvMsg("Amazon", "requesting trucks to warehouse",
+                     std::to_string(deterwarehouse.seqnum()));
+    if (warehouseinfo_handler(deterwarehouse, warehouse_infos) != 0)
       return -1;
   }
   return 0;
-  // may need to update sth in table here???
 }
 
+/*
+ * warehouseinfo_handler
+ *
+ * store all warehouse destinations
+ *
+ * if succeed return 0 and you can find warehouse info inside array,
+ * else -1
+ */
+int AmazonBridge::warehouseinfo_handler(
+    UA::DetermineWarehouse &msg, std::vector<warehouse_info> &warehouse_infos) {
+  for (int i = 0; i < msg.warehouses_size(); i++) {
+    UA::WarehouseInfo warehouseinfo = msg.warehouses(i);
+    warehouse_infos.push_back(
+        {warehouseinfo.whid(), warehouseinfo.wh_x(), warehouseinfo.wh_y()});
+    Homer.LogRecvMsg("Amazon", "requesting a truck(s) to warehouse " +
+                                   std::to_string(warehouseinfo.whid()) +
+                                   " ,located at (" +
+                                   std::to_string(warehouseinfo.wh_x()) + ", " +
+                                   std::to_string(warehouseinfo.wh_y()) + ")");
+    if (apackageinfo_handler(warehouseinfo) != 0)
+      return -1;
+  }
+  return 0;
+  // may need to update warehouse info in TABLE truck here???
+}
+
+/*
+ * apackageinfo_handler
+ *
+ * check all package info and store them into database
+ *
+ * return 0 if succeed, else -1
+ */
+int AmazonBridge::apackageinfo_handler(UA::WarehouseInfo &msg) {
+  for (int i = 0; i < msg.packageinfos_size(); i++) {
+    UA::APackageInfo pack_info = msg.packageinfos(i);
+    Homer.LogRecvMsg("Amazon",
+                     "package: " + std::to_string(pack_info.packageid()) +
+                         " x " + std::to_string(pack_info.count()) + ": " +
+                         pack_info.description() + " ");
+    if (Zeus.createPackage(
+            std::to_string(pack_info.packageid()), pack_info.description(),
+            std::to_string(pack_info.count()), std::to_string(world_id)) == -1)
+      return -1;
+  }
+  return 0;
+}
+
+/*
+ * truckdst_handler
+ *
+ * receive the info about sending which truck to send which package to which
+ * place
+ *
+ * if succeed return 0, else return -1
+ *
+ */
 int AmazonBridge::truckdst_handler(UA::DetermineDst &msg,
                                    std::vector<truck_dest> &truck_dsts) {
   for (int i = 0; i < msg.leavingtrucks_size(); i++) {
     UA::TruckDst truckdst = msg.leavingtrucks(i);
     truck_dsts.push_back(
         {truckdst.truckid(), truckdst.x(), truckdst.y(), truckdst.packageid()});
-    Homer.LogRecvMsg("Amazon",
-                     "leaving truck detail is " +
-                         std::to_string(truckdst.truckid()),
-                     " dest " + std::to_string(truckdst.x()) + " " +
-                         std::to_string(truckdst.y()) + " " +
-                         std::to_string(truckdst.packageid()));
-    // may need to update db TABLE 'package' here
+    Homer.LogRecvMsg("Amazon", "truck " + std::to_string(truckdst.truckid()) +
+                                   " should send package " +
+                                   std::to_string(truckdst.packageid()) +
+                                   " to destination (" +
+                                   std::to_string(truckdst.x()) + ", " +
+                                   std::to_string(truckdst.y()) + ")");
+    if (Zeus.updatePackageStatus(
+            std::to_string(truckdst.packageid()), std::to_string(truckdst.x()),
+            std::to_string(truckdst.y()), "out for delivery",
+            std::to_string(world_id)) == -1)
+      return -1;
   }
   return 0;
 }
+/*
+ * determinedst_handler
+ *
+ * parse truck-package-dst info
+ *
+ * return 0 if succeed, else -1
+ */
 int AmazonBridge::determinedst_handler(UA::AUCommands &msg,
                                        std::vector<int64_t> &seqnums,
                                        std::vector<truck_dest> &truck_dsts) {
@@ -182,35 +250,24 @@ int AmazonBridge::determinedst_handler(UA::AUCommands &msg,
     seqnums.push_back(destination.seqnum());
     if (Zeus.AdocInSeqNum(std::to_string(destination.seqnum())) == -1)
       continue;
-    Homer.LogRecvMsg("Amazon", "leaving trucks with seqnum " +
-                                   std::to_string(destination.seqnum()));
     if (truckdst_handler(destination, truck_dsts) != 0)
       return -1;
   }
   return 0;
 }
-int AmazonBridge::ack_handler(UA::AUCommands &msg) {
-  for (int i = 0; i < msg.ack_size(); i++) {
-    if (Zeus.ArmOutSeqNum(std::to_string(msg.acks(i)) == -1))
-      return -1;
-    Homer.LogRecvMsg("Amazon", "acking " + std::to_string(msg.acks(i)));
-  }
-  return 0;
-}
 
 /*
- *Recving and parsing the mesg
+ * ack_handler
  *
- *
+ * update request status in db
+ * always return 0
+ * pass test
  */
-int AmazonBridge::warehouse_handler(UA::ACommands &msg,
-                                    std::vector<int64_t> &seqnums) {
-  for (int i = 0; i < msg.warehouses_size(); i++) {
-    UA::DetermineWarehouse warehouse = msg.warehouses(i);
-    seqnums.push_back(warehouse.seqnum());
-    if (Zeus.AdocInSeqNum(std::to_string(warehouse.seqnum()))
-      continue;
-    if ()
+int AmazonBridge::ack_handler(UA::AUCommands &msg) {
+  for (int i = 0; i < msg.ack_size(); i++) {
+    if (Zeus.ArmOutSeqNum(std::to_string(msg.ack(i))) == -1)
+      return -1;
+    Homer.LogRecvMsg("Amazon", "acking " + std::to_string(msg.ack(i)));
   }
   return 0;
 }

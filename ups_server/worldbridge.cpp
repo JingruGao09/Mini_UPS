@@ -5,13 +5,6 @@ WorldBridge ::WorldBridge(const char *hostname, const char *port)
 WorldBridge::~WorldBridge() {}
 
 /*
- * RecvMsg
- *
- * return msg in vector<char>
- */
-// std::vector<char> WorldBridge::RecvMsg() { return Hermes.; }
-
-/*
  * RequireANewWorld
  *
  * Send msg to require a new world id
