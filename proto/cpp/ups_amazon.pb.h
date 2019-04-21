@@ -355,6 +355,21 @@ class APackageInfo :
   ::std::string* release_description();
   void set_allocated_description(::std::string* description);
 
+  // optional string upsaccount = 6;
+  bool has_upsaccount() const;
+  void clear_upsaccount();
+  static const int kUpsaccountFieldNumber = 6;
+  const ::std::string& upsaccount() const;
+  void set_upsaccount(const ::std::string& value);
+  #if LANG_CXX11
+  void set_upsaccount(::std::string&& value);
+  #endif
+  void set_upsaccount(const char* value);
+  void set_upsaccount(const char* value, size_t size);
+  ::std::string* mutable_upsaccount();
+  ::std::string* release_upsaccount();
+  void set_allocated_upsaccount(::std::string* upsaccount);
+
   // required int64 packageid = 3;
   bool has_packageid() const;
   void clear_packageid();
@@ -369,6 +384,20 @@ class APackageInfo :
   ::google::protobuf::int32 count() const;
   void set_count(::google::protobuf::int32 value);
 
+  // required int32 x = 4;
+  bool has_x() const;
+  void clear_x();
+  static const int kXFieldNumber = 4;
+  ::google::protobuf::int32 x() const;
+  void set_x(::google::protobuf::int32 value);
+
+  // required int32 y = 5;
+  bool has_y() const;
+  void clear_y();
+  static const int kYFieldNumber = 5;
+  ::google::protobuf::int32 y() const;
+  void set_y(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:UA.APackageInfo)
  private:
   class HasBitSetters;
@@ -380,8 +409,11 @@ class APackageInfo :
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr description_;
+  ::google::protobuf::internal::ArenaStringPtr upsaccount_;
   ::google::protobuf::int64 packageid_;
   ::google::protobuf::int32 count_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1175,33 +1207,19 @@ class TruckDst :
 
   // accessors -------------------------------------------------------
 
+  // required int64 packageid = 2;
+  bool has_packageid() const;
+  void clear_packageid();
+  static const int kPackageidFieldNumber = 2;
+  ::google::protobuf::int64 packageid() const;
+  void set_packageid(::google::protobuf::int64 value);
+
   // required int32 truckid = 1;
   bool has_truckid() const;
   void clear_truckid();
   static const int kTruckidFieldNumber = 1;
   ::google::protobuf::int32 truckid() const;
   void set_truckid(::google::protobuf::int32 value);
-
-  // required int32 x = 2;
-  bool has_x() const;
-  void clear_x();
-  static const int kXFieldNumber = 2;
-  ::google::protobuf::int32 x() const;
-  void set_x(::google::protobuf::int32 value);
-
-  // required int64 packageid = 4;
-  bool has_packageid() const;
-  void clear_packageid();
-  static const int kPackageidFieldNumber = 4;
-  ::google::protobuf::int64 packageid() const;
-  void set_packageid(::google::protobuf::int64 value);
-
-  // required int32 y = 3;
-  bool has_y() const;
-  void clear_y();
-  static const int kYFieldNumber = 3;
-  ::google::protobuf::int32 y() const;
-  void set_y(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:UA.TruckDst)
  private:
@@ -1213,10 +1231,8 @@ class TruckDst :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  ::google::protobuf::int32 truckid_;
-  ::google::protobuf::int32 x_;
   ::google::protobuf::int64 packageid_;
-  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 truckid_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1930,38 +1946,134 @@ inline void APackageInfo::set_allocated_description(::std::string* description) 
 
 // required int32 count = 2;
 inline bool APackageInfo::has_count() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void APackageInfo::clear_count() {
   count_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::google::protobuf::int32 APackageInfo::count() const {
   // @@protoc_insertion_point(field_get:UA.APackageInfo.count)
   return count_;
 }
 inline void APackageInfo::set_count(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   count_ = value;
   // @@protoc_insertion_point(field_set:UA.APackageInfo.count)
 }
 
 // required int64 packageid = 3;
 inline bool APackageInfo::has_packageid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void APackageInfo::clear_packageid() {
   packageid_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline ::google::protobuf::int64 APackageInfo::packageid() const {
   // @@protoc_insertion_point(field_get:UA.APackageInfo.packageid)
   return packageid_;
 }
 inline void APackageInfo::set_packageid(::google::protobuf::int64 value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   packageid_ = value;
   // @@protoc_insertion_point(field_set:UA.APackageInfo.packageid)
+}
+
+// required int32 x = 4;
+inline bool APackageInfo::has_x() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void APackageInfo::clear_x() {
+  x_ = 0;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline ::google::protobuf::int32 APackageInfo::x() const {
+  // @@protoc_insertion_point(field_get:UA.APackageInfo.x)
+  return x_;
+}
+inline void APackageInfo::set_x(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000010u;
+  x_ = value;
+  // @@protoc_insertion_point(field_set:UA.APackageInfo.x)
+}
+
+// required int32 y = 5;
+inline bool APackageInfo::has_y() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void APackageInfo::clear_y() {
+  y_ = 0;
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline ::google::protobuf::int32 APackageInfo::y() const {
+  // @@protoc_insertion_point(field_get:UA.APackageInfo.y)
+  return y_;
+}
+inline void APackageInfo::set_y(::google::protobuf::int32 value) {
+  _has_bits_[0] |= 0x00000020u;
+  y_ = value;
+  // @@protoc_insertion_point(field_set:UA.APackageInfo.y)
+}
+
+// optional string upsaccount = 6;
+inline bool APackageInfo::has_upsaccount() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void APackageInfo::clear_upsaccount() {
+  upsaccount_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const ::std::string& APackageInfo::upsaccount() const {
+  // @@protoc_insertion_point(field_get:UA.APackageInfo.upsaccount)
+  return upsaccount_.GetNoArena();
+}
+inline void APackageInfo::set_upsaccount(const ::std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  upsaccount_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:UA.APackageInfo.upsaccount)
+}
+#if LANG_CXX11
+inline void APackageInfo::set_upsaccount(::std::string&& value) {
+  _has_bits_[0] |= 0x00000002u;
+  upsaccount_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:UA.APackageInfo.upsaccount)
+}
+#endif
+inline void APackageInfo::set_upsaccount(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _has_bits_[0] |= 0x00000002u;
+  upsaccount_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:UA.APackageInfo.upsaccount)
+}
+inline void APackageInfo::set_upsaccount(const char* value, size_t size) {
+  _has_bits_[0] |= 0x00000002u;
+  upsaccount_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:UA.APackageInfo.upsaccount)
+}
+inline ::std::string* APackageInfo::mutable_upsaccount() {
+  _has_bits_[0] |= 0x00000002u;
+  // @@protoc_insertion_point(field_mutable:UA.APackageInfo.upsaccount)
+  return upsaccount_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* APackageInfo::release_upsaccount() {
+  // @@protoc_insertion_point(field_release:UA.APackageInfo.upsaccount)
+  if (!has_upsaccount()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  return upsaccount_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void APackageInfo::set_allocated_upsaccount(::std::string* upsaccount) {
+  if (upsaccount != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  upsaccount_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), upsaccount);
+  // @@protoc_insertion_point(field_set_allocated:UA.APackageInfo.upsaccount)
 }
 
 // -------------------------------------------------------------------
@@ -2254,72 +2366,36 @@ inline void DetermineDst::set_seqnum(::google::protobuf::int64 value) {
 
 // required int32 truckid = 1;
 inline bool TruckDst::has_truckid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void TruckDst::clear_truckid() {
   truckid_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline ::google::protobuf::int32 TruckDst::truckid() const {
   // @@protoc_insertion_point(field_get:UA.TruckDst.truckid)
   return truckid_;
 }
 inline void TruckDst::set_truckid(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   truckid_ = value;
   // @@protoc_insertion_point(field_set:UA.TruckDst.truckid)
 }
 
-// required int32 x = 2;
-inline bool TruckDst::has_x() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void TruckDst::clear_x() {
-  x_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline ::google::protobuf::int32 TruckDst::x() const {
-  // @@protoc_insertion_point(field_get:UA.TruckDst.x)
-  return x_;
-}
-inline void TruckDst::set_x(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000002u;
-  x_ = value;
-  // @@protoc_insertion_point(field_set:UA.TruckDst.x)
-}
-
-// required int32 y = 3;
-inline bool TruckDst::has_y() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TruckDst::clear_y() {
-  y_ = 0;
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline ::google::protobuf::int32 TruckDst::y() const {
-  // @@protoc_insertion_point(field_get:UA.TruckDst.y)
-  return y_;
-}
-inline void TruckDst::set_y(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000008u;
-  y_ = value;
-  // @@protoc_insertion_point(field_set:UA.TruckDst.y)
-}
-
-// required int64 packageid = 4;
+// required int64 packageid = 2;
 inline bool TruckDst::has_packageid() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void TruckDst::clear_packageid() {
   packageid_ = PROTOBUF_LONGLONG(0);
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline ::google::protobuf::int64 TruckDst::packageid() const {
   // @@protoc_insertion_point(field_get:UA.TruckDst.packageid)
   return packageid_;
 }
 inline void TruckDst::set_packageid(::google::protobuf::int64 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000001u;
   packageid_ = value;
   // @@protoc_insertion_point(field_set:UA.TruckDst.packageid)
 }
