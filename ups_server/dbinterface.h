@@ -52,15 +52,13 @@ public:
                         const std::string &WORLD_id);
   int createTruck(const std::string &truck_id, const std::string &x,
                   const std::string &y, const std::string &WORLD_id);
-  int createPackage(const std::string &package_id, const std::string &truck_id,
-                    const std::string &x, const std::string &y,
-                    std::string status, const std::string &WORLD_id);
-  int createPackage(const std::string &package_id, const std::string &desc,
-                    const std::string &count, const std::string &world_id);
-  int updatePackageStatus(const std::string &package_id, std::string status,
+  int createPackage(const std::string &package_id, const std::string &x,
+                    const std::string &y, const std::string &desc,
+                    const std::string &count, std::string status,
+                    const std::string &WORLD_id);
+  int updatePackageStatus(const std::string &package_id,
+                          const std::string &truck_id, std::string status,
                           const std::string &WORLD_id);
-  int updatePackageStatus(const std::string &package_id, const std::string &x,
-                          const std::string &y, const std::string world_id);
   int docInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docOutMsg(const std::string &seqnum, const std::string &msg,
                 const std::string &WORLD_id);

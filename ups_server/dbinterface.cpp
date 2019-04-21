@@ -197,15 +197,15 @@ int DBInterface::updateTruckStatus(const std::string &truck_id,
  * pass test
  */
 int DBInterface::createPackage(const std::string &package_id,
-                               const std::string &truck_id,
                                const std::string &x, const std::string &y,
-                               std::string status,
+                               const std::string &desc,
+                               const std::string &count, std::string status,
                                const std::string &WORLD_id) {
   try {
-    std::string sql = "INSERT INTO PACKAGE(PACKAGE_ID,TRUCK_ID, DES_X, DES_Y, "
-                      "PACKAGE_STATUS,WORLD_ID) VALUES(" +
-                      package_id + "," + truck_id + "," + x + "," + y + ", '" +
-                      status + "'," + WORLD_id + ");";
+    std::string sql = "INSERT INTO PACKAGE(PACKAGE_ID,DES_X, DES_Y, "
+                      "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID) VALUES(" +
+                      package_id + "," + x + "," + y + ",'" + status + "','" +
+                      desc + "'," + count + "," + WORLD_id + ");";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -221,11 +221,13 @@ int DBInterface::createPackage(const std::string &package_id,
  * pass test
  */
 int DBInterface::updatePackageStatus(const std::string &package_id,
+                                     const std::string &truck_id,
                                      std::string status,
                                      const std::string &WORLD_id) {
   try {
     std::string sql = "UPDATE PACKAGE SET PACKAGE_STATUS='" + status +
-                      "' WHERE PACKAGE_ID=" + package_id +
+                      "', TRUCK_ID=" + truck_id +
+                      " WHERE PACKAGE_ID=" + package_id +
                       " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {
@@ -233,6 +235,7 @@ int DBInterface::updatePackageStatus(const std::string &package_id,
     return -1;
   }
 }
+
 /*
  * createTruck
  *
@@ -413,9 +416,10 @@ int DBInterface::initializer() {
           "PRIMARY KEY(TRUCK_ID, WORLD_ID));";
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS PACKAGE(PACKAGE_ID BIGINT NOT NULL, "
-          "WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID),TRUCK_ID INT NOT "
-          "NULL,PACKAGE_STATUS VARCHAR(20) NOT NULL "
-          "DEFAULT 'CREATED', DES_X INT NOT NULL, DES_Y INT NOT NULL, PRIMARY "
+          "WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID),TRUCK_ID INT "
+          ",PACKAGE_STATUS VARCHAR(20) NOT NULL "
+          "DEFAULT 'CREATED', DES_X INT NOT NULL, DES_Y INT NOT NULL, DESCP "
+          "TEXT, COUNT INT ,PRIMARY "
           "KEY(PACKAGE_ID, WORLD_ID));";
     W.exec(sql);
     W.commit();
