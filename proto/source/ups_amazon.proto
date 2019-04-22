@@ -28,6 +28,7 @@ message TruckLocation{
 required int32 truckid = 1;
 required int32 wh_x=2;
 required int32 wh_y=3;
+required int64 packageid = 4;
 }
 message DetermineDst{
 repeated TruckDst leavingtrucks = 1;
