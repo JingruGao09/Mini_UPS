@@ -5,10 +5,8 @@ services:
       image: postgres
       environment:
             POSTGRES_DB: "UPS"
-	    POSTGRES_USER: postgres
-	    POSTGRES_PASSWORD: passw0rd
-      ports:
-        - "5432:5432"
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: passw0rd
       expose:
         - "5432"
       volumes:
@@ -25,9 +23,7 @@ services:
       user: nobody
       command: /code/runserver.sh
       volumes:
-        - ./ups_server:/code
-      ports:
-        - "8000:8000"
+        - ./ups_web:/code
       expose:
         - "8000"
       depends_on:
@@ -43,7 +39,6 @@ services:
   ups_server:
       build: ./ups_server
       user: nobody
-      command: bash -c "./ups_server 12345"
       volumes:
         - "./ups_server:/code"
       ports:
