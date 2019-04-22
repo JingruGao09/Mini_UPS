@@ -1,8 +1,12 @@
 #include "upserver.h"
 #include <iostream>
-UPServer::UPServer(const char *h, const char *p) : wb(h, p) {
+UPServer::UPServer(const char *h, const char *p, const char *a_h,
+                   const char *a_p)
+    : wb(h, p), ab(a_h, a_p) {
   ConnectWorld();
   wb.SetWorldOptions(SIMSPEED);
+  ab.setWid(wid);
+  ab.SendWorldId();
 }
 /* ConnectWorld
  * This function will automatically connect to a world,
@@ -40,12 +44,31 @@ int UPServer::test() {
 
   return 0;
 }
-void MsgHandler_thread(WorldBridge &wb, UPS::UResponses response) {
+void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
+                       UPS::UResponses response) {
   std::vector<truck_t> trucks;
   if (wb.ParseResponses(response, trucks) == -1)
     return;
   if (!trucks.empty()) {
+    std::vector<truck_location> truck_locations;
+    for (auto truck : trucks) {
+      //      truck_locations.push_back({truck.truck_id,truck.)
+    }
+    // ab.SendTruckId(std::vector<truck_location> & trucks)
     // tell amazon truck info
+  }
+}
+
+void A_MsgHandler_thread(AmazonBridge &ab, UA::AUCommands response) {
+  std::vector<warehouse_info> whs;
+  std::vector<truck_dest> truck_dsts;
+  if (ab.ParseResponses(response, whs, truck_dsts) == -1)
+    return;
+  if (!whs.empty()) {
+    // assign truck to wh
+  }
+  if (!truck_dsts.empty()) {
+    // tell truck to destination
   }
 }
 int UPServer::WorldMsgHandler() {
@@ -57,22 +80,10 @@ int UPServer::WorldMsgHandler() {
   // wb.ParseResponses(response, trucks);
   return 0;
 }
-void listen_thread(UPServer &upserver) {
-  try {
-    while (1) {
-      upserver.WorldMsgHandler();
-    }
-  } catch (std::string &e) {
-    return;
-  }
-}
-
-int main() {
-  UPServer upserver("localhost", "12345");
-  std::cout << "finish initialization\n";
-  std::thread t = std::thread(listen_thread, std::ref(upserver));
+int UPServer::AmazonMsgHandler() {
+  UA::AUCommands response;
+  ab.RecvMsg<UA::AUCommands>(response);
+  std::thread t = std::thread(A_MsgHandler_thread, std::ref(ab), response);
   t.detach();
-  upserver.test();
-  while (1)
-    ;
+  return 0;
 }

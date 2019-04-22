@@ -1,5 +1,7 @@
 #ifndef __UPSERVER_H__
 #define __UPSERVER_H__
+#include "amazonbridge.h"
+#include "ups_amazon.pb.h"
 #include "world_ups.pb.h"
 #include "worldbridge.h"
 #include <thread>
@@ -9,12 +11,14 @@ class UPServer {
 private:
   DBInterface Zeus;
   WorldBridge wb;
+  AmazonBridge ab;
   int64_t wid;
   void ConnectWorld();
 
 public:
-  UPServer(const char *h, const char *p);
+  UPServer(const char *h, const char *p, const char *a_h, const char *a_p);
   int WorldMsgHandler();
+  int AmazonMsgHandler();
   int test();
 };
 #endif

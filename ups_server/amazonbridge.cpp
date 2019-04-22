@@ -1,12 +1,15 @@
 #include "amazonbridge.h"
 
-AmazonBridge::AmazonBridge(const char *hostname, const char *port,
-                           const int64_t &wid)
-    : world_id(wid), ConAmazonClient(hostname, port) {
+AmazonBridge::AmazonBridge(const char *hostname, const char *port)
+    : world_id(-1), ConAmazonClient(hostname, port) {
   Homer.LogSendMsg("Amazon", "connected to amazon");
 }
 AmazonBridge::~AmazonBridge() {}
 
+int AmazonBridge::setWid(const int64_t &wid) {
+  world_id = wid;
+  return 0;
+}
 /*
  * Send World Id to Amazon
  * Send msg to inform Amazon world to connect

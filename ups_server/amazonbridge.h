@@ -33,7 +33,7 @@ typedef struct _truck_dest truck_dest;
 
 class AmazonBridge {
 private:
-  int world_id;
+  int64_t world_id;
   std::string errmsg;
   Client ConAmazonClient;
   DBInterface Zeus;
@@ -52,7 +52,7 @@ private:
   int ack_handler(UA::AUCommands &msg);
 
 public:
-  AmazonBridge(const char *hostname, const char *port, const int64_t &wid);
+  AmazonBridge(const char *hostname, const char *port);
   ~AmazonBridge();
   int SendWorldId();
   int SendTruckId(std::vector<truck_location> &trucks);
@@ -62,6 +62,7 @@ public:
   int ParseResponses(UA::AUCommands &msg,
                      std::vector<warehouse_info> &warehouse_infos,
                      std::vector<truck_dest> &truck_dsts);
+  int setWid(const int64_t &wid);
   template <typename T> int RecvMsg(T &msg) {
     return ConAmazonClient.recvMsg<T>(msg);
   }

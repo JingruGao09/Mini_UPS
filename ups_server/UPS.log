@@ -1,0 +1,31 @@
+[2019-04-21.20:40:14] Sent message to Amazon, about connected to amazon
+[2019-04-21.20:40:14] Sent message to World, about Connecting to world 1
+[2019-04-21.20:40:14] Received message from World, about connected!
+[2019-04-21.20:40:14] Sent message to World, about setting world speed to 100
+[2019-04-21.20:40:14] Sent message to Amazon seqnum is 12, about please connecting to world 1
+[2019-04-21.20:40:14] Sent message to World seqnum is 7, about querying status of truck 1
+[2019-04-21.20:40:20] Received message from World, about acking 7
+[2019-04-21.20:40:56] Sent message to Amazon, about connected to amazon
+[2019-04-21.20:40:56] Sent message to World, about Connecting to world 1
+[2019-04-21.20:40:56] Received message from World, about connected!
+[2019-04-21.20:40:56] Sent message to World, about setting world speed to 100
+[2019-04-21.20:40:56] Sent message to Amazon seqnum is 13, about please connecting to world 1
+[2019-04-21.20:40:56] Sent message to World seqnum is 8, about querying status of truck 1
+[2019-04-21.20:41:02] Received message from World, about acking 8
+[2019-04-21.20:41:03] Sent message to Amazon, about connected to amazon
+[2019-04-21.20:41:03] Sent message to World, about Connecting to world 1
+[2019-04-21.20:41:03] Received message from World, about connected!
+[2019-04-21.20:41:03] Sent message to World, about setting world speed to 100
+[2019-04-21.20:41:03] Sent message to Amazon seqnum is 14, about please connecting to world 1
+[2019-04-21.20:41:09] Sent message to Amazon, about connected to amazon
+[2019-04-21.20:41:09] Sent message to World, about Connecting to world 1
+[2019-04-21.20:41:09] Received message from World, about connected!
+[2019-04-21.20:41:09] Sent message to World, about setting world speed to 100
+[2019-04-21.20:41:09] Sent message to Amazon seqnum is 15, about please connecting to world 1
+[2019-04-21.20:41:09] Sent message to World seqnum is 9, about querying status of truck 1
+[2019-04-21.20:41:42] Sent message to Amazon, about connected to amazon
+[2019-04-21.20:41:42] Sent message to World, about Connecting to world 1
+[2019-04-21.20:41:42] Received message from World, about connected!
+[2019-04-21.20:41:42] Sent message to World, about setting world speed to 100
+[2019-04-21.20:41:42] Sent message to Amazon seqnum is 16, about please connecting to world 1
+[2019-04-21.20:41:42] Sent message to World seqnum is 10, about querying status of truck 1
