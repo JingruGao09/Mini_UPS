@@ -370,13 +370,66 @@ int DBInterface::docInSeqNum(const std::string &seqnum,
  * if success return 0, else -1
  * pass test
  */
-int DBInterface::docOutMsg(const std::string &seqnum, const std::string &msg,
+int DBInterface::docOutMsg(const std::string &seqnum, const resend_msg_t &msg,
                            const std::string &WORLD_id) {
   try {
-    std::string sql = "UPDATE OUTSEQNUM SET MSG='" + msg +
-                      "' WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id +
-                      ";";
-    std::cout << sql;
+    std::string sql = "UPDATE OUTSEQNUM SET TYPE=" + std::to_string(msg.type) +
+                      ", TRUCK_ID=" + std::to_string(msg.truck_id) +
+                      ", WH_ID=" + std::to_string(msg.wh_id) +
+                      ",PACKAGE_ID=" + std::to_string(msg.package_id) +
+                      ", PACKAGE_X=" + std::to_string(msg.package_x) +
+                      ", PACKAGE_Y=" + std::to_string(msg.package_y) +
+                      " WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id + ";";
+    std::cout << sql << std::endl;
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+
+/*
+ * getDatedOutMsg
+ *
+ * get all the msg which is out of dated, we need to resend them.
+ *
+ *
+ * return an array of outdated msg
+ *
+ */
+std::vector<resend_msg_t> DBInterface::getDatedOutMsg(const int64_t &world_id) {
+  std::string sql =
+      "SELECT *FROM OUTSEQNUM WHERE WORLD_ID=" + std::to_string(world_id) +
+      "AND TIME+900 <" + std::to_string(unix_timestamp()) + ";";
+  pqxx::result R = lookup(sql);
+  if (R.empty())
+    return {};
+  std::vector<resend_msg_t> msg;
+  for (auto C : R) {
+    resend_msg_t m;
+    m.seqnum = C["ID"].as<int>();
+    m.type = C["TYPE"].as<int>();
+    m.truck_id = C["TRUCK_ID"].as<int>();
+    m.wh_id = C["WH_ID"].as<int>();
+    m.package_id = C["PACKAGE_ID"].as<int>();
+    m.package_x = C["PACKAGE_X"].as<int>();
+    m.package_y = C["PACKAGE_Y"].as<int>();
+    msg.push_back(m);
+  }
+  return msg;
+}
+/*
+ * updateOutMsgDate
+ *
+ * This function update the time of unack out msg
+ * return 0 if succeed, else -1
+ */
+int DBInterface::updateOutMsgDate(const std::string &seqnum,
+                                  const std::string &WORLD_id) {
+  try {
+    std::string sql =
+        "UPDATE OUTSEQNUM SET TIME=" + std::to_string(unix_timestamp()) +
+        " WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id + ";";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -483,8 +536,8 @@ int DBInterface::initializer() {
         "NOT NULL REFERENCES WORLD(WORLD_ID),PRIMARY KEY(ID, WORLD_ID));";
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS OUTSEQNUM(ID BIGSERIAL NOT "
-          "NULL, MSG "
-          "VARCHAR(65535),WORLD_ID INT NOT NULL REFERENCES "
+          "NULL,TYPE INT, TRUCK_ID INT, WH_ID INT,PACKAGE_ID INT,PACKAGE_X "
+          "INT,PACKAGE_Y INT,WORLD_ID INT NOT NULL REFERENCES "
           "WORLD(WORLD_ID),TIME INT NOT NULL, "
           "PRIMARY KEY(ID, WORLD_ID));";
     W.exec(sql);

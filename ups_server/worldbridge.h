@@ -34,7 +34,12 @@ private:
   int truck_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
   int err_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
   int selectATruck(const int &wh_x, const int &wh_y);
-
+  int resendQuery(const int &truck_id, const int &seqnum);
+  int resendGoDeliver(const int &truck_id, const int &package_id,
+                      const int &package_x, const int &package_y,
+                      const int &seqnum);
+  int resendGoPickUp(const int &wh_id, const int &truck_id, const int &seqnum);
+  int ReSendMsg();
 public:
   WorldBridge(const char *hostname, const char *port);
 
