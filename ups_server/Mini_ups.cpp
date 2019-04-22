@@ -5,8 +5,7 @@ int main() {
   while (1) {
     try {
 
-      UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.193.1", "80");
-      // UPServer upserver("localhost", "12345", "localhost", "8080");
+      UPServer upserver("localhost", "12345", "localhost", "8080");
       // UPServer upserver("vcm-5475.vm.duke.edu", "12345", "10.197.40.0",
       // "8080");
       std::cout << "finish initialization\n";
