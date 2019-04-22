@@ -30,8 +30,9 @@ void UPServer::ConnectWorld(const char *h, const char *p) {
     // initTruck = true;
   }
   // connect to world
-  if (wb.ConnectToAWorld(wid, initTruck) == -1)
+  if (wb.ConnectToAWorld(wid, initTruck) == -1){
     throw std::string("failed to send msg");
+  }
   UPS::UConnected response;
   wb.RecvMsg<UPS::UConnected>(response);
   if (wb.ParseConnectWorldInfo(response) == -1)
