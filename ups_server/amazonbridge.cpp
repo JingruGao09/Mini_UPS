@@ -22,8 +22,10 @@ int AmazonBridge::SendWorldId() {
   int64_t seqnum;
   msg = command.add_worlds();
   msg->set_worldid(world_id);
-  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1)
+  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1) {
+    Homer.LogRecvMsg("World", "failed to AfetchOUTSeqNum");
     return -1;
+  }
   msg->set_seqnum(seqnum);
   Homer.LogSendMsg("Amazon",
                    "please connecting to world " + std::to_string(world_id),
@@ -79,8 +81,10 @@ int AmazonBridge::SendPackageId(std::vector<int64_t> &package_ids) {
   UA::SettleShipment *shipments;
   int64_t seqnum;
   shipments = command.add_settled();
-  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1)
+  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1) {
+    Homer.LogRecvMsg("World", "failed to AfetchOUTSeqNum");
     return -1;
+  }
   shipments->set_seqnum(seqnum);
   for (auto package_id : package_ids) {
     shipments->add_packageid(package_id);
@@ -104,8 +108,10 @@ int AmazonBridge::FinishShipment(std::vector<int64_t> &package_ids) {
   UA::FinishShipment *finished;
   int64_t seqnum;
   finished = command.add_finished();
-  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1)
+  if ((seqnum = Zeus.AfetchOutSeqNum()) == -1) {
+    Homer.LogRecvMsg("World", "failed to AfetchOUTSeqNum");
     return -1;
+  }
   finished->set_seqnum(seqnum);
   for (auto package_id : package_ids) {
     finished->add_packageid(package_id);
@@ -174,8 +180,10 @@ int AmazonBridge::determinewarehouse_handler(
                      std::to_string(warehouse.seqnum()));
     std::vector<int> package_ids;
     if (apackageinfo_handler(warehouse, warehouse.wh_x(), warehouse.wh_y(),
-                             package_ids) != 0)
+                             package_ids) != 0) {
+      Homer.LogRecvMsg("World", "failed to apackageinfo_handler");
       return -1;
+    }
     warehouse_infos.push_back(
         {warehouse.whid(), warehouse.wh_x(), warehouse.wh_y(), package_ids});
   }
@@ -206,8 +214,10 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
             std::to_string(wh_y), std::to_string(pack_info.x()),
             std::to_string(pack_info.y()), pack_info.description(),
             std::to_string(pack_info.count()), "created",
-            std::to_string(world_id)) == -1)
+            std::to_string(world_id)) == -1) {
+      Homer.LogRecvMsg("World", "failed to createPackage");
       return -1;
+    }
   }
   return 0;
 }
@@ -247,8 +257,10 @@ int AmazonBridge::determinedst_handler(UA::AUCommands &msg,
     seqnums.push_back(destination.seqnum());
     if (Zeus.AdocInSeqNum(std::to_string(destination.seqnum())) == -1)
       continue;
-    if (truckdst_handler(destination, truck_dsts) != 0)
+    if (truckdst_handler(destination, truck_dsts) != 0) {
+      Homer.LogRecvMsg("World", "failed to truckdst_handler");
       return -1;
+    }
   }
   return 0;
 }
@@ -262,8 +274,10 @@ int AmazonBridge::determinedst_handler(UA::AUCommands &msg,
  */
 int AmazonBridge::ack_handler(UA::AUCommands &msg) {
   for (int i = 0; i < msg.ack_size(); i++) {
-    if (Zeus.ArmOutSeqNum(std::to_string(msg.ack(i))) == -1)
+    if (Zeus.ArmOutSeqNum(std::to_string(msg.ack(i))) == -1) {
+      Homer.LogRecvMsg("World", "failed to ArmOutSeqNum");
       return -1;
+    }
     Homer.LogRecvMsg("Amazon", "acking " + std::to_string(msg.ack(i)));
   }
   return 0;

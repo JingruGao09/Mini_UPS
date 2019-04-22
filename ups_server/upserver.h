@@ -17,6 +17,7 @@ private:
 
 public:
   UPServer(const char *h, const char *p, const char *a_h, const char *a_p);
+  ~UPServer();
   int WorldMsgHandler();
   int AmazonMsgHandler();
   int test();

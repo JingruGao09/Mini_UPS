@@ -3,15 +3,21 @@ void listen_thread(UPServer &upserver);
 void A_listen_thread(UPServer &upserver);
 int main() {
   while (1) {
-    UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1", "80");
-    std::cout << "finish initialization\n";
-    std::thread t = std::thread(listen_thread, std::ref(upserver));
-    // t.detach();
-    std::thread t2 = std::thread(A_listen_thread, std::ref(upserver));
-    // t2.detach();
+    try {
+      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
+      // "80");
+      UPServer upserver("localhost", "12345", "localhost", "8080");
+      std::cout << "finish initialization\n";
+      std::thread t = std::thread(listen_thread, std::ref(upserver));
+      // t.detach();
+      std::thread t2 = std::thread(A_listen_thread, std::ref(upserver));
+      // t2.detach();
 
-    t.join();
-    t2.join();
+      t.join();
+      t2.join();
+    } catch (std::string &e) {
+      continue;
+    }
   }
   // upserver.test();
   while (1)

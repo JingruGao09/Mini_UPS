@@ -11,13 +11,18 @@ WorldBridge::~WorldBridge() {}
  * if success return 0, else, return -1
  * pass test
  */
-int WorldBridge::RequireANewWorld() {
+int WorldBridge::RequireANewWorld(std::vector<truck_t> &trucks) {
   UPS::UConnect msg;
+  if (CreateTrucks(TRUCK_NUM, &msg, trucks) == -1) {
+    Homer.LogRecvMsg("System", "failed to create truck");
+    return -1;
+  }
   msg.set_isamazon(false);
   Homer.LogSendMsg("World", "Requesting a new world");
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
+void WorldBridge::setWid(const int64_t &wid) { world_id = wid; }
 /* ConnectToAWorld
  *
  * Connect to a simulate world.
@@ -25,19 +30,21 @@ int WorldBridge::RequireANewWorld() {
  * send success return 0, else return -1
  * pass test
  */
-int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
+int WorldBridge::ConnectToAWorld(const int64_t &wid) {
   world_id = wid;
   UPS::UConnect msg;
   msg.set_worldid(world_id);
   msg.set_isamazon(false);
-  if (initTruck) {
-    if (CreateTrucks(TRUCK_NUM, &msg) == -1)
-      return -1;
-  }
   Homer.LogSendMsg("World", "Connecting to world " + std::to_string(wid));
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
+int WorldBridge::DisconnectAWorld() {
+  UPS::UCommands command;
+  command.set_disconnect(true);
+  Homer.LogSendMsg("World", "diconnect from world");
+  return Hermes.sendMsg<UPS::UCommands>(command);
+}
 /*
  * ParseConnectWorldInfo
  *
@@ -50,6 +57,7 @@ int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
   Homer.LogRecvMsg("World", msg.result());
   if (msg.result() == "connected!")
     return 0;
+  Homer.LogRecvMsg("System", "failed to connect world");
   return -1;
 }
 /*
@@ -59,7 +67,8 @@ int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
  * if failed to save, return -1, succeed,return 0
  * pass test
  */
-int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
+int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg,
+                              std::vector<truck_t> &trucks) {
   UPS::UInitTruck *truck;
 
   for (int i = 0; i < truckNum; i++) {
@@ -69,9 +78,7 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
     int y = rand() % 100 - 50;
     truck->set_x(x);
     truck->set_y(y);
-    if (Zeus.createTruck(std::to_string(i), std::to_string(x),
-                         std::to_string(y), std::to_string(world_id)) == -1)
-      return -1;
+    trucks.push_back({i, x, y});
   }
   return 0;
 }
@@ -119,8 +126,10 @@ int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
   pickup = command.add_pickups();
   pickup->set_whid(wh_id);
   pickup->set_truckid(truck_id);
-  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1) {
+    Homer.LogRecvMsg("System", "failed to fetch seq num");
     return -1;
+  }
   pickup->set_seqnum(seqnum);
   Homer.LogSendMsg("World",
                    "sending truck " + std::to_string(truck_id) +
@@ -164,6 +173,7 @@ int WorldBridge::SetPackageInfo(const int &truck_id, package_t &package,
   if (Zeus.updatePackageStatus(std::to_string(package.package_id),
                                std::to_string(truck_id), "out for delivery",
                                std::to_string(world_id)) == -1) {
+    Homer.LogRecvMsg("System", "failed to SetPackageInfo");
     return -1;
   }
   Homer.LogSendMsg("World", "package " + std::to_string(package.package_id) +
@@ -189,8 +199,10 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
   goDeliver->set_truckid(truck_id);
   if (SetPackageInfo(truck_id, package, goDeliver) == -1)
     return -1;
-  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1) {
+    Homer.LogRecvMsg("System", "failed to fetch seq num");
     return -1;
+  }
   goDeliver->set_seqnum(seqnum);
   // save msg to db
   Homer.LogSendMsg(
@@ -208,8 +220,10 @@ int WorldBridge::Query(const int &truck_id) {
   int64_t seqnum;
   query = command.add_queries();
   query->set_truckid(truck_id);
-  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1) {
+    Homer.LogRecvMsg("System", "failed to fetch seq num");
     return -1;
+  }
   query->set_seqnum(seqnum);
   // save msg to db
   Homer.LogSendMsg("World",
@@ -283,8 +297,10 @@ int WorldBridge::finished_handler(UPS::UResponses &msg,
     if (Zeus.updateTruckStatus(std::to_string(finished.truckid()),
                                std::to_string(finished.x()),
                                std::to_string(finished.y()), finished.status(),
-                               std::to_string(world_id)))
+                               std::to_string(world_id))) {
+      Homer.LogRecvMsg("System", "failed to update TruckStatus");
       return -1;
+    }
 
     if (finished.status() == "arrive warehouse") {
       Homer.LogRecvMsg("World",
@@ -323,8 +339,10 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
                          std::to_string(world_id)) == -1)
       continue;
     if (Zeus.updatePackageStatus(std::to_string(delivery.packageid()),
-                                 "Delivered", std::to_string(world_id)) == -1)
+                                 "Delivered", std::to_string(world_id)) == -1) {
+      Homer.LogRecvMsg("System", "failed to updatePackageStatus");
       return -1;
+    }
     Homer.LogRecvMsg("World",
                      "truck" + std::to_string(delivery.truckid()) +
                          " delivered package " +
@@ -345,7 +363,8 @@ int WorldBridge::ack_handler(UPS::UResponses &msg) {
   for (int i = 0; i < msg.acks_size(); i++) {
     if (Zeus.rmOutSeqNum(std::to_string(msg.acks(i)),
                          std::to_string(world_id)) == -1)
-      return -1;
+      Homer.LogRecvMsg("System", "failed to rmOutSeqNum");
+    return -1;
     Homer.LogRecvMsg("World", "acking " + std::to_string(msg.acks(i)));
   }
   return 0;
@@ -370,8 +389,10 @@ int WorldBridge::truck_handler(UPS::UResponses &msg,
     if (Zeus.updateTruckStatus(std::to_string(truck.truckid()),
                                std::to_string(truck.x()),
                                std::to_string(truck.y()), truck.status(),
-                               std::to_string(world_id)) == -1)
+                               std::to_string(world_id)) == -1) {
+      Homer.LogRecvMsg("System", "failed to updateTruckStatus");
       return -1;
+    }
     Homer.LogRecvMsg("World",
                      "truck " + std::to_string(truck.truckid()) + " is " +
                          truck.status() + " ,located at(" +
