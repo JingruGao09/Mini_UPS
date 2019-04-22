@@ -13,15 +13,12 @@ required int32 x = 4;
 required int32 y = 5;
 optional string upsaccount = 6;
 }
-message WarehouseInfo{
+message DetermineWarehouse{
 required int32 whid = 1;
 required int32 wh_x = 2;
 required int32 wh_y = 3;
 repeated APackageInfo packageinfos = 4;
-}
-message DetermineWarehouse{
-repeated WarehouseInfo warehouses=1;
-required int64 seqnum = 2;
+required int64 seqnum = 5;
 }
 message DetermineTruck{
 repeated TruckLocation arrivedtrucks = 1;
