@@ -39,6 +39,7 @@ public:
   ~WorldBridge();
   int RequireANewWorld();
   int ConnectToAWorld(const int64_t &wid, bool initTruck);
+  int DisconnectAWorld();
   int ParseConnectWorldInfo(UPS::UConnected &msg);
   int GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
                const std::vector<int> &package_ids);

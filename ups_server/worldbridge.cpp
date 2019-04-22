@@ -38,6 +38,12 @@ int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
+int WorldBridge::DisconnectAWorld() {
+  UPS::UCommands command;
+  command.set_disconnect(true);
+  Homer.LogSendMsg("World", "diconnect from world");
+  return Hermes.sendMsg<UPS::UCommands>(command);
+}
 /*
  * ParseConnectWorldInfo
  *
