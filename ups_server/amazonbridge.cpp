@@ -1,13 +1,17 @@
 #include "amazonbridge.h"
 
-AmazonBridge::AmazonBridge(const char *hostname, const char *port)
-    : world_id(-1), ConAmazonClient(hostname, port) {}
+AmazonBridge::AmazonBridge(const char *hostname, const char *port,
+                           const int64_t &wid)
+    : world_id(wid), ConAmazonClient(hostname, port) {
+  Homer.LogSendMsg("Amazon", "connected to amazon");
+}
 AmazonBridge::~AmazonBridge() {}
 
 /*
  * Send World Id to Amazon
  * Send msg to inform Amazon world to connect
  * If success return 0, else, return -1
+ *
  */
 int AmazonBridge::SendWorldId() {
   UA::UACommands command;
@@ -197,10 +201,14 @@ int AmazonBridge::apackageinfo_handler(UA::WarehouseInfo &msg) {
     Homer.LogRecvMsg("Amazon",
                      "package: " + std::to_string(pack_info.packageid()) +
                          " x " + std::to_string(pack_info.count()) + ": " +
-                         pack_info.description() + " ");
+                         pack_info.description() + ", desctination: (" +
+                         std::to_string(pack_info.x()) + "," +
+                         std::to_string(pack_info.y()) + ")");
     if (Zeus.createPackage(
-            std::to_string(pack_info.packageid()), pack_info.description(),
-            std::to_string(pack_info.count()), std::to_string(world_id)) == -1)
+            std::to_string(pack_info.packageid()),
+            std::to_string(pack_info.x()), std::to_string(pack_info.y()),
+            pack_info.description(), std::to_string(pack_info.count()),
+            "created", std::to_string(world_id)) == -1)
       return -1;
   }
   return 0;
@@ -219,19 +227,10 @@ int AmazonBridge::truckdst_handler(UA::DetermineDst &msg,
                                    std::vector<truck_dest> &truck_dsts) {
   for (int i = 0; i < msg.leavingtrucks_size(); i++) {
     UA::TruckDst truckdst = msg.leavingtrucks(i);
-    truck_dsts.push_back(
-        {truckdst.truckid(), truckdst.x(), truckdst.y(), truckdst.packageid()});
+    truck_dsts.push_back({truckdst.truckid(), truckdst.packageid()});
     Homer.LogRecvMsg("Amazon", "truck " + std::to_string(truckdst.truckid()) +
                                    " should send package " +
-                                   std::to_string(truckdst.packageid()) +
-                                   " to destination (" +
-                                   std::to_string(truckdst.x()) + ", " +
-                                   std::to_string(truckdst.y()) + ")");
-    if (Zeus.updatePackageStatus(
-            std::to_string(truckdst.packageid()), std::to_string(truckdst.x()),
-            std::to_string(truckdst.y()), "out for delivery",
-            std::to_string(world_id)) == -1)
-      return -1;
+                                   std::to_string(truckdst.packageid()));
   }
   return 0;
 }
@@ -271,9 +270,3 @@ int AmazonBridge::ack_handler(UA::AUCommands &msg) {
   }
   return 0;
 }
-
-/*
-int main() {
-  AmazonBridge ab("vcm-7989.vm.duke.edu", "12345");
-  ab.SendWorldId();
-  }*/

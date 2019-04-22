@@ -132,10 +132,9 @@ int WorldBridge::SetPackageInfo(truck_t &truck,
     location->set_packageid(package.package_id);
     location->set_x(package.x);
     location->set_y(package.y);
-    if (Zeus.createPackage(
+    if (Zeus.updatePackageStatus(
             std::to_string(package.package_id), std::to_string(truck.truck_id),
-            std::to_string(truck.x), std::to_string(truck.y),
-            "OUT FOR DELIVERY", std::to_string(world_id)) == -1) {
+            "out for delivery", std::to_string(world_id)) == -1) {
       return -1;
     }
     Homer.LogSendMsg("World",

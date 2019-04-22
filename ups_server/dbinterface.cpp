@@ -237,6 +237,28 @@ int DBInterface::updatePackageStatus(const std::string &package_id,
 }
 
 /*
+ * updatePackageStatus
+ *
+ * update the status and location of package
+ *
+ * return 0 if succeed, else -1
+ * pass test
+ */
+int DBInterface::updatePackageStatus(const std::string &package_id,
+                                     const std::string status,
+                                     const std::string &WORLD_id) {
+  try {
+    std::string sql = "UPDATE PACKAGE SET PACKAGE_STATUS='" + status + "'" +
+                      " WHERE PACKAGE_ID=" + package_id +
+                      " AND WORLD_ID=" + WORLD_id + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+
+/*
  * createTruck
  *
  * save given truck data into db,

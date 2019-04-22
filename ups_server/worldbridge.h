@@ -49,5 +49,6 @@ public:
   int ack(const std::vector<int64_t> &seqnums);
   int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks);
   int SetWorldOptions(int speed);
+  template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };
 #endif

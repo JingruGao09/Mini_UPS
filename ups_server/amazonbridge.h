@@ -24,8 +24,6 @@ struct _warehouse_info {
 };
 struct _truck_dest {
   int truck_id;
-  int x;
-  int y;
   int64_t package_id;
 };
 typedef struct _truck_location truck_location;
@@ -54,7 +52,7 @@ private:
   int ack_handler(UA::AUCommands &msg);
 
 public:
-  AmazonBridge(const char *hostname, const char *port);
+  AmazonBridge(const char *hostname, const char *port, const int64_t &wid);
   ~AmazonBridge();
   int SendWorldId();
   int SendTruckId(std::vector<truck_location> &trucks);
@@ -64,5 +62,8 @@ public:
   int ParseResponses(UA::AUCommands &msg,
                      std::vector<warehouse_info> &warehouse_infos,
                      std::vector<truck_dest> &truck_dsts);
+  template <typename T> int RecvMsg(T &msg) {
+    return ConAmazonClient.recvMsg<T>(msg);
+  }
 };
 #endif

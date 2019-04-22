@@ -59,6 +59,9 @@ public:
   int updatePackageStatus(const std::string &package_id,
                           const std::string &truck_id, std::string status,
                           const std::string &WORLD_id);
+  int updatePackageStatus(const std::string &package_id,
+                          const std::string status,
+                          const std::string &WORLD_id);
   int docInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docOutMsg(const std::string &seqnum, const std::string &msg,
                 const std::string &WORLD_id);
