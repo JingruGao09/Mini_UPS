@@ -825,6 +825,13 @@ class TruckLocation :
   ::google::protobuf::int32 wh_x() const;
   void set_wh_x(::google::protobuf::int32 value);
 
+  // required int64 packageid = 4;
+  bool has_packageid() const;
+  void clear_packageid();
+  static const int kPackageidFieldNumber = 4;
+  ::google::protobuf::int64 packageid() const;
+  void set_packageid(::google::protobuf::int64 value);
+
   // required int32 wh_y = 3;
   bool has_wh_y() const;
   void clear_wh_y();
@@ -844,6 +851,7 @@ class TruckLocation :
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::int32 truckid_;
   ::google::protobuf::int32 wh_x_;
+  ::google::protobuf::int64 packageid_;
   ::google::protobuf::int32 wh_y_;
   friend struct ::TableStruct_ups_5famazon_2eproto;
 };
@@ -2154,20 +2162,38 @@ inline void TruckLocation::set_wh_x(::google::protobuf::int32 value) {
 
 // required int32 wh_y = 3;
 inline bool TruckLocation::has_wh_y() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void TruckLocation::clear_wh_y() {
   wh_y_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline ::google::protobuf::int32 TruckLocation::wh_y() const {
   // @@protoc_insertion_point(field_get:UA.TruckLocation.wh_y)
   return wh_y_;
 }
 inline void TruckLocation::set_wh_y(::google::protobuf::int32 value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   wh_y_ = value;
   // @@protoc_insertion_point(field_set:UA.TruckLocation.wh_y)
+}
+
+// required int64 packageid = 4;
+inline bool TruckLocation::has_packageid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TruckLocation::clear_packageid() {
+  packageid_ = PROTOBUF_LONGLONG(0);
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline ::google::protobuf::int64 TruckLocation::packageid() const {
+  // @@protoc_insertion_point(field_get:UA.TruckLocation.packageid)
+  return packageid_;
+}
+inline void TruckLocation::set_packageid(::google::protobuf::int64 value) {
+  _has_bits_[0] |= 0x00000004u;
+  packageid_ = value;
+  // @@protoc_insertion_point(field_set:UA.TruckLocation.packageid)
 }
 
 // -------------------------------------------------------------------

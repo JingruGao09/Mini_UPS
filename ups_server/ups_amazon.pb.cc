@@ -311,8 +311,10 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
   PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, truckid_),
   PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, wh_x_),
   PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, wh_y_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, packageid_),
   0,
   1,
+  3,
   2,
   PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _internal_metadata_),
@@ -382,13 +384,13 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 9, 20, sizeof(::UA::APackageInfo)},
   { 26, 36, sizeof(::UA::DetermineWarehouse)},
   { 41, 48, sizeof(::UA::DetermineTruck)},
-  { 50, 58, sizeof(::UA::TruckLocation)},
-  { 61, 68, sizeof(::UA::DetermineDst)},
-  { 70, 77, sizeof(::UA::TruckDst)},
-  { 79, 86, sizeof(::UA::SettleShipment)},
-  { 88, 95, sizeof(::UA::FinishShipment)},
-  { 97, 107, sizeof(::UA::UACommands)},
-  { 112, 120, sizeof(::UA::AUCommands)},
+  { 50, 59, sizeof(::UA::TruckLocation)},
+  { 63, 70, sizeof(::UA::DetermineDst)},
+  { 72, 79, sizeof(::UA::TruckDst)},
+  { 81, 88, sizeof(::UA::SettleShipment)},
+  { 90, 97, sizeof(::UA::FinishShipment)},
+  { 99, 109, sizeof(::UA::UACommands)},
+  { 114, 122, sizeof(::UA::AUCommands)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -421,26 +423,26 @@ const char descriptor_table_protodef_ups_5famazon_2eproto[] =
   "\003 \002(\005\022&\n\014packageinfos\030\004 \003(\0132\020.UA.APackag"
   "eInfo\022\016\n\006seqnum\030\005 \002(\003\"J\n\016DetermineTruck\022"
   "(\n\rarrivedtrucks\030\001 \003(\0132\021.UA.TruckLocatio"
-  "n\022\016\n\006seqnum\030\002 \002(\003\"<\n\rTruckLocation\022\017\n\007tr"
-  "uckid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030\003 \002(\005\""
-  "C\n\014DetermineDst\022#\n\rleavingtrucks\030\001 \003(\0132\014"
-  ".UA.TruckDst\022\016\n\006seqnum\030\002 \002(\003\".\n\010TruckDst"
-  "\022\017\n\007truckid\030\001 \002(\005\022\021\n\tpackageid\030\002 \002(\003\"3\n\016"
-  "SettleShipment\022\021\n\tpackageid\030\001 \003(\003\022\016\n\006seq"
-  "num\030\002 \002(\003\"3\n\016FinishShipment\022\021\n\tpackageid"
-  "\030\001 \003(\003\022\016\n\006seqnum\030\002 \002(\003\"\247\001\n\nUACommands\022\035\n"
-  "\006worlds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks\030\002"
-  " \003(\0132\022.UA.DetermineTruck\022#\n\007settled\030\003 \003("
-  "\0132\022.UA.SettleShipment\022$\n\010finished\030\004 \003(\0132"
-  "\022.UA.FinishShipment\022\013\n\003ack\030\005 \003(\003\"f\n\nAUCo"
-  "mmands\022*\n\nwarehouses\030\001 \003(\0132\026.UA.Determin"
-  "eWarehouse\022\037\n\005dests\030\002 \003(\0132\020.UA.Determine"
-  "Dst\022\013\n\003ack\030\004 \003(\003"
+  "n\022\016\n\006seqnum\030\002 \002(\003\"O\n\rTruckLocation\022\017\n\007tr"
+  "uckid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030\003 \002(\005\022"
+  "\021\n\tpackageid\030\004 \002(\003\"C\n\014DetermineDst\022#\n\rle"
+  "avingtrucks\030\001 \003(\0132\014.UA.TruckDst\022\016\n\006seqnu"
+  "m\030\002 \002(\003\".\n\010TruckDst\022\017\n\007truckid\030\001 \002(\005\022\021\n\t"
+  "packageid\030\002 \002(\003\"3\n\016SettleShipment\022\021\n\tpac"
+  "kageid\030\001 \003(\003\022\016\n\006seqnum\030\002 \002(\003\"3\n\016FinishSh"
+  "ipment\022\021\n\tpackageid\030\001 \003(\003\022\016\n\006seqnum\030\002 \002("
+  "\003\"\247\001\n\nUACommands\022\035\n\006worlds\030\001 \003(\0132\r.UA.In"
+  "itWorld\022\"\n\006trucks\030\002 \003(\0132\022.UA.DetermineTr"
+  "uck\022#\n\007settled\030\003 \003(\0132\022.UA.SettleShipment"
+  "\022$\n\010finished\030\004 \003(\0132\022.UA.FinishShipment\022\013"
+  "\n\003ack\030\005 \003(\003\"f\n\nAUCommands\022*\n\nwarehouses\030"
+  "\001 \003(\0132\026.UA.DetermineWarehouse\022\037\n\005dests\030\002"
+  " \003(\0132\020.UA.DetermineDst\022\013\n\003ack\030\004 \003(\003"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_ups_5famazon_2eproto = {
   false, InitDefaults_ups_5famazon_2eproto, 
   descriptor_table_protodef_ups_5famazon_2eproto,
-  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 936,
+  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 955,
 };
 
 void AddDescriptors_ups_5famazon_2eproto() {
@@ -2281,6 +2283,9 @@ class TruckLocation::HasBitSetters {
     msg->_has_bits_[0] |= 0x00000002u;
   }
   static void set_has_wh_y(TruckLocation* msg) {
+    msg->_has_bits_[0] |= 0x00000008u;
+  }
+  static void set_has_packageid(TruckLocation* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
 };
@@ -2289,6 +2294,7 @@ class TruckLocation::HasBitSetters {
 const int TruckLocation::kTruckidFieldNumber;
 const int TruckLocation::kWhXFieldNumber;
 const int TruckLocation::kWhYFieldNumber;
+const int TruckLocation::kPackageidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TruckLocation::TruckLocation()
@@ -2337,7 +2343,7 @@ void TruckLocation::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&truckid_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&wh_y_) -
         reinterpret_cast<char*>(&truckid_)) + sizeof(wh_y_));
@@ -2377,6 +2383,13 @@ const char* TruckLocation::_InternalParse(const char* begin, const char* end, vo
       case 3: {
         if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
         msg->set_wh_y(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int64 packageid = 4;
+      case 4: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 32) goto handle_unusual;
+        msg->set_packageid(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -2446,6 +2459,19 @@ bool TruckLocation::MergePartialFromCodedStream(
         break;
       }
 
+      // required int64 packageid = 4;
+      case 4: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (32 & 0xFF)) {
+          HasBitSetters::set_has_packageid(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, &packageid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -2485,8 +2511,13 @@ void TruckLocation::SerializeWithCachedSizes(
   }
 
   // required int32 wh_y = 3;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->wh_y(), output);
+  }
+
+  // required int64 packageid = 4;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->packageid(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2514,8 +2545,13 @@ void TruckLocation::SerializeWithCachedSizes(
   }
 
   // required int32 wh_y = 3;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->wh_y(), target);
+  }
+
+  // required int64 packageid = 4;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->packageid(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2544,6 +2580,13 @@ size_t TruckLocation::RequiredFieldsByteSizeFallback() const {
         this->wh_x());
   }
 
+  if (has_packageid()) {
+    // required int64 packageid = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->packageid());
+  }
+
   if (has_wh_y()) {
     // required int32 wh_y = 3;
     total_size += 1 +
@@ -2562,7 +2605,7 @@ size_t TruckLocation::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
     // required int32 truckid = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -2572,6 +2615,11 @@ size_t TruckLocation::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->wh_x());
+
+    // required int64 packageid = 4;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->packageid());
 
     // required int32 wh_y = 3;
     total_size += 1 +
@@ -2613,7 +2661,7 @@ void TruckLocation::MergeFrom(const TruckLocation& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       truckid_ = from.truckid_;
     }
@@ -2621,6 +2669,9 @@ void TruckLocation::MergeFrom(const TruckLocation& from) {
       wh_x_ = from.wh_x_;
     }
     if (cached_has_bits & 0x00000004u) {
+      packageid_ = from.packageid_;
+    }
+    if (cached_has_bits & 0x00000008u) {
       wh_y_ = from.wh_y_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -2642,7 +2693,7 @@ void TruckLocation::CopyFrom(const TruckLocation& from) {
 }
 
 bool TruckLocation::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
@@ -2656,6 +2707,7 @@ void TruckLocation::InternalSwap(TruckLocation* other) {
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(truckid_, other->truckid_);
   swap(wh_x_, other->wh_x_);
+  swap(packageid_, other->packageid_);
   swap(wh_y_, other->wh_y_);
 }
 
