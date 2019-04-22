@@ -53,7 +53,8 @@ int UPServer::test() {
 void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
                        UPS::UResponses response) {
   std::vector<truck_t> trucks;
-  if (wb.ParseResponses(response, trucks) == -1)
+  std::vector<int64_t> packageids;
+  if (wb.ParseResponses(response, trucks, packageids) == -1)
     return;
   if (!trucks.empty()) {
     std::vector<truck_location> truck_locations;
@@ -61,6 +62,9 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
       truck_locations.push_back({truck.truck_id, truck.x, truck.y});
     }
     ab.SendTruckId(truck_locations);
+  }
+  if (!packageids.empty()) {
+    ab.SendPackageId(packageids);
   }
 }
 

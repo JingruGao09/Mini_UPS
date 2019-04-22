@@ -5,7 +5,19 @@
 #include <mutex>
 #include <pqxx/pqxx>
 #include <string>
-
+#define GOPICKUP 1
+#define GODELIVER 2
+#define QUERY 3
+struct _resend_msg_t {
+  int seqnum;
+  int type;
+  int truck_id;
+  int wh_id;
+  int package_id;
+  int package_x;
+  int package_y;
+};
+typedef struct _resend_msg_t resend_msg_t;
 class DBInterface {
 private:
   std::string errmsg;
@@ -43,6 +55,7 @@ public:
   std::vector<int> getPackageId(const int &truck_id, const int &wh_x,
                                 const int &wh_y, const int &worldid);
   int getWorldNum();
+
   int updateWorldNum(const std::string &WORLD_ID);
   int getArrivedTruck(const int &WH_x, const int &WH_y,
                       const std::string &WORLD_id);
@@ -66,11 +79,14 @@ public:
   int updatePackageStatus(const std::string &package_id,
                           const std::string status,
                           const std::string &WORLD_id);
+  int lookupInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
-  int docOutMsg(const std::string &seqnum, const std::string &msg,
+  int docOutMsg(const std::string &seqnum, const resend_msg_t &msg,
                 const std::string &WORLD_id);
   int64_t fetchSeqNum(const std::string &WORLD_id);
   int rmOutSeqNum(const std::string &seqnum, const std::string &WORLD_id);
+  std::vector<resend_msg_t> getDatedOutMsg(const int64_t &world_id);
+  int updateOutMsgDate(const std::string &seqnum, const std::string &WORLD_id);
   int64_t AfetchOutSeqNum();
   int ArmOutSeqNum(const std::string &seqnum);
   int AdocOutMsg(const std::string &seqnum, const std::string &msg);
