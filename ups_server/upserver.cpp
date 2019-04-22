@@ -3,7 +3,7 @@
 UPServer::UPServer(const char *h, const char *p, const char *a_h,
                    const char *a_p)
     : wb(h, p), ab(a_h, a_p) {
-  ConnectWorld(h, p);
+  ConnectWorld();
   wb.SetWorldOptions(SIMSPEED);
   ab.setWid(wid);
   ab.SendWorldId();
@@ -17,25 +17,31 @@ UPServer::~UPServer() { wb.DisconnectAWorld(); }
  *
  * pass test, it will not fail
  */
-void UPServer::ConnectWorld(const char *h, const char *p) {
-  bool initTruck = false;
+void UPServer::ConnectWorld() {
 
   // get world id from db, if no valid wid, request one from server
   if ((wid = Zeus.getWorldNum()) == -1) {
-    wb.RequireANewWorld();
+    std::vector<truck_t> trucks;
+    wb.RequireANewWorld(trucks);
     UPS::UConnected response;
     wb.RecvMsg<UPS::UConnected>(response);
     wid = response.worldid();
     Zeus.updateWorldNum(std::to_string(wid));
-    // initTruck = true;
+    wb.setWid(wid);
+    for (auto truck : trucks) {
+      if (Zeus.createTruck(std::to_string(truck.truck_id),
+                           std::to_string(truck.x), std::to_string(truck.y),
+                           std::to_string(wid)) == -1)
+        return;
+    }
+  } else { // connect to world
+    if (wb.ConnectToAWorld(wid) == -1)
+      throw std::string("failed to send msg");
+    UPS::UConnected response;
+    wb.RecvMsg<UPS::UConnected>(response);
+    if (wb.ParseConnectWorldInfo(response) == -1)
+      throw std::string("failed to connect world");
   }
-  // connect to world
-  if (wb.ConnectToAWorld(wid, initTruck) == -1)
-    throw std::string("failed to send msg");
-  UPS::UConnected response;
-  wb.RecvMsg<UPS::UConnected>(response);
-  if (wb.ParseConnectWorldInfo(response) == -1)
-    throw std::string("failed to connect world");
 }
 int UPServer::test() {
   // for (int i = 0; i < 200; i++) {

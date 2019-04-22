@@ -13,7 +13,7 @@ private:
   WorldBridge wb;
   AmazonBridge ab;
   int64_t wid;
-  void ConnectWorld(const char *h, const char *p);
+  void ConnectWorld();
 
 public:
   UPServer(const char *h, const char *p, const char *a_h, const char *a_p);

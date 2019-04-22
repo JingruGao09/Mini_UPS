@@ -11,13 +11,18 @@ WorldBridge::~WorldBridge() {}
  * if success return 0, else, return -1
  * pass test
  */
-int WorldBridge::RequireANewWorld() {
+int WorldBridge::RequireANewWorld(std::vector<truck_t> &trucks) {
   UPS::UConnect msg;
+  if (CreateTrucks(TRUCK_NUM, &msg, trucks) == -1) {
+    Homer.LogRecvMsg("System", "failed to create truck");
+    return -1;
+  }
   msg.set_isamazon(false);
   Homer.LogSendMsg("World", "Requesting a new world");
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
 
+void WorldBridge::setWid(const int64_t &wid) { world_id = wid; }
 /* ConnectToAWorld
  *
  * Connect to a simulate world.
@@ -25,17 +30,11 @@ int WorldBridge::RequireANewWorld() {
  * send success return 0, else return -1
  * pass test
  */
-int WorldBridge::ConnectToAWorld(const int64_t &wid, bool initTruck) {
+int WorldBridge::ConnectToAWorld(const int64_t &wid) {
   world_id = wid;
   UPS::UConnect msg;
   msg.set_worldid(world_id);
   msg.set_isamazon(false);
-  if (initTruck) {
-    if (CreateTrucks(TRUCK_NUM, &msg) == -1) {
-      Homer.LogRecvMsg("System", "failed to create truck");
-      return -1;
-    }
-  }
   Homer.LogSendMsg("World", "Connecting to world " + std::to_string(wid));
   return Hermes.sendMsg<UPS::UConnect>(msg);
 }
@@ -68,7 +67,8 @@ int WorldBridge::ParseConnectWorldInfo(UPS::UConnected &msg) {
  * if failed to save, return -1, succeed,return 0
  * pass test
  */
-int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
+int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg,
+                              std::vector<truck_t> &trucks) {
   UPS::UInitTruck *truck;
 
   for (int i = 0; i < truckNum; i++) {
@@ -78,9 +78,7 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
     int y = rand() % 100 - 50;
     truck->set_x(x);
     truck->set_y(y);
-    if (Zeus.createTruck(std::to_string(i), std::to_string(x),
-                         std::to_string(y), std::to_string(world_id)) == -1)
-      return -1;
+    trucks.push_back({i, x, y});
   }
   return 0;
 }

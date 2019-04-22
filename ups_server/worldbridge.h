@@ -22,7 +22,8 @@ private:
   Client Hermes;
   DBInterface Zeus;
   Log Homer;
-  int CreateTrucks(int truckNum, UPS::UConnect *msg);
+  int CreateTrucks(int truckNum, UPS::UConnect *msg,
+                   std::vector<truck_t> &trucks);
   int SetPackageInfo(const int &truck_id, package_t &packages,
                      UPS::UGoDeliver *goDeliver);
   int finished_handler(UPS::UResponses &msg, std::vector<truck_t> &trucks,
@@ -37,8 +38,9 @@ public:
   WorldBridge(const char *hostname, const char *port);
 
   ~WorldBridge();
-  int RequireANewWorld();
-  int ConnectToAWorld(const int64_t &wid, bool initTruck);
+  void setWid(const int64_t &wid);
+  int RequireANewWorld(std::vector<truck_t> &trucks);
+  int ConnectToAWorld(const int64_t &wid);
   int DisconnectAWorld();
   int ParseConnectWorldInfo(UPS::UConnected &msg);
   int GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
