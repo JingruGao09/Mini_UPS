@@ -42,6 +42,7 @@ private:
   Log Homer;
 
   int apackageinfo_handler(UA::DetermineWarehouse &warehouseinfo,
+                           const int &wh_x, const int &wh_y,
                            std::vector<int> &package_ids);
   int determinewarehouse_handler(UA::AUCommands &msg,
                                  std::vector<int64_t> &seqnums,

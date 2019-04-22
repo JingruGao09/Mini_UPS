@@ -40,6 +40,8 @@ public:
   ~DBInterface();
   int initializer();
   package_t getPackageInfo(const int &packageid);
+  std::vector<int> getPackageId(const int &truck_id, const int &wh_x,
+                                const int &wh_y, const int &worldid);
   int getWorldNum();
   int updateWorldNum(const std::string &WORLD_ID);
   int getArrivedTruck(const int &WH_x, const int &WH_y,
@@ -53,8 +55,9 @@ public:
                         const std::string &WORLD_id);
   int createTruck(const std::string &truck_id, const std::string &x,
                   const std::string &y, const std::string &WORLD_id);
-  int createPackage(const std::string &package_id, const std::string &x,
-                    const std::string &y, const std::string &desc,
+  int createPackage(const std::string &package_id, const std::string &dep_x,
+                    const std::string &dep_y, const std::string &des_x,
+                    const std::string &des_y, const std::string &desc,
                     const std::string &count, std::string status,
                     const std::string &WORLD_id);
   int updatePackageStatus(const std::string &package_id,

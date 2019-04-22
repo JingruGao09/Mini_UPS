@@ -48,14 +48,21 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
   detertrucks->set_seqnum(seqnum);
   UA::TruckLocation *trucklocation;
   for (auto truck : trucks) {
-    trucklocation = detertrucks->add_arrivedtrucks();
-    trucklocation->set_truckid(truck.truck_id);
-    trucklocation->set_wh_x(truck.wh_x);
-    trucklocation->set_wh_y(truck.wh_y);
-    Homer.LogSendMsg(
-        "Amazon", "sending truck " + std::to_string(truck.truck_id) +
-                      " to warehouse located at(" + std::to_string(truck.wh_x) +
-                      "," + std::to_string(truck.wh_y) + ")");
+    std::vector<int> packages =
+        Zeus.getPackageId(truck.truck_id, truck.wh_x, truck.wh_y, world_id);
+    for (auto package_id : packages) {
+      trucklocation = detertrucks->add_arrivedtrucks();
+      trucklocation->set_truckid(truck.truck_id);
+      trucklocation->set_wh_x(truck.wh_x);
+      trucklocation->set_wh_y(truck.wh_y);
+      trucklocation->set_packageid(package_id);
+      Homer.LogSendMsg(
+          "Amazon", "sending truck " + std::to_string(truck.truck_id) +
+                        " to warehouse located at(" +
+                        std::to_string(truck.wh_x) + "," +
+                        std::to_string(truck.wh_y) + ") to pick up package " +
+                        std::to_string(package_id));
+    }
   }
   return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
@@ -166,7 +173,8 @@ int AmazonBridge::determinewarehouse_handler(
                          std::to_string(warehouse.wh_y()) + ")",
                      std::to_string(warehouse.seqnum()));
     std::vector<int> package_ids;
-    if (apackageinfo_handler(warehouse, package_ids) != 0)
+    if (apackageinfo_handler(warehouse, warehouse.wh_x(), warehouse.wh_y(),
+                             package_ids) != 0)
       return -1;
     warehouse_infos.push_back(
         {warehouse.whid(), warehouse.wh_x(), warehouse.wh_y(), package_ids});
@@ -182,6 +190,7 @@ int AmazonBridge::determinewarehouse_handler(
  * return 0 if succeed, else -1
  */
 int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
+                                       const int &wh_x, const int &wh_y,
                                        std::vector<int> &package_ids) {
   for (int i = 0; i < msg.packageinfos_size(); i++) {
     UA::APackageInfo pack_info = msg.packageinfos(i);
@@ -193,10 +202,11 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
                          std::to_string(pack_info.x()) + "," +
                          std::to_string(pack_info.y()) + ")");
     if (Zeus.createPackage(
-            std::to_string(pack_info.packageid()),
-            std::to_string(pack_info.x()), std::to_string(pack_info.y()),
-            pack_info.description(), std::to_string(pack_info.count()),
-            "created", std::to_string(world_id)) == -1)
+            std::to_string(pack_info.packageid()), std::to_string(wh_x),
+            std::to_string(wh_y), std::to_string(pack_info.x()),
+            std::to_string(pack_info.y()), pack_info.description(),
+            std::to_string(pack_info.count()), "created",
+            std::to_string(world_id)) == -1)
       return -1;
   }
   return 0;
