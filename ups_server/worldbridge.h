@@ -28,7 +28,8 @@ private:
                      UPS::UGoDeliver *goDeliver);
   int finished_handler(UPS::UResponses &msg, std::vector<truck_t> &trucks,
                        std::vector<int64_t> &seqnums);
-  int delivery_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
+  int delivery_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums,
+                       std::vector<int64_t> &packageids);
   int ack_handler(UPS::UResponses &msg);
   int truck_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
   int err_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
@@ -48,7 +49,8 @@ public:
   int GoDeliver(const int &truck_id, const int &package_id);
   int Query(const int &truck_id);
   int ack(const std::vector<int64_t> &seqnums);
-  int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks);
+  int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks,
+                     std::vector<int64_t> &packageids);
   int SetWorldOptions(int speed);
   template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };

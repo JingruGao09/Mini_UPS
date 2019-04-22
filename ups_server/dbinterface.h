@@ -43,6 +43,7 @@ public:
   std::vector<int> getPackageId(const int &truck_id, const int &wh_x,
                                 const int &wh_y, const int &worldid);
   int getWorldNum();
+
   int updateWorldNum(const std::string &WORLD_ID);
   int getArrivedTruck(const int &WH_x, const int &WH_y,
                       const std::string &WORLD_id);
@@ -66,6 +67,7 @@ public:
   int updatePackageStatus(const std::string &package_id,
                           const std::string status,
                           const std::string &WORLD_id);
+  int lookupInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docOutMsg(const std::string &seqnum, const std::string &msg,
                 const std::string &WORLD_id);

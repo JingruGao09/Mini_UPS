@@ -328,6 +328,20 @@ int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
     return -1;
   }
 }
+int DBInterface::lookupInSeqNum(const std::string &seqnum,
+                                const std::string &WORLD_id) {
+  try {
+    std::string sql = "SELECT * FROM INSEQNUM WHERE ID=" + seqnum +
+                      " AND WORLD_ID=" + WORLD_id + ";";
+    pqxx::result R = lookup(sql);
+    if (R.empty())
+      return -1;
+    return 0;
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 /*
  * docInSeqNum
  *
