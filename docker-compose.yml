@@ -38,7 +38,7 @@ services:
        - web
   ups_server:
       build: ./ups_server
-      user: nobody
+      command: bash -c "./Mini_ups"
       volumes:
         - "./ups_server:/code"
       ports:
