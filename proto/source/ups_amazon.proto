@@ -26,7 +26,8 @@ required int64 seqnum = 2;
 }
 message TruckLocation{
 required int32 truckid = 1;
-required int32 whid = 2;
+required int32 wh_x=2;
+required int32 wh_y=3;
 }
 message DetermineDst{
 repeated TruckDst leavingtrucks = 1;

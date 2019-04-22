@@ -25,7 +25,6 @@ extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::interna
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineDst_ups_5famazon_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineTruck_ups_5famazon_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineWarehouse_ups_5famazon_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_ups_5famazon_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_WarehouseInfo_ups_5famazon_2eproto;
 namespace UA {
 class InitWorldDefaultTypeInternal {
  public:
@@ -35,10 +34,6 @@ class APackageInfoDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<APackageInfo> _instance;
 } _APackageInfo_default_instance_;
-class WarehouseInfoDefaultTypeInternal {
- public:
-  ::google::protobuf::internal::ExplicitlyConstructed<WarehouseInfo> _instance;
-} _WarehouseInfo_default_instance_;
 class DetermineWarehouseDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<DetermineWarehouse> _instance;
@@ -104,21 +99,6 @@ static void InitDefaultsAPackageInfo_ups_5famazon_2eproto() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_APackageInfo_ups_5famazon_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsAPackageInfo_ups_5famazon_2eproto}, {}};
 
-static void InitDefaultsWarehouseInfo_ups_5famazon_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::UA::_WarehouseInfo_default_instance_;
-    new (ptr) ::UA::WarehouseInfo();
-    ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::UA::WarehouseInfo::InitAsDefaultInstance();
-}
-
-::google::protobuf::internal::SCCInfo<1> scc_info_WarehouseInfo_ups_5famazon_2eproto =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsWarehouseInfo_ups_5famazon_2eproto}, {
-      &scc_info_APackageInfo_ups_5famazon_2eproto.base,}};
-
 static void InitDefaultsDetermineWarehouse_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -132,7 +112,7 @@ static void InitDefaultsDetermineWarehouse_ups_5famazon_2eproto() {
 
 ::google::protobuf::internal::SCCInfo<1> scc_info_DetermineWarehouse_ups_5famazon_2eproto =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsDetermineWarehouse_ups_5famazon_2eproto}, {
-      &scc_info_WarehouseInfo_ups_5famazon_2eproto.base,}};
+      &scc_info_APackageInfo_ups_5famazon_2eproto.base,}};
 
 static void InitDefaultsDetermineTruck_ups_5famazon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -257,7 +237,6 @@ static void InitDefaultsAUCommands_ups_5famazon_2eproto() {
 void InitDefaults_ups_5famazon_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_InitWorld_ups_5famazon_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_APackageInfo_ups_5famazon_2eproto.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_WarehouseInfo_ups_5famazon_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_DetermineWarehouse_ups_5famazon_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_DetermineTruck_ups_5famazon_2eproto.base);
   ::google::protobuf::internal::InitSCC(&scc_info_TruckLocation_ups_5famazon_2eproto.base);
@@ -269,7 +248,7 @@ void InitDefaults_ups_5famazon_2eproto() {
   ::google::protobuf::internal::InitSCC(&scc_info_AUCommands_ups_5famazon_2eproto.base);
 }
 
-::google::protobuf::Metadata file_level_metadata_ups_5famazon_2eproto[12];
+::google::protobuf::Metadata file_level_metadata_ups_5famazon_2eproto[11];
 constexpr ::google::protobuf::EnumDescriptor const** file_level_enum_descriptors_ups_5famazon_2eproto = nullptr;
 constexpr ::google::protobuf::ServiceDescriptor const** file_level_service_descriptors_ups_5famazon_2eproto = nullptr;
 
@@ -300,28 +279,21 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
   4,
   5,
   1,
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, whid_),
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, wh_x_),
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, wh_y_),
-  PROTOBUF_FIELD_OFFSET(::UA::WarehouseInfo, packageinfos_),
-  0,
-  1,
-  2,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, warehouses_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, whid_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, wh_x_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, wh_y_),
+  PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, packageinfos_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, seqnum_),
-  ~0u,
   0,
+  1,
+  3,
+  ~0u,
+  2,
   PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineTruck, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -337,9 +309,11 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, truckid_),
-  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, whid_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, wh_x_),
+  PROTOBUF_FIELD_OFFSET(::UA::TruckLocation, wh_y_),
   0,
   1,
+  2,
   PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineDst, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -406,22 +380,20 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::UA::InitWorld)},
   { 9, 20, sizeof(::UA::APackageInfo)},
-  { 26, 35, sizeof(::UA::WarehouseInfo)},
-  { 39, 46, sizeof(::UA::DetermineWarehouse)},
-  { 48, 55, sizeof(::UA::DetermineTruck)},
-  { 57, 64, sizeof(::UA::TruckLocation)},
-  { 66, 73, sizeof(::UA::DetermineDst)},
-  { 75, 82, sizeof(::UA::TruckDst)},
-  { 84, 91, sizeof(::UA::SettleShipment)},
-  { 93, 100, sizeof(::UA::FinishShipment)},
-  { 102, 112, sizeof(::UA::UACommands)},
-  { 117, 125, sizeof(::UA::AUCommands)},
+  { 26, 36, sizeof(::UA::DetermineWarehouse)},
+  { 41, 48, sizeof(::UA::DetermineTruck)},
+  { 50, 58, sizeof(::UA::TruckLocation)},
+  { 61, 68, sizeof(::UA::DetermineDst)},
+  { 70, 77, sizeof(::UA::TruckDst)},
+  { 79, 86, sizeof(::UA::SettleShipment)},
+  { 88, 95, sizeof(::UA::FinishShipment)},
+  { 97, 107, sizeof(::UA::UACommands)},
+  { 112, 120, sizeof(::UA::AUCommands)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_InitWorld_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_APackageInfo_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_WarehouseInfo_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_DetermineWarehouse_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_DetermineTruck_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::UA::_TruckLocation_default_instance_),
@@ -436,7 +408,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 ::google::protobuf::internal::AssignDescriptorsTable assign_descriptors_table_ups_5famazon_2eproto = {
   {}, AddDescriptors_ups_5famazon_2eproto, "ups_amazon.proto", schemas,
   file_default_instances, TableStruct_ups_5famazon_2eproto::offsets,
-  file_level_metadata_ups_5famazon_2eproto, 12, file_level_enum_descriptors_ups_5famazon_2eproto, file_level_service_descriptors_ups_5famazon_2eproto,
+  file_level_metadata_ups_5famazon_2eproto, 11, file_level_enum_descriptors_ups_5famazon_2eproto, file_level_service_descriptors_ups_5famazon_2eproto,
 };
 
 const char descriptor_table_protodef_ups_5famazon_2eproto[] =
@@ -444,32 +416,31 @@ const char descriptor_table_protodef_ups_5famazon_2eproto[] =
   "orldid\030\001 \002(\003\022\016\n\006seqnum\030\002 \002(\003\"o\n\014APackage"
   "Info\022\023\n\013description\030\001 \002(\t\022\r\n\005count\030\002 \002(\005"
   "\022\021\n\tpackageid\030\003 \002(\003\022\t\n\001x\030\004 \002(\005\022\t\n\001y\030\005 \002("
-  "\005\022\022\n\nupsaccount\030\006 \001(\t\"a\n\rWarehouseInfo\022\014"
-  "\n\004whid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030\003 \002(\005"
-  "\022&\n\014packageinfos\030\004 \003(\0132\020.UA.APackageInfo"
-  "\"K\n\022DetermineWarehouse\022%\n\nwarehouses\030\001 \003"
-  "(\0132\021.UA.WarehouseInfo\022\016\n\006seqnum\030\002 \002(\003\"J\n"
-  "\016DetermineTruck\022(\n\rarrivedtrucks\030\001 \003(\0132\021"
-  ".UA.TruckLocation\022\016\n\006seqnum\030\002 \002(\003\".\n\rTru"
-  "ckLocation\022\017\n\007truckid\030\001 \002(\005\022\014\n\004whid\030\002 \002("
-  "\005\"C\n\014DetermineDst\022#\n\rleavingtrucks\030\001 \003(\013"
-  "2\014.UA.TruckDst\022\016\n\006seqnum\030\002 \002(\003\".\n\010TruckD"
-  "st\022\017\n\007truckid\030\001 \002(\005\022\021\n\tpackageid\030\002 \002(\003\"3"
-  "\n\016SettleShipment\022\021\n\tpackageid\030\001 \003(\003\022\016\n\006s"
-  "eqnum\030\002 \002(\003\"3\n\016FinishShipment\022\021\n\tpackage"
-  "id\030\001 \003(\003\022\016\n\006seqnum\030\002 \002(\003\"\247\001\n\nUACommands\022"
-  "\035\n\006worlds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks"
-  "\030\002 \003(\0132\022.UA.DetermineTruck\022#\n\007settled\030\003 "
-  "\003(\0132\022.UA.SettleShipment\022$\n\010finished\030\004 \003("
-  "\0132\022.UA.FinishShipment\022\013\n\003ack\030\005 \003(\003\"f\n\nAU"
-  "Commands\022*\n\nwarehouses\030\001 \003(\0132\026.UA.Determ"
-  "ineWarehouse\022\037\n\005dests\030\002 \003(\0132\020.UA.Determi"
-  "neDst\022\013\n\003ack\030\004 \003(\003"
+  "\005\022\022\n\nupsaccount\030\006 \001(\t\"v\n\022DetermineWareho"
+  "use\022\014\n\004whid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030"
+  "\003 \002(\005\022&\n\014packageinfos\030\004 \003(\0132\020.UA.APackag"
+  "eInfo\022\016\n\006seqnum\030\005 \002(\003\"J\n\016DetermineTruck\022"
+  "(\n\rarrivedtrucks\030\001 \003(\0132\021.UA.TruckLocatio"
+  "n\022\016\n\006seqnum\030\002 \002(\003\"<\n\rTruckLocation\022\017\n\007tr"
+  "uckid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030\003 \002(\005\""
+  "C\n\014DetermineDst\022#\n\rleavingtrucks\030\001 \003(\0132\014"
+  ".UA.TruckDst\022\016\n\006seqnum\030\002 \002(\003\".\n\010TruckDst"
+  "\022\017\n\007truckid\030\001 \002(\005\022\021\n\tpackageid\030\002 \002(\003\"3\n\016"
+  "SettleShipment\022\021\n\tpackageid\030\001 \003(\003\022\016\n\006seq"
+  "num\030\002 \002(\003\"3\n\016FinishShipment\022\021\n\tpackageid"
+  "\030\001 \003(\003\022\016\n\006seqnum\030\002 \002(\003\"\247\001\n\nUACommands\022\035\n"
+  "\006worlds\030\001 \003(\0132\r.UA.InitWorld\022\"\n\006trucks\030\002"
+  " \003(\0132\022.UA.DetermineTruck\022#\n\007settled\030\003 \003("
+  "\0132\022.UA.SettleShipment\022$\n\010finished\030\004 \003(\0132"
+  "\022.UA.FinishShipment\022\013\n\003ack\030\005 \003(\003\"f\n\nAUCo"
+  "mmands\022*\n\nwarehouses\030\001 \003(\0132\026.UA.Determin"
+  "eWarehouse\022\037\n\005dests\030\002 \003(\0132\020.UA.Determine"
+  "Dst\022\013\n\003ack\030\004 \003(\003"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_ups_5famazon_2eproto = {
   false, InitDefaults_ups_5famazon_2eproto, 
   descriptor_table_protodef_ups_5famazon_2eproto,
-  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 978,
+  "ups_amazon.proto", &assign_descriptors_table_ups_5famazon_2eproto, 936,
 };
 
 void AddDescriptors_ups_5famazon_2eproto() {
@@ -1452,34 +1423,38 @@ void APackageInfo::InternalSwap(APackageInfo* other) {
 
 // ===================================================================
 
-void WarehouseInfo::InitAsDefaultInstance() {
+void DetermineWarehouse::InitAsDefaultInstance() {
 }
-class WarehouseInfo::HasBitSetters {
+class DetermineWarehouse::HasBitSetters {
  public:
-  static void set_has_whid(WarehouseInfo* msg) {
+  static void set_has_whid(DetermineWarehouse* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static void set_has_wh_x(WarehouseInfo* msg) {
+  static void set_has_wh_x(DetermineWarehouse* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
   }
-  static void set_has_wh_y(WarehouseInfo* msg) {
+  static void set_has_wh_y(DetermineWarehouse* msg) {
+    msg->_has_bits_[0] |= 0x00000008u;
+  }
+  static void set_has_seqnum(DetermineWarehouse* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int WarehouseInfo::kWhidFieldNumber;
-const int WarehouseInfo::kWhXFieldNumber;
-const int WarehouseInfo::kWhYFieldNumber;
-const int WarehouseInfo::kPackageinfosFieldNumber;
+const int DetermineWarehouse::kWhidFieldNumber;
+const int DetermineWarehouse::kWhXFieldNumber;
+const int DetermineWarehouse::kWhYFieldNumber;
+const int DetermineWarehouse::kPackageinfosFieldNumber;
+const int DetermineWarehouse::kSeqnumFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-WarehouseInfo::WarehouseInfo()
+DetermineWarehouse::DetermineWarehouse()
   : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:UA.WarehouseInfo)
+  // @@protoc_insertion_point(constructor:UA.DetermineWarehouse)
 }
-WarehouseInfo::WarehouseInfo(const WarehouseInfo& from)
+DetermineWarehouse::DetermineWarehouse(const DetermineWarehouse& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(nullptr),
       _has_bits_(from._has_bits_),
@@ -1488,43 +1463,43 @@ WarehouseInfo::WarehouseInfo(const WarehouseInfo& from)
   ::memcpy(&whid_, &from.whid_,
     static_cast<size_t>(reinterpret_cast<char*>(&wh_y_) -
     reinterpret_cast<char*>(&whid_)) + sizeof(wh_y_));
-  // @@protoc_insertion_point(copy_constructor:UA.WarehouseInfo)
+  // @@protoc_insertion_point(copy_constructor:UA.DetermineWarehouse)
 }
 
-void WarehouseInfo::SharedCtor() {
+void DetermineWarehouse::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
-      &scc_info_WarehouseInfo_ups_5famazon_2eproto.base);
+      &scc_info_DetermineWarehouse_ups_5famazon_2eproto.base);
   ::memset(&whid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&wh_y_) -
       reinterpret_cast<char*>(&whid_)) + sizeof(wh_y_));
 }
 
-WarehouseInfo::~WarehouseInfo() {
-  // @@protoc_insertion_point(destructor:UA.WarehouseInfo)
+DetermineWarehouse::~DetermineWarehouse() {
+  // @@protoc_insertion_point(destructor:UA.DetermineWarehouse)
   SharedDtor();
 }
 
-void WarehouseInfo::SharedDtor() {
+void DetermineWarehouse::SharedDtor() {
 }
 
-void WarehouseInfo::SetCachedSize(int size) const {
+void DetermineWarehouse::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const WarehouseInfo& WarehouseInfo::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_WarehouseInfo_ups_5famazon_2eproto.base);
+const DetermineWarehouse& DetermineWarehouse::default_instance() {
+  ::google::protobuf::internal::InitSCC(&::scc_info_DetermineWarehouse_ups_5famazon_2eproto.base);
   return *internal_default_instance();
 }
 
 
-void WarehouseInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:UA.WarehouseInfo)
+void DetermineWarehouse::Clear() {
+// @@protoc_insertion_point(message_clear_start:UA.DetermineWarehouse)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   packageinfos_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&whid_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&wh_y_) -
         reinterpret_cast<char*>(&whid_)) + sizeof(wh_y_));
@@ -1534,9 +1509,9 @@ void WarehouseInfo::Clear() {
 }
 
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* WarehouseInfo::_InternalParse(const char* begin, const char* end, void* object,
+const char* DetermineWarehouse::_InternalParse(const char* begin, const char* end, void* object,
                   ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<WarehouseInfo*>(object);
+  auto msg = static_cast<DetermineWarehouse*>(object);
   ::google::protobuf::int32 size; (void)size;
   int depth; (void)depth;
   ::google::protobuf::uint32 tag;
@@ -1583,6 +1558,13 @@ const char* WarehouseInfo::_InternalParse(const char* begin, const char* end, vo
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 34 && (ptr += 1));
         break;
       }
+      // required int64 seqnum = 5;
+      case 5: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 40) goto handle_unusual;
+        msg->set_seqnum(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
       default: {
       handle_unusual:
         if ((tag & 7) == 4 || tag == 0) {
@@ -1603,11 +1585,11 @@ len_delim_till_end:
                                {parser_till_end, object}, size);
 }
 #else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool WarehouseInfo::MergePartialFromCodedStream(
+bool DetermineWarehouse::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:UA.WarehouseInfo)
+  // @@protoc_insertion_point(parse_start:UA.DetermineWarehouse)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -1663,402 +1645,9 @@ bool WarehouseInfo::MergePartialFromCodedStream(
         break;
       }
 
-      default: {
-      handle_unusual:
-        if (tag == 0) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, _internal_metadata_.mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:UA.WarehouseInfo)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:UA.WarehouseInfo)
-  return false;
-#undef DO_
-}
-#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-
-void WarehouseInfo::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:UA.WarehouseInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int32 whid = 1;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->whid(), output);
-  }
-
-  // required int32 wh_x = 2;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->wh_x(), output);
-  }
-
-  // required int32 wh_y = 3;
-  if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->wh_y(), output);
-  }
-
-  // repeated .UA.APackageInfo packageinfos = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->packageinfos_size()); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4,
-      this->packageinfos(static_cast<int>(i)),
-      output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:UA.WarehouseInfo)
-}
-
-::google::protobuf::uint8* WarehouseInfo::InternalSerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UA.WarehouseInfo)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  // required int32 whid = 1;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->whid(), target);
-  }
-
-  // required int32 wh_x = 2;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->wh_x(), target);
-  }
-
-  // required int32 wh_y = 3;
-  if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->wh_y(), target);
-  }
-
-  // repeated .UA.APackageInfo packageinfos = 4;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->packageinfos_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        4, this->packageinfos(static_cast<int>(i)), target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:UA.WarehouseInfo)
-  return target;
-}
-
-size_t WarehouseInfo::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.WarehouseInfo)
-  size_t total_size = 0;
-
-  if (has_whid()) {
-    // required int32 whid = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->whid());
-  }
-
-  if (has_wh_x()) {
-    // required int32 wh_x = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->wh_x());
-  }
-
-  if (has_wh_y()) {
-    // required int32 wh_y = 3;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->wh_y());
-  }
-
-  return total_size;
-}
-size_t WarehouseInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UA.WarehouseInfo)
-  size_t total_size = 0;
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
-  }
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required int32 whid = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->whid());
-
-    // required int32 wh_x = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->wh_x());
-
-    // required int32 wh_y = 3;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->wh_y());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // repeated .UA.APackageInfo packageinfos = 4;
-  {
-    unsigned int count = static_cast<unsigned int>(this->packageinfos_size());
-    total_size += 1UL * count;
-    for (unsigned int i = 0; i < count; i++) {
-      total_size +=
-        ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->packageinfos(static_cast<int>(i)));
-    }
-  }
-
-  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
-}
-
-void WarehouseInfo::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:UA.WarehouseInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  const WarehouseInfo* source =
-      ::google::protobuf::DynamicCastToGenerated<WarehouseInfo>(
-          &from);
-  if (source == nullptr) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:UA.WarehouseInfo)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:UA.WarehouseInfo)
-    MergeFrom(*source);
-  }
-}
-
-void WarehouseInfo::MergeFrom(const WarehouseInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UA.WarehouseInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  packageinfos_.MergeFrom(from.packageinfos_);
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    if (cached_has_bits & 0x00000001u) {
-      whid_ = from.whid_;
-    }
-    if (cached_has_bits & 0x00000002u) {
-      wh_x_ = from.wh_x_;
-    }
-    if (cached_has_bits & 0x00000004u) {
-      wh_y_ = from.wh_y_;
-    }
-    _has_bits_[0] |= cached_has_bits;
-  }
-}
-
-void WarehouseInfo::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:UA.WarehouseInfo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void WarehouseInfo::CopyFrom(const WarehouseInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UA.WarehouseInfo)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool WarehouseInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->packageinfos())) return false;
-  return true;
-}
-
-void WarehouseInfo::Swap(WarehouseInfo* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void WarehouseInfo::InternalSwap(WarehouseInfo* other) {
-  using std::swap;
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  CastToBase(&packageinfos_)->InternalSwap(CastToBase(&other->packageinfos_));
-  swap(whid_, other->whid_);
-  swap(wh_x_, other->wh_x_);
-  swap(wh_y_, other->wh_y_);
-}
-
-::google::protobuf::Metadata WarehouseInfo::GetMetadata() const {
-  ::google::protobuf::internal::AssignDescriptors(&::assign_descriptors_table_ups_5famazon_2eproto);
-  return ::file_level_metadata_ups_5famazon_2eproto[kIndexInFileMessages];
-}
-
-
-// ===================================================================
-
-void DetermineWarehouse::InitAsDefaultInstance() {
-}
-class DetermineWarehouse::HasBitSetters {
- public:
-  static void set_has_seqnum(DetermineWarehouse* msg) {
-    msg->_has_bits_[0] |= 0x00000001u;
-  }
-};
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DetermineWarehouse::kWarehousesFieldNumber;
-const int DetermineWarehouse::kSeqnumFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-DetermineWarehouse::DetermineWarehouse()
-  : ::google::protobuf::Message(), _internal_metadata_(nullptr) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:UA.DetermineWarehouse)
-}
-DetermineWarehouse::DetermineWarehouse(const DetermineWarehouse& from)
-  : ::google::protobuf::Message(),
-      _internal_metadata_(nullptr),
-      _has_bits_(from._has_bits_),
-      warehouses_(from.warehouses_) {
-  _internal_metadata_.MergeFrom(from._internal_metadata_);
-  seqnum_ = from.seqnum_;
-  // @@protoc_insertion_point(copy_constructor:UA.DetermineWarehouse)
-}
-
-void DetermineWarehouse::SharedCtor() {
-  ::google::protobuf::internal::InitSCC(
-      &scc_info_DetermineWarehouse_ups_5famazon_2eproto.base);
-  seqnum_ = PROTOBUF_LONGLONG(0);
-}
-
-DetermineWarehouse::~DetermineWarehouse() {
-  // @@protoc_insertion_point(destructor:UA.DetermineWarehouse)
-  SharedDtor();
-}
-
-void DetermineWarehouse::SharedDtor() {
-}
-
-void DetermineWarehouse::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-const DetermineWarehouse& DetermineWarehouse::default_instance() {
-  ::google::protobuf::internal::InitSCC(&::scc_info_DetermineWarehouse_ups_5famazon_2eproto.base);
-  return *internal_default_instance();
-}
-
-
-void DetermineWarehouse::Clear() {
-// @@protoc_insertion_point(message_clear_start:UA.DetermineWarehouse)
-  ::google::protobuf::uint32 cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  warehouses_.Clear();
-  seqnum_ = PROTOBUF_LONGLONG(0);
-  _has_bits_.Clear();
-  _internal_metadata_.Clear();
-}
-
-#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-const char* DetermineWarehouse::_InternalParse(const char* begin, const char* end, void* object,
-                  ::google::protobuf::internal::ParseContext* ctx) {
-  auto msg = static_cast<DetermineWarehouse*>(object);
-  ::google::protobuf::int32 size; (void)size;
-  int depth; (void)depth;
-  ::google::protobuf::uint32 tag;
-  ::google::protobuf::internal::ParseFunc parser_till_end; (void)parser_till_end;
-  auto ptr = begin;
-  while (ptr < end) {
-    ptr = ::google::protobuf::io::Parse32(ptr, &tag);
-    GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-    switch (tag >> 3) {
-      // repeated .UA.WarehouseInfo warehouses = 1;
-      case 1: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 10) goto handle_unusual;
-        do {
-          ptr = ::google::protobuf::io::ReadSize(ptr, &size);
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-          parser_till_end = ::UA::WarehouseInfo::_InternalParse;
-          object = msg->add_warehouses();
-          if (size > end - ptr) goto len_delim_till_end;
-          ptr += size;
-          GOOGLE_PROTOBUF_PARSER_ASSERT(ctx->ParseExactRange(
-              {parser_till_end, object}, ptr - size, ptr));
-          if (ptr >= end) break;
-        } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 10 && (ptr += 1));
-        break;
-      }
-      // required int64 seqnum = 2;
-      case 2: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        msg->set_seqnum(::google::protobuf::internal::ReadVarint(&ptr));
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        break;
-      }
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->EndGroup(tag);
-          return ptr;
-        }
-        auto res = UnknownFieldParse(tag, {_InternalParse, msg},
-          ptr, end, msg->_internal_metadata_.mutable_unknown_fields(), ctx);
-        ptr = res.first;
-        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr != nullptr);
-        if (res.second) return ptr;
-      }
-    }  // switch
-  }  // while
-  return ptr;
-len_delim_till_end:
-  return ctx->StoreAndTailCall(ptr, end, {_InternalParse, msg},
-                               {parser_till_end, object}, size);
-}
-#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-bool DetermineWarehouse::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:UA.DetermineWarehouse)
-  for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .UA.WarehouseInfo warehouses = 1;
-      case 1: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (10 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-                input, add_warehouses()));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // required int64 seqnum = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
+      // required int64 seqnum = 5;
+      case 5: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (40 & 0xFF)) {
           HasBitSetters::set_has_seqnum(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
@@ -2096,19 +1685,34 @@ void DetermineWarehouse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .UA.WarehouseInfo warehouses = 1;
+  cached_has_bits = _has_bits_[0];
+  // required int32 whid = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->whid(), output);
+  }
+
+  // required int32 wh_x = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->wh_x(), output);
+  }
+
+  // required int32 wh_y = 3;
+  if (cached_has_bits & 0x00000008u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->wh_y(), output);
+  }
+
+  // repeated .UA.APackageInfo packageinfos = 4;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->packageinfos_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1,
-      this->warehouses(static_cast<int>(i)),
+      4,
+      this->packageinfos(static_cast<int>(i)),
       output);
   }
 
-  cached_has_bits = _has_bits_[0];
-  // required int64 seqnum = 2;
-  if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->seqnum(), output);
+  // required int64 seqnum = 5;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(5, this->seqnum(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2124,18 +1728,33 @@ void DetermineWarehouse::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .UA.WarehouseInfo warehouses = 1;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->warehouses_size()); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageToArray(
-        1, this->warehouses(static_cast<int>(i)), target);
+  cached_has_bits = _has_bits_[0];
+  // required int32 whid = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->whid(), target);
   }
 
-  cached_has_bits = _has_bits_[0];
-  // required int64 seqnum = 2;
-  if (cached_has_bits & 0x00000001u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->seqnum(), target);
+  // required int32 wh_x = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->wh_x(), target);
+  }
+
+  // required int32 wh_y = 3;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->wh_y(), target);
+  }
+
+  // repeated .UA.APackageInfo packageinfos = 4;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->packageinfos_size()); i < n; i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        4, this->packageinfos(static_cast<int>(i)), target);
+  }
+
+  // required int64 seqnum = 5;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(5, this->seqnum(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2146,6 +1765,40 @@ void DetermineWarehouse::SerializeWithCachedSizes(
   return target;
 }
 
+size_t DetermineWarehouse::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:UA.DetermineWarehouse)
+  size_t total_size = 0;
+
+  if (has_whid()) {
+    // required int32 whid = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->whid());
+  }
+
+  if (has_wh_x()) {
+    // required int32 wh_x = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_x());
+  }
+
+  if (has_seqnum()) {
+    // required int64 seqnum = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int64Size(
+        this->seqnum());
+  }
+
+  if (has_wh_y()) {
+    // required int32 wh_y = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_y());
+  }
+
+  return total_size;
+}
 size_t DetermineWarehouse::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:UA.DetermineWarehouse)
   size_t total_size = 0;
@@ -2155,24 +1808,42 @@ size_t DetermineWarehouse::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  // required int64 seqnum = 2;
-  if (has_seqnum()) {
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required int32 whid = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->whid());
+
+    // required int32 wh_x = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_x());
+
+    // required int64 seqnum = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int64Size(
         this->seqnum());
+
+    // required int32 wh_y = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_y());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .UA.WarehouseInfo warehouses = 1;
+  // repeated .UA.APackageInfo packageinfos = 4;
   {
-    unsigned int count = static_cast<unsigned int>(this->warehouses_size());
+    unsigned int count = static_cast<unsigned int>(this->packageinfos_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->warehouses(static_cast<int>(i)));
+          this->packageinfos(static_cast<int>(i)));
     }
   }
 
@@ -2203,9 +1874,22 @@ void DetermineWarehouse::MergeFrom(const DetermineWarehouse& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  warehouses_.MergeFrom(from.warehouses_);
-  if (from.has_seqnum()) {
-    set_seqnum(from.seqnum());
+  packageinfos_.MergeFrom(from.packageinfos_);
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      whid_ = from.whid_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      wh_x_ = from.wh_x_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      seqnum_ = from.seqnum_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      wh_y_ = from.wh_y_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
 }
 
@@ -2224,8 +1908,8 @@ void DetermineWarehouse::CopyFrom(const DetermineWarehouse& from) {
 }
 
 bool DetermineWarehouse::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
-  if (!::google::protobuf::internal::AllAreInitialized(this->warehouses())) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->packageinfos())) return false;
   return true;
 }
 
@@ -2237,8 +1921,11 @@ void DetermineWarehouse::InternalSwap(DetermineWarehouse* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  CastToBase(&warehouses_)->InternalSwap(CastToBase(&other->warehouses_));
+  CastToBase(&packageinfos_)->InternalSwap(CastToBase(&other->packageinfos_));
+  swap(whid_, other->whid_);
+  swap(wh_x_, other->wh_x_);
   swap(seqnum_, other->seqnum_);
+  swap(wh_y_, other->wh_y_);
 }
 
 ::google::protobuf::Metadata DetermineWarehouse::GetMetadata() const {
@@ -2590,14 +2277,18 @@ class TruckLocation::HasBitSetters {
   static void set_has_truckid(TruckLocation* msg) {
     msg->_has_bits_[0] |= 0x00000001u;
   }
-  static void set_has_whid(TruckLocation* msg) {
+  static void set_has_wh_x(TruckLocation* msg) {
     msg->_has_bits_[0] |= 0x00000002u;
+  }
+  static void set_has_wh_y(TruckLocation* msg) {
+    msg->_has_bits_[0] |= 0x00000004u;
   }
 };
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int TruckLocation::kTruckidFieldNumber;
-const int TruckLocation::kWhidFieldNumber;
+const int TruckLocation::kWhXFieldNumber;
+const int TruckLocation::kWhYFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 TruckLocation::TruckLocation()
@@ -2611,15 +2302,15 @@ TruckLocation::TruckLocation(const TruckLocation& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&truckid_, &from.truckid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&whid_) -
-    reinterpret_cast<char*>(&truckid_)) + sizeof(whid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&wh_y_) -
+    reinterpret_cast<char*>(&truckid_)) + sizeof(wh_y_));
   // @@protoc_insertion_point(copy_constructor:UA.TruckLocation)
 }
 
 void TruckLocation::SharedCtor() {
   ::memset(&truckid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&whid_) -
-      reinterpret_cast<char*>(&truckid_)) + sizeof(whid_));
+      reinterpret_cast<char*>(&wh_y_) -
+      reinterpret_cast<char*>(&truckid_)) + sizeof(wh_y_));
 }
 
 TruckLocation::~TruckLocation() {
@@ -2646,10 +2337,10 @@ void TruckLocation::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     ::memset(&truckid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&whid_) -
-        reinterpret_cast<char*>(&truckid_)) + sizeof(whid_));
+        reinterpret_cast<char*>(&wh_y_) -
+        reinterpret_cast<char*>(&truckid_)) + sizeof(wh_y_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -2675,10 +2366,17 @@ const char* TruckLocation::_InternalParse(const char* begin, const char* end, vo
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // required int32 whid = 2;
+      // required int32 wh_x = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        msg->set_whid(::google::protobuf::internal::ReadVarint(&ptr));
+        msg->set_wh_x(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // required int32 wh_y = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        msg->set_wh_y(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -2722,13 +2420,26 @@ bool TruckLocation::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 whid = 2;
+      // required int32 wh_x = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
-          HasBitSetters::set_has_whid(this);
+          HasBitSetters::set_has_wh_x(this);
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &whid_)));
+                 input, &wh_x_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // required int32 wh_y = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+          HasBitSetters::set_has_wh_y(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &wh_y_)));
         } else {
           goto handle_unusual;
         }
@@ -2768,9 +2479,14 @@ void TruckLocation::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->truckid(), output);
   }
 
-  // required int32 whid = 2;
+  // required int32 wh_x = 2;
   if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->whid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->wh_x(), output);
+  }
+
+  // required int32 wh_y = 3;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->wh_y(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2792,9 +2508,14 @@ void TruckLocation::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->truckid(), target);
   }
 
-  // required int32 whid = 2;
+  // required int32 wh_x = 2;
   if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->whid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->wh_x(), target);
+  }
+
+  // required int32 wh_y = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->wh_y(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2816,11 +2537,18 @@ size_t TruckLocation::RequiredFieldsByteSizeFallback() const {
         this->truckid());
   }
 
-  if (has_whid()) {
-    // required int32 whid = 2;
+  if (has_wh_x()) {
+    // required int32 wh_x = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->whid());
+        this->wh_x());
+  }
+
+  if (has_wh_y()) {
+    // required int32 wh_y = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_y());
   }
 
   return total_size;
@@ -2834,16 +2562,21 @@ size_t TruckLocation::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required int32 truckid = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->truckid());
 
-    // required int32 whid = 2;
+    // required int32 wh_x = 2;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->whid());
+        this->wh_x());
+
+    // required int32 wh_y = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->wh_y());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -2880,12 +2613,15 @@ void TruckLocation::MergeFrom(const TruckLocation& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       truckid_ = from.truckid_;
     }
     if (cached_has_bits & 0x00000002u) {
-      whid_ = from.whid_;
+      wh_x_ = from.wh_x_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      wh_y_ = from.wh_y_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -2906,7 +2642,7 @@ void TruckLocation::CopyFrom(const TruckLocation& from) {
 }
 
 bool TruckLocation::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   return true;
 }
 
@@ -2919,7 +2655,8 @@ void TruckLocation::InternalSwap(TruckLocation* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(truckid_, other->truckid_);
-  swap(whid_, other->whid_);
+  swap(wh_x_, other->wh_x_);
+  swap(wh_y_, other->wh_y_);
 }
 
 ::google::protobuf::Metadata TruckLocation::GetMetadata() const {
@@ -5212,9 +4949,6 @@ template<> PROTOBUF_NOINLINE ::UA::InitWorld* Arena::CreateMaybeMessage< ::UA::I
 }
 template<> PROTOBUF_NOINLINE ::UA::APackageInfo* Arena::CreateMaybeMessage< ::UA::APackageInfo >(Arena* arena) {
   return Arena::CreateInternal< ::UA::APackageInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UA::WarehouseInfo* Arena::CreateMaybeMessage< ::UA::WarehouseInfo >(Arena* arena) {
-  return Arena::CreateInternal< ::UA::WarehouseInfo >(arena);
 }
 template<> PROTOBUF_NOINLINE ::UA::DetermineWarehouse* Arena::CreateMaybeMessage< ::UA::DetermineWarehouse >(Arena* arena) {
   return Arena::CreateInternal< ::UA::DetermineWarehouse >(arena);
