@@ -1,6 +1,7 @@
 #ifndef __UPSERVER_H__
 #define __UPSERVER_H__
 #include "amazonbridge.h"
+#include "log.h"
 #include "ups_amazon.pb.h"
 #include "world_ups.pb.h"
 #include "worldbridge.h"
@@ -10,6 +11,7 @@
 class UPServer {
 private:
   DBInterface Zeus;
+  Log Homer;
   WorldBridge wb;
   AmazonBridge ab;
   int64_t wid;

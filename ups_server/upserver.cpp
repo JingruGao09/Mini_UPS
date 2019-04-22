@@ -7,6 +7,7 @@ UPServer::UPServer(const char *h, const char *p, const char *a_h,
   wb.SetWorldOptions(SIMSPEED);
   ab.setWid(wid);
   ab.SendWorldId();
+  std::cout << "sent world id " << wid << " to amazon\n";
 }
 UPServer::~UPServer() { wb.DisconnectAWorld(); }
 /* ConnectWorld
@@ -26,6 +27,9 @@ void UPServer::ConnectWorld() {
     UPS::UConnected response;
     wb.RecvMsg<UPS::UConnected>(response);
     wid = response.worldid();
+    Homer.LogRecvMsg("World", response.result());
+    if (response.result() != "connected!")
+      throw std::string("failed to connect!");
     Zeus.updateWorldNum(std::to_string(wid));
     wb.setWid(wid);
     for (auto truck : trucks) {
