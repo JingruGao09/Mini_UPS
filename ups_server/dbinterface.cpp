@@ -380,7 +380,6 @@ int DBInterface::docOutMsg(const std::string &seqnum, const resend_msg_t &msg,
                       ", PACKAGE_X=" + std::to_string(msg.package_x) +
                       ", PACKAGE_Y=" + std::to_string(msg.package_y) +
                       " WHERE ID=" + seqnum + " AND WORLD_ID=" + WORLD_id + ";";
-    std::cout << sql << std::endl;
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
