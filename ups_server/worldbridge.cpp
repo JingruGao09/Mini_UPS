@@ -77,6 +77,26 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
 }
 
 /*
+ * selectAtruck
+ *
+ * first check whether there is a truck at this wh
+ * then pick the nearest idle truck
+ * last pick the nearest delivering truck
+ *
+ * if success return truck_id, else return -1
+ */
+int WorldBridge::selectATruck(const int &wh_x, const int &wh_y) {
+  int truck_id = -1;
+  truck_id = Zeus.getArrivedTruck(wh_x, wh_y, std::to_string(world_id));
+  if (truck_id != -1)
+    return truck_id;
+  truck_id = Zeus.getIdleTruck(wh_x, wh_y, std::to_string(world_id));
+  if (truck_id != -1)
+    return truck_id;
+  return Zeus.getDeliveringTruck(wh_x, wh_y, std::to_string(world_id));
+}
+
+/*
  * GOPickUp
  *
  * Sent message to world let truck to the wharehouse
@@ -84,23 +104,34 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg) {
  * return 0 if succeed, else -1
  *
  */
-int WorldBridge::GoPickUp(const int &wh_id, std::vector<truck_t> &trucks) {
+int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
+                          const std::vector<int> &package_ids) {
   UPS::UCommands command;
   UPS::UGoPickup *pickup;
   int64_t seqnum;
-  for (auto truck : trucks) {
-    pickup = command.add_pickups();
-    pickup->set_whid(wh_id);
-    pickup->set_truckid(truck.truck_id);
-    if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
-      return -1;
-    pickup->set_seqnum(seqnum);
-    Homer.LogSendMsg("World",
-                     "sending truck " + std::to_string(truck.truck_id) +
-                         " to warehouse " + std::to_string(wh_id),
-                     std::to_string(seqnum));
-    // save msg to db
+  int truck_id = selectATruck(wh_x, wh_y);
+  if (truck_id == -1) {
+    Homer.LogRecvMsg("system", "no truck can go to warehouse(" +
+                                   std::to_string(wh_x) + "," +
+                                   std::to_string(wh_y) + ")");
+    return -1;
   }
+  pickup = command.add_pickups();
+  pickup->set_whid(wh_id);
+  pickup->set_truckid(truck_id);
+  if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
+    return -1;
+  pickup->set_seqnum(seqnum);
+  Homer.LogSendMsg("World",
+                   "sending truck " + std::to_string(truck_id) +
+                       " to warehouse (" + std::to_string(wh_x) + "," +
+                       std::to_string(wh_y) + ")",
+                   std::to_string(seqnum));
+  for (auto packageid : package_ids)
+    Zeus.updatePackageStatus(
+        std::to_string(packageid), std::to_string(truck_id),
+        "truck en route to warehouse", std::to_string(world_id));
+  // save msg to db
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 
@@ -123,24 +154,21 @@ int WorldBridge::SetWorldOptions(int speed) {
  * set up google protocol buffer to load package info
  * return 0 if succeed, else -1
  */
-int WorldBridge::SetPackageInfo(truck_t &truck,
-                                std::vector<package_t> &packages,
+int WorldBridge::SetPackageInfo(const int &truck_id, package_t &package,
                                 UPS::UGoDeliver *goDeliver) {
   UPS::UDeliveryLocation *location;
-  for (auto package : packages) {
-    location = goDeliver->add_packages();
-    location->set_packageid(package.package_id);
-    location->set_x(package.x);
-    location->set_y(package.y);
-    if (Zeus.updatePackageStatus(
-            std::to_string(package.package_id), std::to_string(truck.truck_id),
-            "out for delivery", std::to_string(world_id)) == -1) {
-      return -1;
-    }
-    Homer.LogSendMsg("World",
-                     "loading package " + std::to_string(package.package_id) +
-                         " onto truck " + std::to_string(truck.truck_id));
+  location = goDeliver->add_packages();
+  location->set_packageid(package.package_id);
+  location->set_x(package.x);
+  location->set_y(package.y);
+  if (Zeus.updatePackageStatus(std::to_string(package.package_id),
+                               std::to_string(truck_id), "out for delivery",
+                               std::to_string(world_id)) == -1) {
+    return -1;
   }
+  Homer.LogSendMsg("World", "package " + std::to_string(package.package_id) +
+                                " on truck " + std::to_string(truck_id));
+
   return 0;
 }
 
@@ -152,22 +180,25 @@ int WorldBridge::SetPackageInfo(truck_t &truck,
  * return 0 if succeed, else -1
  *
  */
-int WorldBridge::GoDeliver(truck_t &truck, std::vector<package_t> &packages) {
+int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
   UPS::UCommands command;
   UPS::UGoDeliver *goDeliver;
   int64_t seqnum;
+  package_t package = Zeus.getPackageInfo(package_id);
   goDeliver = command.add_deliveries();
-  goDeliver->set_truckid(truck.truck_id);
-  if (SetPackageInfo(truck, packages, goDeliver) == -1)
+  goDeliver->set_truckid(truck_id);
+  if (SetPackageInfo(truck_id, package, goDeliver) == -1)
     return -1;
   if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1)
     return -1;
   goDeliver->set_seqnum(seqnum);
   // save msg to db
-  Homer.LogSendMsg("World",
-                   "sending truck " + std::to_string(truck.truck_id) +
-                       " to deliver",
-                   std::to_string(seqnum));
+  Homer.LogSendMsg(
+      "World",
+      "sending truck " + std::to_string(truck_id) + " to deliver package " +
+          std::to_string(package.package_id) + ", destination(" +
+          std::to_string(package.x) + "," + std::to_string(package.y) + ")",
+      std::to_string(seqnum));
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
 

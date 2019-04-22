@@ -127,6 +127,27 @@ int findNearestTruck(pqxx::result R, const int &WH_x, const int &WH_y) {
   return min_truck;
 }
 /*
+ * getPackageInfo
+ *
+ * use package id to query its destination
+ *
+ */
+package_t DBInterface::getPackageInfo(const int &packageid) {
+  package_t package;
+  std::string sql = "SELECT DES_X, DES_Y FROM PACKAGE WHERE PACKAGE_ID=" +
+                    std::to_string(packageid) + ";";
+  pqxx::result R = lookup(sql);
+  if (R.empty()) {
+    package.package_id = -1;
+    return package;
+  }
+  auto c = R.begin();
+  package.package_id = packageid;
+  package.x = c["DES_X"].as<int>();
+  package.y = c["DES_Y"].as<int>();
+  return package;
+}
+/*
  * getIdleTruck
  *
  * assign a truck which status is Idle

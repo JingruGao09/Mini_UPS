@@ -159,15 +159,17 @@ int AmazonBridge::determinewarehouse_handler(
     seqnums.push_back(warehouse.seqnum());
     if (Zeus.AdocInSeqNum(std::to_string(warehouse.seqnum())) == -1)
       continue;
-    warehouse_infos.push_back(
-        {warehouse.whid(), warehouse.wh_x(), warehouse.wh_y()});
-    Homer.LogRecvMsg("Amazon", "requesting a truck(s) to warehouse " +
-                                   std::to_string(warehouse.whid()) +
-                                   " ,located at (" +
-                                   std::to_string(warehouse.wh_x()) + ", " +
-                                   std::to_string(warehouse.wh_y()) + ")");
-    if (apackageinfo_handler(warehouse) != 0)
+    Homer.LogRecvMsg("Amazon",
+                     "requesting a truck(s) to warehouse " +
+                         std::to_string(warehouse.whid()) + " ,located at (" +
+                         std::to_string(warehouse.wh_x()) + ", " +
+                         std::to_string(warehouse.wh_y()) + ")",
+                     std::to_string(warehouse.seqnum()));
+    std::vector<int> package_ids;
+    if (apackageinfo_handler(warehouse, package_ids) != 0)
       return -1;
+    warehouse_infos.push_back(
+        {warehouse.whid(), warehouse.wh_x(), warehouse.wh_y(), package_ids});
   }
   return 0;
 }
@@ -179,9 +181,11 @@ int AmazonBridge::determinewarehouse_handler(
  *
  * return 0 if succeed, else -1
  */
-int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg) {
+int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
+                                       std::vector<int> &package_ids) {
   for (int i = 0; i < msg.packageinfos_size(); i++) {
     UA::APackageInfo pack_info = msg.packageinfos(i);
+    package_ids.push_back(pack_info.packageid());
     Homer.LogRecvMsg("Amazon",
                      "package: " + std::to_string(pack_info.packageid()) +
                          " x " + std::to_string(pack_info.count()) + ": " +

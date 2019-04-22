@@ -4,6 +4,12 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <math.h>
+struct _package_t {
+  int package_id;
+  int x;
+  int y;
+};
+typedef struct _package_t package_t;
 template <typename K, typename P> P getDist(K x1, K y1, K x2, K y2) {
   K diff_x = (x1 - x2);
   K diff_y = (y1 - y2);

@@ -58,16 +58,23 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
   }
 }
 
-void A_MsgHandler_thread(AmazonBridge &ab, UA::AUCommands response) {
+void A_MsgHandler_thread(AmazonBridge &ab, WorldBridge &wb,
+                         UA::AUCommands response) {
   std::vector<warehouse_info> whs;
   std::vector<truck_dest> truck_dsts;
   if (ab.ParseResponses(response, whs, truck_dsts) == -1)
     return;
   if (!whs.empty()) {
     // assign truck to wh
+    for (auto wh : whs) {
+      wb.GoPickUp(wh.wh_id, wh.wh_x, wh.wh_y, wh.package_ids);
+    }
   }
   if (!truck_dsts.empty()) {
     // tell truck to destination
+    for (auto t : truck_dsts) {
+      wb.GoDeliver(t.truck_id, t.package_id);
+    }
   }
 }
 int UPServer::WorldMsgHandler() {
@@ -83,7 +90,8 @@ int UPServer::WorldMsgHandler() {
 int UPServer::AmazonMsgHandler() {
   UA::AUCommands response;
   ab.RecvMsg<UA::AUCommands>(response);
-  std::thread t = std::thread(A_MsgHandler_thread, std::ref(ab), response);
+  std::thread t =
+      std::thread(A_MsgHandler_thread, std::ref(ab), std::ref(wb), response);
   t.detach();
   return 0;
 }

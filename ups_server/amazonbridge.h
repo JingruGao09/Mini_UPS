@@ -22,6 +22,7 @@ struct _warehouse_info {
   int wh_id;
   int wh_x;
   int wh_y;
+  std::vector<int> package_ids;
 };
 struct _truck_dest {
   int truck_id;
@@ -40,7 +41,8 @@ private:
   DBInterface Zeus;
   Log Homer;
 
-  int apackageinfo_handler(UA::DetermineWarehouse &warehouseinfo);
+  int apackageinfo_handler(UA::DetermineWarehouse &warehouseinfo,
+                           std::vector<int> &package_ids);
   int determinewarehouse_handler(UA::AUCommands &msg,
                                  std::vector<int64_t> &seqnums,
                                  std::vector<warehouse_info> &warehouse_infos);
