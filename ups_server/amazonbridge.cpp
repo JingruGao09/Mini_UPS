@@ -50,10 +50,12 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
   for (auto truck : trucks) {
     trucklocation = detertrucks->add_arrivedtrucks();
     trucklocation->set_truckid(truck.truck_id);
-    trucklocation->set_whid(truck.wh_id);
-    Homer.LogSendMsg("Amazon",
-                     "sending truck " + std::to_string(truck.truck_id) +
-                         " to warehouse " + std::to_string(truck.wh_id));
+    trucklocation->set_wh_x(truck.wh_x);
+    trucklocation->set_wh_y(truck.wh_y);
+    Homer.LogSendMsg(
+        "Amazon", "sending truck " + std::to_string(truck.truck_id) +
+                      " to warehouse located at(" + std::to_string(truck.wh_x) +
+                      "," + std::to_string(truck.wh_y) + ")");
   }
   return ConAmazonClient.sendMsg<UA::UACommands>(command);
 }
@@ -153,42 +155,21 @@ int AmazonBridge::determinewarehouse_handler(
     UA::AUCommands &msg, std::vector<int64_t> &seqnums,
     std::vector<warehouse_info> &warehouse_infos) {
   for (int i = 0; i < msg.warehouses_size(); i++) {
-    UA::DetermineWarehouse deterwarehouse = msg.warehouses(i);
-    seqnums.push_back(deterwarehouse.seqnum());
-    if (Zeus.AdocInSeqNum(std::to_string(deterwarehouse.seqnum())) == -1)
+    UA::DetermineWarehouse warehouse = msg.warehouses(i);
+    seqnums.push_back(warehouse.seqnum());
+    if (Zeus.AdocInSeqNum(std::to_string(warehouse.seqnum())) == -1)
       continue;
-    Homer.LogRecvMsg("Amazon", "requesting trucks to warehouse",
-                     std::to_string(deterwarehouse.seqnum()));
-    if (warehouseinfo_handler(deterwarehouse, warehouse_infos) != 0)
-      return -1;
-  }
-  return 0;
-}
-
-/*
- * warehouseinfo_handler
- *
- * store all warehouse destinations
- *
- * if succeed return 0 and you can find warehouse info inside array,
- * else -1
- */
-int AmazonBridge::warehouseinfo_handler(
-    UA::DetermineWarehouse &msg, std::vector<warehouse_info> &warehouse_infos) {
-  for (int i = 0; i < msg.warehouses_size(); i++) {
-    UA::WarehouseInfo warehouseinfo = msg.warehouses(i);
     warehouse_infos.push_back(
-        {warehouseinfo.whid(), warehouseinfo.wh_x(), warehouseinfo.wh_y()});
+        {warehouse.whid(), warehouse.wh_x(), warehouse.wh_y()});
     Homer.LogRecvMsg("Amazon", "requesting a truck(s) to warehouse " +
-                                   std::to_string(warehouseinfo.whid()) +
+                                   std::to_string(warehouse.whid()) +
                                    " ,located at (" +
-                                   std::to_string(warehouseinfo.wh_x()) + ", " +
-                                   std::to_string(warehouseinfo.wh_y()) + ")");
-    if (apackageinfo_handler(warehouseinfo) != 0)
+                                   std::to_string(warehouse.wh_x()) + ", " +
+                                   std::to_string(warehouse.wh_y()) + ")");
+    if (apackageinfo_handler(warehouse) != 0)
       return -1;
   }
   return 0;
-  // may need to update warehouse info in TABLE truck here???
 }
 
 /*
@@ -198,7 +179,7 @@ int AmazonBridge::warehouseinfo_handler(
  *
  * return 0 if succeed, else -1
  */
-int AmazonBridge::apackageinfo_handler(UA::WarehouseInfo &msg) {
+int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg) {
   for (int i = 0; i < msg.packageinfos_size(); i++) {
     UA::APackageInfo pack_info = msg.packageinfos(i);
     Homer.LogRecvMsg("Amazon",

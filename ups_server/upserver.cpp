@@ -26,7 +26,7 @@ void UPServer::ConnectWorld() {
     wb.RecvMsg<UPS::UConnected>(response);
     wid = response.worldid();
     Zeus.updateWorldNum(std::to_string(wid));
-    initTruck = true;
+    // initTruck = true;
   }
 
   // connect to world
@@ -52,10 +52,9 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
   if (!trucks.empty()) {
     std::vector<truck_location> truck_locations;
     for (auto truck : trucks) {
-      //      truck_locations.push_back({truck.truck_id,truck.)
+      truck_locations.push_back({truck.truck_id, truck.x, truck.y});
     }
-    // ab.SendTruckId(std::vector<truck_location> & trucks)
-    // tell amazon truck info
+    ab.SendTruckId(truck_locations);
   }
 }
 
@@ -74,7 +73,8 @@ void A_MsgHandler_thread(AmazonBridge &ab, UA::AUCommands response) {
 int UPServer::WorldMsgHandler() {
   UPS::UResponses response;
   wb.RecvMsg<UPS::UResponses>(response);
-  std::thread t = std::thread(MsgHandler_thread, std::ref(wb), response);
+  std::thread t =
+      std::thread(MsgHandler_thread, std::ref(wb), std::ref(ab), response);
   t.detach();
   // std::vector<truck_t> trucks;
   // wb.ParseResponses(response, trucks);

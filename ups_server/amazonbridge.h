@@ -10,7 +10,8 @@
 
 struct _truck_location {
   int truck_id;
-  int wh_id;
+  int wh_x;
+  int wh_y;
 };
 struct _package_info {
   int package_id;
@@ -39,9 +40,7 @@ private:
   DBInterface Zeus;
   Log Homer;
 
-  int apackageinfo_handler(UA::WarehouseInfo &warehouseinfo);
-  int warehouseinfo_handler(UA::DetermineWarehouse &deterwarehouse,
-                            std::vector<warehouse_info> &warehouse_infos);
+  int apackageinfo_handler(UA::DetermineWarehouse &warehouseinfo);
   int determinewarehouse_handler(UA::AUCommands &msg,
                                  std::vector<int64_t> &seqnums,
                                  std::vector<warehouse_info> &warehouse_infos);
