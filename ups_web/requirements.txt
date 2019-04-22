@@ -18,3 +18,4 @@ SecretStorage==2.3.1
 six==1.11.0
 urllib3==1.22
 virtualenv==16.2.0
+django-widget-tweaks
