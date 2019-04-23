@@ -57,7 +57,7 @@ def MyPackagesView(request):
     #print(request.user.pk)
     #pdb.set_trace()
 
-    print(package_list)
+    #print(package_list)
     #package_list = UpsProfile.objects.filter(pk = request.user.pk).first().package_set.all()
     #template = loader.get_template('ups/package_list.html')
     return render(request,'ups/myPackage_list.html',{'package_list':package_list})

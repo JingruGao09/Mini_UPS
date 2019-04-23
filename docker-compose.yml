@@ -10,7 +10,7 @@ services:
       expose:
         - "5432"
       volumes:
-        - data-volume:/var/lib/postgresql/data
+        - data-volume:/var/lib/postgresql/9.5/main
   web-init:
       build: ./ups_web
       command: /code/initserver.sh
@@ -43,9 +43,6 @@ services:
         - "./ups_server:/code"
       ports:
         - "12345:12345"
-
-      tty: true
-
       depends_on:
         - db
 
