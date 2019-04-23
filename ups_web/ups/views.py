@@ -53,7 +53,8 @@ from django.utils.decorators import method_decorator
 
 
 def MyPackagesView(request):
-    package_list = UpsProfile.objects.filter(user_id = request.user.pk).first().user_set.all()
+    #package_list = UpsProfile.objects.filter(user_id = request.user.pk).first().user_set.all()
+    package_list = Package.objects.filter(user_id = request.user.pk)
     #print(request.user.pk)
     #pdb.set_trace()
 
