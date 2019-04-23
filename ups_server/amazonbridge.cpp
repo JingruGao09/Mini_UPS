@@ -215,7 +215,8 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
             std::to_string(wh_y), std::to_string(pack_info.x()),
             std::to_string(pack_info.y()), pack_info.description(),
             std::to_string(pack_info.count()), "created",
-            std::to_string(world_id)) == -1) {
+            std::to_string(world_id),
+            std::to_string(pack_info.upsaccount())) == -1) {
       Homer.LogRecvMsg("World", "failed to createPackage");
       return -1;
     }

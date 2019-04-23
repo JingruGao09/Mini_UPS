@@ -72,7 +72,8 @@ public:
                     const std::string &dep_y, const std::string &des_x,
                     const std::string &des_y, const std::string &desc,
                     const std::string &count, std::string status,
-                    const std::string &WORLD_id);
+                    const std::string &WORLD_id,
+                    const std::string &upsaccount = "0");
   int updatePackageStatus(const std::string &package_id,
                           const std::string &truck_id, std::string status,
                           const std::string &WORLD_id);
