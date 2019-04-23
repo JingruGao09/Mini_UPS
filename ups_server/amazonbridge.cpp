@@ -58,12 +58,13 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
       trucklocation->set_wh_x(truck.wh_x);
       trucklocation->set_wh_y(truck.wh_y);
       trucklocation->set_packageid(package_id);
-      Homer.LogSendMsg(
-          "Amazon", "sending truck " + std::to_string(truck.truck_id) +
-                        " to warehouse located at(" +
-                        std::to_string(truck.wh_x) + "," +
-                        std::to_string(truck.wh_y) + ") to pick up package " +
-                        std::to_string(package_id));
+      Homer.LogSendMsg("Amazon",
+                       "truck " + std::to_string(truck.truck_id) +
+                           " is already at warehouse, located at(" +
+                           std::to_string(truck.wh_x) + "," +
+                           std::to_string(truck.wh_y) +
+                           ") to pick up package " + std::to_string(package_id),
+                       std::to_string(seqnum));
     }
   }
   return ConAmazonClient.sendMsg<UA::UACommands>(command);

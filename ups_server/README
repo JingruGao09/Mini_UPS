@@ -1,5 +1,13 @@
 This is an UPS simulator, it works with a world simulator and an Amazon simulator.
-The connection between
+The connections among UPS, AMAZON and WORLD are built through TCP/IP, using library socket.
+The connection between any two of them just built using only one socket.
+In the connection between UPS and Amazon, UPS works as a client and Amazon works as a server.
+In the connection between UPS and World, UPS works as a client and World works as a server.
+As an UPS simulator, it has the ability to send a truck to a warehouse, send a truck to send a package,
+query any truck's status. It is also responsible for notifying Amazon about a truck is arrive a warehouse,
+a truck has delivered a package.
+In each communication, who request
+
 
 
 
