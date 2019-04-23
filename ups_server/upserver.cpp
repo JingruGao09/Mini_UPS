@@ -18,6 +18,9 @@ UPServer::~UPServer() { wb.DisconnectAWorld(); }
  *
  * pass test, it will not fail
  */
+int UPServer::World_reconnect() { return wb.reconnect(); }
+int UPServer::Amazon_reconnect() { return ab.reconnect(); }
+
 void UPServer::ConnectWorld() {
 
   // get world id from db, if no valid wid, request one from server
@@ -96,7 +99,10 @@ void A_MsgHandler_thread(AmazonBridge &ab, WorldBridge &wb,
 }
 int UPServer::WorldMsgHandler() {
   UPS::UResponses response;
-  wb.RecvMsg<UPS::UResponses>(response);
+  if (wb.RecvMsg<UPS::UResponses>(response) == -1) {
+    std::cout << "world socket disconnct\n";
+    throw std::string("world socket disconnect");
+  }
   std::thread t =
       std::thread(MsgHandler_thread, std::ref(wb), std::ref(ab), response);
   t.detach();
@@ -106,7 +112,10 @@ int UPServer::WorldMsgHandler() {
 }
 int UPServer::AmazonMsgHandler() {
   UA::AUCommands response;
-  ab.RecvMsg<UA::AUCommands>(response);
+  if (ab.RecvMsg<UA::AUCommands>(response) == -1) {
+    std::cout << "amazon socket disconnct\n";
+    throw std::string("amazon socket disconnect");
+  }
   std::thread t =
       std::thread(A_MsgHandler_thread, std::ref(ab), std::ref(wb), response);
   t.detach();

@@ -6,6 +6,7 @@ AmazonBridge::AmazonBridge(const char *hostname, const char *port)
 }
 AmazonBridge::~AmazonBridge() {}
 
+int AmazonBridge::reconnect() { return ConAmazonClient.reconnect(); }
 int AmazonBridge::setWid(const int64_t &wid) {
   world_id = wid;
   return 0;

@@ -22,6 +22,8 @@ public:
   ~UPServer();
   int WorldMsgHandler();
   int AmazonMsgHandler();
+  int World_reconnect();
+  int Amazon_reconnect();
   int test();
 };
 #endif
