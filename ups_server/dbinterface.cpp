@@ -239,6 +239,26 @@ int DBInterface::updateTruckStatus(const std::string &truck_id,
 }
 
 /*
+ * updateTruckStatus
+ *
+ * update truck status,
+ * succeed return 0, else -1
+ * pass test
+ */
+int DBInterface::updateTruckStatus(const std::string &truck_id,
+                                   std::string status,
+                                   const std::string &WORLD_id) {
+  try {
+    std::string sql = "UPDATE TRUCK SET TRUCK_STATUS='" + status +
+                      "' WHERE TRUCK_ID=" + truck_id +
+                      " AND WORLD_ID=" + WORLD_id + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
+/*
  * createPackage
  *
  * create a new package

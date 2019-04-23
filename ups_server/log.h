@@ -11,7 +11,7 @@ private:
 public:
   void LogRecvMsg(std::string who, const std::string &what,
                   const std::string &seqnum = "");
-  void LogSendMsg(std::string who, const std::string &wha,
+  void LogSendMsg(std::string who, const std::string &what,
                   const std::string &seqnum = "");
 };
 #endif
