@@ -58,6 +58,12 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
       trucklocation->set_wh_x(truck.wh_x);
       trucklocation->set_wh_y(truck.wh_y);
       trucklocation->set_packageid(package_id);
+      if (Zeus.updatePackageStatus(std::to_string(package_id),
+                                   "TRUCK WAITING FOR PACKAGE",
+                                   std::to_string(world_id)) == -1) {
+        Homer.LogRecvMsg("System", "failed to updatePackagestatus");
+        return -1;
+      }
       Homer.LogSendMsg("Amazon",
                        "truck " + std::to_string(truck.truck_id) +
                            " is already at warehouse, located at(" +
@@ -210,13 +216,15 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
                          pack_info.description() + ", desctination: (" +
                          std::to_string(pack_info.x()) + "," +
                          std::to_string(pack_info.y()) + ")");
+    std::string account = pack_info.has_upsaccount()
+                              ? std::to_string(pack_info.upsaccount())
+                              : "0";
     if (Zeus.createPackage(
             std::to_string(pack_info.packageid()), std::to_string(wh_x),
             std::to_string(wh_y), std::to_string(pack_info.x()),
             std::to_string(pack_info.y()), pack_info.description(),
-            std::to_string(pack_info.count()), "created",
-            std::to_string(world_id),
-            std::to_string(pack_info.upsaccount())) == -1) {
+            std::to_string(pack_info.count()), "CREATED",
+            std::to_string(world_id), account) == -1) {
       Homer.LogRecvMsg("World", "failed to createPackage");
       return -1;
     }

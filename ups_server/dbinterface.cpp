@@ -6,7 +6,7 @@ DBInterface::DBInterface() {
   // Establish a connection to the database
   // Parameters: database name, user name, user password
   C = std::unique_ptr<pqxx::connection>(
-      new pqxx::connection("host=db dbname=UPS user=postgres "
+      new pqxx::connection("dbname=UPS user=postgres "
                            "password=passw0rd port = 5432"));
   if (C->is_open()) {
     //  cout << "Opened database successfully: " << C->dbname() << endl;
@@ -253,7 +253,7 @@ int DBInterface::createPackage(
     std::string status, const std::string &WORLD_id,
     const std::string &upsaccount) {
   try {
-    /*std::string sql =
+    std::string sql =
         "INSERT INTO PACKAGE(PACKAGE_ID,DEP_X,DEP_Y,DES_X, DES_Y, "
         "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID";
     if (upsaccount != "0")
@@ -263,15 +263,14 @@ int DBInterface::createPackage(
            WORLD_id;
     if (upsaccount != "0")
       sql += "," + upsaccount;
-      sql += ");";*/
-    std::string sql =
-        "INSERT INTO PACKAGE(PACKAGE_ID,DEP_X,DEP_Y,DES_X, DES_Y, "
-        "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID";
-    sql += ") VALUES(" + package_id + "," + dep_x + "," + dep_y + "," + des_x +
-           "," + des_y + ",'" + status + "','" + desc + "'," + count + "," +
-           WORLD_id;
     sql += ");";
-    std::cout << sql << std::endl;
+    /*std::string sql =
+      "INSERT INTO PACKAGE(PACKAGE_ID,DEP_X,DEP_Y,DES_X, DES_Y, "
+      "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID";
+  sql += ") VALUES(" + package_id + "," + dep_x + "," + dep_y + "," + des_x +
+         "," + des_y + ",'" + status + "','" + desc + "'," + count + "," +
+         WORLD_id;
+         sql += ");";*/
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -571,7 +570,7 @@ int DBInterface::initializer() {
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS PACKAGE(PACKAGE_ID BIGINT NOT NULL, "
           "WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID),TRUCK_ID INT "
-          "REFERENCES TRUCK(TRUCK_ID),USER_ID INT NULL"
+          ",USER_ID INT NULL"
           ",PACKAGE_STATUS VARCHAR(50) NOT NULL "
           "DEFAULT 'CREATED', DEP_X INT NOT NULL, DEP_Y INT NOT NULL,DES_X INT "
           "NOT NULL, DES_Y INT NOT NULL, DESCP "
@@ -584,9 +583,4 @@ int DBInterface::initializer() {
     return -1;
   }
   return 0;
-}
-
-int main() {
-  DBInterface db;
-  db.createPackage("1", "0", "0", "0", "0", "test", "5", "created", "1");
 }
