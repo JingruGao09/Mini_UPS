@@ -45,8 +45,9 @@ int DBInterface::execute(const std::string &sql) {
  * use the given sql to look up info in the db
  * return any result
  */
-
+std::mutex mtx2;
 pqxx::result DBInterface::lookup(const std::string &sql) {
+  std::lock_guard<std::mutex> lck(mtx2);
   pqxx::nontransaction N(*C);
   pqxx::result R(N.exec(sql));
   return R;
