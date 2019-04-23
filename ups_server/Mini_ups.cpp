@@ -4,22 +4,20 @@ void listen_thread(UPServer &upserver);
 void A_listen_thread(UPServer &upserver);
 int main() {
   while (1) {
-
     try {
-
-      // std::cout << "in main\n";
       // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0",
       // "7890");
 
-      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-      // "80");
+      UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
+                        "55555");
 
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
 
       // UPServer upserver("localhost", "12345", "localhost", "8080");
 
-      UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1", "80");
+      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
+      // "80");
       // UPServer upserver("localhost", "12345", "localhost", "8080");
 
       // UPServer upserver("vcm-9448.vm.duke.edu", "12345", "10.197.40.0",
@@ -35,10 +33,6 @@ int main() {
       continue;
     }
   }
-
-  // upserver.test();
-  // while (1)
-  //;
 }
 
 void listen_thread(UPServer &upserver) {

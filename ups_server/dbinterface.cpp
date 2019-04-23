@@ -5,15 +5,8 @@ DBInterface::DBInterface() {
 
   // Establish a connection to the database
   // Parameters: database name, user name, user password
-  C = std::unique_ptr<pqxx::connection>(
-      new pqxx::connection("dbname=UPS user=postgres "
-                           "password=passw0rd port = 5432"));
-  /*
-      C = std::unique_ptr<pqxx::connection>(
-      new pqxx::connection("host=db dbname=UPS user=postgres "
-                           "password=passw0rd port = 5432"));
-
-   */
+  C = std::unique_ptr<pqxx::connection>(new pqxx::connection(
+      "dbname=UPS user=postgres password=passw0rd port = 5432"));
   if (C->is_open()) {
     //  cout << "Opened database successfully: " << C->dbname() << endl;
   } else {
@@ -51,8 +44,9 @@ int DBInterface::execute(const std::string &sql) {
  * use the given sql to look up info in the db
  * return any result
  */
-
+std::mutex mtx2;
 pqxx::result DBInterface::lookup(const std::string &sql) {
+  std::lock_guard<std::mutex> lck(mtx2);
   pqxx::nontransaction N(*C);
   pqxx::result R(N.exec(sql));
   return R;
@@ -244,6 +238,27 @@ int DBInterface::updateTruckStatus(const std::string &truck_id,
   }
 }
 
+/*
+ * updateTruckStatus
+ *
+ * update truck status,
+ * succeed return 0, else -1
+ * pass test
+ */
+int DBInterface::updateTruckStatus(const std::string &truck_id,
+                                   std::string status,
+                                   const std::string &WORLD_id) {
+  try {
+    std::string sql = "UPDATE TRUCK SET TRUCK_STATUS='" + status +
+                      "' WHERE TRUCK_ID=" + truck_id +
+                      " AND WORLD_ID=" + WORLD_id + ";";
+    std::cout << sql << std::endl;
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 /*
  * createPackage
  *
@@ -571,7 +586,7 @@ int DBInterface::initializer() {
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS TRUCK(TRUCK_ID INT NOT NULL, X INT NOT "
           "NULL, Y INT NOT NULL, WORLD_ID INT NOT NULL REFERENCES "
-          "WORLD(WORLD_ID),TRUCK_STATUS VARCHAR(20) NOT NULL DEFAULT 'IDLE', "
+          "WORLD(WORLD_ID),TRUCK_STATUS VARCHAR(50) NOT NULL DEFAULT 'IDLE', "
           "PRIMARY KEY(TRUCK_ID, WORLD_ID));";
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS PACKAGE(PACKAGE_ID BIGINT NOT NULL, "

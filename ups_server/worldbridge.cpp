@@ -169,6 +169,12 @@ int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
                        " to warehouse (" + std::to_string(wh_x) + "," +
                        std::to_string(wh_y) + ")",
                    std::to_string(seqnum));
+  if (Zeus.updateTruckStatus(std::to_string(truck_id),
+                             "EN ROUTE TO A WAREHOUSE",
+                             std::to_string(world_id)) == -1) {
+    Homer.LogRecvMsg("System", "failed to updateTruckStatus");
+    return -1;
+  }
   for (auto packageid : package_ids)
     if (Zeus.updatePackageStatus(
             std::to_string(packageid), std::to_string(truck_id),
@@ -275,6 +281,11 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
     return -1;
   }
   goDeliver->set_seqnum(seqnum);
+  if (Zeus.updateTruckStatus(std::to_string(truck_id), "DELIVERING",
+                             std::to_string(world_id)) == -1) {
+    Homer.LogRecvMsg("System", "failed to updateTruckStatus");
+    return -1;
+  }
   if (Zeus.updatePackageStatus(std::to_string(package_id), "OUT FOR DELIVERY",
                                std::to_string(world_id)) == -1) {
     Homer.LogRecvMsg("System", "failed to updatePackageStatus");
@@ -455,6 +466,17 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
       Homer.LogRecvMsg("System", "failed to updatePackageStatus");
       return -1;
     }
+    package_t pack_info = Zeus.getPackageInfo(delivery.packageid());
+    if (pack_info.package_id != -1) {
+      if (Zeus.updateTruckStatus(std::to_string(delivery.truckid()),
+                                 std::to_string(pack_info.x),
+                                 std::to_string(pack_info.y), "DELIVERING",
+                                 std::to_string(world_id)) == -1) {
+        Homer.LogRecvMsg("System", "failed to updatePackageStatus");
+        return -1;
+      }
+    }
+
     Homer.LogRecvMsg("World",
                      "truck " + std::to_string(delivery.truckid()) +
                          " delivered package " +
