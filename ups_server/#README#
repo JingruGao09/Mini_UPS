@@ -6,7 +6,8 @@ In the connection between UPS and World, UPS works as a client and World works a
 As an UPS simulator, it has the ability to send a truck to a warehouse, send a truck to send a package,
 query any truck's status. It is also responsible for notifying Amazon about a truck is arrive a warehouse,
 a truck has delivered a package.
-In each communication, who request(Amazon/UPS/World) will
+In each communication, who request(Amazon/UPS/World) will send the request with a sequence number, who response
+should response this request with ack corresponding this sequence number if they
 
 
 
