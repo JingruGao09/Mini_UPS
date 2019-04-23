@@ -5,9 +5,8 @@ DBInterface::DBInterface() {
 
   // Establish a connection to the database
   // Parameters: database name, user name, user password
-  C = std::unique_ptr<pqxx::connection>(
-      new pqxx::connection("dbname=UPS user=postgres "
-                           "password=passw0rd port = 5432"));
+  C = std::unique_ptr<pqxx::connection>(new pqxx::connection(
+      "dbname=UPS user=postgres password=passw0rd port = 5432"));
   if (C->is_open()) {
     //  cout << "Opened database successfully: " << C->dbname() << endl;
   } else {

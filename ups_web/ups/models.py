@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.conf import settings
-
+#from simple_history.models import HistoricalRecords
 from django.urls import reverse
 class World(models.Model):
     world_id = models.AutoField(primary_key=True)
@@ -50,7 +50,8 @@ def save_user_profile(sender, instance, **kwargs):
     
 class Truck(models.Model):
     #package = models.ForeignKey(Package, models.DO_NOTHING, primary_key=True)
-    world = models.ForeignKey('World', models.DO_NOTHING)
+    #world = models.ForeignKey('World', models.DO_NOTHING)
+    world_id = models.IntegerField()
     truck_id = models.IntegerField(primary_key=True)
     x = models.IntegerField() #warehouse wh_x
     y = models.IntegerField() #warehouse wh_y
@@ -64,12 +65,13 @@ class Truck(models.Model):
         ('INVAILD','INVAILD')
     )
     
-    truck_status = models.CharField(max_length=50,
+    truck_status = models.CharField(max_length=20,
                                     choices = TRUCK_STATUS_OP,
-                                    blank = True,
                                     default = 'IDLE',
+                                    #blank = True,
                                     null = True,
                                     help_text='Truck Status')
+    #history = HistoricalRecords()
     class Meta:
         db_table = 'truck'
 
@@ -86,7 +88,7 @@ class Package(models.Model):
     world_id = models.IntegerField()
     #world_id = models.ForeignKey('World', models.DO_NOTHING)
     #seqnum = models.IntegerField(null = False)
-    truck = models.ForeignKey('Truck',models.DO_NOTHING)
+    truck = models.ForeignKey('Truck',models.DO_NOTHING,null=True)
     dep_x = models.IntegerField()
     dep_y = models.IntegerField()
     des_x = models.IntegerField()
@@ -109,13 +111,13 @@ class Package(models.Model):
         ('DELIVERED','DELIVERED')
     )
     
-    package_status = models.CharField(max_length=60,
+    package_status = models.CharField(max_length=20,
                                       choices = PACKAGE_STATUS_OP,
                                       blank = False,
                                       default = 'CREATED',
                                       null = False,
                                       help_text='Package Status')
-
+    #history = HistoricalRecords()
     class Meta:
         db_table = 'package'
 
@@ -133,7 +135,7 @@ class Product(models.Model):
     description = models.CharField(max_length=100,
                                    default='AProduct')
     count = models.IntegerField(null=False,default=1)
-
+    #history = HistoricalRecords()
     class Meta:
         db_table = 'product'
 
@@ -153,7 +155,7 @@ class Shipment(models.Model):
     status = models.CharField(max_length=50,
                               default='Created')
     '''
-    
+    #history = HistoricalRecords()
     class Meta:
         db_table = 'shipment'
 

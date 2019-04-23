@@ -15,7 +15,7 @@ def index(request):
     return HttpResponse("Hello, world. You're at the UPS index.")
 
 def home(request):
-    return render(request, 'base_generic.html')
+    return render(request, 'ups/index.html')
 
 def TrackPackageView(request):
     error = False

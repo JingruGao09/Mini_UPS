@@ -16,6 +16,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
 	{% load static %}
+	<img id="ups-logo" src="{% static 'images/ups_transparent_logo.png' %}" alt="Hi!" width="85" height="70"/>
 	<!--a id="ups-header_logo" href="https://www.ups.com/us/en/Home.page?" title="UPS Home" data-content-block-id="M1" data-event-id="21" >UPS </a-->
 	<a id="ups-header_logo" class="navbar-brand" href="{% url 'home' %}">UPS</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
