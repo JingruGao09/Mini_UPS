@@ -9,7 +9,7 @@ int main() {
       // "7890");
 
       UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-                        "55555");
+                        "5555");
 
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
@@ -17,7 +17,7 @@ int main() {
       // UPServer upserver("localhost", "12345", "localhost", "8080");
 
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-      // "80");
+      //"80");
       // UPServer upserver("localhost", "12345", "localhost", "8080");
       // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0",
       // "7893");

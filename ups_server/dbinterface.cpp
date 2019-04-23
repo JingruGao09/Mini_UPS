@@ -253,7 +253,7 @@ int DBInterface::updateTruckStatus(const std::string &truck_id,
     std::string sql = "UPDATE TRUCK SET TRUCK_STATUS='" + status +
                       "' WHERE TRUCK_ID=" + truck_id +
                       " AND WORLD_ID=" + WORLD_id + ";";
-    std::cout << sql << std::endl;
+
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -356,9 +356,10 @@ int DBInterface::createTruck(const std::string &truck_id, const std::string &x,
                              const std::string &y,
                              const std::string &WORLD_id) {
   try {
-    std::string sql = "INSERT INTO TRUCK(TRUCK_ID, X, Y, WORLD_ID) VALUES(" +
-                      truck_id + "," + x + "," + y + "," + WORLD_id +
-                      ") ON CONFLICT DO NOTHING;";
+    std::string sql =
+        "INSERT INTO TRUCK(TRUCK_ID, X, Y, WORLD_ID,TRUCK_STATUS) VALUES(" +
+        truck_id + "," + x + "," + y + "," + WORLD_id +
+        ",'IDLE') ON CONFLICT DO NOTHING;";
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
