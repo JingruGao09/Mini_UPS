@@ -6,9 +6,10 @@ int main() {
   while (1) {
 
     try {
-<<<<<<< HEAD
-      std::cout << "in main\n";
-      UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0", "7890");
+
+      // std::cout << "in main\n";
+      // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0",
+      // "7890");
 
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
@@ -17,13 +18,11 @@ int main() {
       // "80");
 
       // UPServer upserver("localhost", "12345", "localhost", "8080");
-=======
 
-      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-      // "80");
-      UPServer upserver("localhost", "12345", "localhost", "8080");
->>>>>>> 9997e1b5795d02c6c94d18dfda3ea7d18cf7b948
-      // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0",
+      UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1", "80");
+      // UPServer upserver("localhost", "12345", "localhost", "8080");
+
+      // UPServer upserver("vcm-9448.vm.duke.edu", "12345", "10.197.40.0",
       // "7893");
       std::cout << "finish initialization\n";
       exit_thread_flag = false;
@@ -36,12 +35,10 @@ int main() {
       continue;
     }
   }
-<<<<<<< HEAD
+
   // upserver.test();
   // while (1)
   //;
-=======
->>>>>>> 9997e1b5795d02c6c94d18dfda3ea7d18cf7b948
 }
 
 void listen_thread(UPServer &upserver) {

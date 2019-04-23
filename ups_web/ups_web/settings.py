@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ups.apps.UpsConfig',
     'widget_tweaks',
+    #'simple_history',
 ]
 
 
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'ups_web.urls'
@@ -88,7 +90,8 @@ DATABASES = {
         'NAME': 'UPS',
         'USER': 'postgres',
         'PASSWORD':'passw0rd',
-        'HOST': 'db',
+        #'HOST': 'db',
+        'HOST': '',
         'PORT': 5432,
     }
 }
