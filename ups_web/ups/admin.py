@@ -16,7 +16,7 @@ class TruckAdmin(admin.ModelAdmin):
 admin.site.register(Truck,TruckAdmin)
 
 class PackageAdmin(admin.ModelAdmin):
-    list_display=('package_id','user','world_id','truck','des_x','des_y','package_status')
+    list_display=('package_id','user_id','world_id','truck','des_x','des_y','package_status')
 
 admin.site.register(Package,PackageAdmin)
 

@@ -56,17 +56,18 @@ class Truck(models.Model):
     y = models.IntegerField() #warehouse wh_y
     
     TRUCK_STATUS_OP = (
-        ('1','idle'),
-        ('2','en route to a warehouse'),
-        ('3','invalid'),
-        ('4','delivering'),
-        ('5','waiting for pickup')
+        ('IDLE','IDLE'),
+        ('EN ROUTE TO A WAREHOUSE','EN ROUTE TO A WAREHOUSE'),
+        ('ARRIVED WAREHOUSE','ARRIVED WAREHOUSE'),
+        ('DELIVERING','DELIVERING'),
+        ('WAITING FOR PICKUP','WAITING FOR PICKUP'),
+        ('INVAILD','INVAILD')
     )
     
-    truck_status = models.CharField(max_length=1,
+    truck_status = models.CharField(max_length=50,
                                     choices = TRUCK_STATUS_OP,
                                     blank = True,
-                                    default = '1',
+                                    default = 'IDLE',
                                     null = True,
                                     help_text='Truck Status')
     class Meta:
@@ -77,11 +78,13 @@ class Truck(models.Model):
 
 class Package(models.Model):
     package_id = models.BigIntegerField(primary_key=True)
-    user = models.ForeignKey('UpsProfile',
-                             on_delete=models.CASCADE,
-                             null = True,blank = True,
-                             related_name="user_set")
-    world_id = models.ForeignKey('World', models.DO_NOTHING)
+    #user = models.ForeignKey('UpsProfile',
+                             #on_delete=models.CASCADE,
+                             #null = True,blank = True,
+                             #related_name="user_set")
+    user_id = models.IntegerField(null = True)
+    world_id = models.IntegerField()
+    #world_id = models.ForeignKey('World', models.DO_NOTHING)
     #seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
     dep_x = models.IntegerField()
@@ -99,17 +102,17 @@ class Package(models.Model):
     '''
 
     PACKAGE_STATUS_OP = (
-        ('1','created'),
-        ('2','truck en route to warehouse'),
-        ('3','truck waiting for package'),
-        ('4','out for delivery'),
-        ('5','Delivered')
+        ('CREATED','CREATED'),
+        ('TRUCK EN ROUTE TO WAREHOUSE','TRUCK EN ROUTE TO WAREHOUSE'),
+        ('TRUCK WAITING FOR PACKAGE','TRUCK WAITING FOR PACKAGE'),
+        ('OUT FOR DELIVERY','OUT FOR DELIVERY'),
+        ('DELIVERED','DELIVERED')
     )
     
-    package_status = models.CharField(max_length=1,
+    package_status = models.CharField(max_length=60,
                                       choices = PACKAGE_STATUS_OP,
                                       blank = False,
-                                      default = '1',
+                                      default = 'CREATED',
                                       null = False,
                                       help_text='Package Status')
 
