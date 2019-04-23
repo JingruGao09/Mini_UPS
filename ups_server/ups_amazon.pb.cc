@@ -274,11 +274,11 @@ const ::google::protobuf::uint32 TableStruct_ups_5famazon_2eproto::offsets[] PRO
   PROTOBUF_FIELD_OFFSET(::UA::APackageInfo, y_),
   PROTOBUF_FIELD_OFFSET(::UA::APackageInfo, upsaccount_),
   0,
-  3,
   2,
+  1,
+  3,
   4,
   5,
-  1,
   PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::UA::DetermineWarehouse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -418,7 +418,7 @@ const char descriptor_table_protodef_ups_5famazon_2eproto[] =
   "orldid\030\001 \002(\003\022\016\n\006seqnum\030\002 \002(\003\"o\n\014APackage"
   "Info\022\023\n\013description\030\001 \002(\t\022\r\n\005count\030\002 \002(\005"
   "\022\021\n\tpackageid\030\003 \002(\003\022\t\n\001x\030\004 \002(\005\022\t\n\001y\030\005 \002("
-  "\005\022\022\n\nupsaccount\030\006 \001(\t\"v\n\022DetermineWareho"
+  "\005\022\022\n\nupsaccount\030\006 \001(\005\"v\n\022DetermineWareho"
   "use\022\014\n\004whid\030\001 \002(\005\022\014\n\004wh_x\030\002 \002(\005\022\014\n\004wh_y\030"
   "\003 \002(\005\022&\n\014packageinfos\030\004 \003(\0132\020.UA.APackag"
   "eInfo\022\016\n\006seqnum\030\005 \002(\003\"J\n\016DetermineTruck\022"
@@ -813,19 +813,19 @@ class APackageInfo::HasBitSetters {
     msg->_has_bits_[0] |= 0x00000001u;
   }
   static void set_has_count(APackageInfo* msg) {
-    msg->_has_bits_[0] |= 0x00000008u;
-  }
-  static void set_has_packageid(APackageInfo* msg) {
     msg->_has_bits_[0] |= 0x00000004u;
   }
+  static void set_has_packageid(APackageInfo* msg) {
+    msg->_has_bits_[0] |= 0x00000002u;
+  }
   static void set_has_x(APackageInfo* msg) {
-    msg->_has_bits_[0] |= 0x00000010u;
+    msg->_has_bits_[0] |= 0x00000008u;
   }
   static void set_has_y(APackageInfo* msg) {
-    msg->_has_bits_[0] |= 0x00000020u;
+    msg->_has_bits_[0] |= 0x00000010u;
   }
   static void set_has_upsaccount(APackageInfo* msg) {
-    msg->_has_bits_[0] |= 0x00000002u;
+    msg->_has_bits_[0] |= 0x00000020u;
   }
 };
 
@@ -852,13 +852,9 @@ APackageInfo::APackageInfo(const APackageInfo& from)
   if (from.has_description()) {
     description_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.description_);
   }
-  upsaccount_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_upsaccount()) {
-    upsaccount_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.upsaccount_);
-  }
   ::memcpy(&packageid_, &from.packageid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&y_) -
-    reinterpret_cast<char*>(&packageid_)) + sizeof(y_));
+    static_cast<size_t>(reinterpret_cast<char*>(&upsaccount_) -
+    reinterpret_cast<char*>(&packageid_)) + sizeof(upsaccount_));
   // @@protoc_insertion_point(copy_constructor:UA.APackageInfo)
 }
 
@@ -866,10 +862,9 @@ void APackageInfo::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_APackageInfo_ups_5famazon_2eproto.base);
   description_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  upsaccount_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&packageid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&y_) -
-      reinterpret_cast<char*>(&packageid_)) + sizeof(y_));
+      reinterpret_cast<char*>(&upsaccount_) -
+      reinterpret_cast<char*>(&packageid_)) + sizeof(upsaccount_));
 }
 
 APackageInfo::~APackageInfo() {
@@ -879,7 +874,6 @@ APackageInfo::~APackageInfo() {
 
 void APackageInfo::SharedDtor() {
   description_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  upsaccount_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void APackageInfo::SetCachedSize(int size) const {
@@ -898,18 +892,13 @@ void APackageInfo::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      description_.ClearNonDefaultToEmptyNoArena();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      upsaccount_.ClearNonDefaultToEmptyNoArena();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    description_.ClearNonDefaultToEmptyNoArena();
   }
-  if (cached_has_bits & 0x0000003cu) {
+  if (cached_has_bits & 0x0000003eu) {
     ::memset(&packageid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&y_) -
-        reinterpret_cast<char*>(&packageid_)) + sizeof(y_));
+        reinterpret_cast<char*>(&upsaccount_) -
+        reinterpret_cast<char*>(&packageid_)) + sizeof(upsaccount_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -972,20 +961,11 @@ const char* APackageInfo::_InternalParse(const char* begin, const char* end, voi
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
-      // optional string upsaccount = 6;
+      // optional int32 upsaccount = 6;
       case 6: {
-        if (static_cast<::google::protobuf::uint8>(tag) != 50) goto handle_unusual;
-        ptr = ::google::protobuf::io::ReadSize(ptr, &size);
+        if (static_cast<::google::protobuf::uint8>(tag) != 48) goto handle_unusual;
+        msg->set_upsaccount(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
-        ctx->extra_parse_data().SetFieldName("UA.APackageInfo.upsaccount");
-        object = msg->mutable_upsaccount();
-        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
-          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8Verify;
-          goto string_till_end;
-        }
-        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8Verify(ptr, size, ctx));
-        ::google::protobuf::internal::InlineGreedyStringParser(object, ptr, size, ctx);
-        ptr += size;
         break;
       }
       default: {
@@ -1089,15 +1069,13 @@ bool APackageInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string upsaccount = 6;
+      // optional int32 upsaccount = 6;
       case 6: {
-        if (static_cast< ::google::protobuf::uint8>(tag) == (50 & 0xFF)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_upsaccount()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->upsaccount().data(), static_cast<int>(this->upsaccount().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "UA.APackageInfo.upsaccount");
+        if (static_cast< ::google::protobuf::uint8>(tag) == (48 & 0xFF)) {
+          HasBitSetters::set_has_upsaccount(this);
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &upsaccount_)));
         } else {
           goto handle_unusual;
         }
@@ -1143,33 +1121,28 @@ void APackageInfo::SerializeWithCachedSizes(
   }
 
   // required int32 count = 2;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->count(), output);
   }
 
   // required int64 packageid = 3;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt64(3, this->packageid(), output);
   }
 
   // required int32 x = 4;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->x(), output);
   }
 
   // required int32 y = 5;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->y(), output);
   }
 
-  // optional string upsaccount = 6;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->upsaccount().data(), static_cast<int>(this->upsaccount().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "UA.APackageInfo.upsaccount");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->upsaccount(), output);
+  // optional int32 upsaccount = 6;
+  if (cached_has_bits & 0x00000020u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->upsaccount(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1198,34 +1171,28 @@ void APackageInfo::SerializeWithCachedSizes(
   }
 
   // required int32 count = 2;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000004u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->count(), target);
   }
 
   // required int64 packageid = 3;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(3, this->packageid(), target);
   }
 
   // required int32 x = 4;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->x(), target);
   }
 
   // required int32 y = 5;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->y(), target);
   }
 
-  // optional string upsaccount = 6;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->upsaccount().data(), static_cast<int>(this->upsaccount().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "UA.APackageInfo.upsaccount");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->upsaccount(), target);
+  // optional int32 upsaccount = 6;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->upsaccount(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1286,7 +1253,7 @@ size_t APackageInfo::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x0000003d) ^ 0x0000003d) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
     // required string description = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -1319,11 +1286,11 @@ size_t APackageInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional string upsaccount = 6;
+  // optional int32 upsaccount = 6;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000002u) {
+  if (cached_has_bits & 0x00000020u) {
     total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->upsaccount());
   }
 
@@ -1361,20 +1328,19 @@ void APackageInfo::MergeFrom(const APackageInfo& from) {
       description_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.description_);
     }
     if (cached_has_bits & 0x00000002u) {
-      _has_bits_[0] |= 0x00000002u;
-      upsaccount_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.upsaccount_);
-    }
-    if (cached_has_bits & 0x00000004u) {
       packageid_ = from.packageid_;
     }
-    if (cached_has_bits & 0x00000008u) {
+    if (cached_has_bits & 0x00000004u) {
       count_ = from.count_;
     }
-    if (cached_has_bits & 0x00000010u) {
+    if (cached_has_bits & 0x00000008u) {
       x_ = from.x_;
     }
-    if (cached_has_bits & 0x00000020u) {
+    if (cached_has_bits & 0x00000010u) {
       y_ = from.y_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      upsaccount_ = from.upsaccount_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1395,7 +1361,7 @@ void APackageInfo::CopyFrom(const APackageInfo& from) {
 }
 
 bool APackageInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000003d) != 0x0000003d) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
   return true;
 }
 
@@ -1409,12 +1375,11 @@ void APackageInfo::InternalSwap(APackageInfo* other) {
   swap(_has_bits_[0], other->_has_bits_[0]);
   description_.Swap(&other->description_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  upsaccount_.Swap(&other->upsaccount_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
   swap(packageid_, other->packageid_);
   swap(count_, other->count_);
   swap(x_, other->x_);
   swap(y_, other->y_);
+  swap(upsaccount_, other->upsaccount_);
 }
 
 ::google::protobuf::Metadata APackageInfo::GetMetadata() const {
