@@ -25,7 +25,7 @@ SECRET_KEY = 'djri9)=#z5-*7#t!_#g&&8iho-8r0lx4jm6i1la3cha6o5_z2p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['67.159.88.140','152.3.77.99','vcm-8950.vm.duke.edu']
+ALLOWED_HOSTS = ['67.159.88.140','152.3.77.99','vcm-8950.vm.duke.edu','web']
 
 
 # Application definition
