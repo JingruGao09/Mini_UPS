@@ -96,7 +96,7 @@ std::vector<int> DBInterface::getPackageId(const int &truck_id, const int &wh_x,
                                            const int &wh_y,
                                            const int &worldid) {
   std::string sql = "SELECT PACKAGE_ID FROM PACKAGE WHERE PACKAGE_STATUS= "
-                    "'truck en route to warehouse' AND TRUCK_ID=" +
+                    "'TRUCK EN ROUTE TO WAREHOUSE' AND TRUCK_ID=" +
                     std::to_string(truck_id) +
                     " AND DEP_X=" + std::to_string(wh_x) +
                     " AND DEP_Y=" + std::to_string(wh_y) +
