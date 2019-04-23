@@ -1,3 +1,46 @@
+This is an UPS simulator, it works with a world simulator and an Amazon simulator.
+The connections among UPS, AMAZON and WORLD are built through TCP/IP, using library socket.
+The connection between any two of them just built using only one socket.
+In the connection between UPS and Amazon, UPS works as a client and Amazon works as a server.
+In the connection between UPS and World, UPS works as a client and World works as a server.
+As an UPS simulator, it has the ability to send a truck to a warehouse, send a truck to send a package,
+query any truck's status. It is also responsible for notifying Amazon about a truck is arrive a warehouse,
+a truck has delivered a package.
+In each communication, who request(Amazon/UPS/World) will send the request with a sequence number, who response
+should response this request with ack corresponding this sequence number if they are successfully handled.
+
+Basic Workflow
+
+1. UPS connect to world, if connection is built, UPS tell Amazon world id
+2. Amazon request a truck to a warehouse, UPS do calculation and pick a truck,
+   then UPS tell World send this truck to this warehouse.
+3. World tell UPS the truck arrived the warehouse, then UPS tell Amazon the truck is arrived.
+4. Amazon tell UPS the package is loaded onto the truck, then UPS tell world send truck to deliver,
+   then UPS tell Amazon truck is out for delivery.
+5. World tell UPS the delivery is made, then UPS tell Amazon the delivery is made.
+
+
+Log file is located at the root directory, the name is UPS.log
+
+
+Basic design idea
+
+There are only one socket between any two connection, therefore, there is one thread always receive new request,
+any thread can send a message. Note that send() is thread-safe. When UPS receive a new request, UPS will generate a
+new thread to handle this request, this thread will not block for ack.
+
+re-send machenism
+
+Every time UPS send out a message, the message will be stored into database. If UPS receice the ack for this message,
+corresponding row in database will be deleted. If UPS doesn't receive ack longer than 15min, it will resend this message.
+Everytime UPS want to send out a message, it will check the database at first and then send every message need to be resend.
+The message is stored into database by value, UPS will reconstruct this message using these values.
+
+truck determine machenism
+
+When UPS get the warehouse location, UPS will at first check whether there is a truck at this warehouse, then check the nearest
+idle truck, at last check the nearest delivering truck.
+
 1. Change the Makefile::test, then Use make test to generate test case you want.
 
 

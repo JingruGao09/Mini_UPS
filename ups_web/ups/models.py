@@ -84,8 +84,12 @@ class Package(models.Model):
     world = models.ForeignKey('World', models.DO_NOTHING)
     #seqnum = models.IntegerField(null = False)
     truck = models.ForeignKey('Truck',models.DO_NOTHING)
-    des_x = models.IntegerField()
-    des_y = models.IntegerField()
+    dep_x = models.IntegerField(null=True)
+    dep_y = models.IntegerField(null=True)
+    des_x = models.IntegerField(null=True)
+    des_y = models.IntegerField(null=True)
+    descp = models.TextField(null=True)
+    count = models.IntegerField(null=True)
 
     '''
     item = models.CharField(max_length = 100,

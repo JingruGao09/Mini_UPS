@@ -11,16 +11,17 @@
 <p><strong>Truck Status:</strong> {{ package.truck.get_truck_status_display }}</p>
 <p><strong>Destination x:</strong> {{ package.des_x }}</p>
 <p><strong>Destination y:</strong> {{ package.des_y }}</p>
-
+<p><strong>Description:</strong>{{package.desp}}</p>
+<p><strong>Count:</strong>{{package.count}}</p>
 <!--p><strong>Description:</strong> {{ package.package_set.description }}</p-->
-<div style="margin-top:20px">
+<!--div style="margin-top:20px">
   <h4>Product</h4>
   {% for product in package.package_set.all %}
   <hr>
   <p><strong>Product Description:</strong>{{product.description}}</p>
   <p><strong>Product Count:</strong> {{product.count}}</p>
   {% endfor %}
-<hr>
+<hr-->
 
 {% if package.package_status != "4" and package.package_status != "5" %}
 <p>Want to change the delivery destination?</p>

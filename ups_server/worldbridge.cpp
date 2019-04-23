@@ -361,10 +361,11 @@ int WorldBridge::ParseResponses(UPS::UResponses &msg,
   std::vector<int64_t> seqnums;
   if (msg.has_finished() && msg.finished())
     return 1;
-  if (finished_handler(msg, trucks, seqnums) == -1)
-    return -1;
   if (delivery_handler(msg, seqnums, packageids) == -1)
     return -1;
+  if (finished_handler(msg, trucks, seqnums) == -1)
+    return -1;
+
   ack_handler(msg);
   if (truck_handler(msg, seqnums) == -1)
     return -1;
@@ -401,7 +402,7 @@ int WorldBridge::finished_handler(UPS::UResponses &msg,
       return -1;
     }
 
-    if (finished.status() == "arrive warehouse") {
+    if (finished.status() == "ARRIVE WAREHOUSE") {
       Homer.LogRecvMsg("World",
                        "truck " + std::to_string(finished.truckid()) +
                            " arrived at warehouse, located at (" +
@@ -445,7 +446,7 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
       return -1;
     }
     Homer.LogRecvMsg("World",
-                     "truck" + std::to_string(delivery.truckid()) +
+                     "truck " + std::to_string(delivery.truckid()) +
                          " delivered package " +
                          std::to_string(delivery.packageid()),
                      std::to_string(delivery.seqnum()));

@@ -6,7 +6,7 @@
 #include "world_ups.pb.h"
 #include "worldbridge.h"
 #include <thread>
-#define SIMSPEED 100
+#define SIMSPEED 10000
 #define FLAKINESS 0
 class UPServer {
 private:

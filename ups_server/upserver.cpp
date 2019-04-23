@@ -68,7 +68,7 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
     ab.SendTruckId(truck_locations);
   }
   if (!packageids.empty()) {
-    ab.SendPackageId(packageids);
+    ab.FinishShipment(packageids);
   }
 }
 
@@ -86,9 +86,12 @@ void A_MsgHandler_thread(AmazonBridge &ab, WorldBridge &wb,
   }
   if (!truck_dsts.empty()) {
     // tell truck to destination
+    std::vector<int64_t> packageids;
     for (auto t : truck_dsts) {
       wb.GoDeliver(t.truck_id, t.package_id);
+      packageids.push_back(t.package_id);
     }
+    ab.SendPackageId(packageids);
   }
 }
 int UPServer::WorldMsgHandler() {
