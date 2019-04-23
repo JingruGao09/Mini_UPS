@@ -96,7 +96,7 @@ std::vector<int> DBInterface::getPackageId(const int &truck_id, const int &wh_x,
                                            const int &wh_y,
                                            const int &worldid) {
   std::string sql = "SELECT PACKAGE_ID FROM PACKAGE WHERE PACKAGE_STATUS= "
-                    "'truck en route to warehouse' AND TRUCK_ID=" +
+                    "'TRUCK EN ROUTE TO WAREHOUSE' AND TRUCK_ID=" +
                     std::to_string(truck_id) +
                     " AND DEP_X=" + std::to_string(wh_x) +
                     " AND DEP_Y=" + std::to_string(wh_y) +
@@ -250,13 +250,27 @@ int DBInterface::createPackage(
     const std::string &package_id, const std::string &dep_x,
     const std::string &dep_y, const std::string &des_x,
     const std::string &des_y, const std::string &desc, const std::string &count,
-    std::string status, const std::string &WORLD_id) {
+    std::string status, const std::string &WORLD_id,
+    const std::string &upsaccount) {
   try {
     std::string sql =
         "INSERT INTO PACKAGE(PACKAGE_ID,DEP_X,DEP_Y,DES_X, DES_Y, "
-        "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID) VALUES(" +
-        package_id + "," + dep_x + "," + dep_y + "," + des_x + "," + des_y +
-        ",'" + status + "','" + desc + "'," + count + "," + WORLD_id + ");";
+        "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID";
+    if (upsaccount != "0")
+      sql += ",USER_ID";
+    sql += ") VALUES(" + package_id + "," + dep_x + "," + dep_y + "," + des_x +
+           "," + des_y + ",'" + status + "','" + desc + "'," + count + "," +
+           WORLD_id;
+    if (upsaccount != "0")
+      sql += "," + upsaccount;
+    sql += ");";
+    /*std::string sql =
+      "INSERT INTO PACKAGE(PACKAGE_ID,DEP_X,DEP_Y,DES_X, DES_Y, "
+      "PACKAGE_STATUS,DESCP,COUNT,WORLD_ID";
+  sql += ") VALUES(" + package_id + "," + dep_x + "," + dep_y + "," + des_x +
+         "," + des_y + ",'" + status + "','" + desc + "'," + count + "," +
+         WORLD_id;
+         sql += ");";*/
     return execute(sql);
   } catch (std::string &e) {
     errmsg = e;
@@ -556,6 +570,7 @@ int DBInterface::initializer() {
     W.exec(sql);
     sql = "CREATE TABLE IF NOT EXISTS PACKAGE(PACKAGE_ID BIGINT NOT NULL, "
           "WORLD_ID INT NOT NULL REFERENCES WORLD(WORLD_ID),TRUCK_ID INT "
+          ",USER_ID INT NULL"
           ",PACKAGE_STATUS VARCHAR(50) NOT NULL "
           "DEFAULT 'CREATED', DEP_X INT NOT NULL, DEP_Y INT NOT NULL,DES_X INT "
           "NOT NULL, DES_Y INT NOT NULL, DESCP "

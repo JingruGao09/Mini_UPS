@@ -1,3 +1,22 @@
+#ups-header_logo {
+    position: absolute;
+    display: block;
+    bottom: 22px;
+    z-index: 2;
+    left: 0;
+    transition: 0.3s;
+    width: 67px;
+    height: 78px;
+    overflow: hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/static/images/UPS-Logo.jpg);
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    text-transform: capitalize;
+}
 body {
     font-family: "Microsoft Yahei", sans-serif;
     font-weight: lighter;

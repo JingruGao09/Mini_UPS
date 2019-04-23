@@ -3,9 +3,13 @@ void listen_thread(UPServer &upserver);
 void A_listen_thread(UPServer &upserver);
 int main() {
   while (1) {
-    try {
 
+    try {
+      std::cout << "in main\n";
       UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0", "7890");
+
+      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
+      // "80");
 
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
@@ -26,8 +30,8 @@ int main() {
     }
   }
   // upserver.test();
-  while (1)
-    ;
+  // while (1)
+  //;
 }
 
 void listen_thread(UPServer &upserver) {

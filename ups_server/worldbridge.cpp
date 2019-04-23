@@ -169,9 +169,12 @@ int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
                        std::to_string(wh_y) + ")",
                    std::to_string(seqnum));
   for (auto packageid : package_ids)
-    Zeus.updatePackageStatus(
-        std::to_string(packageid), std::to_string(truck_id),
-        "truck en route to warehouse", std::to_string(world_id));
+    if (Zeus.updatePackageStatus(
+            std::to_string(packageid), std::to_string(truck_id),
+            "TRUCK EN ROUTE TO WAREHOUSE", std::to_string(world_id)) == -1) {
+      Homer.LogRecvMsg("System", "failed to updatePackageStatus");
+      return -1;
+    }
   // save msg to db
   msg.truck_id = truck_id;
   msg.wh_id = wh_id;
@@ -271,6 +274,11 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
     return -1;
   }
   goDeliver->set_seqnum(seqnum);
+  if (Zeus.updatePackageStatus(std::to_string(package_id), "OUT FOR DELIVERY",
+                               std::to_string(world_id)) == -1) {
+    Homer.LogRecvMsg("System", "failed to updatePackageStatus");
+    return -1;
+  }
   // save msg to db
   msg.wh_id = 0;
   msg.truck_id = truck_id;
@@ -278,6 +286,7 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
   msg.package_x = package.x;
   msg.package_y = package.y;
   Zeus.docOutMsg(std::to_string(seqnum), msg, std::to_string(world_id));
+
   Homer.LogSendMsg(
       "World",
       "sending truck " + std::to_string(truck_id) + " to deliver package " +
@@ -441,7 +450,7 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
                             std::to_string(world_id)) == 0)
       continue;
     if (Zeus.updatePackageStatus(std::to_string(delivery.packageid()),
-                                 "Delivered", std::to_string(world_id)) == -1) {
+                                 "DELIVERED", std::to_string(world_id)) == -1) {
       Homer.LogRecvMsg("System", "failed to updatePackageStatus");
       return -1;
     }

@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['67.159.88.140','152.3.77.99','vcm-8950.vm.duke.edu','vcm-5475.vm.duke.edu','web']
 
+EMAIL_HOST = 'smtp.duke.edu'
+EMAIL_HOST_USER = 'jg404@vcm-7989.vm.duke.edu'
+EMAIL_USER_SSL = True
+
 
 
 # Application definition
