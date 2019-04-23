@@ -20,6 +20,8 @@ class Client {
 private:
   std::string errmsg;
   int sockfd;
+  const char *hostname;
+  const char *port;
   const char *getHost(const char *hostname);
   std::vector<char> recvall(int fd);
   int sendall(int fd, const char *buf, size_t *len);
@@ -28,6 +30,7 @@ public:
   Client(const char *h, const char *p);
 
   ~Client();
+  int reconnect();
   std::vector<char> receiveData();
   std::vector<char> basicRecv();
   int sendData(const std::vector<char> &msg);

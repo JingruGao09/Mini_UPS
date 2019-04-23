@@ -56,6 +56,7 @@ private:
 public:
   AmazonBridge(const char *hostname, const char *port);
   ~AmazonBridge();
+  int reconnect();
   int SendWorldId();
   int SendTruckId(std::vector<truck_location> &trucks);
   int SendPackageId(std::vector<int64_t> &package_ids);

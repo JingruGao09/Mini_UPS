@@ -125,9 +125,10 @@ int Client::getFD() { return sockfd; }
  *
  */
 std::string Client::getError() { return errmsg; }
+
 Client::Client(const char *h, const char *p) {
-  const char *port = p;
-  const char *hostname = getHost(h);
+  port = p;
+  hostname = getHost(h);
   addrinfo host_info;
   addrinfo *host_info_list;
 
@@ -148,8 +149,36 @@ Client::Client(const char *h, const char *p) {
       throw std::string("connect");
   } catch (std::string &e) {
     errmsg = e;
+    throw e;
   }
   freeaddrinfo(host_info_list);
 }
+int Client::reconnect() {
+  close(sockfd);
+  addrinfo host_info;
+  addrinfo *host_info_list;
 
+  memset(&host_info, 0, sizeof(host_info));
+  host_info.ai_family = AF_UNSPEC;
+  host_info.ai_socktype = SOCK_STREAM;
+  try {
+    if (getaddrinfo(hostname, port, &host_info, &host_info_list) != 0)
+      throw std::string("getaddrinfo");
+
+    sockfd = socket(host_info_list->ai_family, host_info_list->ai_socktype,
+                    host_info_list->ai_protocol);
+    if (sockfd == -1)
+      throw std::string("socket");
+
+    if ((connect(sockfd, host_info_list->ai_addr,
+                 host_info_list->ai_addrlen)) == -1)
+      throw std::string("connect");
+  } catch (std::string &e) {
+    errmsg = e;
+    freeaddrinfo(host_info_list);
+    return -1;
+  }
+  freeaddrinfo(host_info_list);
+  return 0;
+}
 Client::~Client() { close(sockfd); }

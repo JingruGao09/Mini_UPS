@@ -40,10 +40,12 @@ private:
                       const int &seqnum);
   int resendGoPickUp(const int &wh_id, const int &truck_id, const int &seqnum);
   int ReSendMsg();
+
 public:
   WorldBridge(const char *hostname, const char *port);
 
   ~WorldBridge();
+  int reconnect();
   void setWid(const int64_t &wid);
   int RequireANewWorld(std::vector<truck_t> &trucks);
   int ConnectToAWorld(const int64_t &wid);

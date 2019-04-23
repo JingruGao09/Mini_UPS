@@ -4,6 +4,7 @@ WorldBridge ::WorldBridge(const char *hostname, const char *port)
     : world_id(-1), Hermes(hostname, port) {}
 WorldBridge::~WorldBridge() {}
 
+int WorldBridge::reconnect() { return Hermes.reconnect(); }
 /*
  * RequireANewWorld
  *
