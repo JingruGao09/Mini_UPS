@@ -205,7 +205,7 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
     UA::APackageInfo pack_info = msg.packageinfos(i);
     package_ids.push_back(pack_info.packageid());
     Homer.LogRecvMsg("Amazon",
-                     "package: " + std::to_string(pack_info.packageid()) +
+                     "package " + std::to_string(pack_info.packageid()) +
                          " x " + std::to_string(pack_info.count()) + ": " +
                          pack_info.description() + ", desctination: (" +
                          std::to_string(pack_info.x()) + "," +
