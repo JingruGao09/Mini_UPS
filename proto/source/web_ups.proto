@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package WEB;
+
+message QueryTruck{
+required int32 truckid=1;
+required int64 seqnum=2;
+}
+
+message TruckStatus{
+required int32 truckid =1;
+required string status = 2;
+required int32 x = 3;
+required int32 y = 4;
+required int64 ack=5;
+}
