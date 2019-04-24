@@ -65,7 +65,7 @@ class Truck(models.Model):
         ('INVAILD','INVAILD')
     )
     
-    truck_status = models.CharField(max_length=20,
+    truck_status = models.CharField(max_length=50,
                                     choices = TRUCK_STATUS_OP,
                                     default = 'IDLE',
                                     #blank = True,
@@ -111,7 +111,7 @@ class Package(models.Model):
         ('DELIVERED','DELIVERED')
     )
     
-    package_status = models.CharField(max_length=20,
+    package_status = models.CharField(max_length=50,
                                       choices = PACKAGE_STATUS_OP,
                                       blank = False,
                                       default = 'CREATED',

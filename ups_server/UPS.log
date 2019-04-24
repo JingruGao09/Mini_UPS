@@ -1,0 +1,11 @@
+[2019-04-24.04:19:57] Sent message to Amazon, about connected to amazon
+[2019-04-24.04:19:57] Sent message to World, about Requesting a new world
+[2019-04-24.04:19:57] Received message from World, about connected!
+[2019-04-24.04:19:57] Sent message to World, about setting world speed to 10000
+[2019-04-24.04:19:57] Sent message to Amazon seqnum is 1, about please connecting to world 1
+[2019-04-24.04:19:58] Received message from Amazon, about acking 1
+[2019-04-24.04:21:06] Received message from Amazon seqnum is 0, about requesting a truck(s) to warehouse 4 ,located at (23, 55)
+[2019-04-24.04:21:06] Received message from Amazon, about package 0 x 3: p1, desctination: (132,312)
+[2019-04-24.04:21:06] Sent message to Amazon, about acking 0
+[2019-04-24.04:21:06] Sent message to World seqnum is 1, about sending truck 58 to warehouse (23,55)
+[2019-04-24.04:21:06] Received message from System, about failed to updateTruckStatus

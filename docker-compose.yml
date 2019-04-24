@@ -41,8 +41,6 @@ services:
       command: bash -c "make clean && make && ./Mini_ups"
       volumes:
         - "./ups_server:/ups"
-      ports:
-        - "12345:12345"
       depends_on:
         - db
 

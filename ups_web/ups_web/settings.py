@@ -90,10 +90,10 @@ DATABASES = {
         'NAME': 'UPS',
         'USER': 'postgres',
         'PASSWORD':'passw0rd',
-        #'HOST': 'db',
-        'HOST': 'localhost',
+        'HOST': 'db',
+        #'HOST': 'localhost',
 
-        'HOST': '',
+        #'HOST': '',
 
         'PORT': 5432,
     }
