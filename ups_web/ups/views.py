@@ -132,7 +132,9 @@ class PackageListView(generic.ListView):
     model = Package
     def get_queryset(self):
         return Package.objects.all()
+
 '''    
+>>>>>>> b0646558fb599bed545996e346de0a852c19af50
 #@method_decorator(login_required, name='dispatch')
 class PackageDetailView(generic.DetailView):
     model = Package
