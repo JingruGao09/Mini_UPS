@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-1;95;0c<html lang="en">
+<html lang="en">
   <head>
     {% block title %}<title>MINI UPS</title>{% endblock %}
     <meta charset="utf-8">
@@ -16,8 +16,8 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
 	{% load static %}
-	<img id="ups-logo" src="{% static 'images/ups_transparent_logo.png' %}" alt="Hi!" width="85" height="70"/>
-	<!--a id="ups-header_logo" href="https://www.ups.com/us/en/Home.page?" title="UPS Home" data-content-block-id="M1" data-event-id="21" >UPS </a-->
+	<!--img id="ups-logo" href="{% url 'home' %}" src="{% static 'images/ups_transparent_logo.png' %}" alt="Hi!" width="85" height="70"/-->
+	<a id="ups-header_logo" class="navbar-brand" href="{% url 'home' %}" title="UPS Home" data-content-block-id="M1" data-event-id="21" >UPS </a>
 	<a class="navbar-brand" href="{% url 'home' %}">UPS</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
 	  <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@
       <div>
 	<div>
 	  <p>DEVELOPER</p>
-	  <p>David Laub</p>
+	  <p>Yuefan Yue</p>
 	  <p>Jingru Gao</p>
 	</div>
 	<div>
