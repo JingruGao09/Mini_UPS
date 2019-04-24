@@ -1,11 +1,98 @@
-[2019-04-24.04:19:57] Sent message to Amazon, about connected to amazon
-[2019-04-24.04:19:57] Sent message to World, about Requesting a new world
-[2019-04-24.04:19:57] Received message from World, about connected!
-[2019-04-24.04:19:57] Sent message to World, about setting world speed to 10000
-[2019-04-24.04:19:57] Sent message to Amazon seqnum is 1, about please connecting to world 1
-[2019-04-24.04:19:58] Received message from Amazon, about acking 1
-[2019-04-24.04:21:06] Received message from Amazon seqnum is 0, about requesting a truck(s) to warehouse 4 ,located at (23, 55)
-[2019-04-24.04:21:06] Received message from Amazon, about package 0 x 3: p1, desctination: (132,312)
-[2019-04-24.04:21:06] Sent message to Amazon, about acking 0
-[2019-04-24.04:21:06] Sent message to World seqnum is 1, about sending truck 58 to warehouse (23,55)
-[2019-04-24.04:21:06] Received message from System, about failed to updateTruckStatus
+[2019-04-24.04:47:46] Sent message to Amazon, about connected to amazon
+[2019-04-24.04:47:46] Sent message to World, about Requesting a new world
+[2019-04-24.04:47:46] Received message from World, about connected!
+[2019-04-24.04:47:47] Sent message to World, about setting world speed to 10000
+[2019-04-24.04:47:47] Sent message to Amazon seqnum is 1, about please connecting to world 1
+[2019-04-24.04:48:00] Received message from Amazon seqnum is 55, about requesting a truck(s) to warehouse 0 ,located at (255, 552)
+[2019-04-24.04:48:00] Received message from Amazon, about package 28 x 11: A user wants to buy pear, desctination: (40,100)
+[2019-04-24.04:48:00] Sent message to Amazon, about acking 55
+[2019-04-24.04:48:00] Sent message to World seqnum is 1, about sending truck 144 to warehouse (255,552)
+[2019-04-24.04:48:00] Received message from Amazon seqnum is 56, about requesting a truck(s) to warehouse 0 ,located at (255, 552)
+[2019-04-24.04:48:00] Received message from Amazon, about package 29 x 13: A user wants to buy watermelon, desctination: (40,100)
+[2019-04-24.04:48:00] Sent message to Amazon, about acking 56
+[2019-04-24.04:48:00] Sent message to World seqnum is 2, about sending truck 110 to warehouse (255,552)
+[2019-04-24.04:48:01] Received message from Amazon seqnum is 57, about requesting a truck(s) to warehouse 0 ,located at (255, 552)
+[2019-04-24.04:48:01] Received message from Amazon, about package 30 x 15: A user wants to buy peach, desctination: (40,100)
+[2019-04-24.04:48:01] Sent message to Amazon, about acking 57
+[2019-04-24.04:48:01] Sent message to World seqnum is 3, about sending truck 147 to warehouse (255,552)
+[2019-04-24.04:48:01] Received message from Amazon seqnum is 58, about requesting a truck(s) to warehouse 0 ,located at (255, 552)
+[2019-04-24.04:48:01] Received message from Amazon, about package 31 x 188: A user wants to buy Xperia 10, desctination: (40,100)
+[2019-04-24.04:48:01] Sent message to Amazon, about acking 58
+[2019-04-24.04:48:01] Sent message to World seqnum is 4, about sending truck 180 to warehouse (255,552)
+[2019-04-24.04:48:02] Received message from Amazon seqnum is 59, about requesting a truck(s) to warehouse 0 ,located at (255, 552)
+[2019-04-24.04:48:02] Received message from Amazon, about package 32 x 113: A user wants to buy BMW, desctination: (40,100)
+[2019-04-24.04:48:02] Sent message to Amazon, about acking 59
+[2019-04-24.04:48:02] Sent message to World seqnum is 5, about sending truck 3 to warehouse (255,552)
+[2019-04-24.04:48:04] Received message from World seqnum is 33, about truck 144 arrived at warehouse, located at (255,552)
+[2019-04-24.04:48:04] Received message from World seqnum is 36, about truck 110 arrived at warehouse, located at (255,552)
+[2019-04-24.04:48:04] Received message from World seqnum is 37, about truck 147 arrived at warehouse, located at (255,552)
+[2019-04-24.04:48:04] Received message from World seqnum is 39, about truck 180 arrived at warehouse, located at (255,552)
+[2019-04-24.04:48:04] Received message from World seqnum is 40, about truck 3 arrived at warehouse, located at (255,552)
+[2019-04-24.04:48:04] Sent message to World, about acking 33
+[2019-04-24.04:48:04] Sent message to World, about acking 36
+[2019-04-24.04:48:04] Sent message to World, about acking 37
+[2019-04-24.04:48:04] Sent message to World, about acking 39
+[2019-04-24.04:48:04] Sent message to World, about acking 40
+[2019-04-24.04:48:04] Sent message to Amazon seqnum is 2, about truck 144 is already at warehouse, located at(255,552) to pick up package 28
+[2019-04-24.04:48:05] Sent message to Amazon seqnum is 2, about truck 110 is already at warehouse, located at(255,552) to pick up package 29
+[2019-04-24.04:48:05] Sent message to Amazon seqnum is 2, about truck 147 is already at warehouse, located at(255,552) to pick up package 30
+[2019-04-24.04:48:05] Sent message to Amazon seqnum is 2, about truck 180 is already at warehouse, located at(255,552) to pick up package 31
+[2019-04-24.04:48:05] Sent message to Amazon seqnum is 2, about truck 3 is already at warehouse, located at(255,552) to pick up package 32
+[2019-04-24.04:48:05] Received message from Amazon, about acking 2
+[2019-04-24.04:48:11] Received message from Amazon seqnum is 60, about truck 144 should send package 28
+[2019-04-24.04:48:11] Sent message to Amazon, about acking 60
+[2019-04-24.04:48:11] Sent message to World, about package 28 on truck 144
+[2019-04-24.04:48:11] Sent message to World seqnum is 6, about sending truck 144 to deliver package 28, destination(40,100)
+[2019-04-24.04:48:11] Sent message to Amazon seqnum is 3, about package 28 is out for delivery
+[2019-04-24.04:48:11] Received message from Amazon, about acking 3
+[2019-04-24.04:48:12] Received message from Amazon seqnum is 61, about truck 110 should send package 29
+[2019-04-24.04:48:12] Sent message to Amazon, about acking 61
+[2019-04-24.04:48:12] Sent message to World, about package 29 on truck 110
+[2019-04-24.04:48:12] Sent message to World seqnum is 7, about sending truck 110 to deliver package 29, destination(40,100)
+[2019-04-24.04:48:12] Sent message to Amazon seqnum is 4, about package 29 is out for delivery
+[2019-04-24.04:48:12] Received message from Amazon, about acking 4
+[2019-04-24.04:48:12] Received message from Amazon seqnum is 62, about truck 147 should send package 30
+[2019-04-24.04:48:12] Sent message to Amazon, about acking 62
+[2019-04-24.04:48:12] Sent message to World, about package 30 on truck 147
+[2019-04-24.04:48:12] Sent message to World seqnum is 8, about sending truck 147 to deliver package 30, destination(40,100)
+[2019-04-24.04:48:12] Sent message to Amazon seqnum is 5, about package 30 is out for delivery
+[2019-04-24.04:48:12] Received message from Amazon, about acking 5
+[2019-04-24.04:48:13] Received message from Amazon seqnum is 63, about truck 180 should send package 31
+[2019-04-24.04:48:13] Sent message to Amazon, about acking 63
+[2019-04-24.04:48:13] Sent message to World, about package 31 on truck 180
+[2019-04-24.04:48:13] Sent message to World seqnum is 9, about sending truck 180 to deliver package 31, destination(40,100)
+[2019-04-24.04:48:13] Sent message to Amazon seqnum is 6, about package 31 is out for delivery
+[2019-04-24.04:48:13] Received message from Amazon, about acking 6
+[2019-04-24.04:48:16] Received message from World seqnum is 46, about truck 144 delivered package 28
+[2019-04-24.04:48:16] Received message from World seqnum is 48, about truck 110 delivered package 29
+[2019-04-24.04:48:16] Received message from World seqnum is 47, about truck 144 delivered all packages, located at (40,100)
+[2019-04-24.04:48:16] Received message from World seqnum is 49, about truck 110 delivered all packages, located at (40,100)
+[2019-04-24.04:48:17] Sent message to World, about acking 46
+[2019-04-24.04:48:17] Sent message to World, about acking 48
+[2019-04-24.04:48:17] Sent message to World, about acking 47
+[2019-04-24.04:48:17] Sent message to World, about acking 49
+[2019-04-24.04:48:17] Sent message to Amazon seqnum is 7, about package 28 is delivered
+[2019-04-24.04:48:17] Sent message to Amazon seqnum is 7, about package 29 is delivered
+[2019-04-24.04:48:17] Received message from Amazon, about acking 7
+[2019-04-24.04:48:17] Received message from Amazon seqnum is 64, about truck 3 should send package 32
+[2019-04-24.04:48:17] Sent message to Amazon, about acking 64
+[2019-04-24.04:48:17] Sent message to World, about package 32 on truck 3
+[2019-04-24.04:48:17] Sent message to World seqnum is 10, about sending truck 3 to deliver package 32, destination(40,100)
+[2019-04-24.04:48:17] Sent message to Amazon seqnum is 8, about package 32 is out for delivery
+[2019-04-24.04:48:17] Received message from Amazon, about acking 8
+[2019-04-24.04:48:22] Received message from World seqnum is 51, about truck 147 delivered package 30
+[2019-04-24.04:48:23] Received message from World seqnum is 53, about truck 180 delivered package 31
+[2019-04-24.04:48:23] Received message from World seqnum is 55, about truck 3 delivered package 32
+[2019-04-24.04:48:23] Received message from World seqnum is 52, about truck 147 delivered all packages, located at (40,100)
+[2019-04-24.04:48:23] Received message from World seqnum is 54, about truck 180 delivered all packages, located at (40,100)
+[2019-04-24.04:48:23] Received message from World seqnum is 56, about truck 3 delivered all packages, located at (40,100)
+[2019-04-24.04:48:23] Sent message to World, about acking 51
+[2019-04-24.04:48:23] Sent message to World, about acking 53
+[2019-04-24.04:48:23] Sent message to World, about acking 55
+[2019-04-24.04:48:23] Sent message to World, about acking 52
+[2019-04-24.04:48:23] Sent message to World, about acking 54
+[2019-04-24.04:48:23] Sent message to World, about acking 56
+[2019-04-24.04:48:23] Sent message to Amazon seqnum is 9, about package 30 is delivered
+[2019-04-24.04:48:23] Sent message to Amazon seqnum is 9, about package 31 is delivered
+[2019-04-24.04:48:23] Sent message to Amazon seqnum is 9, about package 32 is delivered
+[2019-04-24.04:48:23] Received message from Amazon, about acking 9

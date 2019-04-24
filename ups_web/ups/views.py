@@ -64,7 +64,7 @@ def MyPackagesView(request):
     return render(request,'ups/myPackage_list.html',{'package_list':package_list})
 
 def EditMyPackageDestView(request,package_id):
-    mypackage = Package.objects.filter(package_id = package_id).filter(Q(package_status = '4')).filter(Q(package_status = '5')).first()
+    mypackage = Package.objects.filter(package_id = package_id).filter(~Q(package_status = 'OUT FOR DELIVERY')).filter(~Q(package_status = 'DELIVERED')).first()
     #print("mypackage status")
     #print(mypackage.package_status)
     if mypackage is not None:
