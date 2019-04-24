@@ -8,15 +8,8 @@ void query_thread(UPServer &upserver);
 int main() {
   while (1) {
     try {
-      UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0", "7893");
+      UPServer upserver("vcm-9229.vm.duke.edu", "12345", "10.197.40.0", "7893");
 
-      // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.193.1",
-      //                  "44555");
-      // UPServer upserver(argv[1], argv[2], argv[3], argv[4]);
-      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-      // "80");
-      // UPServer upserver("vcm-9448.vm.duke.edu", "12345", "10.197.40.0",
-      // "7893");
       std::cout << "finish initialization\n";
       exit_thread_flag = false;
       std::thread t = std::thread(listen_thread, std::ref(upserver));
