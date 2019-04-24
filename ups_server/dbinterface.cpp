@@ -25,9 +25,10 @@ DBInterface::~DBInterface() { C->disconnect(); }
  */
 std::mutex mtx;
 int DBInterface::execute(const std::string &sql) {
+  std::lock_guard<std::mutex> lck(mtx);
   pqxx::work W(*C);
   try {
-    std::lock_guard<std::mutex> lck(mtx);
+
     W.exec(sql);
     W.commit();
     return 0;
@@ -43,7 +44,6 @@ int DBInterface::execute(const std::string &sql) {
  * use the given sql to look up info in the db
  * return any result
  */
-std::mutex mtx2;
 pqxx::result DBInterface::lookup(const std::string &sql) {
   try {
     std::lock_guard<std::mutex> lck(mtx);
@@ -116,6 +116,21 @@ std::vector<int> DBInterface::getPackageId(const int &truck_id, const int &wh_x,
   return packageids;
 }
 
+std::vector<int> DBInterface::queryDeliveringTruck(const int &worldid) {
+  std::string sql = "SELECT TRUCK_ID FROM TRUCK WHERE "
+                    "TRUCK_STATUS='DELIVERING' AND WORLD_ID=" +
+                    std::to_string(worldid) + ";";
+  pqxx::result R = lookup(sql);
+  if (R.empty()) {
+    return {};
+  }
+  std::vector<int> truckids;
+  for (auto c : R) {
+    truckids.push_back(c["TRUCK_ID"].as<int>());
+  }
+  return truckids;
+}
+
 /*
  * getArrivedTruck
  *
@@ -124,6 +139,7 @@ std::vector<int> DBInterface::getPackageId(const int &truck_id, const int &wh_x,
  * succeed return truck_id, else return -1
  * pass test
  */
+
 int DBInterface::getArrivedTruck(const int &WH_x, const int &WH_y,
                                  const std::string &WORLD_id) {
   std::string sql = "SELECT TRUCK_ID FROM TRUCK WHERE TRUCK_STATUS='ARRIVE "

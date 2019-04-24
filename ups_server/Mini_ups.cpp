@@ -1,8 +1,10 @@
 #include "upserver.h"
-#include "webridge.h"
+#include <chrono>
+#include <thread>
 std::atomic<bool> exit_thread_flag{false};
 void listen_thread(UPServer &upserver);
 void A_listen_thread(UPServer &upserver);
+void query_thread(UPServer &upserver);
 int main() {
   while (1) {
     try {
@@ -20,6 +22,7 @@ int main() {
       exit_thread_flag = false;
       std::thread t = std::thread(listen_thread, std::ref(upserver));
       std::thread t2 = std::thread(A_listen_thread, std::ref(upserver));
+      std::thread t3 = std::thread(query_thread, std::ref(upserver));
 
       t.join();
       t2.join();
@@ -66,18 +69,15 @@ void A_listen_thread(UPServer &upserver) {
   }
 }
 
-void web_handler(WeBridge &wb, UPServer &upserver) {
-  std::vector<char> msg = wb.recv();
-  int id = wb.getTruckId(msg);
-  upserver.Query(id);
-}
-
-void Web_listen_thread(UPServer &upserver) {
-
-  while (1) {
-    WeBridge wb("8080");
-    wb.accptNewConn();
-    std::thread t = std::thread(web_handler, std::ref(wb), std::ref(upserver));
-    t.detach();
+void query_thread(UPServer &upserver) {
+  while (!exit_thread_flag) {
+    try {
+      upserver.Query();
+      std::this_thread::sleep_for(std::chrono::minutes(1));
+    } catch (std::string &e) {
+      exit_thread_flag = true;
+      std::cout << e << std::endl;
+      return;
+    }
   }
 }
