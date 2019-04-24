@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Your Package is Here !</h1>
-
+<div align='left'>
 <p><strong>Package ID:</strong> {{ package.package_id }}</p>
 
 <p><strong>Package Status:</strong> {{ package.get_package_status_display }}</p>
@@ -33,7 +33,12 @@
   <p><strong>Product Count:</strong> {{product.count}}</p>
   {% endfor %}
 <hr-->
-
+</div>
+<div align='right'>
+{% for log in logs%}
+<li><a>log.packagelog</a></li>
+{% endfor %}
+</div>
 {% if package.package_status != 'OUT FOR DELIVERY' and package.package_status != 'DELIVERED' %}
 <p>Want to change the delivery destination?</p>
 <p>Go ahead and click the button below!</p>
