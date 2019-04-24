@@ -113,3 +113,17 @@ class PackageListView(generic.ListView):
 class PackageDetailView(generic.DetailView):
     model = Package
 
+@login_required
+def PackageDetail(request, pk):
+    package = get_object_or_404(Package, pk=pk)
+    if package.truck_id is not None:
+        truck = Truck.objects.get(pk=package.truck_id)
+    else:
+        truck = None
+
+    context = {
+        'package': package,
+        'truck': truck,
+        'pk': pk,
+    }
+    return render(request, 'ups/PackageDetail.html', context)

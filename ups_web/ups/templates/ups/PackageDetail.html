@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Your Package is Here !</h1>
+
+<p><strong>Package ID:</strong> {{ package.package_id }}</p>
+
+<p><strong>Package Status:</strong> {{ package.get_package_status_display }}</p>
+<!--p><strong>item:</strong> {{ package.package_set.description }}</p-->
+<p><strong>Truck ID:</strong> {{ package.truck.truck_id }}</p>
+<p><strong>Truck Status:</strong> {{ package.truck.get_truck_status_display }}</p>
+<p><strong>Destination:</strong> ({{ package.des_x }},{{package.des_y}})</p>
+<p><strong>Description:</strong>{{package.descp}}</p>
+<p><strong>Count:</strong>{{package.count}}</p>
+<p><strong>Current Location:</strong>
+  {% if package.package_status =="OUT FOR DELIVERY"%}
+  ({{truck.x}},{{truck.y}})
+  {% eles if package.package_status=="DELIVER"%}
+  ({{package.des_x}},{{package.des_y}})
+  {% else %}
+  ({{package.dep_x}},{{package.dep_y}})
+  {% endif %}
+</p>
+<!--p><strong>Description:</strong> {{ package.package_set.description }}</p-->
+<!--div style="margin-top:20px">
+  <h4>Product</h4>
+  {% for product in package.package_set.all %}
+  <hr>
+  <p><strong>Product Description:</strong>{{product.description}}</p>
+  <p><strong>Product Count:</strong> {{product.count}}</p>
+  {% endfor %}
+<hr-->
+
+{% if package.package_status != "OUT FOR DELIVERY" and package.package_status != "DELIVERED" %}
+<p>Want to change the delivery destination?</p>
+<p>Go ahead and click the button below!</p>
+<form class="form-inline ml-auto">
+  <a href="{% url 'EditMyPackageDestView' package.package_id %}" class="btn btn-outline-secondary">Edit Delivery Destination</a>
+</form>
+{% else %}
+<p>Your package has been shipped!</p>
+<p>You cannot change delivery destination of this package.</p>
+<p>Please click the button below to check other packages.</p>
+<form class="form-inline ml-auto">
+  <a href="{% url 'myPackages' %}" class="btn btn-outline-secondary">Check My Package List</a>
+</form>
+{% endif %}
+{% endblock %}
+  
