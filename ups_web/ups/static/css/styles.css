@@ -16,10 +16,10 @@
     text-align: left;
     text-transform: capitalize;
 }
-
 body {
-    font-family: "Microsoft Yahei", sans-serif;
+    font-family: monospace;
     font-weight: lighter;
+    background-color: #e9ecef;
 }
 #ups-logo {
     bottom: auto;
@@ -64,17 +64,23 @@ header {
     padding: 0;
     list-style: none;
 }
-
 footer {
-    width: 1500px;
+    /*width: 1500px;*/
     height: 3px;
     margin: 0 auto;
     color: #1d2124;
     font-size: 15px;
     position: relative;
-    left:0px;
+    left: 0px;
+    margin-bottom: 0px;
+    position: relative;
+    height: 50px;
+    /* background-color: #e9ecef; */
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 200px;
 }
-
 footer>div {
     width: 1200px;
     height: 310px;
@@ -104,5 +110,5 @@ img {
     background-size: contain;
     size: a3;
     width: 1100px;
-    height: 1000px;
+    height: 900px;
 }                                                                                  

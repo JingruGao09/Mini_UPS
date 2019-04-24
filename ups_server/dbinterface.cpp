@@ -466,7 +466,7 @@ int DBInterface::docOutMsg(const std::string &seqnum, const resend_msg_t &msg,
 std::vector<resend_msg_t> DBInterface::getDatedOutMsg(const int64_t &world_id) {
   std::string sql =
       "SELECT *FROM OUTSEQNUM WHERE WORLD_ID=" + std::to_string(world_id) +
-      "AND TIME+900 <" + std::to_string(unix_timestamp()) + ";";
+      "AND TIME+20 <" + std::to_string(unix_timestamp()) + ";";
   pqxx::result R = lookup(sql);
   if (R.empty())
     return {};

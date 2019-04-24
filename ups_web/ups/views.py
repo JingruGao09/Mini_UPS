@@ -150,7 +150,7 @@ def PackageDetail(request, pk):
         truck = None
     world = World.objects.filter(status='OPEN').first()
     if truck:
-        estimate=(abs(truck.x-package.des_x)+abs(truck.y-package.des_y))/(world.speed/100)
+        estimate=(abs(truck.x-package.des_x)+abs(truck.y-package.des_y))/(world.speed/1)
     else:
         estimate=None
     context = {

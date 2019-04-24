@@ -502,6 +502,7 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
  */
 int WorldBridge::ack_handler(UPS::UResponses &msg) {
   for (int i = 0; i < msg.acks_size(); i++) {
+    std::cout << msg.acks(i) << std::endl;
     if (Zeus.rmOutSeqNum(std::to_string(msg.acks(i)),
                          std::to_string(world_id)) == -1)
       Homer.LogRecvMsg("System", "failed to rmOutSeqNum");
