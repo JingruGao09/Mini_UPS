@@ -132,7 +132,7 @@ class PackageListView(generic.ListView):
     model = Package
     def get_queryset(self):
         return Package.objects.all()
-    
+
 #@method_decorator(login_required, name='dispatch')
 class PackageDetailView(generic.DetailView):
     model = Package
