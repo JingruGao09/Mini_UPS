@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 from django.db.models import Q
-from ups.models import Package, Truck, World
+from ups.models import Package, Truck, World, Shiplog
 from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm,PackageMatchForm, EditPackageDestForm
@@ -133,13 +133,17 @@ class PackageListView(generic.ListView):
     def get_queryset(self):
         return Package.objects.all()
 
+'''    
+>>>>>>> b0646558fb599bed545996e346de0a852c19af50
 #@method_decorator(login_required, name='dispatch')
 class PackageDetailView(generic.DetailView):
     model = Package
 '''
-@login_required
+#@login_required
 def PackageDetail(request, pk):
     package = get_object_or_404(Package, pk=pk)
+    world = World.objects.filter(status='OPEN').first()
+    logs = Shiplog.objects.filter(package=package).filter(world=world)
     if package.truck_id is not None:
         truck = Truck.objects.get(pk=package.truck_id)
     else:
@@ -152,8 +156,9 @@ def PackageDetail(request, pk):
     context = {
         'package': package,
         'truck': truck,
+        'logs': logs,
         'estimate': estimate,
         'pk': pk,
     }
     return render(request, 'ups/PackageDetail.html', context)
-'''
+
