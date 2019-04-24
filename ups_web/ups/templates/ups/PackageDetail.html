@@ -21,7 +21,9 @@
   ({{package.dep_x}}, {{package.dep_y}})
   {% endif %}
 </p>
-<p><strong>Estimate Arrive Time:</strong>{{package.count}}</p>
+{% if package.package_status == 'OUT FOR DELIVERY' and estimate %}
+<p><strong>Estimate Arrive in</strong> {{estimate}} <strong>s</strong></p>
+{% endif %}
 <!--p><strong>Description:</strong> {{ package.package_set.description }}</p-->
 <!--div style="margin-top:20px">
   <h4>Product</h4>
