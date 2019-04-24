@@ -15,5 +15,7 @@ public:
   void accptNewConn();
   int SendTruckStatus(const truck_t truck);
   int ParseRequest(WEB::QueryTruck &msg);
+  std::vector<char> recv();
+  int getTruckId(const std::vector<char> &msg);
 };
 #endif

@@ -1,25 +1,18 @@
 #include "upserver.h"
+#include "webridge.h"
 std::atomic<bool> exit_thread_flag{false};
 void listen_thread(UPServer &upserver);
 void A_listen_thread(UPServer &upserver);
 int main() {
   while (1) {
     try {
-      // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0",
-      // "7890");
+      UPServer upserver("vcm-9320.vm.duke.edu", "12345", "10.197.40.0", "7893");
 
-      UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-                        "44556");
+      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
+      //                  "12321");
       // UPServer upserver(argv[1], argv[2], argv[3], argv[4]);
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
-
-      // UPServer upserver("localhost", "12345", "localhost", "8080");
-
-      // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-      //"80");
-      // UPServer upserver("localhost", "12345", "localhost", "8080");
-
       // UPServer upserver("vcm-9448.vm.duke.edu", "12345", "10.197.40.0",
       // "7893");
       std::cout << "finish initialization\n";
@@ -69,5 +62,21 @@ void A_listen_thread(UPServer &upserver) {
       std::cout << e << std::endl;
       return;
     }
+  }
+}
+
+void web_handler(WeBridge &wb, UPServer &upserver) {
+  std::vector<char> msg = wb.recv();
+  int id = wb.getTruckId(msg);
+  upserver.Query(id);
+}
+
+void Web_listen_thread(UPServer &upserver) {
+
+  while (1) {
+    WeBridge wb("8080");
+    wb.accptNewConn();
+    std::thread t = std::thread(web_handler, std::ref(wb), std::ref(upserver));
+    t.detach();
   }
 }

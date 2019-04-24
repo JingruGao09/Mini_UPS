@@ -17,7 +17,7 @@ clean:
 	rm -f Mini_ups *.o *~ test testab UPS.log a.out
 
 test:
-	g++ -ggdb3 helper.cpp log.cpp upserver.cpp dbinterface.cpp client.cpp world_ups.pb.cc ups_amazon.pb.cc worldbridge.cpp amazonbridge.cpp -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
+	g++ -ggdb3 test.cpp helper.cpp webridge.cpp server.cpp web_ups.pb.cc -o test `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)
 
 testab:
 	g++ -ggdb3 helper.cpp log.cpp dbinterface.cpp client.cpp world_ups.pb.cc worldbridge.cpp ups_amazon.pb.cc amazonbridge.cpp -o testab `pkg-config --cflags --libs protobuf` $(EXTRAFLAGS)

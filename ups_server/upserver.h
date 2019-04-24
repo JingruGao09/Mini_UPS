@@ -24,6 +24,7 @@ public:
   int AmazonMsgHandler();
   int World_reconnect();
   int Amazon_reconnect();
+  void Query(const int &truck_id);
   int test();
 };
 #endif

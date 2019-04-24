@@ -20,7 +20,7 @@ UPServer::~UPServer() { wb.DisconnectAWorld(); }
  */
 int UPServer::World_reconnect() { return wb.reconnect(); }
 int UPServer::Amazon_reconnect() { return ab.reconnect(); }
-
+void UPServer::Query(const int &truck_id) { wb.Query(truck_id); }
 void UPServer::ConnectWorld() {
 
   // get world id from db, if no valid wid, request one from server
