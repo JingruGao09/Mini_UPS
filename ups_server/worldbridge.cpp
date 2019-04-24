@@ -76,8 +76,8 @@ int WorldBridge::CreateTrucks(int truckNum, UPS::UConnect *msg,
   for (int i = 0; i < truckNum; i++) {
     truck = msg->add_trucks();
     truck->set_id(i);
-    int x = rand() % 100 - 50;
-    int y = rand() % 100 - 50;
+    int x = rand() % 1000 - 500;
+    int y = rand() % 1000 - 500;
     truck->set_x(x);
     truck->set_y(y);
     trucks.push_back({i, x, y, ""});
@@ -183,7 +183,7 @@ int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
       Homer.LogRecvMsg("System", "failed to updatePackageStatus");
       return -1;
     }
-    Zeus.LogShipment("TRUCK EN ROUTE TO WAREHOUSE at" + currentDateTime(),
+    Zeus.LogShipment("TRUCK EN ROUTE TO WAREHOUSE at " + currentDateTime(),
                      packageid, world_id);
   }
   // save msg to db
@@ -288,7 +288,7 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
     Homer.LogRecvMsg("System", "failed to SetPackageInfo");
     return -1;
   }
-  Zeus.LogShipment("OUT FOR DELIVERY at" + currentDateTime(),
+  Zeus.LogShipment("OUT FOR DELIVERY at " + currentDateTime(),
                    package.package_id, world_id);
   Homer.LogSendMsg("World", "package " + std::to_string(package.package_id) +
                                 " on truck " + std::to_string(truck_id));
@@ -469,7 +469,7 @@ int WorldBridge::delivery_handler(UPS::UResponses &msg,
       Homer.LogRecvMsg("System", "failed to updatePackageStatus");
       return -1;
     }
-    Zeus.LogShipment("DELIVERED at" + currentDateTime(), delivery.packageid(),
+    Zeus.LogShipment("DELIVERED at " + currentDateTime(), delivery.packageid(),
                      world_id);
     package_t pack_info = Zeus.getPackageInfo(delivery.packageid());
     if (pack_info.package_id != -1) {

@@ -1,7 +1,14 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-
+<style type="text/css">
+#wrapper {
+  width:800px;
+  clear:both;
+  margin:0 auto;
+  text-align:center;
+</style>
+<div id="wrapper">
    <form action= "/ups/trackPackage/"  method="get">
      {% csrf_token %}
      <p>Please enter tracking number:</p>
@@ -10,5 +17,5 @@
      <br>
      <input type="submit" class="btn btn-outline-info" value="Tracking">
    </form>
-
+</div>
  {% endblock %}

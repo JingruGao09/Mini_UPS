@@ -6,11 +6,9 @@
 {% if package_list %}
 <ul>
   {% for package in package_list %}
-  <li>
-   <a href="{{ package.get_absolute_url }}">Package: {{package.package_id}} </a>
-  </li>
+  <p ><a  style="color: #212529" href="{{ package.get_absolute_url }}">Package: {{package.package_id}} </a></li>
   {% endfor %}
-</ul>
+</p>
   <!--p>Did not see your package in the list?</p>
   <p>Add your package to your account!</p>
   <form class="form-inline ml-auto">

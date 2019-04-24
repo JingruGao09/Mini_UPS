@@ -65,7 +65,7 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
         Homer.LogRecvMsg("System", "failed to updatePackagestatus");
         return -1;
       }
-      Zeus.LogShipment("TRUCK WAITING FOR PACKAGE at" + currentDateTime(),
+      Zeus.LogShipment("TRUCK WAITING FOR PACKAGE at " + currentDateTime(),
                        package_id, world_id);
       Homer.LogSendMsg("Amazon",
                        "truck " + std::to_string(truck.truck_id) +
@@ -231,6 +231,8 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
       Homer.LogRecvMsg("World", "failed to createPackage");
       return -1;
     }
+    Zeus.LogShipment("label CREATED at " + currentDateTime(),
+                     pack_info.packageid(), world_id);
   }
   return 0;
 }

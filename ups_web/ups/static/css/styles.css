@@ -71,7 +71,7 @@ footer {
     margin: 0 auto;
     color: #1d2124;
     font-size: 15px;
-    position: absolute;
+    position: relative;
     left:0px;
 }
 
