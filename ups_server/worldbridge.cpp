@@ -205,6 +205,7 @@ int WorldBridge::GoPickUp(const int &wh_id, const int &wh_x, const int &wh_y,
 int WorldBridge::SetWorldOptions(int speed) {
   UPS::UCommands command;
   command.set_simspeed(speed);
+  Zeus.updateWorldSpeed(speed, world_id);
   Homer.LogSendMsg("World", "setting world speed to " + std::to_string(speed));
   return Hermes.sendMsg<UPS::UCommands>(command);
 }
@@ -215,7 +216,7 @@ int WorldBridge::SetWorldOptions(int speed) {
  * set up google protocol buffer to load package info
  * return 0 if succeed, else -1
  */
-int WorldBridge::SetPackageInfo(const int &truck_id, package_t &package,
+int WorldBridge::SetPackageInfo(package_t &package,
                                 UPS::UGoDeliver *goDeliver) {
   UPS::UDeliveryLocation *location;
   location = goDeliver->add_packages();
@@ -236,7 +237,7 @@ int WorldBridge::resendGoDeliver(const int &truck_id, const int &package_id,
   package.package_id = package_id;
   package.x = package_x;
   package.y = package_y;
-  if (SetPackageInfo(truck_id, package, goDeliver) == -1)
+  if (SetPackageInfo(package, goDeliver) == -1)
     return -1;
   goDeliver->set_seqnum(seqnum);
   Homer.LogSendMsg("World",
@@ -269,7 +270,7 @@ int WorldBridge::GoDeliver(const int &truck_id, const int &package_id) {
 
   goDeliver = command.add_deliveries();
   goDeliver->set_truckid(truck_id);
-  if (SetPackageInfo(truck_id, package, goDeliver) == -1)
+  if (SetPackageInfo(package, goDeliver) == -1)
     return -1;
   if ((seqnum = Zeus.fetchSeqNum(std::to_string(world_id))) == -1) {
     Homer.LogRecvMsg("System", "failed to fetch seq num");

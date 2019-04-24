@@ -18,8 +18,7 @@ private:
   Log Homer;
   int CreateTrucks(int truckNum, UPS::UConnect *msg,
                    std::vector<truck_t> &trucks);
-  int SetPackageInfo(const int &truck_id, package_t &packages,
-                     UPS::UGoDeliver *goDeliver);
+  int SetPackageInfo(package_t &packages, UPS::UGoDeliver *goDeliver);
   int finished_handler(UPS::UResponses &msg, std::vector<truck_t> &trucks,
                        std::vector<int64_t> &seqnums);
   int delivery_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums,

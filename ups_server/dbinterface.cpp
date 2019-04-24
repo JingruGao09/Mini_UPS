@@ -89,6 +89,16 @@ int DBInterface::updateWorldNum(const std::string &WORLD_ID) {
   }
 }
 
+int DBInterface::updateWorldSpeed(const int &speed, const int &worldid) {
+  try {
+    std::string sql = "UPDATE WORLD SET SPEED=" + std::to_string(speed) +
+                      " WHERE WORLD_ID=" + std::to_string(worldid) + ";";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 /*
  * getPackageId
  *
@@ -598,7 +608,7 @@ int DBInterface::initializer() {
   try {
     std::string sql =
         "CREATE TABLE IF NOT EXISTS WORLD(WORLD_ID INT PRIMARY KEY NOT NULL, "
-        "STATUS VARCHAR(10) NOT NULL);";
+        "STATUS VARCHAR(10) NOT NULL,SPEED INT);";
     W.exec(sql);
     sql =
         "CREATE TABLE IF NOT EXISTS INSEQNUM(ID BIGINT NOT NULL, WORLD_ID INT "

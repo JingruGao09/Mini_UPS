@@ -9,18 +9,19 @@
 <!--p><strong>item:</strong> {{ package.package_set.description }}</p-->
 <p><strong>Truck ID:</strong> {{ package.truck.truck_id }}</p>
 <p><strong>Truck Status:</strong> {{ package.truck.get_truck_status_display }}</p>
-<p><strong>Destination:</strong> ({{ package.des_x }},{{package.des_y}})</p>
+<p><strong>Destination:</strong> ({{ package.des_x }}, {{package.des_y}})</p>
 <p><strong>Description:</strong>{{package.descp}}</p>
 <p><strong>Count:</strong>{{package.count}}</p>
 <p><strong>Current Location:</strong>
-  {% if package.package_status =="OUT FOR DELIVERY"%}
-  ({{truck.x}},{{truck.y}})
-  {% eles if package.package_status=="DELIVER"%}
-  ({{package.des_x}},{{package.des_y}})
+  {% if package.package_status == 'OUT FOR DELIVERY' %}
+  ({{truck.x}}, {{truck.y}})
+  {% elif package.package_status == 'DELIVERED' %}
+  ({{package.des_x}}, {{package.des_y}})
   {% else %}
-  ({{package.dep_x}},{{package.dep_y}})
+  ({{package.dep_x}}, {{package.dep_y}})
   {% endif %}
 </p>
+<p><strong>Estimate Arrive Time:</strong>{{package.count}}</p>
 <!--p><strong>Description:</strong> {{ package.package_set.description }}</p-->
 <!--div style="margin-top:20px">
   <h4>Product</h4>
@@ -31,7 +32,7 @@
   {% endfor %}
 <hr-->
 
-{% if package.package_status != "OUT FOR DELIVERY" and package.package_status != "DELIVERED" %}
+{% if package.package_status != 'OUT FOR DELIVERY' and package.package_status != 'DELIVERED' %}
 <p>Want to change the delivery destination?</p>
 <p>Go ahead and click the button below!</p>
 <form class="form-inline ml-auto">
