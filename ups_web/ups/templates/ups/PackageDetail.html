@@ -1,8 +1,32 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>Your Package is Here !</h1>
-<div align='left'>
+<style type="text/css">
+#wrapper {
+  width:900px;
+  clear:both;
+  margin:0 auto;
+  text-align:left;
+  
+}
+#first {
+  width:400px;
+float:left;
+}
+#second {
+  width:250px;
+  float:left;
+}
+#third {
+  width:250px;
+  float:left;
+}
+</style>
+
+<div id="wrapper">
+
+  <div id="first">
+    <h3>Package information</h3>
 <p><strong>Package ID:</strong> {{ package.package_id }}</p>
 
 <p><strong>Package Status:</strong> {{ package.get_package_status_display }}</p>
@@ -34,11 +58,13 @@
   {% endfor %}
 <hr-->
 </div>
-<div align='right'>
+<div id="second">
+<h3>Tracking History</h3>
 {% for log in logs%}
-<li><a>log.packagelog</a></li>
+<p><strong>{{log.packagelog}}</strong></p>
 {% endfor %}
 </div>
+<div id="third">
 {% if package.package_status != 'OUT FOR DELIVERY' and package.package_status != 'DELIVERED' %}
 <p>Want to change the delivery destination?</p>
 <p>Go ahead and click the button below!</p>
@@ -53,5 +79,7 @@
   <a href="{% url 'myPackages' %}" class="btn btn-outline-secondary">Check My Package List</a>
 </form>
 {% endif %}
+</div>
+</div>
 {% endblock %}
   
