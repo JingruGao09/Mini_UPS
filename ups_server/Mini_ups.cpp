@@ -8,11 +8,10 @@ void query_thread(UPServer &upserver);
 int main() {
   while (1) {
     try {
-      // UPServer upserver("vcm-9320.vm.duke.edu", "12345", "10.197.40.0",
-      // "7893");
+      UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.40.0", "7893");
 
-      UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.193.1",
-                        "44555");
+      // UPServer upserver("vcm-8950.vm.duke.edu", "12345", "10.197.193.1",
+      //                  "44555");
       // UPServer upserver(argv[1], argv[2], argv[3], argv[4]);
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");

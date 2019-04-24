@@ -53,7 +53,7 @@ def RegisterUserView(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return render(request, 'base_generic.html')
+            return render(request, 'index.html')
     else:
         form = CustomUserCreationForm()            
     return render(request, 'ups/registerUser.html', {'form': form})
