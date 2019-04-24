@@ -1,0 +1,15 @@
+1. when we write to protobuf, if we write the message in another function, we should pass the protobuf using pointer,
+or it will fail, I dont know why.
+2. database conflict, currently do not know how to handle with it.   what():  Started transaction<READ COMMITTED> while transaction<READ COMMITTED> still active
+3. update database query syntax simutaneously. Keep them same.
+4. lock transaction and nontransaction together, they can affect each other.
+5. how to terminate all thread immediately? using signal is better.
+6. log everything, or it will be hard to debug server program.
+7. store everything into database, so that it can resume
+8. do not store protobuf message directly, it contains special chars, store value instead.
+9. do not block a thread to wait ack.
+10. do not quit software no matter what error happen.
+11. clean pycache when transfer django project between different computer
+12. it is better to use python to develop such software??? I do not know how to implement sending mail function in c++
+13. keep the db of django and server software the same, or it will be painful to find it out. Use additional file to store.
+14. if you check django's backend, you can find password is not encrypted.

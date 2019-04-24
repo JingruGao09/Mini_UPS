@@ -1,6 +1,6 @@
-[2019-04-24.21:37:02] Sent message to Amazon, about connected to amazon
-[2019-04-24.21:37:02] Sent message to World, about Requesting a new world
-[2019-04-24.21:37:02] Received message from World, about connected!
-[2019-04-24.21:37:03] Sent message to World, about setting world speed to 50
-[2019-04-24.21:37:03] Sent message to Amazon seqnum is 1, about please connecting to world 1
-[2019-04-24.21:37:03] Received message from Amazon, about acking 1
+[2019-04-24.21:41:19] Sent message to Amazon, about connected to amazon
+[2019-04-24.21:41:19] Sent message to World, about Requesting a new world
+[2019-04-24.21:41:19] Received message from World, about connected!
+[2019-04-24.21:41:19] Sent message to World, about setting world speed to 50
+[2019-04-24.21:41:19] Sent message to Amazon seqnum is 1, about please connecting to world 1
+[2019-04-24.21:41:19] Received message from Amazon, about acking 1
