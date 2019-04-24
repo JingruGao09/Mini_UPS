@@ -163,5 +163,7 @@ class Shipment(models.Model):
     def __str__(self):
         return str(self.ship_id)
 
-
-
+class Shiplog(models.Model):
+    package = models.ForeignKey('Package',models.DO_NOTHING)
+    packagelog = models.TextField()
+    world = models.ForeignKey('World',models.DO_NOTHING)
