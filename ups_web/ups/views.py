@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse
 from django.db.models import Q
-from ups.models import Package
+from ups.models import Package, Truck, World
 from django.template import loader
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm,PackageMatchForm, EditPackageDestForm
@@ -144,10 +144,15 @@ def PackageDetail(request, pk):
         truck = Truck.objects.get(pk=package.truck_id)
     else:
         truck = None
-
+    world = World.objects.filter(status='OPEN').first()
+    if truck:
+        estimate=(abs(truck.x-package.des_x)+abs(truck.y-package.des_y))/(world.speed/100)
+    else:
+        estimate=None
     context = {
         'package': package,
         'truck': truck,
+        'estimate': estimate,
         'pk': pk,
     }
     return render(request, 'ups/PackageDetail.html', context)

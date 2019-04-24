@@ -19,6 +19,7 @@ class World(models.Model):
                               null=False,
                               blank=False)
     speed = models.IntegerField(null=True)
+    
     class Meta:
         db_table = 'world'
 
