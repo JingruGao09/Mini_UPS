@@ -74,6 +74,7 @@ bool recvMesgFrom(T &message, google::protobuf::io::FileInputStream *in) {
   input.PopLimit(limit);
   return true;
 }
+const std::string currentDateTime();
 long int unix_timestamp();
 #endif
 

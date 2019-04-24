@@ -1,5 +1,6 @@
 #ifndef __LOG_H__
 #define __LOG_H__
+#include "helper.h"
 #include <chrono>
 #include <ctime>
 #include <fstream>

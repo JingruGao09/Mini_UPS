@@ -557,6 +557,19 @@ int DBInterface::AdocInSeqNum(const std::string &seqnum) {
     return -1;
   }
 }
+int DBInterface::LogShipment(std::string log, const int &package_id,
+                             const int &world_id) {
+  try {
+    std::string sql =
+        "INSERT INTO UPS_SHIPLOG(PACKAGELOG,PACKAGE_ID,WORLD_ID) VALUES ('" +
+        log + "'," + std::to_string(package_id) + "," +
+        std::to_string(world_id) + ");";
+    return execute(sql);
+  } catch (std::string &e) {
+    errmsg = e;
+    return -1;
+  }
+}
 /*
  * initializer
  *
@@ -602,6 +615,10 @@ int DBInterface::initializer() {
           "NOT NULL, DES_Y INT NOT NULL, DESCP "
           "TEXT, COUNT INT ,PRIMARY "
           "KEY(PACKAGE_ID, WORLD_ID));";
+    W.exec(sql);
+    sql = "CREATE TABLE IF NOT EXISTS UPS_SHIPLOG(ID SERIAL PRIMARY KEY, "
+          "PACKAGELOG TEXT, PACKAGE_ID BIGINT NOT NULL"
+          ",WORLD_ID INT NOT NULL);";
     W.exec(sql);
     W.commit();
   } catch (const std::exception &e) {

@@ -65,6 +65,8 @@ int AmazonBridge::SendTruckId(std::vector<truck_location> &trucks) {
         Homer.LogRecvMsg("System", "failed to updatePackagestatus");
         return -1;
       }
+      Zeus.LogShipment("TRUCK WAITING FOR PACKAGE at" + currentDateTime(),
+                       package_id, world_id);
       Homer.LogSendMsg("Amazon",
                        "truck " + std::to_string(truck.truck_id) +
                            " is already at warehouse, located at(" +

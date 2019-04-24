@@ -82,6 +82,7 @@ public:
   int updatePackageStatus(const std::string &package_id,
                           const std::string status,
                           const std::string &WORLD_id);
+  int LogShipment(std::string log, const int &package_id, const int &world_id);
   int lookupInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docInSeqNum(const std::string &seqnum, const std::string &WORLD_id);
   int docOutMsg(const std::string &seqnum, const resend_msg_t &msg,
