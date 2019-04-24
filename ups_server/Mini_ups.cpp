@@ -25,7 +25,7 @@ int main() {
 
       t.join();
       t2.join();
-      continue;
+      t3.join();
     } catch (std::string &e) {
       continue;
     }
