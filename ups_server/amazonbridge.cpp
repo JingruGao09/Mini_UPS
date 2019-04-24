@@ -243,13 +243,16 @@ int AmazonBridge::apackageinfo_handler(UA::DetermineWarehouse &msg,
  *
  */
 int AmazonBridge::truckdst_handler(UA::DetermineDst &msg,
-                                   std::vector<truck_dest> &truck_dsts) {
+                                   std::vector<truck_dest> &truck_dsts,
+                                   const int &seqnum) {
   for (int i = 0; i < msg.leavingtrucks_size(); i++) {
     UA::TruckDst truckdst = msg.leavingtrucks(i);
     truck_dsts.push_back({truckdst.truckid(), truckdst.packageid()});
-    Homer.LogRecvMsg("Amazon", "truck " + std::to_string(truckdst.truckid()) +
-                                   " should send package " +
-                                   std::to_string(truckdst.packageid()));
+    Homer.LogRecvMsg("Amazon",
+                     "truck " + std::to_string(truckdst.truckid()) +
+                         " should send package " +
+                         std::to_string(truckdst.packageid()),
+                     std::to_string(seqnum));
   }
   return 0;
 }
@@ -268,7 +271,7 @@ int AmazonBridge::determinedst_handler(UA::AUCommands &msg,
     seqnums.push_back(destination.seqnum());
     if (Zeus.AdocInSeqNum(std::to_string(destination.seqnum())) == -1)
       continue;
-    if (truckdst_handler(destination, truck_dsts) != 0) {
+    if (truckdst_handler(destination, truck_dsts, destination.seqnum()) != 0) {
       Homer.LogRecvMsg("World", "failed to truckdst_handler");
       return -1;
     }

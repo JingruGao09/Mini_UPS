@@ -61,7 +61,8 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
                        UPS::UResponses response) {
   std::vector<truck_t> trucks;
   std::vector<int64_t> packageids;
-  if (wb.ParseResponses(response, trucks, packageids) == -1)
+  std::vector<truck_t> truckstatus;
+  if (wb.ParseResponses(response, trucks, packageids, truckstatus) == -1)
     return;
   if (!trucks.empty()) {
     std::vector<truck_location> truck_locations;
@@ -72,6 +73,8 @@ void MsgHandler_thread(WorldBridge &wb, AmazonBridge &ab,
   }
   if (!packageids.empty()) {
     ab.FinishShipment(packageids);
+  }
+  if (!truckstatus.empty()) {
   }
 }
 

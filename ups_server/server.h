@@ -32,5 +32,18 @@ public:
   std::vector<char> receiveData(int fd);
   void sendData(int fd, const std::vector<char> &msg);
   std::vector<char> basicRecv(int fd);
+  template <typename T> int sendMsg(int sockfd, T &msg) {
+    google::protobuf::io::FileOutputStream out(sockfd);
+    if (!sendMesgTo(msg, &out))
+      return -1;
+    return 0;
+  }
+
+  template <typename T> int recvMsg(int sockfd, T &msg) {
+    google::protobuf::io::FileInputStream in(sockfd);
+    if (!recvMesgFrom(msg, &in))
+      return -1;
+    return 0;
+  }
 };
 #endif

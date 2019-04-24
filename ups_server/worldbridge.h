@@ -8,13 +8,7 @@
 #include <iostream>
 #include <string>
 #define TRUCK_NUM 200
-struct _truck_t {
-  int truck_id;
-  int x;
-  int y;
-};
 
-typedef struct _truck_t truck_t;
 class WorldBridge {
 private:
   int world_id;
@@ -31,7 +25,8 @@ private:
   int delivery_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums,
                        std::vector<int64_t> &packageids);
   int ack_handler(UPS::UResponses &msg);
-  int truck_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
+  int truck_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums,
+                    std::vector<truck_t> &truckstatus);
   int err_handler(UPS::UResponses &msg, std::vector<int64_t> &seqnums);
   int selectATruck(const int &wh_x, const int &wh_y);
   int resendQuery(const int &truck_id, const int &seqnum);
@@ -57,7 +52,8 @@ public:
   int Query(const int &truck_id);
   int ack(const std::vector<int64_t> &seqnums);
   int ParseResponses(UPS::UResponses &msg, std::vector<truck_t> &trucks,
-                     std::vector<int64_t> &packageids);
+                     std::vector<int64_t> &packageids,
+                     std::vector<truck_t> &truckstatus);
   int SetWorldOptions(int speed);
   template <typename T> int RecvMsg(T &msg) { return Hermes.recvMsg<T>(msg); }
 };

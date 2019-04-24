@@ -378,7 +378,8 @@ int WorldBridge::ack(const std::vector<int64_t> &seqnums) {
 
 int WorldBridge::ParseResponses(UPS::UResponses &msg,
                                 std::vector<truck_t> &trucks,
-                                std::vector<int64_t> &packageids) {
+                                std::vector<int64_t> &packageids,
+                                std::vector<truck_t> &truckstatus) {
   std::vector<int64_t> seqnums;
   if (msg.has_finished() && msg.finished())
     return 1;
@@ -388,7 +389,7 @@ int WorldBridge::ParseResponses(UPS::UResponses &msg,
     return -1;
 
   ack_handler(msg);
-  if (truck_handler(msg, seqnums) == -1)
+  if (truck_handler(msg, seqnums, truckstatus) == -1)
     return -1;
   if (err_handler(msg, seqnums) == -1)
     return -1;
@@ -514,7 +515,8 @@ int WorldBridge::ack_handler(UPS::UResponses &msg) {
  * pass test
  */
 int WorldBridge::truck_handler(UPS::UResponses &msg,
-                               std::vector<int64_t> &seqnums) {
+                               std::vector<int64_t> &seqnums,
+                               std::vector<truck_t> &truckstatus) {
   for (int i = 0; i < msg.truckstatus_size(); i++) {
     UPS::UTruck truck = msg.truckstatus(i);
     std::cout << truck.truckid() << std::endl;
@@ -535,6 +537,8 @@ int WorldBridge::truck_handler(UPS::UResponses &msg,
                          std::to_string(truck.x()) + "," +
                          std::to_string(truck.y()) + ")",
                      std::to_string(truck.seqnum()));
+    truckstatus.push_back(
+        {truck.truckid(), truck.x(), truck.y(), truck.status()});
   }
   return 0;
 }

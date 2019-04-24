@@ -4,6 +4,14 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/io/zero_copy_stream_impl.h>
 #include <math.h>
+#include <string>
+struct _truck_t {
+  int truck_id;
+  int x;
+  int y;
+  std::string status;
+};
+typedef struct _truck_t truck_t;
 struct _package_t {
   int package_id;
   int x;

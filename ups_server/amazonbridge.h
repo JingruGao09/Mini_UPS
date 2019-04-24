@@ -48,7 +48,7 @@ private:
                                  std::vector<int64_t> &seqnums,
                                  std::vector<warehouse_info> &warehouse_infos);
   int truckdst_handler(UA::DetermineDst &msg,
-                       std::vector<truck_dest> &truck_dsts);
+                       std::vector<truck_dest> &truck_dsts, const int &seqnum);
   int determinedst_handler(UA::AUCommands &msg, std::vector<int64_t> &seqnums,
                            std::vector<truck_dest> &truck_dsts);
   int ack_handler(UA::AUCommands &msg);

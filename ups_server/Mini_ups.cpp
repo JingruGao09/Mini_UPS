@@ -9,8 +9,8 @@ int main() {
       // "7890");
 
       UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
-                        "5555");
-
+                        "44556");
+      // UPServer upserver(argv[1], argv[2], argv[3], argv[4]);
       // UPServer upserver("vcm-8129.vm.duke.edu", "12345", "10.197.193.1",
       // "80");
 
@@ -29,6 +29,7 @@ int main() {
 
       t.join();
       t2.join();
+      continue;
     } catch (std::string &e) {
       continue;
     }

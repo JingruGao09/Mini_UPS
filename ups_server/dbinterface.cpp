@@ -32,8 +32,7 @@ int DBInterface::execute(const std::string &sql) {
     W.commit();
     return 0;
   } catch (const std::exception &e) {
-    W.abort();
-    throw std::string("Database error");
+    std::cout << "execute fail\n";
     return -1;
   }
 }
@@ -46,10 +45,15 @@ int DBInterface::execute(const std::string &sql) {
  */
 std::mutex mtx2;
 pqxx::result DBInterface::lookup(const std::string &sql) {
-  std::lock_guard<std::mutex> lck(mtx2);
-  pqxx::nontransaction N(*C);
-  pqxx::result R(N.exec(sql));
-  return R;
+  try {
+    std::lock_guard<std::mutex> lck(mtx);
+    pqxx::nontransaction N(*C);
+    pqxx::result R(N.exec(sql));
+    return R;
+  } catch (const std::exception &e) {
+    std::cout << "look up fail\n";
+    return {};
+  }
 }
 /*
  * getWorldNum
